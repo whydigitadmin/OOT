@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<node.version>v18.18.0</node.version>
+		<npm.version>9.8.1</npm.version>
+	</properties>
+
+
+	<parent>
+		<groupId>com.wds.shippingdashboard</groupId>
+		<artifactId>shippingdashboard-dependencies</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../shippingdashboard-dependencies</relativePath>
+	</parent>
+
+	<artifactId>shippingdashboard-facade</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>shippingdashboard-facade</name>
+
+	<description>shippingdashboard-facade</description>
+
+	<build>
+			<plugins>
+<!--				<plugin>-->
+<!--					<groupId>com.github.eirslett</groupId>-->
+<!--					<artifactId>frontend-maven-plugin</artifactId>-->
+<!--					<version>1.9.1</version>-->
+<!--					<configuration>-->
+<!--						<workingDirectory>dashboard</workingDirectory>-->
+<!--					</configuration>-->
+<!--					<executions>-->
+<!--						&lt;!&ndash; Install npm + ng &ndash;&gt;-->
+<!--						<execution>-->
+<!--							<id>install-node-and-npm</id>-->
+<!--							<goals>-->
+<!--								<goal>install-node-and-npm</goal>-->
+<!--							</goals>-->
+<!--							<configuration>-->
+<!--								<nodeVersion>${node.version}</nodeVersion>-->
+<!--								<npmVersion>${npm.version}</npmVersion>-->
+<!--							</configuration>-->
+<!--							<phase>initialize</phase>-->
+<!--						</execution>-->
+<!--						<execution>-->
+<!--							<id>npm-install</id>-->
+<!--							<goals>-->
+<!--								<goal>npm</goal>-->
+<!--							</goals>-->
+<!--							<configuration>-->
+<!--								<arguments>install</arguments>-->
+<!--							</configuration>-->
+<!--						</execution>-->
+<!--						&lt;!&ndash; Set main + library versions to match artifact &ndash;&gt;-->
+<!--						<execution>-->
+<!--							<id>npm-version</id>-->
+<!--							<goals>-->
+<!--								<goal>npm</goal>-->
+<!--							</goals>-->
+<!--							<configuration>-->
+<!--								<arguments>version &#45;&#45;allow-same-version ${project.version}</arguments>-->
+<!--							</configuration>-->
+<!--							<phase>generate-resources</phase>-->
+<!--						</execution>-->
+<!--						&lt;!&ndash; Build &ndash;&gt;-->
+<!--						<execution>-->
+<!--							<id>npm-build</id>-->
+<!--							<goals>-->
+<!--								<goal>npm</goal>-->
+<!--							</goals>-->
+<!--							<configuration>-->
+<!--								<arguments>run build</arguments>-->
+<!--							</configuration>-->
+<!--							<phase>generate-resources</phase>-->
+<!--						</execution>-->
+<!--					</executions>-->
+<!--				</plugin>-->
+
+<!--&lt;!&ndash;				<plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;					<artifactId>maven-resources-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;					<executions>&ndash;&gt;-->
+<!--&lt;!&ndash;						<execution>&ndash;&gt;-->
+<!--&lt;!&ndash;							<id>copy-resources</id>&ndash;&gt;-->
+<!--&lt;!&ndash;							<phase>validate</phase>&ndash;&gt;-->
+<!--&lt;!&ndash;							<goals><goal>copy-resources</goal></goals>&ndash;&gt;-->
+<!--&lt;!&ndash;							<configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;								<outputDirectory>${project.build.directory}/classes/resources/</outputDirectory >&ndash;&gt;-->
+<!--&lt;!&ndash;								<resources>&ndash;&gt;-->
+<!--&lt;!&ndash;									<resource>&ndash;&gt;-->
+<!--&lt;!&ndash;										<directory>${project.basedir}/dashboard/</directory >&ndash;&gt;-->
+<!--&lt;!&ndash;									</resource>&ndash;&gt;-->
+<!--&lt;!&ndash;								</resources>&ndash;&gt;-->
+<!--&lt;!&ndash;							</configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;						</execution>&ndash;&gt;-->
+<!--&lt;!&ndash;					</executions>&ndash;&gt;-->
+<!--&lt;!&ndash;				</plugin>&ndash;&gt;-->
+
+<!--				<plugin>-->
+<!--					<artifactId>maven-resources-plugin</artifactId>-->
+<!--					<executions>-->
+<!--						<execution>-->
+<!--							<id>copy-resources</id>-->
+<!--							<phase>validate</phase>-->
+<!--							<goals><goal>copy-resources</goal></goals>-->
+<!--							<configuration>-->
+<!--								<outputDirectory>${project.build.directory}/classes/resources/</outputDirectory >-->
+<!--								<resources>-->
+<!--									<resource>-->
+<!--										<directory>${project.basedir}/dashboard/dist/dashboard/</directory >-->
+<!--									</resource>-->
+<!--								</resources>-->
+<!--							</configuration>-->
+<!--						</execution>-->
+<!--					</executions>-->
+<!--				</plugin>-->
+
+						<plugin>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-maven-plugin</artifactId>
+							<configuration>
+								<excludes>
+									<exclude>
+										<groupId>org.projectlombok</groupId>
+										<artifactId>lombok</artifactId>
+									</exclude>
+								</excludes>
+							</configuration>
+						</plugin>
+
+
+			</plugins>
+	</build>
+
+	<dependencies>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-security</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.security</groupId>-->
+<!--			<artifactId>spring-security-config</artifactId>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>com.wds.shippingdashboard</groupId>
+			<artifactId>shippingdashboard-shared</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+
+<!--				<dependency>-->
+<!--					<groupId>org.springframework.boot</groupId>-->
+<!--					<artifactId>spring-boot-starter-security</artifactId>-->
+<!--				</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+		</dependency>
+	</dependencies>
+</project>

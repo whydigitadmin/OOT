@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.wds.shippingdashboard</groupId>
+	<artifactId>shippingdashboard-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>shippingdashboard-parent</name>
+	<packaging>pom</packaging>
+	<description>Shipping Dashboard</description>
+	<properties>
+		<java.version>17</java.version>
+		<spring-cloud.version>2022.0.4</spring-cloud.version>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+
+		<sonar.token>sqp_81e0e5f1202ad7d997ee4055cf359d33648eb487</sonar.token>
+	</properties>
+	<repositories>
+		<repository>
+			<id>sonarsource</id>
+			<url>https://plugins.gradle.org/m2/</url>
+		</repository>
+	</repositories>
+	 <modules>
+		<module>shippingdashboard-facade</module>
+		<module>shippingdashboard-shared</module>
+		<module>shippingdashboard-service</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.10.0.2594</version>
+		</dependency>
+	</dependencies>
+
+
+</project>
