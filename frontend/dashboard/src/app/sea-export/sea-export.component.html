@@ -1,0 +1,76 @@
+<div class="kt-subheader my-0-7-2">
+    <div class="kt-container kt-cntr-plr-13">
+        <div class="kt-subheader__main kt-sub-hd-p-0">
+            <h3 class="kt-subheader__title">Sea Dashboard Export</h3>
+        </div>
+    </div>
+</div>
+<ng-container>
+    <div class="form-row das-ml-0">
+                        <div class="col-lg-12">
+                            <div class="form-row row">
+                                <div class="col-lg-4 col-md-12 mb-1">
+                                    <div class="kt-portlet frt-das-port">
+                                        <div class="kt-portlet-body">
+                                            <div class="kt-portlet-preview">
+                                                
+                                                    <div class="col-lg-12 relative">
+                                                        
+                                                            <h4 id="ribbon"></h4>
+                                                        
+                                                    </div> 
+                                                                                                           
+                                                        <highcharts-chart #chart1 [Highcharts]="Highcharts1"  [options]="chartOptions1"
+                                                        [(update)]="updateFlag" style="width: 90%; height:292px !important; display: block;">
+                                                        </highcharts-chart>
+                                                   
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 mb-1">
+                                    <div class="kt-portlet frt-das-port-cen">
+                                        <div class="kt-portlet-body">
+                                            <div class="kt-portlet-preview">
+                                                
+                                                <div class="col-lg-12 relative">
+                                                    
+                                                        <h4 id="ribbon"></h4>
+                                                    
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <highcharts-chart [Highcharts]="Highcharts2" [options]="chartOptions2"
+                                                        style="width: 90%; height:292px !important; display: block;">
+                                                    </highcharts-chart>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-lg-4 col-md-12 mb-1">
+                                    <div class="kt-portlet frt-das-port-cen">
+                                        <div class="kt-portlet-body">
+                                            <div class="kt-portlet-preview">
+                                                
+                                                <div class="col-lg-12 relative">
+                                                    
+                                                        <h4 id="ribbon"></h4>
+                                                    
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <highcharts-chart [Highcharts]="Highcharts3" [options]="chartOptions3"
+                                                        style="width: 90%; height:292px !important; display: block;">
+                                                    </highcharts-chart>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->                                
+                            </div>
+                            
+                        </div>
+                    </div>
+</ng-container>

@@ -1,16 +1,16 @@
 /* SystemJS module definition */
-declare var module: NodeModule;
+declare let module: NodeModule;
 interface NodeModule {
 	id: string;
 }
 
-declare var KTMenu: any;
-declare var KTOffcanvas: any;
-declare var KTScrolltop: any;
-declare var KTHeader: any;
-declare var KTToggle: any;
-declare var KTUtil: any;
-declare var KTPortlet: any;
-declare var KTDialog: any;
-declare var KTWizard: any;
-declare var Chart: any;
+declare let KTMenu: any;
+declare let KTOffcanvas: any;
+declare let KTScrolltop: any;
+declare let KTHeader: any;
+declare let KTToggle: any;
+declare let KTUtil: any;
+declare let KTPortlet: any;
+declare let KTDialog: any;
+declare let KTWizard: any;
+declare let Chart: any;

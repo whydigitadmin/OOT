@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SeaDashboardComponent } from './views/pages/sea-dashboard/sea-dashboard.component';
+import { SeaExportComponent } from './sea-export/sea-export.component';
 
 const routes: Routes = [
   
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   
   { path: 'login', component: LoginScreenComponent },
+  {
+    path: 'sea-export', component: SeaExportComponent  },
   
   {
 		path: '',

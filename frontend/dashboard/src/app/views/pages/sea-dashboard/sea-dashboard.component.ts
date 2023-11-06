@@ -3,17 +3,22 @@ import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular
 import { Subject } from 'rxjs';
 import { finalize, takeUntil, tap } from 'rxjs/operators';
 import { ActivityService } from '../apps/service/activity.service';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 //import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {formatDate} from '@angular/common';
 import {Router} from '@angular/router';
+import { MatAccordion } from '@angular/material/expansion';
+import { Globals } from 'src/app/model/user-details.model';
 @Component({
   selector: 'kt-operation-dashboard',
   templateUrl: './sea-dashboard.component.html',
-  styleUrls: ['./sea-dashboard.component.scss']
+  styleUrls: ['./sea-dashboard.component.scss'],
+
 })
 export class SeaDashboardComponent implements OnInit {
-
+  @ViewChild(MatAccordion)
+  accordion!: MatAccordion;
 search_update: string = 'N';
 public data:any={};
 shipment_list:any=[];
@@ -21,44 +26,55 @@ tempsearch:any=[];
 //@ViewChild('lcl',{static: true}) public lcl: ModalDirective;
 @Input() history_data: any={};
 
+dataSource = [
+  { name: 'Unapproved Quotation', count: 25},
+  { name: 'Approved Quotation List', count: 30 }  
+];
+
+dataSource1 = [
+  { name: 'Approved Agent/Shipper Quotation', count: 25 },
+  { name: 'New Nomination Routing Order', count: 40, countSLA: 20, countOSLA: 20 },  
+  { name: 'Shipment Under Process', count: 33 },
+];
+
+dataSource2 = [
+  { name: 'ENQ  LIST', count: 25, countSLA: 10, countOSLA: 15 },
+  { name: 'Approved Quotations', count: 22 },  
+  { name: 'New Nomination Routing Order', count: 45, countSLA: 10, countOSLA: 30 },
+];
+
+dataSource3 = [
+  { name: 'Receipt of Shipping Instructions', count: 10 },
+  { name: 'Pending HBL Drafts - (Ports assigned to dox staff)', count: 25, countSLA: 10, countOSLA: 15 },  
+  { name: 'Pending HBL Drafts approval', count: 56, countSLA: 30, countOSLA: 26 },
+];
+
+displayedColumns: string[] = ['pendinActions', 'count'];
+
+displayedColumnsSLA: string[] = ['pendinActions', 'count', 'countSLA', 'countOSLA'];
+
 //@ViewChild(MatSort, {static: true}) sort: MatSort;
 //@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 public localSession:any={};
-//dataSource_lcl = new MatTableDataSource();
-lcl_Columns: string[] = ['Action','JSHP_SHIPMENT_NO','JSHP_HOUSE_BILL_NO','JSHP_A_BOOKING_DATE','JSHP_E_DEPARTURE_DATE','JSHP_E_ARRIVAL_DATE','JSHP_MPRT_ORIGIN','JSHP_MPRT_DESTINATION','JSHP_ACTUAL_VOLUME','JSHP_ACTUAL_WEIGHT','JSHP_TOTAL_PACKAGE_COUNT','SHIPPER_NAME','CONSIGNEE_NAME'];
-displayedColumns: string[] = ['Shipment No','HBL No','Booking Date','ETD','ETA','Origin','Destination','Volume','Weight','Package','Shipper','Consignee'];
-  loader: boolean = false;
-  session_company:any;
-  search_load:any;
-  len: any;
-  draft_date_title:any='';
-  draft_count: any='';
-  SOB_count:any='';
-  cargo_count:any='';
-  BL_count:any='';
-  invoice_count:any='';
-  sale_count:any='';
-  draft_data:any=[];
-  list_page_name:any='';
-  localstorage_item: any;
-  constructor(private avt_ser: ActivityService,private cdr: ChangeDetectorRef, private router: Router) { }
+user_roles: any;
+  roles_matching!: any;
 
-  ngOnInit() {
-   this.data.to_date=new Date();
-   this.data.from_date = new Date(this.data.to_date.getTime() - 7*24*60*60*1000);
-    let to_dateFormatted = formatDate(this.data.to_date, 'yyyy-MM-dd', 'en-US');
-    let from_dateFormatted = formatDate(this.data.from_date, 'yyyy-MM-dd', 'en-US');
-    console.log(this.data.from_date);
-    console.log(this.data.to_date);
-    this.loader = false;
-    this.localstorage_item = JSON.parse(localStorage.getItem("ffsession")!);
-    this.session_company = this.localstorage_item?.STFF_MCPY;
-    this.search_load = "N";
-    // this.modalService.open(this.shipment, {
-    //   size: 'xl',
-    //   backdrop: false,
-    //   });
+  constructor(private avt_ser: ActivityService,private cdr: ChangeDetectorRef, private router: Router, private globals : Globals) { }
+
+  ngOnInit() {   
+    this.localSession = localStorage.getItem('user_data'); 
+    console.log("localSession :", this.localSession);   
+    this.user_roles = JSON.parse(this.localSession).productRoles;
+    console.log("user_roles :", this.user_roles);
+    
     this.search();
+}
+
+isRoleMatching(roleId: number): boolean{
+  console.log("isRoleMatching :", this.user_roles);
+  return this.user_roles.find((role: any) => role.roleId === roleId);
+  //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
+  
 }
 view(JSHP_RID: any){
   console.log(JSHP_RID);
@@ -69,7 +85,8 @@ view(JSHP_RID: any){
    console.log(JSON.parse(localStorage.getItem('resultarray')!));
    var url = '/Operations/operation-dashboard';
    localStorage.setItem('last_session_url_lcl_export',url)
-   localStorage.setItem('CLOSE_LCL',this.tempsearch.close);
+   
+   console.log(localStorage.getItem('roles'));
   this.router.navigate(['lcl-export-house/shipment-detail/' + JSHP_RID]);
 }
 upload_hide(){
@@ -77,6 +94,10 @@ upload_hide(){
   }
   change() {
     this.search_update = 'Y';
+  }
+
+  showChart(row: number) {
+
   }
   search(){
     // this.avt_ser.get_draft_count_data(this.data.from_date,this.data.to_date).subscribe((data: any) => {
@@ -93,6 +114,13 @@ upload_hide(){
     //       });
         }
   
+        save(){
+
+        }
+
+        undo() {
+
+        }
 
 }
 

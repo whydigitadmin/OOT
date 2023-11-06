@@ -25,13 +25,13 @@ import { SubheaderComponent } from './views/theme/subheader/subheader.component'
 import { Subheader1Component } from './views/layout/subheader1/subheader1.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/login-screen-header.component';
-import { SeaDashboardModule } from './views/pages/sea-dashboard/sea-dashboard.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
-    LayoutComponent,
+    LayoutComponent,    
     FooterComponent,
     HeaderComponent,
     MenuHorizontalComponent,

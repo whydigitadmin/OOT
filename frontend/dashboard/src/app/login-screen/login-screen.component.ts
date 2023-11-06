@@ -61,16 +61,17 @@ export class LoginScreenComponent implements OnInit {
 		this.loading = true;
 
 		const formData = new UserLogin(this.logindata.username , this.logindata.password);
-		this.loginService.submitLoginInfo(formData).subscribe( response => {
-					
-			if(response !=null){
-				console.log(response)					
+		this.loginService.submitLoginInfo(formData).subscribe( response => {			
+			if(response !=null){				
 				this.globals.isUserLoggedIn = true;
 				this.globals.id = response['id'];
 				this.globals.companyId = response ['companyId'];
 				this.globals.deptName = response ['deptName'];
 				this.globals.homeDeptId = response ['homeDeptId'];
-				this.globals.email = response['email'];				
+				this.globals.email = response['email'];
+				this.globals.productRoles = response['productRoles'];
+				localStorage.setItem('user_data',JSON.stringify(this.globals));
+   				localStorage.setItem('roles',JSON.stringify(this.globals.productRoles));					
 				this.router.navigateByUrl('/dashboard');
 			}
 			else{

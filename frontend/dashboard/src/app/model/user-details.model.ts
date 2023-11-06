@@ -9,6 +9,7 @@ export class UserDetails {
     deptName : string;
     homeDeptId : number;
     roles : string[] ;
+    productRoles!: [];
 
     constructor() {
         this.email = '';
@@ -19,6 +20,7 @@ export class UserDetails {
         this.deptName = '';
         this.homeDeptId = 0;
         this.roles = [];
+        this.productRoles =[];
     }
 }
 
@@ -56,5 +58,5 @@ export class Globals{
     companyId = 0;
     deptName  = "";
     homeDeptId  = 0;
-  
+    productRoles = [];
 }

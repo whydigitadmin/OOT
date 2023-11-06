@@ -257,13 +257,21 @@ body {
     background: #f2f3f7 !important; 
     background: #f6f8fb !important;
     border-bottom-left-radius: 40px;
+    display: flex;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 97;
+    justify-content: space-between;
     &::before {
         background: #3f51b5 !important;
         content: "";
         height: 7px !important;
         width: 100%;
         position: absolute;
-        z-index: -1 !important;
+        z-index: 1 !important;
     }
     .frt-topbar-badge {
         .badge {
@@ -290,17 +298,28 @@ body {
     }
 }
 
-// .kt-header__brand {
-// 	width: auto !important;
-// 	background-color: #fff !important;
-//     background-color: transparent !important;	
-// }
+.kt-header__brand {
+	width: auto !important;
+	background-color: #fff !important;
+    background-color: transparent !important;	
+    display: flex;
+    flex-direction: row;
+    padding: 0 25px;
+    height: 50px;
+    justify-content: center;
+}
 .kt-header__topbar {
     background-color: #3f51b5 !important;
+    width: 362px;
 }
-.kt-footer .kt-footer__copyright {
+.kt-footer{
+    background-color: #fff;
+    padding-top: 5px; 
+    .kt-footer__copyright {
     color: #505362 !important;
     font-weight: 500;
+    padding: 20px;
+    
     .kt-link {
         color: #505362 !important;
         font-weight: 500;
@@ -314,6 +333,7 @@ body {
             }
         }
     }
+}
 }
 
 .header-curve-svg {
@@ -2842,8 +2862,10 @@ input[readonly] ,input[disabled],button[disabled] {
 @media (min-width: 1025px) {
     // .kt-content { padding: 0px 0px 10px !important; }  20230322   
     // .kt-container { padding: 0px 15px !important; }    20230322
-    .kt-content { padding: 0px 0px 7px !important; }
-    .kt-container { padding: 0rem 0.5rem !important; }
+    .kt-content { padding: 0px 0px 7px !important; margin-top: 55px; }
+    .kt-container { padding: 0rem 0.5rem !important;    display: flex;
+        justify-content: space-between;
+   }
     .kt-cntr-plr-13 { padding: 0px 13px !important; }
     .modal-xl  { max-width: 85% !important; }     
 }
