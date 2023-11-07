@@ -59,4 +59,7 @@ export class Globals{
     deptName  = "";
     homeDeptId  = 0;
     productRoles = [];
+    status = "";
+    roles = "";
+    userDetails: UserDetails = new UserDetails();
 }

@@ -8,3 +8,4 @@ java/shipping-dashboard/shippingdashboard-facade/target/classes/application.prop
 java/shipping-dashboard/shippingdashboard-service/target/classes/application-dev.properties
 java/shipping-dashboard/shippingdashboard-service/target/classes/application-qa.properties
 java/shipping-dashboard/shippingdashboard-service/target/classes/application.properties
+*.class

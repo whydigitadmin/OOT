@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
+import { Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
+import { Export_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
 const BASE_URL  = "http://localhost:8080"
@@ -9,7 +10,8 @@ const BASE_URL  = "http://localhost:8080"
     providedIn :'root' 
 })
 export class LoginService{
-    constructor(private http: HttpClient){}
+   
+    constructor(private http: HttpClient, private globals : Globals){}
 
     getLoginInfo(){
         return this.http.get<any>(BASE_URL);
@@ -28,4 +30,10 @@ export class LoginService{
 
         //return this.http.post<any>(BASE_URL + "/api/v1/facade/shipment/getShipmentCount", jsonData);
       }
+
+      getExportLCLCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);        
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getCustomerServiceLCL", jsonData, { headers: headers });        
+    }
 }

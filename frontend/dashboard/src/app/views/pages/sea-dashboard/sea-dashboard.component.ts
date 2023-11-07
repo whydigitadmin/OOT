@@ -10,6 +10,8 @@ import {formatDate} from '@angular/common';
 import {Router} from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/model/user-details.model';
+import { LoginService } from 'src/app/service/login.service';
+import { Export_LCL_CustomerService } from 'src/app/model/export-model';
 @Component({
   selector: 'kt-operation-dashboard',
   templateUrl: './sea-dashboard.component.html',
@@ -26,6 +28,7 @@ tempsearch:any=[];
 //@ViewChild('lcl',{static: true}) public lcl: ModalDirective;
 @Input() history_data: any={};
 
+datasource_export_LCL_CS : Export_LCL_CustomerService[]  = [];
 dataSource = [
   { name: 'Unapproved Quotation', count: 25},
   { name: 'Approved Quotation List', count: 30 }  
@@ -59,15 +62,18 @@ public localSession:any={};
 user_roles: any;
   roles_matching!: any;
 
-  constructor(private avt_ser: ActivityService,private cdr: ChangeDetectorRef, private router: Router, private globals : Globals) { }
+  constructor(private avt_ser: ActivityService,private cdr: ChangeDetectorRef, private router: Router, private globals : Globals , private loginService: LoginService) { }
 
   ngOnInit() {   
-    this.localSession = localStorage.getItem('user_data'); 
-    console.log("localSession :", this.localSession);   
-    this.user_roles = JSON.parse(this.localSession).productRoles;
-    console.log("user_roles :", this.user_roles);
+
+    console.log("I AM LOG OF METHOD")
+    // this.localSession = localStorage.getItem('user_data'); 
+    // console.log("localSession :", this.localSession);   
+    // this.user_roles = JSON.parse(this.localSession).productRoles;
+    // console.log("user_roles :", this.user_roles);
     
-    this.search();
+    //this.search();
+    this.loadAllItems();
 }
 
 isRoleMatching(roleId: number): boolean{
@@ -89,38 +95,32 @@ view(JSHP_RID: any){
    console.log(localStorage.getItem('roles'));
   this.router.navigate(['lcl-export-house/shipment-detail/' + JSHP_RID]);
 }
-upload_hide(){
-  //this.modalService.dismissAll();
-  }
-  change() {
-    this.search_update = 'Y';
-  }
 
-  showChart(row: number) {
+loadAllItems(){
+  this.get_export_lcl_Customer_Info();
+}
 
-  }
-  search(){
-    // this.avt_ser.get_draft_count_data(this.data.from_date,this.data.to_date).subscribe((data: any) => {
-    //         this.cdr.markForCheck();
-    //         this.loader=false;
-    //         this.draft_count=data.draft_count;
-    //         this.SOB_count=data.SOB_count;
-    //         this.cargo_count=data.cargo_count;
-    //         this.BL_count=data.BL_count;
-    //         this.invoice_count=data.invoice_count;
-    //         this.sale_count=data.sale_count;
-            
-    //         this.draft_date_title=" Date range from " + this.data.from_date + " to " + this.data.to_date ;
-    //       });
-        }
+get_export_lcl_Customer_Info(){
   
-        save(){
+  
 
-        }
+  this.loginService.getExportLCLCustomerServiceInfo()
+  .subscribe(
+    (response) => {
+      this.datasource_export_LCL_CS = response;
+        // Handle the response data here
+      console.log('Response:', this.datasource_export_LCL_CS );
+    },
+    (error) => {
+      // Handle any errors here
+      console.error('Error:', error);
+    }
+  );
+}
 
-        undo() {
+export_fcl_CustomerService(){
 
-        }
+}
 
 }
 

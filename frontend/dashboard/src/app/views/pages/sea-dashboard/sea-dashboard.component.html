@@ -55,32 +55,32 @@
                                                         EXPORT CUSTOMER SERVICE (LCL)
                                                     </mat-panel-title>
                                                 </mat-expansion-panel-header>
-                                                <mat-table [dataSource]="dataSource1">
+                                                <mat-table [dataSource]="datasource_export_LCL_CS">
 
 
                                                     <ng-container matColumnDef="pendinActions">
                                                         <mat-header-cell *matHeaderCellDef>Pending
                                                             Actions</mat-header-cell>
-                                                        <mat-cell *matCellDef="let element">{{ element.name
+                                                        <mat-cell *matCellDef="let element">{{ element.action
                                                             }}</mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="count">
                                                         <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/sea-export">{{element.count}}</a></mat-cell>
+                                                                href="/sea-export">{{element.id}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countSLA">
                                                         <mat-header-cell *matHeaderCellDef>Count within SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/sea-export">{{element.countSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.withinSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countOSLA">
                                                         <mat-header-cell *matHeaderCellDef>Count - Out of SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/sea-export">{{element.countOSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.outOfSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <mat-header-row

@@ -70,6 +70,7 @@ export class LoginScreenComponent implements OnInit {
 				this.globals.homeDeptId = response ['homeDeptId'];
 				this.globals.email = response['email'];
 				this.globals.productRoles = response['productRoles'];
+				this.globals.userDetails = response;
 				localStorage.setItem('user_data',JSON.stringify(this.globals));
    				localStorage.setItem('roles',JSON.stringify(this.globals.productRoles));					
 				this.router.navigateByUrl('/dashboard');
