@@ -9,3 +9,7 @@ java/shipping-dashboard/shippingdashboard-service/target/classes/application-dev
 java/shipping-dashboard/shippingdashboard-service/target/classes/application-qa.properties
 java/shipping-dashboard/shippingdashboard-service/target/classes/application.properties
 *.class
+*.lst
+*.jar
+*.properties
+*.original

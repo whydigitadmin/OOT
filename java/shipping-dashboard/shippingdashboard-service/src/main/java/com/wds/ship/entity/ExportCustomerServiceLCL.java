@@ -13,6 +13,8 @@ public class ExportCustomerServiceLCL {
     @Id
     private Long id;
 
+    @Column(name = "COUNT")
+    private Long count;
     @Column(name = "DEPT")
     private String dept;
 
@@ -75,6 +77,13 @@ public class ExportCustomerServiceLCL {
         this.outOfSLA = outOfSLA;
     }
 
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
+    }
 
 
 }

@@ -6,9 +6,11 @@ import com.wds.ship.shared.user.UserDetails;
 
 import java.util.List;
 
-public interface ExportCustomerServiceLCLService {
+public interface ExportService {
 
     public List<ExportCustomerServiceLCL> getCustomerServiceLCLInfo();
 
-    public List<CustomerServicePOJO> getInfo(UserDetails userDetails);
+    public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails);
+
+    public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails);
 }
