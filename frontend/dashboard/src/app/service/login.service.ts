@@ -34,6 +34,12 @@ export class LoginService{
       getExportLCLCustomerServiceInfo(): Observable<any> {
         const jsonData = JSON.stringify(this.globals.userDetails);        
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getCustomerServiceLCL", jsonData, { headers: headers });        
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getLCLCustomerServiceInfo", jsonData, { headers: headers });        
+    }
+
+    getExportFCLCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);        
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getFCLCustomerServiceInfo", jsonData, { headers: headers });        
     }
 }
