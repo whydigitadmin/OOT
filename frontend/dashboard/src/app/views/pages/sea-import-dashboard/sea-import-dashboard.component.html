@@ -16,11 +16,11 @@
                                 <div class="container frt-opr-mng-dashboard">
                                     <div class="row">
                                         <div class="col-md-6 mb-0-2">
-                                            <mat-expansion-panel [expanded]="true" *ngIf="isRoleMatching(3)">
+                                            <mat-expansion-panel [expanded]="true" >
                                                 <mat-expansion-panel-header>
                                                     <mat-panel-title class="title-class">
 
-                                                        EXPORT Sales Support
+                                                        IMPORT Sales Support
                                                     </mat-panel-title>
                                                 </mat-expansion-panel-header>
 
@@ -37,7 +37,7 @@
                                                     <ng-container matColumnDef="count">
                                                         <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.count}}</a></mat-cell>
+                                                                href="/sea-export">{{element.count}}</a></mat-cell>
                                                     </ng-container>                                                    
 
                                                     <mat-header-row
@@ -49,10 +49,10 @@
                                     
                                         <div class="col-md-6 mb-0-2">
                                             <!--<mat-accordion class="example-headers-align" multi>-->
-                                            <mat-expansion-panel [expanded]="true" *ngIf="isRoleMatching(1)">
+                                            <mat-expansion-panel [expanded]="true" >
                                                 <mat-expansion-panel-header>
                                                     <mat-panel-title class="title-class">
-                                                        EXPORT CUSTOMER SERVICE (LCL)
+                                                        IMPORT CUSTOMER SERVICE (LCL)
                                                     </mat-panel-title>
                                                 </mat-expansion-panel-header>
                                                 <mat-table [dataSource]="datasource_export_LCL_CS">
@@ -68,19 +68,19 @@
                                                     <ng-container matColumnDef="count">
                                                         <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.count}}</a></mat-cell>
+                                                                href="/sea-export">{{element.withinSLA+element.outOfSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countSLA">
                                                         <mat-header-cell *matHeaderCellDef>Within SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.withinSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.withinSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countOSLA">
-                                                        <mat-header-cell *matHeaderCellDef> Out of SLA</mat-header-cell>
+                                                        <mat-header-cell *matHeaderCellDef>Out of SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.outOfSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.outOfSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <mat-header-row
@@ -96,39 +96,39 @@
                                           
                                         <div class="col-md-6 mb-0-2">
                                             <!--<mat-accordion>-->
-                                            <mat-expansion-panel [expanded]="true" *ngIf="isRoleMatching(2)">
+                                            <mat-expansion-panel [expanded]="true" >
                                                 <mat-expansion-panel-header>
                                                     <mat-panel-title class="title-class">
-                                                        EXPORT CUSTOMER SERVICE (FCL)
+                                                        IMPORT CUSTOMER SERVICE (FCL)
                                                     </mat-panel-title>
                                                 </mat-expansion-panel-header>
                                                 <mat-divider></mat-divider>
-                                                <mat-table [dataSource]="datasource_export_FCL_CS">
+                                                <mat-table [dataSource]="dataSource2">
 
 
                                                     <ng-container matColumnDef="pendinActions">
                                                         <mat-header-cell *matHeaderCellDef>Pending
                                                             Actions</mat-header-cell>
-                                                        <mat-cell *matCellDef="let element">{{ element.action
+                                                        <mat-cell *matCellDef="let element">{{ element.name
                                                             }}</mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="count">
                                                         <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.count}}</a></mat-cell>
+                                                                href="/sea-export">{{element.count}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countSLA">
                                                         <mat-header-cell *matHeaderCellDef>Within SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.withinSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.countSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countOSLA">
-                                                        <mat-header-cell *matHeaderCellDef> Out of SLA</mat-header-cell>
+                                                        <mat-header-cell *matHeaderCellDef>Out of SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.outOfSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.countOSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <mat-header-row
@@ -141,10 +141,10 @@
                                            
                                         <div class="col-md-6 mb-0-2">
                                             <!-- <mat-accordion>-->
-                                            <mat-expansion-panel [expanded]="true" *ngIf="isRoleMatching(4)">
+                                            <mat-expansion-panel [expanded]="true" >
                                                 <mat-expansion-panel-header>
                                                     <mat-panel-title class="title-class">
-                                                        EXPORT DOCUMENTATION
+                                                        IMPORT DOCUMENTATION
                                                     </mat-panel-title>
                                                 </mat-expansion-panel-header>
                                                 <mat-table [dataSource]="dataSource3">
@@ -160,19 +160,19 @@
                                                     <ng-container matColumnDef="count">
                                                         <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.count}}</a></mat-cell>
+                                                                href="/sea-export">{{element.count}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countSLA">
                                                         <mat-header-cell *matHeaderCellDef>Within SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.countSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.countSLA}}</a></mat-cell>
                                                     </ng-container>
 
                                                     <ng-container matColumnDef="countOSLA">
-                                                        <mat-header-cell *matHeaderCellDef> Out of SLA</mat-header-cell>
+                                                        <mat-header-cell *matHeaderCellDef>Out of SLA</mat-header-cell>
                                                         <mat-cell *matCellDef="let element"><a
-                                                                href="/landing">{{element.countOSLA}}</a></mat-cell>
+                                                                href="/sea-export">{{element.countOSLA}}</a></mat-cell>
                                                     </ng-container>
                                                     <mat-header-row
                                                         *matHeaderRowDef="displayedColumnsSLA"></mat-header-row>

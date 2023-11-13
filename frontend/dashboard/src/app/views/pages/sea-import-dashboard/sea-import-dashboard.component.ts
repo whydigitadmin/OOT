@@ -6,18 +6,17 @@ import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
 import { Export_LCL_CustomerService } from 'src/app/model/export-model';
 @Component({
-  selector: 'app-sea-dashboard',
-  templateUrl: './sea-dashboard.component.html',
-  styleUrls: ['./sea-dashboard.component.scss'],
+  selector: 'app-sea-import-dashboard',
+  templateUrl: './sea-import-dashboard.component.html',
+  styleUrls: ['./sea-import-dashboard.component.scss'],
 
 })
-export class SeaDashboardComponent implements OnInit {
+export class SeaImportDashboardComponent implements OnInit {
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
 
 
 datasource_export_LCL_CS : Export_LCL_CustomerService[]  = [];
-datasource_export_FCL_CS : Export_LCL_CustomerService[]  = [];
 dataSource = [
   { name: 'Unapproved Quotation', count: 25},
   { name: 'Approved Quotation List', count: 30 }  
@@ -51,9 +50,10 @@ roles_matching!: any;
 
   constructor(private avt_ser: ActivityService,private cdr: ChangeDetectorRef, private router: Router, private globals : Globals , private loginService: LoginService) { }
 
-  ngOnInit() {
-    
-     this.localSession = localStorage.getItem('user_data'); 
+  ngOnInit() {   
+
+    //console.log("I AM LOG OF METHOD")
+    this.localSession = localStorage.getItem('user_data'); 
     // console.log("localSession :", this.localSession);   
     this.user_roles = JSON.parse(this.localSession).productRoles;
     // console.log("user_roles :", this.user_roles);
@@ -64,14 +64,13 @@ roles_matching!: any;
 
 isRoleMatching(roleId: number): any{  
   //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-  return this.user_roles.find((role: any) => role.roleId === roleId);
+  return this.user_roles.find((role: any) => role.roleId === roleId);  
   //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
   
 }
 
 loadAllItems(){
   this.get_export_lcl_Customer_Info();
-  this.get_export_fcl_Customer_Info();
 }
 
 get_export_lcl_Customer_Info(){
@@ -96,12 +95,12 @@ get_export_fcl_Customer_Info(){
   
   
 
-  this.loginService.getExportFCLCustomerServiceInfo()
+  this.loginService.getExportLCLCustomerServiceInfo()
   .subscribe(
     (response) => {
-      this.datasource_export_FCL_CS = response;
+      this.datasource_export_LCL_CS = response;
         // Handle the response data here
-      console.log('Response:', this.datasource_export_FCL_CS );
+      console.log('Response:', this.datasource_export_LCL_CS );
     },
     (error) => {
       // Handle any errors here
