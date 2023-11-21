@@ -1,0 +1,13 @@
+Meeting 11/11/2023
+
+1. Sudhir informed to get Country Level Data
+
+OOT
+1. To remove unwanted table
+2. Toremoved unwanted columns
+
+3. Angular 8 to Angular 16 [ Once the UAT is ready ]
+
+4. Resource sharing
+
+

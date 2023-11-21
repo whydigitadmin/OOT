@@ -15,7 +15,8 @@ public class ExportController {
     @Autowired
     ExportService exportService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://54.254.131.225"})
     @PostMapping("/getLCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(@RequestBody UserDetails userDetails)
     {
@@ -23,7 +24,8 @@ public class ExportController {
 
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://54.254.131.225"})
     @PostMapping("/getFCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(@RequestBody UserDetails userDetails)
     {

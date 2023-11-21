@@ -1,0 +1,174 @@
+Apache location
+/etc/httpd/conf
+
+
+Source Code
+/var/www/html
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+How to make prod build
+
+	>ng build --configuration "production"
+
+	> ng build  --configuration "production" --base-href /dashboard/
+
+--------------------------------------------Check Apache Service Status: (WINDOWS)------------------------------------------------------------------
+	> sudo systemctl status httpd
+	> sudo netstat -tulpn | grep httpd
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------Check ngnix Status:(WINDOWS)------------------------------------------------------------------
+
+sudo systemctl status nginx
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------TO TUN THE SERVICE ON BG--------------------------------------------------------------------------------
+
+/var/www/html/java/facade
+
+
+nohup java -jar shippingdashboard-facade-0.0.1-SNAPSHOT.jar &
+nohup java -jar shippingdashboard-service-0.0.1-SNAPSHOT.jar &
+
+
+ps aux | grep tomcat
+lsof -i :8080
+lsof -i :9443
+
+
+Check Logs
+
+tail -500f nohub.out
+
+----------------------------------------------------------CHECK THE SERVICE-------------------------------------------------------------------------
+
+curl -k -d '{ "email" : "ALLEY.NG@FMGLOBALLOGISTICS.COM"}' -H "Content-Type: application/json" -X POST http://localhost:8080/api/v1/facade/user/loginInfo1
+curl -k -d '{ "email" : "ALLEY.NG@FMGLOBALLOGISTICS.COM"}' -H "Content-Type: application/json" -X POST https://localhost:8080/api/v1/facade/user/loginInfo1
+
+curl  -H "Content-Type: application/json" -X GET https://localhost:8080/hello/hello
+curl  -H "Content-Type: application/json" -X GET https://localhost:9443/api/v1/hello
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------UNIX - Check tomcat------------------------------------------------------------------
+
+ps aux | grep tomcat
+lsof -i :8080
+lsof -i :9443
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------Windows & UNIX Apache server:------------------------------------------------------------------
+1. PASTE the apache server in CK [Mandatory]
+2. Start the command propmpt as [RUN AS ADMINSTRATOR]
+	Install the httpd
+	2.1.	C:\Apache24\bin>
+	2.2 	httpd -k install
+3. Start the Apache service
+	1. Search "Services" in 
+	2. You coud see Apache 24 -> Status not running
+	3. Click on RUN
+	4. Checkt the url - http://127.0.0.1/
+
+4.	default page
+	C:\Apache24\htdocs
+
+Check server status
+netstat -ano | findstr :80
+
+
+sudo systemctl restart httpd
+sudo tail -f /var/log/httpd/error_log
+
+Apache location
+/etc/httpd/conf
+
+
+Source Code
+/var/www/html
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+VIM
+	CLOSE	   : Esc ->  :q!
+	SAVE CLOSE : Esc ->  :wq
+
+
+
+https://stackoverflow.com/questions/64356829/how-to-run-spring-boot-on-port-443
+
+aws ec2 describe-instances --filters "Name=ip-address,Values=54.169.216.28" --query 'Reservations[*].Instances[*].Placement.AvailabilityZone' --output text
+aws ec2 describe-instances --filters "Name=ip-address,Values=54.169.216.28" --query 'Reservations[*].Instances[*].Placement.AvailabilityZone' --output text | awk -F'-' '{print $1"-"$2}'
+
+aws ec2 describe-instances --filters "Name=ip-address,Values=54.169.216.28" --query 'Reservations[*].Instances[*].Placement.AvailabilityZone' --output text | cut -d'-' -f1
+
+
+AZ - ap-southeast-1
+FIND AZ
+REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep -oP '"region" : "\K([^"]+)')
+echo $REGION
+
+aws ec2 describe-security-groups --region ap-southeast-1
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+KEYTOOL
+
+keytool -genkey -alias tomcat storetype PKCS12 -keyalg RSA -keysize 2048  -keystore keystore.p12  -validity 3650
+keytool -genkey -alias tomcat storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12  -validity 3650
+
+password - ydigit123
+What is your first and last name?
+  [ship dashboard]:  ship dashboard
+What is the name of your organizational unit?
+  [ydigit]:  ydigit
+What is the name of your organization?
+  [ydigit]:  ydigit
+What is the name of your City or Locality?
+  [chennai]:  chennai
+What is the name of your State or Province?
+  [tn]:  tn
+What is the two-letter country code for this unit?
+  [IN]:  IN
+Is CN=ship dashboard, OU=ydigit, O=ydigit, L=chennai, ST=tn, C=IN correct?
+  [no]:  yes
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+in HTML Head Section
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+password - ydigit
+What is your first and last name?
+  [ydigit]:  ydigit
+What is the name of your organizational unit?
+  [ydigit]:  ydigit
+What is the name of your organization?
+  [ydigit]:  ydigit
+What is the name of your City or Locality?
+  [Unknown]:  chennai
+What is the name of your State or Province?
+  [Unknown]:  tn
+What is the two-letter country code for this unit?
+  [Unknown]:  IN
+Is CN=ydigit, OU=ydigit, O=ydigit, L=chennai, ST=tn, C=IN correct?
+  [no]:  yes
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 3,650 days
+        for: CN=ydigit, OU=ydigit, O=ydigit, L=chennai, ST=tn, C=IN
+PS D:\gk\gk_parent\OOT\cert>
+
+
+keytool -genkeypair -alias baeldung -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore baeldung.p12 -validity 3650
+
+keytool -genkeypair -alias baeldung -keyalg RSA -keysize 2048 -keystore baeldung.jks -validity 3650
+
+keytool -importkeystore -srckeystore baeldung.jks -destkeystore baeldung.p12 -deststoretype pkcs12
+
+
+<VirtualHost *:8080>
+   ServerName devphp.shipsoft.co
+   Redirect permanent / https://devphp.shipsoft.co/
+</VirtualHost>
+
+Header set X-Frame-Options: "SAMEORIGIN"
+
