@@ -1,0 +1,20 @@
+1. VM - IP CHANGED
+
+In Amazon Linux ip address was changed from 54.169.216.28 -> 54.254.131.225.
+
+The APP was not working.
+
+How to resolve.
+
+1. Log in to new ip
+2. Build the Angularcode in local and place it in Apache server.
+3. Restart the Apache Server.
+4. Build the java code in (FACEDE and SERVICE ) BOTH - Mantatory
+5. Deploy both services in server. Restart both the services.
+6. Generate the CERT file in SERVER.
+
+
+2. IF Angular is runnign on HTTPS mode then Java app layer (FACADE) also SHOULD run on Https mode.
+
+3. But service layer may run on Http mode
+

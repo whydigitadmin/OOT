@@ -1,0 +1,16 @@
+Angular:
+
+1. Angular page to create a Env.ts there we should main all the VM ip address
+
+2. If we refresh the url https://54.254.131.225/dashboard/login , it is showing an error.
+
+3. 
+
+
+Java
+
+1. To write the GET API in FACADE and SERVICE to link each other (it is used for debug purpose)
+
+2. CROSS ORGIN Header shoul use the IP name from props file
+
+3. 
