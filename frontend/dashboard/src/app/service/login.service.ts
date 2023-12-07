@@ -5,7 +5,7 @@ import { Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../mod
 import { Export_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
-const BASE_URL  = "http://54.254.131.225:8080"
+const BASE_URL  = "https://18.140.188.121:8080"
 @Injectable({  
     providedIn :'root' 
 })
