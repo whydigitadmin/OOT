@@ -20,6 +20,7 @@ import { SeaDashboardComponent } from '../views/pages/sea-dashboard/sea-dashboar
 import {MatTabsModule} from '@angular/material/tabs';
 import { SeaImportDashboardComponent } from '../views/pages/sea-import-dashboard/sea-import-dashboard.component';
 import { SeaExportDetailsComponent } from '../sea-export-details/sea-export-details.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @NgModule({
 	imports: [
@@ -43,6 +44,7 @@ import { SeaExportDetailsComponent } from '../sea-export-details/sea-export-deta
 		MatNativeDateModule,
 		HighchartsChartModule,
 		MatTabsModule,
+		SidebarComponent,
 		RouterModule.forChild([
 			{
 				path: '',
