@@ -7,6 +7,7 @@ import { Export_LCL_CustomerService } from "../model/export-model";
 
 // const BASE_URL  = "http://54.254.131.225:8080",
 const BASE_URL  = "http://localhost:8080"
+
 @Injectable({  
     providedIn :'root' 
 })
