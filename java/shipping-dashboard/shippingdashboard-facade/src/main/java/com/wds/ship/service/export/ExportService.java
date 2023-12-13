@@ -29,4 +29,18 @@ public class ExportService {
                 restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getFCLCustomerServiceInfo", userDetails, List.class);
         return responseEntity.getBody();
     }
+    
+    public List<CustomerServicePOJO> getExportPlannerInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerServiceInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<CustomerServicePOJO> getExportDocumentationServiceInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportDocumentServiceInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
 }
