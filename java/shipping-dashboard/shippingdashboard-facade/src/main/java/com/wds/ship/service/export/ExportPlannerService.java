@@ -17,10 +17,10 @@ public class ExportPlannerService {
 	@Autowired
     DashboardRoute dashboardRoute;
 	
-	public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails){
+	public List<CustomerServicePOJO> getExportPlannerInfo(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getFCLCustomerServiceInfo", userDetails, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerServiceInfo", userDetails, List.class);
         return responseEntity.getBody();
     }
 }
