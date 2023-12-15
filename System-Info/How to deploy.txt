@@ -1,0 +1,132 @@
+
+----------------------------------------------------------- Amazon Linux - UAT:-------------------------------------------------------------------------------------
+
+Admin access for php 
+IP Address   :- 54.254.131.225
+Login name :- root
+Password     :- pHpd3v@2023
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Back end PHP sourcecode
+=====================
+/var/www/html/ff/
+
+Outsource Sourcecode
+===============
+/var/www/html/ff_shipsoft_dev/
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 1 . Java Facade (shippingdashboard-facade)
+
+PREREQUEST:
+
+1. FACADE Service should run on HTTPS mode and port 8080
+2. When you make the jar file at local env , we need to follow following steps.
+
+    Step 1: open the application.properties file
+SHOULD uncomment following lines.
+server.ssl.key-store = keystore.p12
+server.ssl.key-store-password = Dec-pass23
+server.ssl.keyStoreType = PKCS12
+server.ssl.keyAlias = tomcat
+server.ssl.enabled=true
+    Step 2: build the code
+            mvn clean install
+    
+    Step 3:
+            Move the jar file to server using WIN SCP
+
+-----> Location
+/var/www/html/java/facade
+
+delete the exising jar file and place the new one.
+
+----->  To check existing application is running or not:
+lsof -i :8080
+
+kill -9 PID
+
+-----> To run the service:
+nohup java -jar shippingdashboard-facade-0.0.1-SNAPSHOT.jar &
+
+----->  Check Logs
+
+tail -500f nohub.out
+
+
+
+--------------------------------------------------------------------------------------------------
+
+Step 2 . Java Service (shippingdashboard-service)
+
+PREREQUEST:
+
+
+1. SERVICE run on 9443 (HTTP ONLY)
+
+
+-----> Location
+/var/www/html/java/service
+
+delete the exising jar file and place the new one.
+
+-----> To run the service:
+nohup java -jar shippingdashboard-service-0.0.1-SNAPSHOT.jar &
+
+----->  To check existing application is running or not:
+lsof -i :9443
+
+kill -9 PID
+
+----->  Check Logs
+
+tail -500f nohub.out
+
+--------------------------------------------------------------------------------------------------
+
+Step 3:
+        OPEN the postman app and check the service is running or not.
+
+        1. GET method (facade)
+            https://54.254.131.225:8080/hello/hello
+        
+        2. GET method (service)
+            http://54.254.131.225:9443/api/v1/hello
+
+--------------------------------------------------------------------------------------------------
+
+Step 4: Angular Deployment
+
+    How to make prod build
+
+    > go to OOT\frontend\dashboard [LOCAL]
+
+	> ng build --configuration "production"
+
+	> ng build  --configuration "production" --base-href /dashboard/   [LOCAL]
+
+    > open winscp
+
+    > /var/www/html/
+
+    > bkup and delete the existing dashboard folder.
+
+    > In local , Copy the folder from  dashboard folder from OOT\frontend\dashboard\dist
+    
+    > paste the dashboard folder in /var/www/html/
+
+--------------------------------------------------------------------------------------------------
+
+Step 5: Angular restart the apache server
+
+    sudo systemctl restart httpd
+
+--------------------------------------------------------------------------------------------------
+
+Step 6 : Test the Angular code
+
+
