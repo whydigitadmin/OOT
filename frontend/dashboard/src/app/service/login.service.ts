@@ -44,4 +44,16 @@ export class LoginService{
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getFCLCustomerServiceInfo", jsonData, { headers: headers });        
     }
+
+    getExportPlannerCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportPlannerServiceInfo", jsonData, { headers: headers });
+    }
+
+    getExportDocumentationCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportDocumentationServiceInfo", jsonData, { headers: headers });
+    }
 }

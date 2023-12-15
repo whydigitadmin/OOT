@@ -92,3 +92,9 @@ table{
     flex: 0 0 20%;
     width: 20% !important;
 }
+
+.mat-expansion-panel {
+  height: 300px;
+  overflow: auto;
+  top: 0;
+}

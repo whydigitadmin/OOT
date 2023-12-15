@@ -1,15 +1,28 @@
 :host {
-	::ng-deep {
-		// override default version style
-		.kt-header__topbar {
-			> :last-child:not([role="tooltip"]) {
-				.kt-header__topbar-item {
-					margin-right: 0 !important;
-				}
-			}
-			.kt-header__topbar-item {
-				margin-right: 0.36rem !important;
-			}
-		}
-	}
+  ::ng-deep {
+    // override default version style
+    .kt-header__topbar {
+      > :last-child:not([role="tooltip"]) {
+        .kt-header__topbar-item {
+          margin-right: 0 !important;
+        }
+      }
+      .kt-header__topbar-item {
+        margin-right: 0.36rem !important;
+      }
+    }
+  }
 }
+
+.logout {
+  color: #e1e1ef;
+  margin-left: 250px;
+  cursor: pointer;
+  // display: flex;
+  // justify-content: end;
+  // align-items: flex-end;
+}
+
+
+
+

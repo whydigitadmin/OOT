@@ -13,6 +13,9 @@ public class ExportFCLCustomerServiceEntity {
     @Id
     private Long id;
 
+    @Column(name = "COUNT")
+    private Long count;
+
     @Column(name = "DEPT")
     private String dept;
 

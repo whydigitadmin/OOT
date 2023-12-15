@@ -18,10 +18,10 @@ export class LandingPageComponent implements OnInit {
 
   }
 
-  isProductMatching(product: string): any{    
+  isProductMatching(product: string): any {
     return this.globals.productRoles.find((role: any) => role.productCode === product);
     //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
-    
+
   }
 }
 

@@ -1,6 +1,6 @@
 // Angular
 import { NgModule } from '@angular/core';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,17 +17,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { LandingPageComponent } from './landing-page.component';
 import { SeaDashboardComponent } from '../views/pages/sea-dashboard/sea-dashboard.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { SeaImportDashboardComponent } from '../views/pages/sea-import-dashboard/sea-import-dashboard.component';
 import { SeaExportDetailsComponent } from '../sea-export-details/sea-export-details.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+// import { ChartComponent } from '../chart/chart.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
 		FormsModule,
-		ReactiveFormsModule,
 		MatGridListModule,
 		MatListModule,
 		MatGridListModule,
@@ -45,6 +45,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 		HighchartsChartModule,
 		MatTabsModule,
 		SidebarComponent,
+		// LogoutComponent,
 		RouterModule.forChild([
 			{
 				path: '',
@@ -66,6 +67,10 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 				path: 'sea-export-details',
 				component: SeaExportDetailsComponent
 			},
+			// {
+			// 	path: 'chart',
+			// 	component: ChartComponent
+			// },
 		]),
 	],
 	providers: [],
@@ -73,7 +78,8 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 		SeaDashboardComponent,
 		SeaImportDashboardComponent,
 		SeaExportDetailsComponent,
-		LandingPageComponent
+		LandingPageComponent,
+		// ChartComponent
 	]
 })
 export class LandingPageModule {
