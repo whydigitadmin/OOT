@@ -16,8 +16,8 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    // @CrossOrigin(origins = "https://devphp.shipsoft.co")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/loginInfo")
     public UserDetails loginInfo(@RequestBody UserDetails userDetails)
     {
@@ -25,9 +25,9 @@ public class LoginController {
         //return "Greetings from Spring Boot!";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    // @CrossOrigin(origins = "http://localhost:4200")
     //@CrossOrigin(origins = "https://devphp.shipsoft.co")
-    // @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://54.254.131.225"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/loginInfo1")
     public UserDetails loginInfo1(@RequestBody String reqUserDetails)
     {
