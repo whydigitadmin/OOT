@@ -1,0 +1,65 @@
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidebar {
+    height: 100%;
+    width: 62px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: #5867dd;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    white-space: nowrap;
+  }
+  
+  .sidebar a {
+    padding: 5px 8px 5px 17px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+    background-color: skyblue;
+  }
+  
+  // .sidebar .closebtn {
+  //     position: absolute;
+  //     top: 0;
+  //     right: 25px;
+  //     font-size: 36px;
+  //     margin-left: 50px;
+  // }
+  
+  .material-icons,
+  .icon-text {
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+  
+  .material-icons {
+    padding-bottom: 3px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+    margin-left: 70px;
+  }
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  
+  // @media screen and (max-height: 450px) {
+  //     .sidebar {
+  //         padding-top: 15px;
+  //     }
+  //     .sidebar a {
+  //         font-size: 18px;
+  //     }
+  // }

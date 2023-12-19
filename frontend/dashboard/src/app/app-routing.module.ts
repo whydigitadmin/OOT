@@ -16,18 +16,31 @@ const routes: Routes = [
 		component: LayoutComponent,
 		canActivate: [],
 		children: [
-			/*{
-				path: 'dashboard',
-				loadChildren: () => import('../app/views/pages/sea-dashboard/sea-dashboard.module').then(m => m.SeaDashboardModule)
-			}*/
+			// {
+			// 	path: 'dashboard',
+			// 	loadChildren: () => import('../app/views/pages/sea-dashboard/sea-dashboard.module').then(m => m.SeaDashboardModule)
+			// },
       {
 				path: 'landing',
 				loadChildren: () => import('../app/landing-page/landing-page.module').then(m => m.LandingPageModule)
 			},
-			{
-				path: 'operations',
-				loadChildren: () => import('./operation-dashboard1/operation-dashboard1.module').then(m => m.OperationDashboard1Module)
-			}
+			// {
+			// 	path: 'operations',
+			// 	loadChildren: () => import('./operation-dashboard1/operation-dashboard1.module').then(m => m.OperationDashboard1Module)
+			// },
+			// {
+			// 	path: 'home',
+			// 	loadChildren: () => import('../app/sidebar/sidebar.module').then(m => m.SidebarModule)
+			// },
+			// {
+			// 	path: 'chart',
+			// 	loadChildren: () => import('../app/sidebar/sidebar.module').then(m => m.SidebarModule)
+			// },
+			// {
+			// 	path: 'operations',
+			// 	loadChildren: () => import('../app/sidebar/sidebar.module').then(m => m.SidebarModule)
+			// }
+			
     ]
   }
 ];

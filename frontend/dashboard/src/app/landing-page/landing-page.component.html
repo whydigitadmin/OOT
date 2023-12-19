@@ -3,16 +3,16 @@
         <div class="kt-portlet frt-das-port">
             <div class="kt-portlet-body">
                 <div class="kt-portlet-preview"> -->
-                    <mat-tab-group>
-                        <mat-tab label="Sea Export" *ngIf="isProductMatching('SE')"><app-sea-dashboard></app-sea-dashboard></mat-tab>
-                        <mat-tab label="Sea Import" *ngIf="isProductMatching('SI')"><app-sea-import-dashboard></app-sea-import-dashboard> </mat-tab>
-                        <mat-tab label="Air Export" *ngIf="isProductMatching('AE')"> Air Export </mat-tab>
-                        <mat-tab label="Air Import" *ngIf="isProductMatching('AI')"> Air Import </mat-tab>
-
-                    </mat-tab-group>
-                    <router-outlet></router-outlet>
-                <!-- </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+<div>
+  <mat-tab-group>
+    <mat-tab label="Sea Export"
+      ><app-sea-dashboard></app-sea-dashboard
+    ></mat-tab>
+    <mat-tab label="Sea Import"
+      ><app-sea-import-dashboard></app-sea-import-dashboard>
+    </mat-tab>
+    <mat-tab label="Air Export"> Air Export </mat-tab>
+    <mat-tab label="Air Import"> Air Import </mat-tab>
+  </mat-tab-group>
+</div>
+<router-outlet></router-outlet>

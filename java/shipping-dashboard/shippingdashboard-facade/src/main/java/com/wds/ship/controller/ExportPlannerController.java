@@ -22,8 +22,8 @@ public class ExportPlannerController {
 	@Autowired
 	ExportPlannerService exportplannerservice;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	//@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://54.254.131.225"})
+	// @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getExportPlannerServiceInfo")
     public List<CustomerServicePOJO> getExportPlannerServiceInfo(@RequestBody UserDetails userDetails)
     {
