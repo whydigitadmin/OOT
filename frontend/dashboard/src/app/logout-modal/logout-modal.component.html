@@ -1,0 +1,10 @@
+<div id="logoutPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <p>Are you sure you want to log out?</p>
+    <div>
+      <button (click)="logout()">Logout</button>
+      <button class="cancel" (click)="closePopup()">Cancel</button>
+    </div>
+  </div>
+</div>

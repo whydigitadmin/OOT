@@ -5,8 +5,8 @@ import { Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../mod
 import { Export_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
-// const BASE_URL  = "http://54.254.131.225:8080",
-const BASE_URL  = "http://localhost:8080"
+const BASE_URL  = "https://18.140.188.121:8080"
+// const BASE_URL  = "http://localhost:8080"
 
 @Injectable({  
     providedIn :'root' 
@@ -43,5 +43,17 @@ export class LoginService{
         const jsonData = JSON.stringify(this.globals.userDetails);        
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getFCLCustomerServiceInfo", jsonData, { headers: headers });        
+    }
+
+    getExportPlannerCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportPlannerServiceInfo", jsonData, { headers: headers });
+    }
+
+    getExportDocumentationCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportDocumentationServiceInfo", jsonData, { headers: headers });
     }
 }

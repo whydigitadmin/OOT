@@ -25,21 +25,25 @@ import { SubheaderComponent } from './views/theme/subheader/subheader.component'
 import { Subheader1Component } from './views/layout/subheader1/subheader1.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/login-screen-header.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LogoutModalComponent } from './logout-modal/logout-modal.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+// import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
-    LayoutComponent,    
+    LayoutComponent,
     FooterComponent,
     HeaderComponent,
     MenuHorizontalComponent,
     TopbarComponent,
-    BrandComponent,    
+    BrandComponent,
     LoginScreenHeaderComponent,
     SubheaderComponent,
-    Subheader1Component
+    Subheader1Component,
+    
   ],
   imports: [
     BrowserModule,
@@ -49,10 +53,13 @@ import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/l
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    HighchartsChartModule           
+    HighchartsChartModule,
+    MatTooltipModule,
+    LogoutModalComponent,
+    SidebarComponent
   ],
   providers: [Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
-     MenuConfigService, LoginScreenService],
+    MenuConfigService, LoginScreenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

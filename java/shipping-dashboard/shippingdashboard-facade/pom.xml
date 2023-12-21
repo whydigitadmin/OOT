@@ -163,5 +163,10 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-core</artifactId>
 		</dependency>
+		<!-- <dependency>
+			<groupId>com.wds.shippingdashboard</groupId>
+			<artifactId>shippingdashboard-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
 	</dependencies>
 </project>
