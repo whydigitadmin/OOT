@@ -61,7 +61,13 @@ public class ExportServiceImpl implements ExportService {
 	public List<ExportLCLDetails> getAllLCLDetails(String action) {
 		List<ExportLCLDetails>details=new ArrayList<>();
 		
-		return lclRepo.findByAction(action);
+//		return lclRepo.findByAction(action);
+		
+		List<ExportLCLDetails> list = lclRepo.findByAction(action);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportLCLDetails> destinationList = gson.fromJson(json, new TypeToken<List<ExportLCLDetails>>() {}.getType());
+        return list;
 		
 	}
 
