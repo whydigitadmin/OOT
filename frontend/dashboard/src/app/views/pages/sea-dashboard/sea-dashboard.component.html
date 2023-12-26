@@ -80,14 +80,11 @@
                         </ng-container>
 
                         <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
-                            >Count</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
+                          <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            <!-- Add click event and pass the action value to the function -->
+                            <a href="javascript:void(0);" (click)="get_export_lcl_details_navigation(element.action)">{{ element.count }}</a>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">

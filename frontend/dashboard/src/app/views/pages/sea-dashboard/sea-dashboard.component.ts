@@ -5,6 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
 import { Export_LCL_CustomerService } from 'src/app/model/export-model';
+
 @Component({
   selector: 'app-sea-dashboard',
   templateUrl: './sea-dashboard.component.html',
@@ -16,7 +17,7 @@ export class SeaDashboardComponent implements OnInit {
   accordion!: MatAccordion;
 
 
-  datasource_export_LCL_CS: Export_LCL_CustomerService[] = [];
+  datasource_export_LCL_CS = [{}];
   datasource_export_FCL_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Planner_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Documentation_CS: Export_LCL_CustomerService[] = [];
@@ -52,6 +53,43 @@ export class SeaDashboardComponent implements OnInit {
   roles_matching!: any;
 
   constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService) { }
+
+  navigateToDetails(action: string): void {
+    // Use the router to navigate to a details component
+    this.router.navigate(['/lcl-details', { action }]);
+  }
+
+  get_export_lcl_details_navigation(action: string): void {
+    // Call the backend service to post data
+    this.loginService.getExportLclDetails(action).subscribe(
+      (response: any) => {
+        // Handle the response from the backend
+        console.log('Backend response:', response);
+        // Navigate to details component
+        this.navigateToDetails(action);
+      },
+      (error: any) => {
+        // Handle errors
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  // fetchData(action: string): void {
+  //   // Call the backend service to fetch data
+  //   this.loginService.getData(action).subscribe(
+  //     (response: any) => {
+  //       // Handle the response from the backend
+  //       console.log('Backend response:', response);
+  //       // Navigate to details component
+  //       this.navigateToDetails(action);
+  //     },
+  //     (error: any) => {
+  //       // Handle errors
+  //       console.error('Error:', error);
+  //     }
+  //   );
+  // }
 
   ngOnInit() {
 

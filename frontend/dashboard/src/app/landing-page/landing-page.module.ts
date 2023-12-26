@@ -79,7 +79,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 		SeaImportDashboardComponent,
 		SeaExportDetailsComponent,
 		LandingPageComponent,
-		// ChartComponent
+		
 	]
 })
 export class LandingPageModule {
