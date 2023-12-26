@@ -1,8 +1,8 @@
-package com.wds.ship.shared.user;
+package com.wds.ship.shared.lcl.export;
 
 import java.util.Date;
 
-public class ExportLCLDetails {
+public class ExportLCLDetailsPOJO {
 	
 	private int sno;
 	private String dept;

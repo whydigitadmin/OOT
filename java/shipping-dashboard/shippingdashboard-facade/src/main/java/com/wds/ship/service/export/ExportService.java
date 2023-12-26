@@ -2,8 +2,8 @@ package com.wds.ship.service.export;
 
 import com.wds.ship.router.DashboardRoute;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
-import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
-import com.wds.ship.shared.user.ExportLCLDetails;
+import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +33,10 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
-    public List<ExportDetailsPOJO> getExportLCLDetails(String action){
+    public List<ExportLCLDetailsPOJO> getExportLCLDetails(ExportLCL action){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails?action="+action, action, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails", action, List.class);
         return responseEntity.getBody();
     }
     

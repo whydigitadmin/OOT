@@ -5,6 +5,8 @@ import com.wds.ship.entity.ExportLCLDetails;
 import com.wds.ship.repository.ExportLCLRepository;
 import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
+import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +43,7 @@ public class ExportServiceController {
     }
     
     @PostMapping("/exportlcldetails")
-    public List<ExportLCLDetails>getAllLCL(@RequestParam(value="action")String action){
-    	return exportCustomerServiceLCLService.getAllLCLDetails(action);
+    public List<ExportLCLDetailsPOJO> getAllLCL(@RequestBody ExportLCL exportLCL){
+    	return exportCustomerServiceLCLService.getAllLCLDetails(exportLCL);
     }
 }
