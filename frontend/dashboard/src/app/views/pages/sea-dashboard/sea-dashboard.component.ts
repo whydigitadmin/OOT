@@ -57,14 +57,7 @@ export class SeaDashboardComponent implements OnInit {
   constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService) { }
 
   navigateToDetails(response: Export_LCL_Details[]): void {
-    // Use the router to navigate to a details component
-    // this.router.navigate(['/lcl-details', { response }]);
-    const modal_ref = this.modal.show(ExportLclComponent, {
-      initialState: {
-        export_lcl_details : response
-      }
-      
-    })
+
   }
 
   get_export_lcl_details_navigation(action: string): void {
@@ -75,51 +68,17 @@ export class SeaDashboardComponent implements OnInit {
     };
     const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
     const url = this.router.serializeUrl(urlTree);
-
     window.open(url, '_blank', 'width=800,height=600');
-    //this.router.navigate(['/lcl-details'], { queryParams });
+   
   }
 
-  get_export_lcl_details_navigation1(action: string): void {
-    // Call the backend service to post data
-    this.loginService.getExportLclDetails(action).subscribe(
-      (response: any) => {
-        // Handle the response from the backend
-        console.log('Backend response:', response);
-        // Navigate to details component
-        this.navigateToDetails(response);
-      },
-      (error: any) => {
-        // Handle errors
-        console.error('Error:', error);
-      }
-    );
-  }
+  
 
-  // fetchData(action: string): void {
-  //   // Call the backend service to fetch data
-  //   this.loginService.getData(action).subscribe(
-  //     (response: any) => {
-  //       // Handle the response from the backend
-  //       console.log('Backend response:', response);
-  //       // Navigate to details component
-  //       this.navigateToDetails(action);
-  //     },
-  //     (error: any) => {
-  //       // Handle errors
-  //       console.error('Error:', error);
-  //     }
-  //   );
-  // }
+  
 
   ngOnInit() {
-
     this.localSession = localStorage.getItem('user_data');
-    // console.log("localSession :", this.localSession);   
     this.user_roles = JSON.parse(this.localSession).productRoles;
-    // console.log("user_roles :", this.user_roles);
-
-    //this.search();
     this.loadAllItems();
   }
 
@@ -139,8 +98,6 @@ export class SeaDashboardComponent implements OnInit {
 
   get_export_lcl_Customer_Info() {
 
-
-
     this.loginService.getExportLCLCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -156,8 +113,6 @@ export class SeaDashboardComponent implements OnInit {
   }
 
   get_export_fcl_Customer_Info() {
-
-
 
     this.loginService.getExportFCLCustomerServiceInfo()
       .subscribe(
