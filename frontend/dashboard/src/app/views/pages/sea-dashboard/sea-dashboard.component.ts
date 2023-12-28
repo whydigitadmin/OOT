@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
-import { Export_LCL_CustomerService } from 'src/app/model/export-model';
+import { Export_LCL_CustomerService, Export_LCL_Details } from 'src/app/model/export-model';
+import { BsModalService } from 'ngx-bootstrap/modal'
+import { ExportLclComponent } from 'src/app/export-lcl/export-lcl.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -52,11 +54,17 @@ export class SeaDashboardComponent implements OnInit {
   user_roles: any;
   roles_matching!: any;
 
-  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService) { }
+  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService) { }
 
-  navigateToDetails(action: string): void {
+  navigateToDetails(response: Export_LCL_Details[]): void {
     // Use the router to navigate to a details component
-    this.router.navigate(['/lcl-details', { action }]);
+    // this.router.navigate(['/lcl-details', { response }]);
+    const modal_ref = this.modal.show(ExportLclComponent, {
+      initialState: {
+        export_lcl_details : response
+      }
+      
+    })
   }
 
   get_export_lcl_details_navigation(action: string): void {
@@ -66,7 +74,7 @@ export class SeaDashboardComponent implements OnInit {
         // Handle the response from the backend
         console.log('Backend response:', response);
         // Navigate to details component
-        this.navigateToDetails(action);
+        this.navigateToDetails(response);
       },
       (error: any) => {
         // Handle errors

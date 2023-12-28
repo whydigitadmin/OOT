@@ -30,6 +30,7 @@ import { LogoutModalComponent } from './logout-modal/logout-modal.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ExportLclComponent } from './export-lcl/export-lcl.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 // import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     LogoutModalComponent,
     SidebarComponent,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
     MenuConfigService, LoginScreenService],
