@@ -68,6 +68,19 @@ export class SeaDashboardComponent implements OnInit {
   }
 
   get_export_lcl_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+      param2: 'value2'
+      // Add more parameters as needed
+    };
+    const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
+    const url = this.router.serializeUrl(urlTree);
+
+    window.open(url, '_blank', 'width=800,height=600');
+    //this.router.navigate(['/lcl-details'], { queryParams });
+  }
+
+  get_export_lcl_details_navigation1(action: string): void {
     // Call the backend service to post data
     this.loginService.getExportLclDetails(action).subscribe(
       (response: any) => {
