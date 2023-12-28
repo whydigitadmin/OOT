@@ -66,9 +66,10 @@ export class SeaDashboardComponent implements OnInit {
       param2: 'value2'
       // Add more parameters as needed
     };
-    const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
-    const url = this.router.serializeUrl(urlTree);
-    window.open(url, '_blank', 'width=800,height=600');
+    // const urlTree = 
+    this.router.navigate(['/lcl-details'], { queryParams });
+    // const url = this.router.serializeUrl(urlTree);
+    // window.open(url, '_blank', 'width=800,height=600');
    
   }
 
