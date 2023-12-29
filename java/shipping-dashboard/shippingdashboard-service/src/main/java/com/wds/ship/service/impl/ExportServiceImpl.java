@@ -10,11 +10,12 @@ import com.wds.ship.repository.ExportFCLCustomerServiceRepository;
 import com.wds.ship.repository.ExportLCLRepository;
 import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
+import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ExportServiceImpl implements ExportService {
@@ -56,19 +57,26 @@ public class ExportServiceImpl implements ExportService {
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
         return destinationList;
     }
+    
+//    @Override
+//	public List<ExportDetailsPOJO> getAllLCLDetails(ExportLCLDetailsAction action) {
+//    	List<ExportLCLDetails> list = lclRepo.findByAction(action.getAction());
+//        Gson gson = new Gson();
+//        String json = gson.toJson(list);
+//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+//        return destinationList;
+//	}
 
 	@Override
-	public List<ExportLCLDetails> getAllLCLDetails(String action) {
-		List<ExportLCLDetails>details=new ArrayList<>();
-		
-//		return lclRepo.findByAction(action);
-		
+	public List<ExportDetailsPOJO> getAllLCLDetails(String action) {
 		List<ExportLCLDetails> list = lclRepo.findByAction(action);
         Gson gson = new Gson();
         String json = gson.toJson(list);
-        List<ExportLCLDetails> destinationList = gson.fromJson(json, new TypeToken<List<ExportLCLDetails>>() {}.getType());
-        return list;
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
 		
 	}
+
+	
 
 }

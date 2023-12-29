@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 public class ExportLCLDetails {
 	
 	@Id
+	private int id;
 	private int sno;
 	private String dept;
 	private String product;
@@ -19,6 +20,17 @@ public class ExportLCLDetails {
 	private Date ref_date;
 	private String ref_type;
 	private String ref_mode;
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setRef_no(String ref_no) {
+		this.ref_no = ref_no;
+	}
 	public int getSno() {
 		return sno;
 	}
