@@ -20,8 +20,24 @@ public class ExportLCLDetails {
 	private Date ref_date;
 	private String ref_type;
 	private String ref_mode;
+	private int withinsla;
+	private int outofsla;
 	
 	
+	
+	
+	public int getWithinsla() {
+		return withinsla;
+	}
+	public void setWithinsla(int withinsla) {
+		this.withinsla = withinsla;
+	}
+	public int getOutofsla() {
+		return outofsla;
+	}
+	public void setOutofsla(int outofsla) {
+		this.outofsla = outofsla;
+	}
 	public int getId() {
 		return id;
 	}

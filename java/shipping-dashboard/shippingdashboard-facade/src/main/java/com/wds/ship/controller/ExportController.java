@@ -5,6 +5,7 @@ package com.wds.ship.controller;
 import com.wds.ship.service.export.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.UserDetails;
 //import com.wds.ship.shared.user.ExportLCLDetailsAction;
 
@@ -38,23 +39,23 @@ public class ExportController {
 
     }
     
- // @CrossOrigin(origins = "http://localhost:4200")
-//    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-//    @PostMapping("/getExportLCLDetails")
-//    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCLDetailsAction action)
-//    {
-//        return exportService.getExportLCLDetails(action);
-//
-//    }
-    
- // @CrossOrigin(origins = "http://localhost:4200")
+//  @CrossOrigin(origins = "http://localhost:4200")
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-    @GetMapping("/getExportLCLDetails")
-    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
+    @PostMapping("/getExportLCLDetails")
+    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCLDetailsAction action)
     {
         return exportService.getExportLCLDetails(action);
 
     }
+    
+ // @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+//    @GetMapping("/getExportLCLDetails")
+//    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
+//    {
+//        return exportService.getExportLCLDetails(action);
+//
+//    }
 
 
 

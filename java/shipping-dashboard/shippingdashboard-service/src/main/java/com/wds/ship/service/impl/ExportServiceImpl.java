@@ -58,23 +58,32 @@ public class ExportServiceImpl implements ExportService {
         return destinationList;
     }
     
-//    @Override
-//	public List<ExportDetailsPOJO> getAllLCLDetails(ExportLCLDetailsAction action) {
-//    	List<ExportLCLDetails> list = lclRepo.findByAction(action.getAction());
-//        Gson gson = new Gson();
-//        String json = gson.toJson(list);
-//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-//        return destinationList;
-//	}
-
-	@Override
-	public List<ExportDetailsPOJO> getAllLCLDetails(String action) {
-		List<ExportLCLDetails> list = lclRepo.findByAction(action);
+    @Override
+	public List<ExportDetailsPOJO> getAllLCLDetails(ExportLCLDetailsAction action) {
+    	List<ExportLCLDetails> list = lclRepo.findByAction(action.getAction());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
         return destinationList;
-		
+	}
+
+//	@Override
+//	public List<ExportDetailsPOJO> getAllLCLDetails(String action) {
+//		List<ExportLCLDetails> list = lclRepo.findByAction(action);
+//        Gson gson = new Gson();
+//        String json = gson.toJson(list);
+//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+//        return destinationList;
+//		
+//	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla) {
+		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(action,withinsla);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
 	}
 
 	
