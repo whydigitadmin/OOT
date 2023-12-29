@@ -12,7 +12,10 @@ import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
 import com.wds.ship.shared.user.ExportLCL;
+<<<<<<< HEAD
 //import com.wds.ship.shared.user.ExportLCL;
+=======
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -66,14 +69,20 @@ public class ExportServiceImpl implements ExportService {
     
 
 	@Override
+<<<<<<< HEAD
 	public List<ExportLCLDetailsPOJO> getAllLCLDetails(String action) {
 		List<ExportLCLDetails> list = lclRepo.findByAction(action);
+=======
+	public List<ExportLCLDetailsPOJO> getAllLCLDetails(ExportLCL action) {
+		List<ExportLCLDetails> list = lclRepo.findAllByAction(action.getAction());
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportLCLDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportLCLDetailsPOJO>>() {}.getType());
         return destinationList;
 	}
 
+<<<<<<< HEAD
 //	@Override
 //	public List<ExportLCLDetailsPOJO> getAllLCLDetails(ExportLCL action) {
 //		List<ExportLCLDetails> list = lclRepo.findByAction(action.getAction());
@@ -82,5 +91,8 @@ public class ExportServiceImpl implements ExportService {
 //        List<ExportLCLDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportLCLDetailsPOJO>>() {}.getType());
 //        return destinationList;
 //	}
+=======
+	
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
 
 }

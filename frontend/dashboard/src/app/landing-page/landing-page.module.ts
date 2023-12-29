@@ -8,6 +8,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +22,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SeaImportDashboardComponent } from '../views/pages/sea-import-dashboard/sea-import-dashboard.component';
 import { SeaExportDetailsComponent } from '../sea-export-details/sea-export-details.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { MatPaginatorModule } from '@angular/material/paginator';
 // import { ChartComponent } from '../chart/chart.component';
 
 @NgModule({
@@ -33,6 +36,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 		MatGridListModule,
 		MatExpansionModule,
 		MatTableModule,
+		MatToolbarModule,
 		MatButtonModule,
 		MatListModule,
 		MatGridListModule,
@@ -42,6 +46,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 		MatInputModule,
 		MatDatepickerModule,
 		MatNativeDateModule,
+		MatPaginatorModule,
 		HighchartsChartModule,
 		MatTabsModule,
 		SidebarComponent,
@@ -73,13 +78,15 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 			// },
 		]),
 	],
-	providers: [],
+	providers: [
+		BsModalService
+	],
 	declarations: [
 		SeaDashboardComponent,
 		SeaImportDashboardComponent,
 		SeaExportDetailsComponent,
 		LandingPageComponent,
-		// ChartComponent
+		
 	]
 })
 export class LandingPageModule {

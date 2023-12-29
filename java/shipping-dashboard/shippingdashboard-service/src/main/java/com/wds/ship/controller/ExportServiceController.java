@@ -17,7 +17,10 @@ import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
 import com.wds.ship.shared.user.ExportLCL;
+<<<<<<< HEAD
 //import com.wds.ship.shared.user.ExportLCL;
+=======
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
 import com.wds.ship.shared.user.UserDetails;
 @RestController
 @RequestMapping("/api/v1/export")
@@ -49,6 +52,7 @@ public class ExportServiceController {
         return exportCustomerServiceLCLService.getFCLCustomerServiceInfo(userDetails);
     }
     
+<<<<<<< HEAD
 //    @PostMapping("/exportlcldetails")
 //    public List<ExportLCLDetailsPOJO> getAllLCL(@RequestBody ExportLCL exportLCL){
 //    	return exportCustomerServiceLCLService.getAllLCLDetails(exportLCL);
@@ -58,4 +62,10 @@ public class ExportServiceController {
     public List<ExportLCLDetailsPOJO> getAllLCL(@RequestParam(value="action") String action){
     	return exportCustomerServiceLCLService.getAllLCLDetails(action);
    }
+=======
+    @PostMapping("/exportlcldetails")
+    public List<ExportLCLDetailsPOJO> getAllLCL(@RequestBody ExportLCL exportLCL){
+    	return exportCustomerServiceLCLService.getAllLCLDetails(exportLCL);
+    }
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
 }

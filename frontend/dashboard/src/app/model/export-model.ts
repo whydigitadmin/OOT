@@ -10,3 +10,15 @@ outOfSLA : number = 0;
 withinSLA : number = 0;
 product : string = "";
 }
+
+export class Export_LCL_Details {
+    
+    action : string = "";
+    dept : string = "";
+    product : string = "";
+    ref_date : string = "";
+    ref_mode : string = "";
+    ref_no : string = "";
+    ref_type : string = "";
+    sno : number = 0;
+    }

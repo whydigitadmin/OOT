@@ -48,8 +48,13 @@ public class ExportController {
 //    }
     
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+<<<<<<< HEAD
     @GetMapping("/getExportLCLDetails")
     public List<ExportLCLDetailsPOJO> getExportLCLDetails(@RequestParam (value="action") String action)
+=======
+    @PostMapping("/getExportLCLDetails")
+    public List<ExportLCLDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCL action)
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
     {
         return exportService.getExportLCLDetails(action);
 

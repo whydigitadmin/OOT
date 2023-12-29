@@ -32,6 +32,7 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
+<<<<<<< HEAD
 //    public List<ExportLCLDetailsPOJO> getExportLCLDetails(ExportLCL action){
 //        RestTemplate restTemplate = new RestTemplate();
 //        ResponseEntity<List> responseEntity =
@@ -45,6 +46,14 @@ public class ExportService {
               restTemplate.getForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails?action="+action, List.class);
       return responseEntity.getBody();
   }
+=======
+    public List<ExportLCLDetailsPOJO> getExportLCLDetails(ExportLCL action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails", action, List.class);
+        return responseEntity.getBody();
+    }
+>>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
     
     
 }

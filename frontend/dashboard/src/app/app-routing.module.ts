@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ExportLclComponent } from './export-lcl/export-lcl.component';
 
 const routes: Routes = [
   
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   
   { path: 'login', component: LoginScreenComponent },
+
+  { path: 'lcl-details', component: ExportLclComponent },
   // {
   //   path: 'sea-export', component: SeaExportComponent  },
   

@@ -28,6 +28,9 @@ import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/l
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LogoutModalComponent } from './logout-modal/logout-modal.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ExportLclComponent } from './export-lcl/export-lcl.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 // import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
@@ -43,6 +46,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     LoginScreenHeaderComponent,
     SubheaderComponent,
     Subheader1Component,
+    ExportLclComponent,
     
   ],
   imports: [
@@ -56,7 +60,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HighchartsChartModule,
     MatTooltipModule,
     LogoutModalComponent,
-    SidebarComponent
+    SidebarComponent,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
     MenuConfigService, LoginScreenService],

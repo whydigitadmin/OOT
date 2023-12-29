@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
-import { Export_LCL_CustomerService } from 'src/app/model/export-model';
+import { Export_LCL_CustomerService, Export_LCL_Details } from 'src/app/model/export-model';
+import { BsModalService } from 'ngx-bootstrap/modal'
+import { ExportLclComponent } from 'src/app/export-lcl/export-lcl.component';
+
 @Component({
   selector: 'app-sea-dashboard',
   templateUrl: './sea-dashboard.component.html',
@@ -16,7 +19,7 @@ export class SeaDashboardComponent implements OnInit {
   accordion!: MatAccordion;
 
 
-  datasource_export_LCL_CS: Export_LCL_CustomerService[] = [];
+  datasource_export_LCL_CS = [{}];
   datasource_export_FCL_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Planner_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Documentation_CS: Export_LCL_CustomerService[] = [];
@@ -51,16 +54,32 @@ export class SeaDashboardComponent implements OnInit {
   user_roles: any;
   roles_matching!: any;
 
-  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService) { }
+  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService) { }
+
+  navigateToDetails(response: Export_LCL_Details[]): void {
+
+  }
+
+  get_export_lcl_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+      param2: 'value2'
+      // Add more parameters as needed
+    };
+    // const urlTree = 
+    this.router.navigate(['/lcl-details'], { queryParams });
+    // const url = this.router.serializeUrl(urlTree);
+    // window.open(url, '_blank', 'width=800,height=600');
+   
+  }
+
+  
+
+  
 
   ngOnInit() {
-
     this.localSession = localStorage.getItem('user_data');
-    // console.log("localSession :", this.localSession);   
     this.user_roles = JSON.parse(this.localSession).productRoles;
-    // console.log("user_roles :", this.user_roles);
-
-    //this.search();
     this.loadAllItems();
   }
 
@@ -80,8 +99,6 @@ export class SeaDashboardComponent implements OnInit {
 
   get_export_lcl_Customer_Info() {
 
-
-
     this.loginService.getExportLCLCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -97,8 +114,6 @@ export class SeaDashboardComponent implements OnInit {
   }
 
   get_export_fcl_Customer_Info() {
-
-
 
     this.loginService.getExportFCLCustomerServiceInfo()
       .subscribe(
