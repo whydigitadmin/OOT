@@ -15,6 +15,7 @@ public class ExportDocumentation {
 
     @Column(name = "COUNT")
     private Long count;
+    
     @Column(name = "DEPT")
     private String dept;
 
