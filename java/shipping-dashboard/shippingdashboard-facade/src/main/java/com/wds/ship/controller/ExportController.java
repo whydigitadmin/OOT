@@ -4,9 +4,9 @@ package com.wds.ship.controller;
 
 import com.wds.ship.service.export.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
-import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
-import com.wds.ship.shared.user.ExportLCL;
+import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.user.UserDetails;
+//import com.wds.ship.shared.user.ExportLCLDetailsAction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,24 +41,21 @@ public class ExportController {
  // @CrossOrigin(origins = "http://localhost:4200")
 //    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
 //    @PostMapping("/getExportLCLDetails")
-//    public List<ExportLCLDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCL action)
+//    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCLDetailsAction action)
 //    {
 //        return exportService.getExportLCLDetails(action);
 //
 //    }
     
+ // @CrossOrigin(origins = "http://localhost:4200")
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-<<<<<<< HEAD
     @GetMapping("/getExportLCLDetails")
-    public List<ExportLCLDetailsPOJO> getExportLCLDetails(@RequestParam (value="action") String action)
-=======
-    @PostMapping("/getExportLCLDetails")
-    public List<ExportLCLDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCL action)
->>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
+    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
     {
         return exportService.getExportLCLDetails(action);
 
     }
+
 
 
 }

@@ -2,8 +2,8 @@ package com.wds.ship.service.export;
 
 import com.wds.ship.router.DashboardRoute;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
-import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
-import com.wds.ship.shared.user.ExportLCL;
+import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,28 +32,19 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
-<<<<<<< HEAD
-//    public List<ExportLCLDetailsPOJO> getExportLCLDetails(ExportLCL action){
+//    public List<ExportDetailsPOJO> getExportLCLDetails(ExportLCLDetailsAction action){
 //        RestTemplate restTemplate = new RestTemplate();
 //        ResponseEntity<List> responseEntity =
 //                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails", action, List.class);
 //        return responseEntity.getBody();
 //    }
-    
-    public List<ExportLCLDetailsPOJO> getExportLCLDetails(String action){
-      RestTemplate restTemplate = new RestTemplate();
-      ResponseEntity<List> responseEntity =
-              restTemplate.getForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails?action="+action, List.class);
-      return responseEntity.getBody();
-  }
-=======
-    public List<ExportLCLDetailsPOJO> getExportLCLDetails(ExportLCL action){
-        RestTemplate restTemplate = new RestTemplate();
+
+	public List<ExportDetailsPOJO> getExportLCLDetails(String action) {
+		RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails", action, List.class);
+                restTemplate.getForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails?action="+action, List.class);
         return responseEntity.getBody();
-    }
->>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
+	}
     
     
 }

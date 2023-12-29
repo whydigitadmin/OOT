@@ -1,27 +1,17 @@
 package com.wds.ship.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.wds.ship.entity.ExportCustomerServiceLCL;
 import com.wds.ship.entity.ExportLCLDetails;
 import com.wds.ship.repository.ExportLCLRepository;
 import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
-import com.wds.ship.shared.lcl.export.ExportLCLDetailsPOJO;
-import com.wds.ship.shared.user.ExportLCL;
-<<<<<<< HEAD
-//import com.wds.ship.shared.user.ExportLCL;
-=======
->>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
+import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.UserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 @RestController
 @RequestMapping("/api/v1/export")
 public class ExportServiceController {
@@ -52,20 +42,13 @@ public class ExportServiceController {
         return exportCustomerServiceLCLService.getFCLCustomerServiceInfo(userDetails);
     }
     
-<<<<<<< HEAD
 //    @PostMapping("/exportlcldetails")
-//    public List<ExportLCLDetailsPOJO> getAllLCL(@RequestBody ExportLCL exportLCL){
-//    	return exportCustomerServiceLCLService.getAllLCLDetails(exportLCL);
+//    public List<ExportDetailsPOJO>getAllLCL(@RequestBody ExportLCLDetailsAction action){
+//    	return exportCustomerServiceLCLService.getAllLCLDetails(action);
 //    }
     
     @GetMapping("/exportlcldetails")
-    public List<ExportLCLDetailsPOJO> getAllLCL(@RequestParam(value="action") String action){
+    public List<ExportDetailsPOJO>getAllLCL(@RequestParam(value="action")String action){
     	return exportCustomerServiceLCLService.getAllLCLDetails(action);
-   }
-=======
-    @PostMapping("/exportlcldetails")
-    public List<ExportLCLDetailsPOJO> getAllLCL(@RequestBody ExportLCL exportLCL){
-    	return exportCustomerServiceLCLService.getAllLCLDetails(exportLCL);
     }
->>>>>>> c1d9f5100e2c67afb5391849f9bc0483ca1fed95
 }

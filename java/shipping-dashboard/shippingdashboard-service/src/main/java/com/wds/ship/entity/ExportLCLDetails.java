@@ -2,9 +2,6 @@ package com.wds.ship.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -20,7 +17,6 @@ public class ExportLCLDetails {
 	private String product;
 	private String action;
 	private String ref_no;
-	@JsonFormat(pattern="yyyy-MM-dd", shape = Shape.STRING)
 	private Date ref_date;
 	private String ref_type;
 	private String ref_mode;
