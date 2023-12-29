@@ -56,6 +56,25 @@ public class ExportController {
 //        return exportService.getExportLCLDetails(action);
 //
 //    }
+    
+//    @CrossOrigin(origins = "http://localhost:4200")
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @GetMapping("/getExportLCLDetailsWithinsla")
+  public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(@RequestParam(value="action") String action,@RequestParam(value="withinsla") int withinsla)
+  {
+      return exportService.getExportLCLDetailsWithinsla(action, withinsla);
+
+  }
+  
+//    @CrossOrigin(origins = "http://localhost:4200")
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @GetMapping("/getExportLCLDetailsOutofsla")
+  public List<ExportDetailsPOJO> getExportLCLDetailsOutofsla(@RequestParam(value="action") String action,@RequestParam(value="outofsla") int outofsla)
+  {
+      return exportService.getExportLCLDetailsOutofsla(action, outofsla);
+
+  }
+  
 
 
 

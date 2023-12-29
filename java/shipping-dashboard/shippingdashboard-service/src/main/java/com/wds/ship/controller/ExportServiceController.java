@@ -5,6 +5,7 @@ import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
+import com.wds.ship.shared.user.ExportLCLDetailsSLA;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,8 +49,20 @@ public class ExportServiceController {
 //    	return exportCustomerServiceLCLService.getAllLCLDetails(action);
 //    }
     
-//    @GetMapping("/exportlcldetailswihtinsla")
-//    public List<ExportDetailsPOJO>getAllExportLCLDetailsWithinsla(@RequestParam(value="action")String action,@RequestParam(value="withinsla")int withinsla){
-//    	return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(action, withinsla);
-//    }
+    @GetMapping("/exportlcldetailswihtinsla")
+    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestParam(value="action")String action,@RequestParam(value="withinsla")int withinsla){
+    	return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(action, withinsla);
+    }
+    
+//      @PostMapping("/exportlcldetailswihtinsla")
+//      public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportLCLDetailsSLA sla){
+//    	  return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(sla);
+//      }
+    
+    @GetMapping("/exportlcldetailsoutofsla")
+    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(@RequestParam(value="action")String action,@RequestParam(value="outofsla")int outofsla){
+    	return exportCustomerServiceLCLService.getExportLCLDetailsOutofSla(action, outofsla);
+    }
+    
+    
 }

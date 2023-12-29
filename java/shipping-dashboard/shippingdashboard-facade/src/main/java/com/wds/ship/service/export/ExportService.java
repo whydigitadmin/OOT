@@ -46,5 +46,19 @@ public class ExportService {
 //        return responseEntity.getBody();
 //	}
     
+    public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(String action , int withinsla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.getForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailswihtinsla?action="+action+"&withinsla="+withinsla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getExportLCLDetailsOutofsla(String action , int outofsla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.getForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailsoutofsla?action="+action+"&outofsla="+outofsla, List.class);
+        return responseEntity.getBody();
+    }
     
 }
