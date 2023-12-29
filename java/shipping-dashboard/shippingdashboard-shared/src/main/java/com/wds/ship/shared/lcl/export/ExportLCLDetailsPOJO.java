@@ -1,40 +1,17 @@
-package com.wds.ship.entity;
+package com.wds.ship.shared.lcl.export;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name="PROC_Export_Customer_Service_LCL_DETAILS")
-public class ExportLCLDetails {
+public class ExportLCLDetailsPOJO {
 	
-	@Id
-	private int id;
 	private int sno;
 	private String dept;
 	private String product;
 	private String action;
 	private String ref_no;
-	@JsonFormat(pattern="yyyy-MM-dd", shape = Shape.STRING)
 	private Date ref_date;
 	private String ref_type;
 	private String ref_mode;
-	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public void setRef_no(String ref_no) {
-		this.ref_no = ref_no;
-	}
 	public int getSno() {
 		return sno;
 	}
@@ -83,7 +60,5 @@ public class ExportLCLDetails {
 	public void setRef_mode(String ref_mode) {
 		this.ref_mode = ref_mode;
 	}
-	
-	
 
 }
