@@ -49,15 +49,15 @@ public class ExportServiceController {
 //    	return exportCustomerServiceLCLService.getAllLCLDetails(action);
 //    }
     
-    @GetMapping("/exportlcldetailswihtinsla")
-    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestParam(value="action")String action,@RequestParam(value="withinsla")int withinsla){
-    	return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(action, withinsla);
-    }
+//    @GetMapping("/exportlcldetailswihtinsla")
+//    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestParam(value="action")String action,@RequestParam(value="withinsla")int withinsla){
+//    	return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(action, withinsla);
+//    }
     
-//      @PostMapping("/exportlcldetailswihtinsla")
-//      public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportLCLDetailsSLA sla){
-//    	  return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(sla);
-//      }
+      @PostMapping("/exportlcldetailswihtinsla")
+      public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportLCLDetailsSLA sla){
+    	  return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+      }
     
     @GetMapping("/exportlcldetailsoutofsla")
     public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(@RequestParam(value="action")String action,@RequestParam(value="outofsla")int outofsla){

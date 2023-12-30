@@ -4,7 +4,7 @@ public class ExportLCLDetailsSLA {
 	
 	private String action;
 	
-	private int wihtinsla;
+	private int withinsla;
 
 	public String getAction() {
 		return action;
@@ -14,12 +14,14 @@ public class ExportLCLDetailsSLA {
 		this.action = action;
 	}
 
-	public int getWihtinsla() {
-		return wihtinsla;
+	public int getWithinsla() {
+		return withinsla;
 	}
 
-	public void setWihtinsla(int wihtinsla) {
-		this.wihtinsla = wihtinsla;
+	public void setWithinsla(int withinsla) {
+		this.withinsla = withinsla;
 	}
+
+	
 
 }

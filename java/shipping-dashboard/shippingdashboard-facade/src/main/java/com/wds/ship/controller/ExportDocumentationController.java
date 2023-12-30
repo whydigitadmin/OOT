@@ -20,7 +20,7 @@ public class ExportDocumentationController {
 	@Autowired
 	ExportDocumentationService exportdocumentationservice;
 	
-	// @CrossOrigin(origins = "http://localhost:4200")
+
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getExportDocumentationServiceInfo")
     public List<CustomerServicePOJO> getExportDocumentationServiceInfo(@RequestBody UserDetails userDetails)

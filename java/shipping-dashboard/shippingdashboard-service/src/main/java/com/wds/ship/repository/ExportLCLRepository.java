@@ -15,9 +15,11 @@ public interface ExportLCLRepository extends JpaRepository<ExportLCLDetails, Int
 	List<ExportLCLDetails> findByAction(String action);
 
 
-	List<ExportLCLDetails> findByActionAndWithinsla(String action, int wihtinsla);
+	List<ExportLCLDetails> findByActionAndWithinsla(String action, int withinsla);
 
 	List<ExportLCLDetails> findByActionAndOutofsla(String action, int outofsla);
+
+	
 
 
 	

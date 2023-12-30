@@ -21,7 +21,6 @@ public class ExportController {
     @Autowired
     ExportService exportService;
 
-    // @CrossOrigin(origins = "http://localhost:4200")
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getLCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(@RequestBody UserDetails userDetails)
@@ -30,7 +29,6 @@ public class ExportController {
 
     }
 
-    // @CrossOrigin(origins = "http://localhost:4200")
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getFCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(@RequestBody UserDetails userDetails)
@@ -39,7 +37,7 @@ public class ExportController {
 
     }
     
-//  @CrossOrigin(origins = "http://localhost:4200")
+
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getExportLCLDetails")
     public List<ExportDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCLDetailsAction action)
@@ -48,7 +46,6 @@ public class ExportController {
 
     }
     
- // @CrossOrigin(origins = "http://localhost:4200")
 //    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
 //    @GetMapping("/getExportLCLDetails")
 //    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
@@ -57,7 +54,7 @@ public class ExportController {
 //
 //    }
     
-//    @CrossOrigin(origins = "http://localhost:4200")
+
   @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
   @GetMapping("/getExportLCLDetailsWithinsla")
   public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(@RequestParam(value="action") String action,@RequestParam(value="withinsla") int withinsla)
@@ -66,7 +63,7 @@ public class ExportController {
 
   }
   
-//    @CrossOrigin(origins = "http://localhost:4200")
+
   @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
   @GetMapping("/getExportLCLDetailsOutofsla")
   public List<ExportDetailsPOJO> getExportLCLDetailsOutofsla(@RequestParam(value="action") String action,@RequestParam(value="outofsla") int outofsla)

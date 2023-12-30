@@ -22,10 +22,13 @@ public interface ExportService {
 
 //    public List<ExportDetailsPOJO>getAllLCLDetails(String action);
     
-    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(String action,int withinsla);
+//    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(String action,int withinsla);
 
 //	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(ExportLCLDetailsSLA sla);
 
     public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(String action,int outofsla);
+
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
+
 
 }
