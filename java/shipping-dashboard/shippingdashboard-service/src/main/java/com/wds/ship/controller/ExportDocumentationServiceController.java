@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wds.ship.entity.ExportDocumentation;
 import com.wds.ship.service.ExportDocumentationService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
+import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.UserDetails;
 
 @RestController
@@ -30,6 +32,11 @@ public class ExportDocumentationServiceController {
     @PostMapping("/getExportDocumentServiceInfo")
     public List<CustomerServicePOJO> getExportDocumentServiceInfo(@RequestBody UserDetails userDetails) {
         return exportDocumentService.getExportDocumentationServiceInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportDocumentServiceOutofsla")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla){
+    	return exportDocumentService.getExportDocumentationDetailsOutofsla(sla.getAction(),sla.getOutofsla());
     }
 
 }

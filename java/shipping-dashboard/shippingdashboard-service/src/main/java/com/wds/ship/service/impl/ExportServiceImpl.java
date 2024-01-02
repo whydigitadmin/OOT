@@ -12,7 +12,6 @@ import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
-import com.wds.ship.shared.user.ExportLCLDetailsSLA;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,23 +77,15 @@ public class ExportServiceImpl implements ExportService {
 //		
 //	}
 
-//	@Override
-//	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla) {
-//		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(action,withinsla);
-//        Gson gson = new Gson();
-//        String json = gson.toJson(list);
-//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-//        return destinationList;
-//	}
 
-//	@Override
-//	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(ExportLCLDetailsSLA sla) {
-//		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(sla.getAction(),sla.getWihtinsla());
-//        Gson gson = new Gson();
-//        String json = gson.toJson(list);
-//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-//        return destinationList;
-//	}
+	@Override
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla) {
+		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(action,withinsla);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
 	
 	@Override
 	public List<ExportDetailsPOJO> getExportLCLDetailsOutofSla(String action, int outofsla) {
@@ -105,14 +96,6 @@ public class ExportServiceImpl implements ExportService {
         return destinationList;
 	}
 
-	@Override
-	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla) {
-		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(action,withinsla);
-        Gson gson = new Gson();
-        String json = gson.toJson(list);
-        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-        return destinationList;
-	}
 
 	
 

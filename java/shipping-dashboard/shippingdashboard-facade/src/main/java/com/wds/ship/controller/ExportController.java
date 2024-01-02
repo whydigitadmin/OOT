@@ -6,6 +6,8 @@ import com.wds.ship.service.export.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
+import com.wds.ship.shared.user.ExportOutofSla;
+import com.wds.ship.shared.user.ExportWithinsla;
 import com.wds.ship.shared.user.UserDetails;
 //import com.wds.ship.shared.user.ExportLCLDetailsAction;
 
@@ -56,19 +58,19 @@ public class ExportController {
     
 
   @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-  @GetMapping("/getExportLCLDetailsWithinsla")
-  public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(@RequestParam(value="action") String action,@RequestParam(value="withinsla") int withinsla)
+  @PostMapping("/getExportLCLDetailsWithinsla")
+  public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
-      return exportService.getExportLCLDetailsWithinsla(action, withinsla);
+      return exportService.getExportLCLDetailsWithinsla(sla);
 
   }
   
 
   @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-  @GetMapping("/getExportLCLDetailsOutofsla")
-  public List<ExportDetailsPOJO> getExportLCLDetailsOutofsla(@RequestParam(value="action") String action,@RequestParam(value="outofsla") int outofsla)
+  @PostMapping("/getExportLCLDetailsOutofsla")
+  public List<ExportDetailsPOJO> getExportLCLDetailsOutofsla(@RequestBody ExportOutofSla sla)
   {
-      return exportService.getExportLCLDetailsOutofsla(action, outofsla);
+      return exportService.getExportLCLDetailsOutofsla(sla);
 
   }
   
