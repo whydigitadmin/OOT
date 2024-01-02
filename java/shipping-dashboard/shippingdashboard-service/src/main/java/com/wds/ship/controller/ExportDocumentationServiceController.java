@@ -14,7 +14,10 @@ import com.wds.ship.entity.ExportDocumentation;
 import com.wds.ship.service.ExportDocumentationService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.ExportOutofSla;
+import com.wds.ship.shared.user.ExportWithinsla;
+import com.wds.ship.shared.user.ExportWithinsla;
 import com.wds.ship.shared.user.UserDetails;
 
 @RestController
@@ -32,6 +35,16 @@ public class ExportDocumentationServiceController {
     @PostMapping("/getExportDocumentServiceInfo")
     public List<CustomerServicePOJO> getExportDocumentServiceInfo(@RequestBody UserDetails userDetails) {
         return exportDocumentService.getExportDocumentationServiceInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportDocumentServiceCount")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsCount(@RequestBody ExportLCL action){
+    	return exportDocumentService.getExportDocumentationDetailsCount(action);
+    }
+    
+    @PostMapping("/getExportDocumentServiceWithinsla")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla){
+    	return exportDocumentService.getExportDocumentationDetailsWithinsla(sla.getAction(),sla.getWithinsla());
     }
     
     @PostMapping("/getExportDocumentServiceOutofsla")

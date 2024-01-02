@@ -14,6 +14,7 @@ import com.wds.ship.repository.ExportDocumentationRepository;
 import com.wds.ship.service.ExportDocumentationService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.UserDetails;
 
@@ -46,6 +47,26 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
         return destinationList;
 	}
 
+	
+	@Override
+	public List<ExportDetailsPOJO> getExportDocumentationDetailsCount(ExportLCL action) {
+		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByAction(action.getAction());
+		Gson gson = new Gson();
+        String json = gson.toJson(documentation);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportDocumentationDetailsWithinsla(String action, int withinsla) {
+		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByActionAndWithinsla(action,withinsla);
+		Gson gson = new Gson();
+        String json = gson.toJson(documentation);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+	
+	
 	@Override
 	public List<ExportDetailsPOJO> getExportDocumentationDetailsOutofsla(String action, int outofsla) {
 		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByActionAndOutofsla(action,outofsla);
@@ -54,5 +75,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
         return destinationList;
 	}
+
+	
 
 }
