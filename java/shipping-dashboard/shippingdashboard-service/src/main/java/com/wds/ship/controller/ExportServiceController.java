@@ -40,7 +40,7 @@ public class ExportServiceController {
         return exportCustomerServiceLCLService.getFCLCustomerServiceInfo(userDetails);
     }
     
-    @GetMapping("/exportlcldetails")
+//    @GetMapping("/exportlcldetails")
 //  public List<ExportDetailsPOJO>getAllLCL(@RequestParam(value="action")String action){
 //  	return exportCustomerServiceLCLService.getAllLCLDetails(action);
 //  }
