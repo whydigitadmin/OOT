@@ -1,19 +1,22 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { ExportLclDetails, Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
+import { ExportDocumentationDetails, ExportLclDetails, Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
 import { Export_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
 //const BASE_URL = "https://18.140.188.121:8080"
-const BASE_URL = "http://localhost:8081"
+const BASE_URL = "http://localhost:8080"
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginService {
 
-    private backendUrl = '/api/v1/facade/export/getExportLCLDetails';
+    private exportLclCountDetails = '/api/v1/facade/export/getExportLCLDetails';
+    private exportLclWithinslaDetails = '/api/v1/facade/export/getExportLCLDetailsWithinsla';
+    private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
+    private exportDocumentationCountDetails = '/api/v1/facade/export/getExportDocumentationServiceCount';
 
     constructor(private http: HttpClient, private globals: Globals) { }
 
@@ -63,16 +66,74 @@ export class LoginService {
     //     return this.http.post<any>(BASE_URL + this.backendUrl,+{action});
     // }
 
-    getExportLclDetails(action: string): Observable<any> {
+    getExportLclDetailsCount(action: string): Observable<any> {
         const exportLclDetails = new ExportLclDetails();
         exportLclDetails.action = action;
         const jsonData = JSON.stringify(exportLclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const urlWithParams = `${BASE_URL}${this.backendUrl}`;
+        const urlWithParams = `${BASE_URL}${this.exportLclCountDetails}`;
         // const variable = encodeURIComponent(`${action}`);
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
+
+    getExportLclDetailsWithinSla(action: string): Observable<any> {
+        console.log("action", action);
+        const exportLclDetailsWithinsla = new ExportLclDetails();
+        exportLclDetailsWithinsla.action = action;
+        const jsonData = JSON.stringify(exportLclDetailsWithinsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportLclWithinslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getExportLclDetailsOutOfSla(action: string): Observable<any> {
+        console.log("action", action);
+        const exportLclDetailsOutofsla = new ExportLclDetails();
+        exportLclDetailsOutofsla.action = action;
+        const jsonData = JSON.stringify(exportLclDetailsOutofsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportLclOutOfSlaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getExportDocumentationCountDetails(action: string): Observable<any> {
+        const exportLclDetails = new ExportDocumentationDetails();
+        exportLclDetails.action = action;
+        const jsonData = JSON.stringify(exportLclDetails);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportDocumentationCountDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    // getExportLclDetailsWithinSla(action: string, withinsla: any): Observable<any> {
+    //     const exportLclDetails1 = new ExportLclDetails();
+    //     exportLclDetails1.action = action;
+    //     exportLclDetails1["withinsla"] = withinsla;
+
+    //     // Convert the ExportLclDetails instance and additional parameter to query strings
+    //     const queryParams = new HttpParams()
+    //         .set('action', action)
+    //         .set('withinsla', withinsla)
+
+    //     // Log the query parameters to the console
+    //     console.log('queryParams', queryParams.toString());
+
+    //     // Set the Content-Type header to application/json (optional for GET requests)
+    //     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    //     // Construct the URL by combining BASE_URL, this.backendUrl, and the query parameters
+    //     const urlWithParams = `${BASE_URL}${this.backendUrl1}?${queryParams.toString()}`;
+
+    //     // Make an HTTP GET request using Angular's HttpClient.get method
+    //     return this.http.get<any>(urlWithParams, { headers: headers });
+    // }
 
     // postData(action: string): Observable<any> {
     //     let urlWithParams = `${BASE_URL}${this.backendUrl}`;

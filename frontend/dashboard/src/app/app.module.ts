@@ -28,9 +28,15 @@ import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/l
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LogoutModalComponent } from './logout-modal/logout-modal.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ExportLclComponent } from './export-lcl/export-lcl.component';
+// import { ExportLclComponent } from './export-lcl/export-lcl.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ExportLclReportComponent } from './report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ExportLclWithinslaReportComponent } from './report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
+import { ExportLclOutofslaReportComponent } from './report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
+import { ExportDocumentationCountReportComponent } from './report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
+import { ExportDocumentationWithinslaReportComponent } from './report/sea-export/export-documentation-report/export-documentation-withinsla-report/export-documentation-withinsla-report.component';
 // import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
@@ -46,8 +52,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginScreenHeaderComponent,
     SubheaderComponent,
     Subheader1Component,
-    ExportLclComponent,
-    
+    // ExportLclComponent,
+    ExportLclReportComponent,
+    ExportLclWithinslaReportComponent,
+    ExportLclOutofslaReportComponent,
+    ExportDocumentationCountReportComponent,
+    ExportDocumentationWithinslaReportComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -62,7 +73,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LogoutModalComponent,
     SidebarComponent,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
     MenuConfigService, LoginScreenService],

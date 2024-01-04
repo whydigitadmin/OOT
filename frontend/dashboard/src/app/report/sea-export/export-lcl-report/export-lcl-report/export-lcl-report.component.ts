@@ -1,18 +1,17 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { LoginService } from '../service/login.service';
-import { Export_LCL_Details } from '../model/export-model';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-export-lcl',
-  templateUrl: './export-lcl.component.html',
-  styleUrls: ['./export-lcl.component.scss'],
+  selector: 'app-export-lcl-report',
+  templateUrl: './export-lcl-report.component.html',
+  styleUrls: ['./export-lcl-report.component.scss']
 })
 
-export class ExportLclComponent implements OnInit {
+export class ExportLclReportComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>();
 
@@ -20,8 +19,10 @@ export class ExportLclComponent implements OnInit {
 
   @ViewChild(MatPaginator) Paginator!: MatPaginator;
 
-  constructor(private loginService: LoginService , private route: ActivatedRoute){
-    
+  constructor(private loginService: LoginService, private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<ExportLclReportComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+
   };
 
   ngAfterViewInit() {
@@ -30,13 +31,13 @@ export class ExportLclComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-    this.get_export_lcl_details_navigation1(params['param1']);
+      this.get_export_lcl_details_navigation1(this.data);
     });
   }
 
   get_export_lcl_details_navigation1(action: string): void {
-   
-    this.loginService.getExportLclDetails(action).subscribe(
+
+    this.loginService.getExportLclDetailsCount(action).subscribe(
       (response: any) => {
         this.dataSource.data = response;
       },

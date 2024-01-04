@@ -1,0 +1,56 @@
+<div class="modal-content">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="dept">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td mat-cell *matCellDef="let element">{{ element.dept }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef>Product</th>
+        <td mat-cell *matCellDef="let element">{{ element.product }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">{{ element.action }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="ref_no">
+        <th mat-header-cell *matHeaderCellDef>Reference Number</th>
+        <td mat-cell *matCellDef="let element">{{ element.ref_no }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ref_date">
+        <th mat-header-cell *matHeaderCellDef>Reference Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ref_date | date : "dd-MM-yyyy" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ref_type">
+        <th mat-header-cell *matHeaderCellDef>Reference Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.ref_type }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ref_mode">
+        <th mat-header-cell *matHeaderCellDef>Reference Mode</th>
+        <td mat-cell *matCellDef="let element">{{ element.ref_mode }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 30]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

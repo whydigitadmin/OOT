@@ -6,7 +6,12 @@ import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
 import { Export_LCL_CustomerService, Export_LCL_Details } from 'src/app/model/export-model';
 import { BsModalService } from 'ngx-bootstrap/modal'
-import { ExportLclComponent } from 'src/app/export-lcl/export-lcl.component';
+import { ExportLclReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
+// import { ExportLclComponent } from 'src/app/export-lcl/export-lcl.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ExportLclWithinslaReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
+import { ExportLclOutofslaReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
+import { ExportDocumentationCountReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -54,7 +59,7 @@ export class SeaDashboardComponent implements OnInit {
   user_roles: any;
   roles_matching!: any;
 
-  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService) { }
+  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService, private dialog: MatDialog) { }
 
   navigateToDetails(response: Export_LCL_Details[]): void {
 
@@ -63,19 +68,96 @@ export class SeaDashboardComponent implements OnInit {
   get_export_lcl_details_navigation(action: string): void {
     const queryParams = {
       param1: action,
-      param2: 'value2'
+      // param2: 'value2'
       // Add more parameters as needed
     };
-    // const urlTree = 
-    this.router.navigate(['/lcl-details'], { queryParams });
+    // const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
     // const url = this.router.serializeUrl(urlTree);
     // window.open(url, '_blank', 'width=800,height=600');
-   
+    // const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
+
+    // // Serialize the URL tree into a string
+    // const url = this.router.serializeUrl(urlTree);
+
+    // // Open the URL in a modal popup
+    // const dialogRef = this.dialog.open(ExportLclReportComponent, {
+    //   width: '1000px',
+    //   height: '500px',
+    //   data: { url: url }, // Pass the URL as data to the modal component
+    // });
+
+    const dialogRef = this.dialog.open(ExportLclReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
   }
 
-  
+  get_export_lcl_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
 
-  
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ExportLclWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_lcl_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ExportLclOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_Documentation_Count_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+    };
+
+    const dialogRef = this.dialog.open(ExportDocumentationCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
 
   ngOnInit() {
     this.localSession = localStorage.getItem('user_data');
@@ -94,7 +176,7 @@ export class SeaDashboardComponent implements OnInit {
     this.get_export_lcl_Customer_Info();
     this.get_export_fcl_Customer_Info();
     this.get_export_Planner_Customer_Info();
-    this.get_export_Documentation_Customer_Info(); 
+    this.get_export_Documentation_Customer_Info();
   }
 
   get_export_lcl_Customer_Info() {
