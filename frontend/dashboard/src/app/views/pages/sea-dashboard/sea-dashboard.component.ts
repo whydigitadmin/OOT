@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ExportLclWithinslaReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
 import { ExportLclOutofslaReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
 import { ExportDocumentationCountReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
+import { ExportDocumentationWithinslaReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-withinsla-report/export-documentation-withinsla-report.component';
+import { ExportDocumentationOutofslaReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-outofsla-report/export-documentation-outofsla-report.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -141,7 +143,7 @@ export class SeaDashboardComponent implements OnInit {
 
   }
 
-  get_export_Documentation_Count_details_navigation(action: string): void {
+  get_export_documentation_Count_details_navigation(action: string): void {
     const queryParams = {
       param1: action,
     };
@@ -150,6 +152,48 @@ export class SeaDashboardComponent implements OnInit {
       width: '1200px',
       height: '500px',
       data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_documentation_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ExportDocumentationWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_documentation_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ExportDocumentationOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

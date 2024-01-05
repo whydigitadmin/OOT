@@ -6,12 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-export-documentation-count-report',
-  templateUrl: './export-documentation-count-report.component.html',
-  styleUrls: ['./export-documentation-count-report.component.scss']
+  selector: 'app-export-documentation-outofsla-report',
+  templateUrl: './export-documentation-outofsla-report.component.html',
+  styleUrls: ['./export-documentation-outofsla-report.component.scss']
 })
 
-export class ExportDocumentationCountReportComponent implements OnInit {
+export class ExportDocumentationOutofslaReportComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>();
 
@@ -20,7 +20,7 @@ export class ExportDocumentationCountReportComponent implements OnInit {
   @ViewChild(MatPaginator) Paginator!: MatPaginator;
 
   constructor(private loginService: LoginService, private route: ActivatedRoute,
-    public dialogRef: MatDialogRef<ExportDocumentationCountReportComponent>,
+    public dialogRef: MatDialogRef<ExportDocumentationOutofslaReportComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
   };
@@ -31,13 +31,16 @@ export class ExportDocumentationCountReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.get_export_documentation_Count_details_navigation(this.data);
+      // const { action, withinsla } = params; // Assuming 'withinsla' is a query parameter
+
+      this.get_export_documentation_details_OutOfSla_navigation(this.data);
     });
   }
 
-  get_export_documentation_Count_details_navigation(action: string): void {
+  get_export_documentation_details_OutOfSla_navigation(action: string): void {
+    console.log("mani", this.data, action);
 
-    this.loginService.getExportDocumentationCountDetails(action).subscribe(
+    this.loginService.getExportDocumentationDetailsOutOfSla(action).subscribe(
       (response: any) => {
         this.dataSource.data = response;
       },
@@ -48,3 +51,4 @@ export class ExportDocumentationCountReportComponent implements OnInit {
   }
 
 }
+

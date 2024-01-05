@@ -245,7 +245,7 @@
                             <a
                               href="javascript:void(0);"
                               (click)="
-                                get_export_Documentation_Count_details_navigation(
+                                get_export_documentation_Count_details_navigation(
                                   element.action
                                 )
                               "
@@ -258,22 +258,37 @@
                           <mat-header-cell *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <a
+                              href="javascript:void(0);"
+                              (click)="
+                                get_export_documentation_details_Withinsla_navigation(
+                                  element.action,
+                                  element.withinSLA
+                                )
+                              "
+                              >{{ element.withinSLA }}</a
+                            >
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
                           <mat-header-cell *matHeaderCellDef>
                             Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.outOfSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <a
+                              href="javascript:void(0);"
+                              (click)="
+                                get_export_documentation_details_OutOfSla_navigation(
+                                  element.action,
+                                  element.withinSLA,
+                                  element.outOfSLA
+                                )
+                              "
+                              >{{ element.outOfSLA }}</a
+                            >
+                          </mat-cell>
                         </ng-container>
                         <mat-header-row
                           *matHeaderRowDef="displayedColumnsSLA"

@@ -37,6 +37,7 @@ import { ExportLclWithinslaReportComponent } from './report/sea-export/export-lc
 import { ExportLclOutofslaReportComponent } from './report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
 import { ExportDocumentationCountReportComponent } from './report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
 import { ExportDocumentationWithinslaReportComponent } from './report/sea-export/export-documentation-report/export-documentation-withinsla-report/export-documentation-withinsla-report.component';
+import { ExportDocumentationOutofslaReportComponent } from './report/sea-export/export-documentation-report/export-documentation-outofsla-report/export-documentation-outofsla-report.component';
 // import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ExportDocumentationWithinslaReportComponent } from './report/sea-export
     ExportLclOutofslaReportComponent,
     ExportDocumentationCountReportComponent,
     ExportDocumentationWithinslaReportComponent,
+    ExportDocumentationOutofslaReportComponent,
 
   ],
   imports: [

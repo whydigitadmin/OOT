@@ -17,6 +17,8 @@ export class LoginService {
     private exportLclWithinslaDetails = '/api/v1/facade/export/getExportLCLDetailsWithinsla';
     private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
     private exportDocumentationCountDetails = '/api/v1/facade/export/getExportDocumentationServiceCount';
+    private exportDocumentationWithinslaDetails = '/api/v1/facade/export/getExportDocumentationServicewithinsla';
+    private exportDocumentationOutofslaDetails = '/api/v1/facade/export/getExportDocumentationServiceOutofsla';
 
     constructor(private http: HttpClient, private globals: Globals) { }
 
@@ -102,9 +104,9 @@ export class LoginService {
     }
 
     getExportDocumentationCountDetails(action: string): Observable<any> {
-        const exportLclDetails = new ExportDocumentationDetails();
-        exportLclDetails.action = action;
-        const jsonData = JSON.stringify(exportLclDetails);
+        const exportDocumentationDetails = new ExportDocumentationDetails();
+        exportDocumentationDetails.action = action;
+        const jsonData = JSON.stringify(exportDocumentationDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportDocumentationCountDetails}`;
@@ -112,41 +114,28 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
 
-    // getExportLclDetailsWithinSla(action: string, withinsla: any): Observable<any> {
-    //     const exportLclDetails1 = new ExportLclDetails();
-    //     exportLclDetails1.action = action;
-    //     exportLclDetails1["withinsla"] = withinsla;
+    getExportDocumentationWithinslaDetails(action: string): Observable<any> {
+        console.log("action", action);
+        const exportDocumentationDetailsWithinsla = new ExportDocumentationDetails();
+        exportDocumentationDetailsWithinsla.action = action;
+        const jsonData = JSON.stringify(exportDocumentationDetailsWithinsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportDocumentationWithinslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
 
-    //     // Convert the ExportLclDetails instance and additional parameter to query strings
-    //     const queryParams = new HttpParams()
-    //         .set('action', action)
-    //         .set('withinsla', withinsla)
+    getExportDocumentationDetailsOutOfSla(action: string): Observable<any> {
+        console.log("action", action);
+        const exportDocumentationDetailsOutofsla = new ExportDocumentationDetails();
+        exportDocumentationDetailsOutofsla.action = action;
+        const jsonData = JSON.stringify(exportDocumentationDetailsOutofsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportDocumentationOutofslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
 
-    //     // Log the query parameters to the console
-    //     console.log('queryParams', queryParams.toString());
-
-    //     // Set the Content-Type header to application/json (optional for GET requests)
-    //     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    //     // Construct the URL by combining BASE_URL, this.backendUrl, and the query parameters
-    //     const urlWithParams = `${BASE_URL}${this.backendUrl1}?${queryParams.toString()}`;
-
-    //     // Make an HTTP GET request using Angular's HttpClient.get method
-    //     return this.http.get<any>(urlWithParams, { headers: headers });
-    // }
-
-    // postData(action: string): Observable<any> {
-    //     let urlWithParams = `${BASE_URL}${this.backendUrl}`;
-
-    //     if (action.trim() !== '') {
-    //         urlWithParams += `?action=${encodeURIComponent(action)}`;
-    //     }
-
-    //     return this.http.post<any>(urlWithParams, {});
-    // }
-
-    // getData(action: string): Observable<any> {
-    //     // Include action as a query parameter in the URL
-    //     return this.http.get(`${this.backendUrl}?action=${action}`);
-    // }
 }
