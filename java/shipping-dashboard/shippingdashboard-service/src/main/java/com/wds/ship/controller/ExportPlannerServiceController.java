@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wds.ship.entity.ExportPlanner;
 import com.wds.ship.service.ExportPlannerService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
+import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.ExportLCL;
+import com.wds.ship.shared.user.ExportOutofSla;
+import com.wds.ship.shared.user.ExportWithinsla;
 import com.wds.ship.shared.user.UserDetails;
 
 @RestController
@@ -33,4 +37,18 @@ public class ExportPlannerServiceController {
         return exportPlannerService.getExportPlannerInfo(userDetails);
     }
 
+    @PostMapping("/getExportPlannerServiceCount")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsCount(@RequestBody ExportLCL action){
+    	return exportPlannerService.getExportPlannerDetailsCount(action);
+    }
+    
+    @PostMapping("/getExportPlannerServiceWithinsla")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla){
+    	return exportPlannerService.getExportPlannerDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    }
+    
+    @PostMapping("/getExportPlannerServiceOutofsla")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla){
+    	return exportPlannerService.getExportPlannerDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    }
 }
