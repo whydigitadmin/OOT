@@ -14,6 +14,9 @@ import { ExportLclOutofslaReportComponent } from 'src/app/report/sea-export/expo
 import { ExportDocumentationCountReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
 import { ExportDocumentationWithinslaReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-withinsla-report/export-documentation-withinsla-report.component';
 import { ExportDocumentationOutofslaReportComponent } from 'src/app/report/sea-export/export-documentation-report/export-documentation-outofsla-report/export-documentation-outofsla-report.component';
+import { ExportPlannerCountReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
+import { ExportPlannerWithinslaReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
+import { ExportPlannerOutofslaReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -36,9 +39,9 @@ export class SeaDashboardComponent implements OnInit {
   ];
 
   dataSource1 = [
-    { name: 'Approved Agent/Shipper Quotation', count: 25 },
-    { name: 'New Nomination Routing Order', count: 40, countSLA: 20, countOSLA: 20 },
-    { name: 'Shipment Under Process', count: 33 },
+    { action: 'Approved Agent/Shipper Quotation', count: 25 },
+    { action: 'New Nomination Routing Order', count: 40, withinSLA: 20, outofSLA: 20 },
+    { action: 'Shipment Under Process', count: 33 },
   ];
 
   dataSource2 = [
@@ -191,6 +194,66 @@ export class SeaDashboardComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(ExportDocumentationOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_planner_Count_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+    };
+
+    const dialogRef = this.dialog.open(ExportPlannerCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_planner_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ExportPlannerWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_planner_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ExportPlannerOutofslaReportComponent, {
       width: '1200px',
       height: '500px',
       data: queryParams,

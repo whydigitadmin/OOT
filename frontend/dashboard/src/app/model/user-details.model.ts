@@ -40,6 +40,14 @@ export class ExportDocumentationDetails {
     }
 }
 
+export class ExportPlannerDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
 export class UserLogin {
     private email: string;
     private password: string;

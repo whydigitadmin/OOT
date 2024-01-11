@@ -24,6 +24,7 @@ import { SeaExportDetailsComponent } from '../sea-export-details/sea-export-deta
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard/air-export-dashboard.component';
 // import { ChartComponent } from '../chart/chart.component';
 
 @NgModule({
@@ -72,6 +73,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 				path: 'sea-export-details',
 				component: SeaExportDetailsComponent
 			},
+			{
+				path: 'air-export-details',
+				component: AirExportDashboardComponent
+			},
 			// {
 			// 	path: 'chart',
 			// 	component: ChartComponent
@@ -85,8 +90,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		SeaDashboardComponent,
 		SeaImportDashboardComponent,
 		SeaExportDetailsComponent,
+		AirExportDashboardComponent,
 		LandingPageComponent,
-		
+
 	]
 })
 export class LandingPageModule {
