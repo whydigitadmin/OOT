@@ -41,7 +41,7 @@ import { ExportDocumentationOutofslaReportComponent } from './report/sea-export/
 import { ExportPlannerCountReportComponent } from './report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
 import { ExportPlannerWithinslaReportComponent } from './report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
 import { ExportPlannerOutofslaReportComponent } from './report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
-// import { ChartComponent } from './chart/chart.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { ExportPlannerOutofslaReportComponent } from './report/sea-export/export
     ExportDocumentationOutofslaReportComponent,
     ExportPlannerCountReportComponent,
     ExportPlannerWithinslaReportComponent,
-    ExportPlannerOutofslaReportComponent,
+    ExportPlannerOutofslaReportComponent, ChartComponent
     // AirExportDashboardComponent,
 
   ],

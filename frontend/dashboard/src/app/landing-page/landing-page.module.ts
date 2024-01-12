@@ -25,7 +25,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard/air-export-dashboard.component';
-// import { ChartComponent } from '../chart/chart.component';
+import { ChartComponent } from '../chart/chart.component';
 
 @NgModule({
 	imports: [
@@ -77,10 +77,10 @@ import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard
 				path: 'air-export-details',
 				component: AirExportDashboardComponent
 			},
-			// {
-			// 	path: 'chart',
-			// 	component: ChartComponent
-			// },
+			{
+				path: 'chart',
+				component: ChartComponent
+			},
 		]),
 	],
 	providers: [
