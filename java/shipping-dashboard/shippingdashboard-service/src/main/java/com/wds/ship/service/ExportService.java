@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface ExportService {
 
+	//Sea 
     public List<ExportCustomerServiceLCL> getCustomerServiceLCLInfo();
 
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails);
@@ -28,6 +29,11 @@ public interface ExportService {
     public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(String action,int outofsla);
 
 	//public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
+    
+    
+    //Air Export
+    
+    public List<CustomerServicePOJO> getExportCustomerServiceAirInfo(UserDetails userDetails);
 
 
 }

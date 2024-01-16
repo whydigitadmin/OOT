@@ -2,9 +2,11 @@ package com.wds.ship.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wds.ship.entity.ExportCustomerServiceAir;
 import com.wds.ship.entity.ExportCustomerServiceLCL;
 import com.wds.ship.entity.ExportFCLCustomerServiceEntity;
 import com.wds.ship.entity.ExportLCLDetails;
+import com.wds.ship.repository.ExportCustomerServiceAirRepository;
 import com.wds.ship.repository.ExportCustomerServiceLCLRepository;
 import com.wds.ship.repository.ExportFCLCustomerServiceRepository;
 import com.wds.ship.repository.ExportLCLRepository;
@@ -26,12 +28,16 @@ public class ExportServiceImpl implements ExportService {
     
     private final ExportLCLRepository lclRepo;
     
+    private final ExportCustomerServiceAirRepository airExportRepo;
+    
 
     @Autowired
-    public ExportServiceImpl(ExportCustomerServiceLCLRepository repository, ExportFCLCustomerServiceRepository exportFCLCustomerServiceRepository,ExportLCLRepository lclRepo) {
+    public ExportServiceImpl(ExportCustomerServiceLCLRepository repository, ExportFCLCustomerServiceRepository exportFCLCustomerServiceRepository,
+    		ExportLCLRepository lclRepo,ExportCustomerServiceAirRepository airExportRepo) {
         this.repository = repository;
         this.exportFCLCustomerServiceRepository = exportFCLCustomerServiceRepository;
 		this.lclRepo = lclRepo;
+		this.airExportRepo=airExportRepo;
         
     }
 
@@ -93,6 +99,17 @@ public class ExportServiceImpl implements ExportService {
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	// Air Export Service 
+	
+	@Override
+	public List<CustomerServicePOJO> getExportCustomerServiceAirInfo(UserDetails userDetails) {
+		List<ExportCustomerServiceAir> list = airExportRepo.findAll();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
         return destinationList;
 	}
 

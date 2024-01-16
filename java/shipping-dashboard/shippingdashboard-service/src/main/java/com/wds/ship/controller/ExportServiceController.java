@@ -72,5 +72,14 @@ public class ExportServiceController {
     }
     
     
+ // Air Export Service 
+    
+    @PostMapping("/getCustomerServiceAir")
+    public List<CustomerServicePOJO> getExportServiceAirInfo(@RequestBody UserDetails userDetails) {
+        return exportCustomerServiceLCLService.getExportCustomerServiceAirInfo(userDetails);
+    }
+    
+    
+    
     
 }

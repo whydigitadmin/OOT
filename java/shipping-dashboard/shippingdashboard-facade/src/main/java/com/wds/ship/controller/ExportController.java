@@ -74,6 +74,18 @@ public class ExportController {
 
   }
   
+  
+  // Air Export Service
+  
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getAirExportCustomerServiceInfo")
+  public List<CustomerServicePOJO> getAirExportCustomerServiceInfo(@RequestBody UserDetails userDetails)
+  {
+      return exportService.getAirExportCustomerService(userDetails);
+
+  }
+  
+  
 
 
 

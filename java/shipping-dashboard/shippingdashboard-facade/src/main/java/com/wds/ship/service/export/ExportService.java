@@ -63,4 +63,14 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
+    // Air Export Service
+    
+    public List<CustomerServicePOJO> getAirExportCustomerService(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getCustomerServiceAir", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
 }
