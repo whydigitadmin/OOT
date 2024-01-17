@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { ExportDocumentationDetails, ExportLclDetails, ExportPlannerDetails, Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
-import { Export_LCL_CustomerService } from "../model/export-model";
+import { Air_Export_CustomerService, Export_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
 //const BASE_URL = "https://18.140.188.121:8080"
@@ -65,6 +65,12 @@ export class LoginService {
         const jsonData = JSON.stringify(this.globals.userDetails);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportDocumentationServiceInfo", jsonData, { headers: headers });
+    }
+
+    getAirExportCsCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Air_Export_CustomerService>(BASE_URL + "/api/v1/facade/export/getAirExportCustomerServiceInfo", jsonData, { headers: headers });
     }
 
     // postData(action: string): Observable<any> {

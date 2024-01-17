@@ -11,7 +11,8 @@ const routes: Routes = [
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 
 	{ path: 'login', component: LoginScreenComponent },
-	{ path: 'chart', component: ChartComponent },
+
+	// { path: 'chart', component: ChartComponent },
 
 	{ path: 'lcl-details', component: ExportLclReportComponent },
 
@@ -34,7 +35,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'chart',
-				loadChildren: () => import('../app/landing-page/landing-page.module').then(m => m.LandingPageModule)
+				loadChildren: () => import('../app/chart/chart.module').then(m => m.ChartModule)
 			},
 			// {
 			// 	path: 'operations',

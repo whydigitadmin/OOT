@@ -1,10 +1,3 @@
-<!--<div class="kt-subheader my-0-7-2">
-    <div class="kt-container kt-cntr-plr-13">
-        <div class="kt-subheader__main kt-sub-hd-p-0">
-            <h3 class="kt-subheader__title">Sea Export</h3>
-        </div>
-    </div>
-</div>-->
 <div class="frt-mng-das">
   <!--<div class="form-row">-->
   <div class="col-md-12 mb-4">
@@ -69,154 +62,104 @@
                           Customer Service (LCL)
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <mat-table [dataSource]="datasource_export_LCL_CS">
-                        <ng-container matColumnDef="pendinActions">
-                          <mat-header-cell *matHeaderCellDef
-                            >Pending Actions</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">{{
-                            element.action
-                          }}</mat-cell>
-                        </ng-container>
-
-                        <!-- <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
-                            >Count</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"> -->
-                        <!-- Add click event and pass the action value to the function -->
-                        <!-- <a
-                              href="javascript:void(0);"
-                              (click)="
-                                get_export_lcl_details_navigation(
-                                  element.action
-                                )
-                              "
-                              >{{ element.count }}</a
+                      <div class="scrollable-content">
+                        <mat-table [dataSource]="datasource_export_LCL_CS">
+                          <ng-container matColumnDef="pendinActions">
+                            <mat-header-cell *matHeaderCellDef
+                              >Pending Actions</mat-header-cell
                             >
-                          </mat-cell>
-                        </ng-container> -->
+                            <mat-cell *matCellDef="let element">{{
+                              element.action
+                            }}</mat-cell>
+                          </ng-container>
 
-                        <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
-                            >Count</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <ng-container
-                              *ngIf="element.count > 0; else noData"
+                          <ng-container matColumnDef="count">
+                            <mat-header-cell *matHeaderCellDef
+                              >Count</mat-header-cell
                             >
-                              <!-- Display count and provide click event if count is greater than 0 -->
-                              <a
-                                href="javascript:void(0);"
-                                (click)="
-                                  get_export_lcl_details_navigation(
-                                    element.action
-                                  )
+                            <mat-cell *matCellDef="let element">
+                              <ng-container
+                                *ngIf="element.count > 0; else noData"
+                              >
+                                <!-- Display count and provide click event if count is greater than 0 -->
+                                <a
+                                  href="javascript:void(0);"
+                                  (click)="
+                                    get_export_lcl_details_navigation(
+                                      element.action
+                                    )
+                                  "
+                                >
+                                  {{ element.count }}
+                                </a>
+                              </ng-container>
+                              <!-- If count is 0, display 'No data found' message -->
+                              <ng-template #noData> No data found </ng-template>
+                            </mat-cell>
+                          </ng-container>
+
+                          <ng-container matColumnDef="countSLA">
+                            <mat-header-cell *matHeaderCellDef
+                              >Within SLA</mat-header-cell
+                            >
+                            <mat-cell *matCellDef="let element">
+                              <ng-container
+                                *ngIf="
+                                  element.withinSLA !== 0;
+                                  else noDataFound
                                 "
                               >
-                                {{ element.count }}
-                              </a>
-                            </ng-container>
-                            <!-- If count is 0, display 'No data found' message -->
-                            <ng-template #noData> No data found </ng-template>
-                          </mat-cell>
-                        </ng-container>
-
-                        <!-- <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
-                            >Within SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <a
-                              href="javascript:void(0);"
-                              (click)="
-                                get_export_lcl_details_Withinsla_navigation(
-                                  element.action,
-                                  element.withinSLA
-                                )
-                              "
-                              >{{ element.withinSLA }}</a
-                            >
-                          </mat-cell>
-                        </ng-container> -->
-
-                        <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
-                            >Within SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <ng-container
-                              *ngIf="element.withinSLA !== 0; else noDataFound"
-                            >
-                              <a
-                                href="javascript:void(0);"
-                                (click)="
-                                  get_export_lcl_details_Withinsla_navigation(
-                                    element.action,
-                                    element.withinSLA
-                                  )
-                                "
-                                >{{ element.withinSLA }}</a
+                                <a
+                                  href="javascript:void(0);"
+                                  (click)="
+                                    get_export_lcl_details_Withinsla_navigation(
+                                      element.action,
+                                      element.withinSLA
+                                    )
+                                  "
+                                  >{{ element.withinSLA }}</a
+                                >
+                              </ng-container>
+                              <ng-template #noDataFound
+                                >No data found</ng-template
                               >
-                            </ng-container>
-                            <ng-template #noDataFound
-                              >No data found</ng-template
-                            >
-                          </mat-cell>
-                        </ng-container>
+                            </mat-cell>
+                          </ng-container>
 
-                        <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef
-                            >Out of SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <ng-container
-                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                          <ng-container matColumnDef="countOSLA">
+                            <mat-header-cell *matHeaderCellDef
+                              >Out of SLA</mat-header-cell
                             >
-                              <a
-                                href="javascript:void(0);"
-                                (click)="
-                                  get_export_lcl_details_OutOfSla_navigation(
-                                    element.action,
-                                    element.withinSLA,
-                                    element.outOfSLA
-                                  )
-                                "
-                                >{{ element.outOfSLA }}</a
+                            <mat-cell *matCellDef="let element">
+                              <ng-container
+                                *ngIf="element.outOfSLA !== 0; else noDataFound"
                               >
-                            </ng-container>
-                            <ng-template #noDataFound
-                              >No data found</ng-template
-                            >
-                          </mat-cell>
-                        </ng-container>
+                                <a
+                                  href="javascript:void(0);"
+                                  (click)="
+                                    get_export_lcl_details_OutOfSla_navigation(
+                                      element.action,
+                                      element.withinSLA,
+                                      element.outOfSLA
+                                    )
+                                  "
+                                  >{{ element.outOfSLA }}</a
+                                >
+                              </ng-container>
+                              <ng-template #noDataFound
+                                >No data found</ng-template
+                              >
+                            </mat-cell>
+                          </ng-container>
 
-                        <!-- <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <a
-                              href="javascript:void(0);"
-                              (click)="
-                                get_export_lcl_details_OutOfSla_navigation(
-                                  element.action,
-                                  element.withinSLA,
-                                  element.outOfSLA
-                                )
-                              "
-                              >{{ element.outOfSLA }}</a
-                            >
-                          </mat-cell>
-                        </ng-container> -->
-
-                        <mat-header-row
-                          *matHeaderRowDef="displayedColumnsSLA"
-                        ></mat-header-row>
-                        <mat-row
-                          *matRowDef="let row; columns: displayedColumnsSLA"
-                        ></mat-row>
-                      </mat-table>
+                          <mat-header-row
+                            *matHeaderRowDef="displayedColumnsSLA"
+                          ></mat-header-row>
+                          <mat-row
+                            *matRowDef="let row; columns: displayedColumnsSLA"
+                          ></mat-row>
+                        </mat-table>
+                      </div>
                     </mat-expansion-panel>
                     <!--</mat-accordion> -->
                   </div>
@@ -337,24 +280,6 @@
                           </mat-cell>
                         </ng-container>
 
-                        <!-- <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
-                            >Count</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"> -->
-                        <!-- Add click event and pass the action value to the function -->
-                        <!-- <a
-                              href="javascript:void(0);"
-                              (click)="
-                                get_export_documentation_Count_details_navigation(
-                                  element.action
-                                )
-                              "
-                              >{{ element.count }}</a
-                            >
-                          </mat-cell>
-                        </ng-container> -->
-
                         <ng-container matColumnDef="countSLA">
                           <mat-header-cell *matHeaderCellDef
                             >Within SLA</mat-header-cell
@@ -379,24 +304,6 @@
                             >
                           </mat-cell>
                         </ng-container>
-
-                        <!-- <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
-                            >Within SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <a
-                              href="javascript:void(0);"
-                              (click)="
-                                get_export_documentation_details_Withinsla_navigation(
-                                  element.action,
-                                  element.withinSLA
-                                )
-                              "
-                              >{{ element.withinSLA }}</a
-                            >
-                          </mat-cell>
-                        </ng-container> -->
 
                         <ng-container matColumnDef="countOSLA">
                           <mat-header-cell *matHeaderCellDef
@@ -424,24 +331,6 @@
                           </mat-cell>
                         </ng-container>
 
-                        <!-- <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element">
-                            <a
-                              href="javascript:void(0);"
-                              (click)="
-                                get_export_documentation_details_OutOfSla_navigation(
-                                  element.action,
-                                  element.withinSLA,
-                                  element.outOfSLA
-                                )
-                              "
-                              >{{ element.outOfSLA }}</a
-                            >
-                          </mat-cell>
-                        </ng-container> -->
                         <mat-header-row
                           *matHeaderRowDef="displayedColumnsSLA"
                         ></mat-header-row>
@@ -471,17 +360,6 @@
                             element.action
                           }}</mat-cell>
                         </ng-container>
-
-                        <!-- <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
-                            >Count</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
-                        </ng-container> -->
 
                         <ng-container matColumnDef="count">
                           <mat-header-cell *matHeaderCellDef
@@ -533,17 +411,6 @@
                           </mat-cell>
                         </ng-container>
 
-                        <!-- <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
-                            >Within SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
-                          >
-                        </ng-container> -->
-
                         <ng-container matColumnDef="countOSLA">
                           <mat-header-cell *matHeaderCellDef
                             >Out of SLA</mat-header-cell
@@ -569,17 +436,7 @@
                             >
                           </mat-cell>
                         </ng-container>
-                        <!-- 
-                        <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.outOfSLA
-                            }}</a></mat-cell
-                          >
-                        </ng-container> -->
+
                         <mat-header-row
                           *matHeaderRowDef="displayedColumnsSLA"
                         ></mat-header-row>

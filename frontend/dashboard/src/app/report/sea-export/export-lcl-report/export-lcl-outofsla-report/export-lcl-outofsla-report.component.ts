@@ -13,7 +13,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export class ExportLclOutofslaReportComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<any>();
+  dataSource = new MatTableDataSource<any>([]);
+  isLoading: boolean = true;
 
   displayedColumns: string[] = ['dept', 'product', 'action', 'ref_no', 'ref_type', 'ref_date', 'ref_mode'];
 
@@ -30,22 +31,22 @@ export class ExportLclOutofslaReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      // const { action, withinsla } = params; // Assuming 'withinsla' is a query parameter
-
-      this.get_export_lcl_details_OutOfSla_navigation(this.data);
-    });
+    this.get_export_lcl_details_OutOfSla_navigation();
   }
 
-  get_export_lcl_details_OutOfSla_navigation(action: string): void {
+  get_export_lcl_details_OutOfSla_navigation(): void {
+    const action = this.data;
     console.log("mani", this.data, action);
 
     this.loginService.getExportLclDetailsOutOfSla(action).subscribe(
       (response: any) => {
         this.dataSource.data = response;
+        this.dataSource.paginator = this.Paginator;
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Error:', error);
+        this.isLoading = false;
       }
     );
   }

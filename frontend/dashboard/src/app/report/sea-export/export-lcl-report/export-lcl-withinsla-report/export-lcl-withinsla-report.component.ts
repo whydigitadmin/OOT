@@ -12,7 +12,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ExportLclWithinslaReportComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<any>();
+  dataSource = new MatTableDataSource<any>([]);
+  isLoading: boolean = true;
 
   displayedColumns: string[] = ['dept', 'product', 'action', 'ref_no', 'ref_type', 'ref_date', 'ref_mode'];
 
@@ -28,41 +29,24 @@ export class ExportLclWithinslaReportComponent implements OnInit {
     this.dataSource.paginator = this.Paginator;
   }
 
-  // ngOnInit(): void {
-  //   this.route.queryParams.subscribe(params => {
-  //     this.get_export_lcl_details_Withinsla_navigation(this.data);
-  //   });
-  // }
-
-  // ngOnInit(): void {
-  //   this.route.queryParams.subscribe(params => {
-  //     const action = params['action'];
-  //     const withinsla = params['withinsla'];
-
-  //     if (action && withinsla) {
-  //       // Call the method with the retrieved parameters
-  //       this.get_export_lcl_details_Withinsla_navigation(action, withinsla);
-  //     }
-  //   });
-  // }
-
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      // const { action, withinsla } = params; // Assuming 'withinsla' is a query parameter
-
-      this.get_export_lcl_details_Withinsla_navigation(this.data);
-    });
+    this.get_export_lcl_details_Withinsla_navigation();
   }
 
-  get_export_lcl_details_Withinsla_navigation(action: string): void {
-    console.log("mani", this.data, action);
-
+  get_export_lcl_details_Withinsla_navigation(): void {
+    const action = this.data; // Replace 'yourAction' with the actual action needed
     this.loginService.getExportLclDetailsWithinSla(action).subscribe(
       (response: any) => {
-        this.dataSource.data = response;
+        this.dataSource.data = response; // Make sure response is an array
+
+        // Set paginator after the data is loaded
+        this.dataSource.paginator = this.Paginator;
+        this.isLoading = false;
+
       },
       (error: any) => {
         console.error('Error:', error);
+        this.isLoading = false;
       }
     );
   }

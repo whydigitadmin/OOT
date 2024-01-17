@@ -1,10 +1,3 @@
-<!--<div class="kt-subheader my-0-7-2">
-    <div class="kt-container kt-cntr-plr-13">
-        <div class="kt-subheader__main kt-sub-hd-p-0">
-            <h3 class="kt-subheader__title">Sea Export</h3>
-        </div>
-    </div>
-</div>-->
 <div class="frt-mng-das">
   <!--<div class="form-row">-->
   <div class="col-md-12 mb-4">
@@ -68,7 +61,7 @@
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <mat-divider></mat-divider>
-                      <mat-table [dataSource]="dataSource1">
+                      <mat-table [dataSource]="datasource_air_export_CS">
                         <ng-container matColumnDef="pendinActions">
                           <mat-header-cell *matHeaderCellDef
                             >Pending Actions</mat-header-cell
@@ -106,7 +99,7 @@
                           >
                           <mat-cell *matCellDef="let element"
                             ><a href="/landing">{{
-                              element.outofSLA
+                              element.outOfSLA
                             }}</a></mat-cell
                           >
                         </ng-container>

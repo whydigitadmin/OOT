@@ -13,8 +13,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export class ExportPlannerOutofslaReportComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<any>();
-
+  dataSource = new MatTableDataSource<any>([]);
+  isLoading: boolean = true;
   displayedColumns: string[] = ['dept', 'product', 'action', 'ref_no', 'ref_type', 'ref_date', 'ref_mode'];
 
   @ViewChild(MatPaginator) Paginator!: MatPaginator;
@@ -30,22 +30,23 @@ export class ExportPlannerOutofslaReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      // const { action, withinsla } = params; // Assuming 'withinsla' is a query parameter
-
-      this.get_export_planner_details_OutOfSla_navigation(this.data);
-    });
+    this.get_export_planner_details_OutOfSla_navigation();
   }
 
-  get_export_planner_details_OutOfSla_navigation(action: string): void {
-    console.log("mani", this.data, action);
-
+  get_export_planner_details_OutOfSla_navigation(): void {
+    const action = this.data; // Replace 'yourAction' with the actual action needed
     this.loginService.getExportPlannerOutOfSlaDetails(action).subscribe(
       (response: any) => {
-        this.dataSource.data = response;
+        this.dataSource.data = response; // Make sure response is an array
+
+        // Set paginator after the data is loaded
+        this.dataSource.paginator = this.Paginator;
+        this.isLoading = false;
+
       },
       (error: any) => {
         console.error('Error:', error);
+        this.isLoading = false;
       }
     );
   }

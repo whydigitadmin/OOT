@@ -13,8 +13,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export class ExportDocumentationCountReportComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<any>();
-
+  dataSource = new MatTableDataSource<any>([]);
+  isLoading: boolean = true;
   displayedColumns: string[] = ['dept', 'product', 'action', 'ref_no', 'ref_type', 'ref_date', 'ref_mode'];
 
   @ViewChild(MatPaginator) Paginator!: MatPaginator;
@@ -30,19 +30,21 @@ export class ExportDocumentationCountReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.get_export_documentation_Count_details_navigation(this.data);
-    });
+    this.get_export_documentation_Count_details_navigation();
   }
 
-  get_export_documentation_Count_details_navigation(action: string): void {
-
+  get_export_documentation_Count_details_navigation(): void {
+    const action = this.data;
     this.loginService.getExportDocumentationCountDetails(action).subscribe(
       (response: any) => {
         this.dataSource.data = response;
+        this.dataSource.paginator = this.Paginator;
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Error:', error);
+        this.isLoading = false;
+
       }
     );
   }

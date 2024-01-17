@@ -1,3 +1,60 @@
+/* Add this CSS to your existing stylesheet or component styles */
+
+.fixed-panels {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Ensure no overflow beyond the fixed container */
+}
+
+.kt-portlet {
+  flex: 1;
+  overflow: hidden;
+}
+
+.mat-expansion-panel {
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.mat-expansion-panel-header {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Adjust background color as needed */
+  z-index: 1;
+}
+
+.scrollable-content {
+  max-height: calc(100vh - 60px); /* Adjust the max-height accordingly */
+  overflow-y: auto;
+}
+
+.mat-table {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.mat-header-row,
+.mat-row {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-cell,
+.mat-header-cell {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.mat-header-cell {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Adjust background color as needed */
+  z-index: 2;
+}
+
 mat-grid-tile {
   background: #f3f4f5;
 }
@@ -110,6 +167,3 @@ table {
   overflow: auto;
   top: 0;
 }
-
-
-

@@ -13,7 +13,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export class ExportDocumentationWithinslaReportComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<any>();
+  dataSource = new MatTableDataSource<any>([]);
+  isLoading: boolean = true;
 
   displayedColumns: string[] = ['dept', 'product', 'action', 'ref_no', 'ref_type', 'ref_date', 'ref_mode'];
 
@@ -30,19 +31,21 @@ export class ExportDocumentationWithinslaReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.get_export_documentation_details_Withinsla_navigation(this.data);
-    });
+    this.get_export_documentation_details_Withinsla_navigation();
   }
 
-  get_export_documentation_details_Withinsla_navigation(action: string): void {
-
+  get_export_documentation_details_Withinsla_navigation(): void {
+    const action = this.data;
     this.loginService.getExportDocumentationWithinslaDetails(action).subscribe(
       (response: any) => {
         this.dataSource.data = response;
+        this.dataSource.paginator = this.Paginator;
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Error:', error);
+        this.isLoading = false;
+
       }
     );
   }

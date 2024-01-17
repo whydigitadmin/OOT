@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,41 +10,46 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './export-planner-count-report.component.html',
   styleUrls: ['./export-planner-count-report.component.scss']
 })
-
 export class ExportPlannerCountReportComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<any>();
-
+  dataSource = new MatTableDataSource<any>([]);
+  isLoading: boolean = true;
   displayedColumns: string[] = ['dept', 'product', 'action', 'ref_no', 'ref_type', 'ref_date', 'ref_mode'];
 
-  @ViewChild(MatPaginator) Paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private loginService: LoginService, private route: ActivatedRoute,
+  constructor(
+    private loginService: LoginService,
+    private route: ActivatedRoute,
     public dialogRef: MatDialogRef<ExportPlannerCountReportComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-
-  };
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.Paginator;
-  }
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.get_export_planner_Count_details_navigation(this.data);
-    });
+    this.get_export_planner_details_count_navigation();
   }
 
-  get_export_planner_Count_details_navigation(action: string): void {
+  ngAfterViewInit(): void {
+    // Set paginator after the view is initialized
+    this.dataSource.paginator = this.paginator;
+  }
 
+  get_export_planner_details_count_navigation(): void {
+    const action = this.data; // Replace 'yourAction' with the actual action needed
     this.loginService.getExportPlannerCountDetails(action).subscribe(
       (response: any) => {
-        this.dataSource.data = response;
+        this.dataSource.data = response; // Make sure response is an array
+
+        // Set paginator after the data is loaded
+        this.dataSource.paginator = this.paginator;
+        this.isLoading = false;
+
       },
       (error: any) => {
         console.error('Error:', error);
+        this.isLoading = false;
       }
     );
   }
-
 }
+

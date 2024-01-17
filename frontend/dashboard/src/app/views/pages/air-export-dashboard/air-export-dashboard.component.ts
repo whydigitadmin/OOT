@@ -6,6 +6,7 @@ import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
 import { BsModalService } from 'ngx-bootstrap/modal'
 import { MatDialog } from '@angular/material/dialog';
+import { Air_Export_CustomerService, Export_LCL_CustomerService } from 'src/app/model/export-model';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class AirExportDashboardComponent implements OnInit {
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
+  datasource_air_export_CS: Air_Export_CustomerService[] = [];
+
 
   dataSource = [
     { name: 'Unapproved Quotation', count: 25 },
@@ -73,6 +76,7 @@ export class AirExportDashboardComponent implements OnInit {
   ngOnInit() {
     this.localSession = localStorage.getItem('user_data');
     this.user_roles = JSON.parse(this.localSession).productRoles;
+    this.loadAllItems();
   }
 
   isRoleMatching(roleId: number): any {
@@ -82,5 +86,26 @@ export class AirExportDashboardComponent implements OnInit {
 
   }
 
+  loadAllItems() {
+    this.get_air_export_customer_service_Info();
+  }
+
+  get_air_export_customer_service_Info() {
+    console.log("mani")
+    this.loginService.getAirExportCsCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_air_export_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_air_export_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
+
 }
+
 
