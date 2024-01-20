@@ -1,0 +1,190 @@
+<div class="frt-mng-das">
+  <!--<div class="form-row">-->
+  <div class="col-md-12 mb-4">
+    <div class="kt-portlet frt-das-port">
+      <div class="kt-portlet-body">
+        <div class="kt-portlet-preview">
+          <form autocomplete="off">
+            <div class="form-row">
+              <div class="container frt-opr-mng-dashboard">
+                <div class="row">
+                  <div class="col-md-6 mb-4 h-80">
+                    <mat-expansion-panel
+                      [expanded]="true"
+                      *ngIf="isRoleMatching(3)"
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="title-class">
+                          Sales Support
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+
+                      <mat-table [dataSource]="dataSource">
+                        <ng-container matColumnDef="pendinActions">
+                          <mat-header-cell *matHeaderCellDef
+                            >Pending Actions</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">{{
+                            element.name
+                          }}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.count
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumns"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumns"
+                        ></mat-row>
+                      </mat-table>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <!--<mat-accordion>-->
+                    <mat-expansion-panel
+                      [expanded]="true"
+                      *ngIf="isRoleMatching(2)"
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="title-class">
+                          CS
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-divider></mat-divider>
+                      <mat-table [dataSource]="datasource_air_export_CS">
+                        <ng-container matColumnDef="pendinActions">
+                          <mat-header-cell *matHeaderCellDef
+                            >Pending Actions</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">{{
+                            element.action
+                          }}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.count
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <ng-container matColumnDef="countSLA">
+                          <mat-header-cell *matHeaderCellDef
+                            >Within SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.withinSLA
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <ng-container matColumnDef="countOSLA">
+                          <mat-header-cell *matHeaderCellDef>
+                            Out of SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.outOfSLA
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumnsSLA"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumnsSLA"
+                        ></mat-row>
+                      </mat-table>
+                    </mat-expansion-panel>
+                    <!--</mat-accordion>-->
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <!--<mat-accordion>-->
+                    <mat-expansion-panel
+                      [expanded]="true"
+                      *ngIf="isRoleMatching(2)"
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="title-class">
+                          Documentation
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-divider></mat-divider>
+                      <mat-table [dataSource]="dataSource2">
+                        <ng-container matColumnDef="pendinActions">
+                          <mat-header-cell *matHeaderCellDef
+                            >Pending Actions</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">{{
+                            element.action
+                          }}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.count
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <ng-container matColumnDef="countSLA">
+                          <mat-header-cell *matHeaderCellDef
+                            >Within SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.withinSLA
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <ng-container matColumnDef="countOSLA">
+                          <mat-header-cell *matHeaderCellDef>
+                            Out of SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element"
+                            ><a href="/landing">{{
+                              element.outofSLA
+                            }}</a></mat-cell
+                          >
+                        </ng-container>
+
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumnsSLA"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumnsSLA"
+                        ></mat-row>
+                      </mat-table>
+                    </mat-expansion-panel>
+                    <!--</mat-accordion>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

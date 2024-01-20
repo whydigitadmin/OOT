@@ -1,35 +1,45 @@
 <ng-container>
-    <div class="kt-grid kt-grid--hor kt-grid--root">
-        <!-- begin::Body -->
-        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-            <!-- begin:: Aside Left -->
-            <!--<ng-container *ngIf="asideDisplay">
+  <div class="kt-grid kt-grid--hor kt-grid--root">
+    <!-- begin::Body -->
+    <div
+      class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page"
+    >
+      <!-- begin:: Aside Left -->
+      <!-- <ng-container *ngIf="asideDisplay">
             <button class="kt-aside-close" id="kt_aside_close_btn"><i class="la la-close"></i></button>
             <kt-aside-left></kt-aside-left>
-        </ng-container>-->
-            <!-- end:: Aside Left -->
+        </ng-container> -->
+      <!-- end:: Aside Left -->
+      <!-- <app-sidebar></app-sidebar> -->
 
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-                <!-- begin:: Header -->
-                <app-header></app-header>
-                <!-- end:: Header -->
+      <div
+        class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper"
+        id="kt_wrapper"
+      >
+        <!-- begin:: Header -->
+        <app-header></app-header>
+        <!-- end:: Header -->
 
-                <!-- begin:: Content -->
-                <div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-                    <!-- begin:: Content Head -->
-                    <!--<app-subheader ></app-subheader>-->
-                    
-                    <!-- end:: Content Head -->
-
-                    <!-- begin:: Content Body -->
-                    
-                    <router-outlet></router-outlet>
-                    <!-- end:: Content Body -->
-                </div>
-                <!-- end:: Content -->
-
-                <app-footer></app-footer>
-            </div>
+        <!-- begin:: Content -->
+        <div
+          class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+          id="kt_content"
+        >
+          <!-- begin:: Content Head -->
+          <!--<app-subheader ></app-subheader>-->
+          <!-- <app-logout></app-logout> -->
+          <!-- end:: Content Head -->
+          <app-sidebar></app-sidebar>
+          <!-- begin:: Content Body -->
+          <div id="main">
+            <router-outlet></router-outlet>
+          </div>
+          <!-- end:: Content Body -->
         </div>
+        <!-- end:: Content -->
+
+        <app-footer></app-footer>
+      </div>
     </div>
+  </div>
 </ng-container>

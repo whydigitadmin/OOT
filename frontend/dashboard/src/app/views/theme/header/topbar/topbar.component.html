@@ -1,33 +1,56 @@
 <!-- begin:: Header Topbar -->
-<div class="kt-header__topbar">	
-	<div><img src="assets/img/hd_curve.svg" class="hd-topbar-curve"></div>
-	<!--begin: Search -->
-	<!--<kt-search-dropdown ngbTooltip="Click here to Search"></kt-search-dropdown>-->
-	<!--end: Search -->
-	<!--begin: Notifications -->
-	<!--<kt-notification ngbTooltip="Notifications" [type]="'brand'" [skin]="'light'" [icon]="'flaticon2-bell-alarm-symbol'" [useSVG]="false"></kt-notification>-->
-	<!--end: Notifications -->
-	<!--begin: Quick actions -->
-	<!--<kt-quick-action [bgImage]="'./assets/media/misc/bg-1.jpg'" [skin]="'dark'" [icon]="'flaticon2-gear'" [useSVG]="false" 
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+
+<div class="kt-header__topbar">
+  <div>
+    <img src="assets/img/hd_curve.svg" class="hd-topbar-curve" />
+    <span class="logout" (click)="openPopup()">
+      <i class="material-icons">logout</i>
+    </span>
+  </div>
+  
+  <app-logout-modal (logoutConfirmed)="performLogout()"></app-logout-modal>
+  <!--begin: Search -->
+  <!--<kt-search-dropdown ngbTooltip="Click here to Search"></kt-search-dropdown>-->
+  <!--end: Search -->
+  <!--begin: Notifications -->
+  <!--<kt-notification ngbTooltip="Notifications" [type]="'brand'" [skin]="'light'" [icon]="'flaticon2-bell-alarm-symbol'" [useSVG]="false"></kt-notification>-->
+  <!--end: Notifications -->
+  <!--begin: Quick actions -->
+  <!--<kt-quick-action [bgImage]="'./assets/media/misc/bg-1.jpg'" [skin]="'dark'" [icon]="'flaticon2-gear'" [useSVG]="false" 
 	ngbTooltip="User Quick Actions"></kt-quick-action>-->
-	<!--end: Quick actions -->
-	<!--begin: My Cart -->
-	<!-- <kt-cart [bgImage]="'./assets/media/misc/bg-1.jpg'" [icon]="'flaticon2-shopping-cart-1'" [useSVG]="false"></kt-cart> -->
-	<!--end: My Cart -->
-	<!--begin: Language bar -->
-	<!--<kt-language-selector ngbTooltip="Select Your Languages"></kt-language-selector>-->
-	<!--end: Language bar -->
-	<!--begin: User bar -->
-	<!--<kt-user-profile [greeting]="false" [avatar]="false" [badge]="false" [icon]="true" ngbTooltip="User Profile"></kt-user-profile>-->
-	<!--end: User bar -->
-	<!--begin: Quick panel toggler -->
-	
-	<div class="kt-header__topbar-item kt-header__topbar-item--quickpanel" data-placement="left" ngbTooltip="Quick panel">
-	<div class="kt-header__topbar-item" data-placement="left" ngbTooltip="Quick Panel">
-		<div class="kt-header__topbar-wrapper">
-			<span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn"><i class="flaticon2-cube-1"></i></span>
-		</div>
-	</div>
-	<!--end: Quick panel toggler -->	
+  <!--end: Quick actions -->
+  <!--begin: My Cart -->
+  <!-- <kt-cart [bgImage]="'./assets/media/misc/bg-1.jpg'" [icon]="'flaticon2-shopping-cart-1'" [useSVG]="false"></kt-cart> -->
+  <!--end: My Cart -->
+  <!--begin: Language bar -->
+  <!--<kt-language-selector ngbTooltip="Select Your Languages"></kt-language-selector>-->
+  <!--end: Language bar -->
+  <!--begin: User bar -->
+  <!--<kt-user-profile [greeting]="false" [avatar]="false" [badge]="false" [icon]="true" ngbTooltip="User Profile"></kt-user-profile>-->
+  <!--end: User bar -->
+  <!--begin: Quick panel toggler -->
+
+  <div
+    class="kt-header__topbar-item kt-header__topbar-item--quickpanel"
+    data-placement="left"
+    ngbTooltip="Quick panel"
+  >
+    <div
+      class="kt-header__topbar-item"
+      data-placement="left"
+      ngbTooltip="Quick Panel"
+    >
+      <div class="kt-header__topbar-wrapper">
+        <span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn"
+          ><i class="flaticon2-cube-1"></i
+        ></span>
+      </div>
+    </div>
+    <!--end: Quick panel toggler -->
+  </div>
+  <!-- end:: Header Topbar -->
 </div>
-<!-- end:: Header Topbar -->

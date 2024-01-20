@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivityService } from '../apps/service/activity.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
@@ -16,98 +16,138 @@ export class SeaImportDashboardComponent implements OnInit {
   accordion!: MatAccordion;
 
 
-datasource_export_LCL_CS : Export_LCL_CustomerService[]  = [];
-dataSource = [
-  { name: 'Unapproved Quotation', count: 25},
-  { name: 'Approved Quotation List', count: 30 }  
-];
+  datasource_export_LCL_CS: Export_LCL_CustomerService[] = [];
+  dataSource = [
+    { name: 'Unapproved Quotation', count: 25 },
+    { name: 'Approved Quotation List', count: 30 }
+  ];
 
-dataSource1 = [
-  { name: 'Approved Agent/Shipper Quotation', count: 25 },
-  { name: 'New Nomination Routing Order', count: 40, countSLA: 20, countOSLA: 20 },  
-  { name: 'Shipment Under Process', count: 33 },
-];
+  dataSource1 = [
+    { name: 'Approved Agent/Shipper Quotation', count: 25 },
+    { name: 'New Nomination Routing Order', count: 40, countSLA: 20, countOSLA: 20 },
+    { name: 'Shipment Under Process', count: 33 },
+  ];
 
-dataSource2 = [
-  { name: 'ENQ  LIST', count: 25, countSLA: 10, countOSLA: 15 },
-  { name: 'Approved Quotations', count: 22 },  
-  { name: 'New Nomination Routing Order', count: 45, countSLA: 10, countOSLA: 30 },
-];
+  dataSource2 = [
+    { name: 'ENQ  LIST', count: 25, countSLA: 10, countOSLA: 15 },
+    { name: 'Approved Quotations', count: 22 },
+    { name: 'New Nomination Routing Order', count: 45, countSLA: 10, countOSLA: 30 },
+  ];
 
-dataSource3 = [
-  { name: 'Receipt of Shipping Instructions', count: 10 },
-  { name: 'Pending HBL Drafts - (Ports assigned to dox staff)', count: 25, countSLA: 10, countOSLA: 15 },  
-  { name: 'Pending HBL Drafts approval', count: 56, countSLA: 30, countOSLA: 26 },
-];
+  dataSource3 = [
+    { name: 'Receipt of Shipping Instructions', count: 10 },
+    { name: 'Pending HBL Drafts - (Ports assigned to dox staff)', count: 25, countSLA: 10, countOSLA: 15 },
+    { name: 'Pending HBL Drafts approval', count: 56, countSLA: 30, countOSLA: 26 },
+  ];
 
-displayedColumns: string[] = ['pendinActions', 'count'];
+  dataSource4 = [
+    { name: 'Pending for Export Vsl assigning', count: 10 },
+    { name: 'Pending Export Consol mapping', count: 25, countSLA: 10, countOSLA: 15 },
+    { name: 'Pending LOA release for Transhipment Shipments', count: 56, countSLA: 30, outofSLA: 26 },
+  ];
 
-displayedColumnsSLA: string[] = ['pendinActions', 'count', 'countSLA', 'countOSLA'];
+  dataSource5 = [
+    { name: 'Master Job Listing', count: 10 },
+    { name: 'House Job Listing', count: 10 },
+    { name: 'Approved Quotation', count: 10 },
+    { name: 'Pending clearance docs verification', count: 25, countSLA: 10, outofSLA: 15 },
+    { name: 'Pending Carrier payment', count: 25, countSLA: 10, outofSLA: 15 },
+    { name: 'Pending D.O Collection', count: 56, countSLA: 30, outofSLA: 26 },
+    { name: 'Pending Permit Declaration', count: 546, countSLA: 20, outofSLA: 216 },
+    { name: 'Pending Trucking Order', count: 156, countSLA: 301, outofSLA: 261 },
+    { name: 'Pending Full container Trucking', count: 556, countSLA: 330, outofSLA: 236 },
+    { name: 'Pending unstuffing status', count: 5, countSLA: 3, outofSLA: 6 },
+    { name: 'Pending return of MT container', count: 106, countSLA: 50, outofSLA: 20 },
+    { name: 'Pending port charges update from trucker', count: 59, countSLA: 70, outofSLA: 556 },
+    { name: 'Pending MS updates-TAB', count: 90, countSLA: 12, outofSLA: 97 },
+    { name: 'Pending MS updates', count: 561, countSLA: 630, outofSLA: 266 },
+  ];
 
-public localSession:any={};
-user_roles: any;
-roles_matching!: any;
+  dataSource6 = [
+    { name: 'Master Job Listing', count: 10 },
+    { name: 'House Job Listing', count: 10 },
+    { name: 'Approved Quotation', count: 10 },
+    { name: 'Pending clearance docs verification', count: 25, countSLA: 10, outofSLA: 15 },
+    { name: 'Pending Co-loader payment', count: 25, countSLA: 10, outofSLA: 15 },
+    { name: 'Pending D.O Collection', count: 56, countSLA: 30, outofSLA: 26 },
+    { name: 'Pending Permit Declaration', count: 546, countSLA: 20, outofSLA: 216 },
+    { name: 'Pending Lcl Cartage Order', count: 156, countSLA: 301, outofSLA: 261 },
+    { name: 'Pending unstuffing status', count: 556, countSLA: 330, outofSLA: 236 },
+    { name: 'Pending LCL Trucking', count: 5, countSLA: 3, outofSLA: 6 },
+    { name: 'Pending Storage Payment if any', count: 106, countSLA: 50, outofSLA: 20 },
+    { name: 'Pending POD Copy', count: 59, countSLA: 70, outofSLA: 556 },
+    { name: 'Pending MS updates-TAB', count: 90, countSLA: 12, outofSLA: 97 },
+    { name: 'Pending MS updates', count: 561, countSLA: 630, outofSLA: 266 },
+  ];
 
-  constructor(private avt_ser: ActivityService,private cdr: ChangeDetectorRef, private router: Router, private globals : Globals , private loginService: LoginService) { }
+  displayedColumns: string[] = ['pendinActions', 'count'];
 
-  ngOnInit() {   
+  displayedColumnsSLA: string[] = ['pendinActions', 'count', 'countSLA', 'countOSLA'];
+
+  public localSession: any = {};
+  user_roles: any;
+  roles_matching!: any;
+
+  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService) { }
+
+  ngOnInit() {
 
     //console.log("I AM LOG OF METHOD")
-    this.localSession = localStorage.getItem('user_data'); 
+    this.localSession = localStorage.getItem('user_data');
     // console.log("localSession :", this.localSession);   
     this.user_roles = JSON.parse(this.localSession).productRoles;
     // console.log("user_roles :", this.user_roles);
-    
+
     //this.search();
     this.loadAllItems();
-}
+  }
 
-isRoleMatching(roleId: number): any{  
-  //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-  return this.user_roles.find((role: any) => role.roleId === roleId);  
-  //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
-  
-}
+  isRoleMatching(roleId: number): any {
+    //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
+    return this.user_roles.find((role: any) => role.roleId === roleId);
+    //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
 
-loadAllItems(){
-  this.get_export_lcl_Customer_Info();
-}
+  }
 
-get_export_lcl_Customer_Info(){
-  
-  
+  loadAllItems() {
+    this.get_export_lcl_Customer_Info();
+  }
 
-  this.loginService.getExportLCLCustomerServiceInfo()
-  .subscribe(
-    (response) => {
-      this.datasource_export_LCL_CS = response;
-        // Handle the response data here
-      console.log('Response:', this.datasource_export_LCL_CS );
-    },
-    (error) => {
-      // Handle any errors here
-      console.error('Error:', error);
-    }
-  );
-}
+  get_export_lcl_Customer_Info() {
 
-get_export_fcl_Customer_Info(){
-  
-  
 
-  this.loginService.getExportLCLCustomerServiceInfo()
-  .subscribe(
-    (response) => {
-      this.datasource_export_LCL_CS = response;
-        // Handle the response data here
-      console.log('Response:', this.datasource_export_LCL_CS );
-    },
-    (error) => {
-      // Handle any errors here
-      console.error('Error:', error);
-    }
-  );
-}
+
+    this.loginService.getExportLCLCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_export_LCL_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_export_LCL_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
+
+  get_export_fcl_Customer_Info() {
+
+
+
+    this.loginService.getExportLCLCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_export_LCL_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_export_LCL_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
 
 }
 

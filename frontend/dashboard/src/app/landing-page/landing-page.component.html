@@ -3,20 +3,18 @@
         <div class="kt-portlet frt-das-port">
             <div class="kt-portlet-body">
                 <div class="kt-portlet-preview"> -->
-                    <div class="container">
-                        <app-sidebar ></app-sidebar>
-                        <router-outlet></router-outlet>
-                      </div>
-                    <!-- <mat-tab-group>
-                        <mat-tab label="Sea Export"><app-sea-dashboard></app-sea-dashboard></mat-tab>
-                        <mat-tab label="Sea Import"><app-sea-import-dashboard></app-sea-import-dashboard> </mat-tab>
-                        <mat-tab label="Air Export"> Air Export </mat-tab>
-                        <mat-tab label="Air Import"> Air Import </mat-tab>
-
-                    </mat-tab-group> -->
-                    <!-- <router-outlet></router-outlet> -->
-                <!-- </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+<div>
+  <mat-tab-group>
+    <mat-tab label="Sea Export"
+      ><app-sea-dashboard></app-sea-dashboard
+    ></mat-tab>
+    <mat-tab label="Sea Import"
+      ><app-sea-import-dashboard></app-sea-import-dashboard>
+    </mat-tab>
+    <mat-tab label="Air Export"
+      ><app-air-export-dashboard></app-air-export-dashboard
+    ></mat-tab>
+    <mat-tab label="Air Import"> Air Import </mat-tab>
+  </mat-tab-group>
+</div>
+<router-outlet></router-outlet>

@@ -25,21 +25,50 @@ import { SubheaderComponent } from './views/theme/subheader/subheader.component'
 import { Subheader1Component } from './views/layout/subheader1/subheader1.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/login-screen-header.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LogoutModalComponent } from './logout-modal/logout-modal.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+// import { ExportLclComponent } from './export-lcl/export-lcl.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ExportLclReportComponent } from './report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ExportLclWithinslaReportComponent } from './report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
+import { ExportLclOutofslaReportComponent } from './report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
+import { ExportDocumentationCountReportComponent } from './report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
+import { ExportDocumentationWithinslaReportComponent } from './report/sea-export/export-documentation-report/export-documentation-withinsla-report/export-documentation-withinsla-report.component';
+import { ExportDocumentationOutofslaReportComponent } from './report/sea-export/export-documentation-report/export-documentation-outofsla-report/export-documentation-outofsla-report.component';
+import { ExportPlannerCountReportComponent } from './report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
+import { ExportPlannerWithinslaReportComponent } from './report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
+import { ExportPlannerOutofslaReportComponent } from './report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
+import { ChartComponent } from './chart/chart.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
-    LayoutComponent,    
+    LayoutComponent,
     FooterComponent,
     HeaderComponent,
     MenuHorizontalComponent,
     TopbarComponent,
-    BrandComponent,    
+    BrandComponent,
     LoginScreenHeaderComponent,
     SubheaderComponent,
-    Subheader1Component
+    Subheader1Component,
+    // ExportLclComponent,
+    ExportLclReportComponent,
+    ExportLclWithinslaReportComponent,
+    ExportLclOutofslaReportComponent,
+    ExportDocumentationCountReportComponent,
+    ExportDocumentationWithinslaReportComponent,
+    ExportDocumentationOutofslaReportComponent,
+    ExportPlannerCountReportComponent,
+    ExportPlannerWithinslaReportComponent,
+    ExportPlannerOutofslaReportComponent, ChartComponent
+    // AirExportDashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -49,10 +78,17 @@ import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/l
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    HighchartsChartModule           
+    HighchartsChartModule,
+    MatTooltipModule,
+    LogoutModalComponent,
+    SidebarComponent,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
-     MenuConfigService, LoginScreenService],
+    MenuConfigService, LoginScreenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
