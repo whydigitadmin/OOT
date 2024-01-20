@@ -19,253 +19,27 @@ HighchartsSolidGauge(Highcharts);
 export class ChartComponent implements OnInit  {
 
   public exportlclarea : any;
-
+  public exportlclStackedarea = [{}]; ;
   datasource_export_LCL_CS = [{}];
+  exportlcl_cs_sc_xAxis:string[] = []; 
 
-  constructor (private httpService: HttpClient , private loginService: LoginService) {   }
+  constructor ( private loginService: LoginService) {   }
   
   public ngOnInit(): void {
-    this.createChartGauge();
-    this.createChartPie();
-    this.createChartColumn();
-    this.createChartLine();
+
     this.get_export_lcl_Customer_Info();
+    this.get_export_lcl_Customer_Info_stackedChart();
   }
-
-  private getRandomNumber(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-
-  private createChartGauge(): void {
-    const chart = Highcharts.chart('chart-gauge', {
-      chart: {
-        type: 'solidgauge',
-      },
-      title: {
-        text: 'Gauge Chart',
-      },
-      credits: {
-        enabled: false,
-      },
-      pane: {
-        startAngle: -90,
-        endAngle: 90,
-        center: ['50%', '85%'],
-        size: '160%',
-        background: {
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc',
-        },
-      },
-      yAxis: {
-        min: 0,
-        max: 100,
-        stops: [
-          [0.1, '#55BF3B'], // green
-          [0.5, '#DDDF0D'], // yellow
-          [0.9, '#DF5353'], // red
-        ],
-        minorTickInterval: null,
-        tickAmount: 2,
-        labels: {
-          y: 16,
-        },
-      },
-      plotOptions: {
-        solidgauge: {
-          dataLabels: {
-            y: -25,
-            borderWidth: 0,
-            useHTML: true,
-          },
-        },
-      },
-      tooltip: {
-        enabled: false,
-      },
-      series: [{
-        name: null,
-        data: [this.getRandomNumber(0, 100)],
-        dataLabels: {
-          format: '<div style="text-align: center"><span style="font-size: 1.25rem">{y}</span></div>',
-        },
-      }],
-    } as any);
-
-    setInterval(() => {
-      chart.series[0].points[0].update(this.getRandomNumber(0, 100));
-    }, 1000);
-  }
-
-  private createChartPie(): void {
-    let date = new Date();
-    const data: any[] = [];
-
-    for (let i = 0; i < 5; i++) {
-      date.setDate(new Date().getDate() + i);
-      data.push({
-        name: `${date.getDate()}/${date.getMonth() + 1}`,
-        y: this.getRandomNumber(0, 1000),
-      });
-    }
-
-    const chart = Highcharts.chart('chart-pie', {
-      chart: {
-        type: 'pie',
-      },
-      title: {
-        text: 'Pie Chart',
-      },
-      credits: {
-        enabled: false,
-      },
-      tooltip: {
-        headerFormat: `<span class="mb-2">Date: {point.key}</span><br>`,
-        pointFormat: '<span>Amount: {point.y}</span>',
-        useHTML: true,
-      },
-      series: [{
-        name: null,
-        innerSize: '50%',
-        data,
-      }],
-    } as any);
-
-    setInterval(() => {
-      date.setDate(date.getDate() + 1);
-      chart.series[0].addPoint({
-        name: `${date.getDate()}/${date.getMonth() + 1}`,
-        y: this.getRandomNumber(0, 1000),
-      }, true, true);
-    }, 1500);
-  }
-
-  private createChartColumn(): void {
-    let date = new Date();
-    const data: any[] = [];
-
-    for (let i = 0; i < 10; i++) {
-      date.setDate(new Date().getDate() + i);
-      data.push({
-        name: `${date.getDate()}/${date.getMonth() + 1}`,
-        y: this.getRandomNumber(0, 1000),
-      });
-    }
-
-    const chart = Highcharts.chart('chart-column' as any, {
-      chart: {
-        type: 'column',
-      },
-      title: {
-        text: 'Column Chart',
-      },
-      credits: {
-        enabled: false,
-      },
-      legend: {
-        enabled: false,
-      },
-      yAxis: {
-        min: 0,
-        title: undefined,
-      },
-      xAxis: {
-        type: 'category',
-      },
-      tooltip: {
-        headerFormat: `<div>Date: {point.key}</div>`,
-        pointFormat: `<div>{series.name}: {point.y}</div>`,
-        shared: true,
-        useHTML: true,
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            enabled: true,
-          },
-        },
-      },
-      series: [{
-        name: 'Amount',
-        data,
-      }],
-    } as any);
-
-    setInterval(() => {
-      date.setDate(date.getDate() + 1);
-      chart.series[0].addPoint({
-        name: `${date.getDate()}/${date.getMonth() + 1}`,
-        y: this.getRandomNumber(0, 1000),
-      }, true, true);
-    }, 1500);
-  }
-
-
- // LINE CHART
-
-
-  private createChartLine(): void {
-    let date = new Date();
-    const data: any[] = [];
-
-    for (let i = 0; i < 10; i++) {
-      date.setDate(new Date().getDate() + i);
-      data.push([`${date.getDate()}/${date.getMonth() + 1}`, this.getRandomNumber(0, 1000)]);
-    }
-
-    const chart = Highcharts.chart('chart-line', {
-      chart: {
-        type: 'line',
-      },
-      title: {
-        text: 'Line Chart',
-      },
-      credits: {
-        enabled: false,
-      },
-      legend: {
-        enabled: false,
-      },
-      yAxis: {
-        title: {
-          text: null,
-        }
-      },
-      xAxis: {
-        type: 'category',
-      },
-      tooltip: {
-        headerFormat: `<div>Date: {point.key}</div>`,
-        pointFormat: `<div>{series.name}: {point.y}</div>`,
-        shared: true,
-        useHTML: true,
-      },
-      series: [{
-        name: 'Amount',
-        data,
-      }],
-    } as any);
-
-    setInterval(() => {
-      date.setDate(date.getDate() + 1);
-      chart.series[0].addPoint([`${date.getDate()}/${date.getMonth() + 1}`, this.getRandomNumber(0, 1000)], true, true);
-    }, 1500);
-  }
-
-
-  // Sample
+ 
   
-
-  
-  
-  showChart () {
-    this.chartData.series = this.exportlclarea;       // assign data to the series.
-    Highcharts.chart('div-container', this.chartData);    // Update the chart.
+  showExport_CS_LCL_Chart () {
+    this.export_lcl_cs_chartData.series = this.exportlclarea;       // assign data to the series.
+    Highcharts.chart('div-container', this.export_lcl_cs_chartData);    // Update the chart.
   }
 
+ 
 
-  public chartData: any = {
+  public export_lcl_cs_chartData: any = {
     chart: {
       type: 'column'
     },
@@ -275,7 +49,7 @@ export class ChartComponent implements OnInit  {
     },
 
     title: {
-        text: 'Monthly Sales Chart'
+        text: 'Customer Service (LCL)'
     },
 
     series: [
@@ -307,7 +81,7 @@ export class ChartComponent implements OnInit  {
                 
           })
           this.exportlclarea = emptyList1;    // populate array with json.
-          this.showChart();         // show the chart.
+          this.showExport_CS_LCL_Chart();         // show the chart.
         },
         (error) => {
           // Handle any errors here
@@ -315,4 +89,98 @@ export class ChartComponent implements OnInit  {
         }
       );
   }
+
+
+  showExport_CS_LCL_StackedChart () {
+    this.stackedChartData.series = this.exportlclStackedarea;   
+    this.stackedChartData.xAxis.categories = this.exportlcl_cs_sc_xAxis;       // assign data to the series.
+    Highcharts.chart('div-container-stackedchart', this.stackedChartData);    // Update the chart.
+  }
+
+  public stackedChartData: any = {
+    chart: {
+      type: 'column'
+    },
+
+    xAxis: {    // the 'x' axis or 'category' axis.
+        categories: ['1', '2', '3' , '4' ,'5' ,'6' , '7']
+    },
+    yAxis: {
+      min: 0,
+      title: {
+          text: 'Count'
+      },
+      stackLabels: {
+          enabled: true,
+          style: {
+              fontWeight: 'bold',
+              color: (Highcharts.theme) || 'gray'
+          }
+      }
+  },
+  legend: {
+    align: 'right',
+    x: -70,
+    verticalAlign: 'top',
+    y: 20,
+    floating: true,
+    backgroundColor: (Highcharts.theme ) || 'white',
+    borderColor: '#CCC',
+    borderWidth: 1,
+    shadow: false
+},
+    title: {
+        text: 'Customer Service (LCL)'
+    },
+
+    series: [
+      { 
+        data: []
+      }
+    ],
+    
+    colors: ['#000', 'rgb(102,203,22)', 'red', '#9e77f3', '#034C65'],
+
+    tooltip: {
+        backgroundColor: '#FCFFC5'
+    }
+  }
+
+
+  get_export_lcl_Customer_Info_stackedChart() {
+
+    const emptyList1: Chart_ExportLcl[] = [];
+    let withinSlaList:string[] = []; 
+    let outOfSlaList:string[] = []; 
+    let totalList:string[] = []; 
+
+    this.loginService.getExportLCLCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_export_LCL_CS = response;
+          // Handle the response data here
+       
+       
+          response.map( (y: any) => {
+            if(y.count != 1726) {
+              withinSlaList.push(y.withinSLA)
+              outOfSlaList.push(y.outOfSLA)
+              totalList.push(y.count)
+              this.exportlcl_cs_sc_xAxis.push(y.action)
+            }
+          })
+          this.exportlclStackedarea.push({"name" : "withinsla" , "data" : withinSlaList});
+          this.exportlclStackedarea.push({"name" : "outofSLA" , "data" : outOfSlaList});
+          this.exportlclStackedarea.push({"name" : "total" , "data" : totalList});
+          console.log(JSON.stringify(this.exportlclStackedarea))
+          this.showExport_CS_LCL_StackedChart();         // show the chart.
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
+
+  
 }
