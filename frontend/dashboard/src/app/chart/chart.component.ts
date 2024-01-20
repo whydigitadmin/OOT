@@ -1,7 +1,10 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
+import { LoginService } from '../service/login.service';
+import { Chart_ExportLcl } from '../model/user-details.model';
 
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
@@ -13,13 +16,20 @@ HighchartsSolidGauge(Highcharts);
 })
 
 
-export class ChartComponent implements AfterViewInit {
+export class ChartComponent implements OnInit  {
 
-  public ngAfterViewInit(): void {
+  public exportlclarea : any;
+
+  datasource_export_LCL_CS = [{}];
+
+  constructor (private httpService: HttpClient , private loginService: LoginService) {   }
+  
+  public ngOnInit(): void {
     this.createChartGauge();
     this.createChartPie();
     this.createChartColumn();
     this.createChartLine();
+    this.get_export_lcl_Customer_Info();
   }
 
   private getRandomNumber(min: number, max: number): number {
@@ -191,6 +201,10 @@ export class ChartComponent implements AfterViewInit {
     }, 1500);
   }
 
+
+ // LINE CHART
+
+
   private createChartLine(): void {
     let date = new Date();
     const data: any[] = [];
@@ -239,4 +253,66 @@ export class ChartComponent implements AfterViewInit {
     }, 1500);
   }
 
+
+  // Sample
+  
+
+  
+  
+  showChart () {
+    this.chartData.series = this.exportlclarea;       // assign data to the series.
+    Highcharts.chart('div-container', this.chartData);    // Update the chart.
+  }
+
+
+  public chartData: any = {
+    chart: {
+      type: 'column'
+    },
+
+    xAxis: {    // the 'x' axis or 'category' axis.
+        categories: ['jan', 'feb', 'mar']
+    },
+
+    title: {
+        text: 'Monthly Sales Chart'
+    },
+
+    series: [
+      { 
+        data: []
+      }
+    ],
+    
+    colors: ['#000', 'rgb(102,203,22)', 'red', '#9e77f3', '#034C65'],
+
+    tooltip: {
+        backgroundColor: '#FCFFC5'
+    }
+  }
+
+
+  get_export_lcl_Customer_Info() {
+
+    const emptyList1: Chart_ExportLcl[] = [];
+    this.loginService.getExportLCLCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_export_LCL_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_export_LCL_CS);
+          response.map( (x: { action: any; count: any })  => {
+           var chart_exportlcl = new Chart_ExportLcl(x.action , [x.count]);
+           emptyList1.push(chart_exportlcl);
+                
+          })
+          this.exportlclarea = emptyList1;    // populate array with json.
+          this.showChart();         // show the chart.
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
 }
