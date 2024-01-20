@@ -106,7 +106,7 @@ export class ChartComponent implements OnInit  {
         categories: ['1', '2', '3' , '4' ,'5' ,'6' , '7']
     },
     yAxis: {
-      min: 0,
+      min: 0,      
       title: {
           text: 'Count'
       },
@@ -127,7 +127,12 @@ export class ChartComponent implements OnInit  {
     backgroundColor: (Highcharts.theme ) || 'white',
     borderColor: '#CCC',
     borderWidth: 1,
-    shadow: false
+    shadow: false,    
+},
+plotOptions: {
+  series: {
+    stacking: 'normal'
+  }
 },
     title: {
         text: 'Customer Service (LCL)'
