@@ -75,7 +75,8 @@ export class Shipment {
 
 export class Chart_ExportLcl {
     private name: string;
-    private data : string[];
+    private data: string[];
+    count: any;
     constructor(name: string, data: string[]) {
         this.name = name;
         this.data = data;

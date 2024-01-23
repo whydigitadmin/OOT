@@ -17,6 +17,11 @@ const routes: Routes = [
 	{ path: 'lcl-details', component: ExportLclReportComponent },
 
 	{ path: 'lcl-withinsla-details', component: ExportLclWithinslaReportComponent },
+
+	// {
+	// 	path: 'dashboard/chart',
+	// 	component: ChartComponent
+	// },
 	// {
 	//   path: 'sea-export', component: SeaExportComponent  },
 

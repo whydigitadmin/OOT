@@ -9,6 +9,7 @@ export class Export_LCL_CustomerService {
     outOfSLA: number = 0;
     withinSLA: number = 0;
     product: string = "";
+    pendinActions: any;
 }
 
 export class Export_LCL_Details {

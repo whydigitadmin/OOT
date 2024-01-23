@@ -66,7 +66,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ExportDocumentationOutofslaReportComponent,
     ExportPlannerCountReportComponent,
     ExportPlannerWithinslaReportComponent,
-    ExportPlannerOutofslaReportComponent, ChartComponent
+    ExportPlannerOutofslaReportComponent,
+    ChartComponent,
     // AirExportDashboardComponent,
 
   ],

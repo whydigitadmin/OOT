@@ -26,6 +26,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard/air-export-dashboard.component';
 import { ChartComponent } from '../chart/chart.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
 	imports: [
@@ -51,20 +52,25 @@ import { ChartComponent } from '../chart/chart.component';
 		HighchartsChartModule,
 		MatTabsModule,
 		SidebarComponent,
+		MatCardModule,
 		// LogoutComponent,
 		RouterModule.forChild([
-			
+
 			{
 				path: '',
 				component: ChartComponent
 			},
+			{
+				path: 'landing',
+				component: SeaDashboardComponent
+			}
 		]),
 	],
 	providers: [
 		BsModalService
 	],
 	declarations: [
-		
+
 
 	]
 })
