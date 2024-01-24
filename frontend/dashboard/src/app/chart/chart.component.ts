@@ -5,6 +5,10 @@ import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
 import { LoginService } from '../service/login.service';
 import { Chart_ExportLcl } from '../model/user-details.model';
+import { ExportLclWithinslaReportComponent } from '../report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ExportLclOutofslaReportComponent } from '../report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
+import { ExportLclReportComponent } from '../report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
 
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
@@ -35,7 +39,7 @@ export class ChartComponent implements OnInit {
   exportPlanner_cs_sc_xAxis: string[] = [];
   exportDocumentation_cs_sc_xAxis: string[] = [];
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private dialog: MatDialog) { }
 
   public ngOnInit(): void {
 
@@ -61,7 +65,7 @@ export class ChartComponent implements OnInit {
     chart: {
       type: 'column'
     },
-
+    credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
       categories: ['jan', 'feb', 'mar']
     },
@@ -190,7 +194,7 @@ export class ChartComponent implements OnInit {
     chart: {
       type: 'column'
     },
-
+    credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
       categories: ['1', '2', '3', '4', '5', '6', '7']
     },
@@ -220,7 +224,10 @@ export class ChartComponent implements OnInit {
     },
     plotOptions: {
       series: {
-        stacking: 'normal'
+        stacking: 'normal',        
+        events : {
+          click: this.openLclReport.bind(this)
+        }
       }
     },
     title: {
@@ -237,9 +244,50 @@ export class ChartComponent implements OnInit {
 
     tooltip: {
       backgroundColor: '#FCFFC5'
-    }
+    }    
   }
+  
+  
+  openLclReport(event: any){
 
+    let queryParams = {};
+    let dialogRef: any;
+    
+        
+    if(event.point.series.name === "outofSLA"){      
+      dialogRef = this.dialog.open(ExportLclOutofslaReportComponent, {
+        width: '1200px',
+        height: '500px',        
+        data: {
+          action: event.point.category,
+          withinsla: 0,
+          outofsla: 0
+      }
+      });
+    } else if(event.point.series.name === "withinsla"){
+      
+      dialogRef = this.dialog.open(ExportLclWithinslaReportComponent, {
+        width: '1200px',
+        height: '500px',
+        
+        data: {
+          action: event.point.category,
+          withinsla: 0          
+      }
+      });
+  } else{
+    dialogRef = this.dialog.open(ExportLclReportComponent, {
+      width: '1200px',
+      height: '500px',      
+      data: event.point.category,
+    });
+  }    
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });    
+  }
 
   get_export_lcl_Customer_Info_stackedChart() {
 
@@ -259,13 +307,13 @@ export class ChartComponent implements OnInit {
             if (y.count != 1726) {
               withinSlaList.push(y.withinSLA)
               outOfSlaList.push(y.outOfSLA)
-              totalList.push(y.count)
+              //totalList.push(y.count)
               this.exportlcl_cs_sc_xAxis.push(y.action)
             }
           })
           this.exportlclStackedarea.push({ "name": "withinsla", "data": withinSlaList });
           this.exportlclStackedarea.push({ "name": "outofSLA", "data": outOfSlaList });
-          this.exportlclStackedarea.push({ "name": "total", "data": totalList });
+          //this.exportlclStackedarea.push({ "name": "total", "data": totalList });
           console.log(JSON.stringify(this.exportlclStackedarea))
           this.showExport_CS_LCL_StackedChart();         // show the chart.
         },
@@ -286,7 +334,7 @@ export class ChartComponent implements OnInit {
     chart: {
       type: 'column'
     },
-
+    credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
       categories: ['1', '2', '3', '4', '5', '6', '7']
     },
@@ -382,7 +430,7 @@ export class ChartComponent implements OnInit {
     chart: {
       type: 'column'
     },
-
+    credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
       categories: ['1', '2', '3', '4', '5', '6', '7']
     },
@@ -478,7 +526,7 @@ export class ChartComponent implements OnInit {
     chart: {
       type: 'column'
     },
-
+    credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
       categories: ['1', '2', '3', '4', '5', '6', '7']
     },
