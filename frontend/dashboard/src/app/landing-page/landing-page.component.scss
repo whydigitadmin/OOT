@@ -1,4 +1,4 @@
-@import "./../../assets/scss/crm/crm-common.scss";
+// @import "./../../assets/scss/crm/crm-common.scss";
 
 :host {
   ::ng-deep {
@@ -68,7 +68,7 @@
 
 .styled-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 5px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;

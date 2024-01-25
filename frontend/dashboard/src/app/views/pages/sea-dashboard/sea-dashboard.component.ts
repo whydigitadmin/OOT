@@ -39,9 +39,9 @@ export class SeaDashboardComponent implements OnInit {
   ];
 
   dataSource1 = [
-    { action: 'Approved Agent/Shipper Quotation', count: 25 },
+    { action: 'Approved Agent/Shipper Quotation', count: 25, withinSLA: 2, outofSLA: 10 },
     { action: 'New Nomination Routing Order', count: 40, withinSLA: 20, outofSLA: 20 },
-    { action: 'Shipment Under Process', count: 33 },
+    { action: 'Shipment Under Process', count: 33, withinSLA: 1, outofSLA: 80 },
   ];
 
   dataSource2 = [
