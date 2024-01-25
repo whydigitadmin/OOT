@@ -21,40 +21,73 @@ public class ImportService {
 	@Autowired
     DashboardRoute dashboardRoute;
 	
-	public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails){
+	public List<CustomerServicePOJO> getImportLCLCustomerServiceInfo(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getLCLCustomerServiceInfo", userDetails, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportLCLCustomerServiceInfo", userDetails, List.class);
         return responseEntity.getBody();
     }
 
-    public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails){
+    public List<CustomerServicePOJO> getImportFCLCustomerServiceInfo(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getFCLCustomerServiceInfo", userDetails, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportFCLCustomerServiceInfo", userDetails, List.class);
         return responseEntity.getBody();
     }
     
-    public List<ExportDetailsPOJO> getExportLCLDetails(ExportLCLDetailsAction action){
+    public List<ExportDetailsPOJO> getAllImportlclDetailsByAction(ExportLCLDetailsAction action){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails", action, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportLCLDetails", action, List.class);
         return responseEntity.getBody();
     }
     
-    public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(ExportWithinsla sla){
+    public List<ExportDetailsPOJO> getImportLCLDetailsWihtinsla(ExportWithinsla sla){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailswihtinsla",sla, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportLCLDetailsWihtinsla",sla, List.class);
         return responseEntity.getBody();
     }
     
     
-    public List<ExportDetailsPOJO> getExportLCLDetailsOutofsla(ExportOutofSla sla){
+    public List<ExportDetailsPOJO> getImportLCLDetailsOutofsla(ExportOutofSla sla){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailsoutofsla",sla ,List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportLCLDetailsOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
+    
+    // Documentation
+    
+    public List<CustomerServicePOJO> getImportDocumentationServiceInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentationServiceInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getAllImportDocumentationDetailsByAction(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentationDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentServiceWithinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getImportDocumentationDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentServiceOutofsla",sla ,List.class);
         return responseEntity.getBody();
     }
 
+    
+    
 }
