@@ -4,6 +4,9 @@ import com.wds.ship.entity.ExportCustomerServiceLCL;
 import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
+import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.ExportWithinsla;
@@ -20,6 +23,16 @@ public class ExportServiceController {
     ExportService exportCustomerServiceLCLService;
     
 
+    @PostMapping("/getExportSalesSupportSea")
+    public List<SalesSupportPOJO> getExportSalesSupportSea(@RequestBody UserDetails userDetails) {
+        return exportCustomerServiceLCLService.getExportSalesSupportSeaInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportSalesSupportSeaDetails")
+    public List<SalesSupportDetailsPOJO>getExportSalesSupportSeaDetails(@RequestBody ExportLCLDetailsAction action){
+    	return exportCustomerServiceLCLService.getExportSalesSupportSeaDetailsInfo(action);
+    }
+    
     @GetMapping("/getCustomerServiceLCL1")
     public List<ExportCustomerServiceLCL> findByUserId(@RequestParam(name = "userId") Long userId) {
         return exportCustomerServiceLCLService.getCustomerServiceLCLInfo();
