@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wds.ship.service.ImportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.ExportWithinsla;
@@ -22,6 +24,16 @@ public class ImportServiceController {
 	
 	@Autowired
     ImportService ImportService;
+	
+		@PostMapping("/getImportSalesSupportSea")
+		public List<SalesSupportPOJO> getImportSalesSupportSea(@RequestBody UserDetails userDetails) {
+			return ImportService.getImportSalesSupportSeaInfo(userDetails);
+		}
+    
+		@PostMapping("/getImportSalesSupportSeaDetails")
+		public List<SalesSupportDetailsPOJO>getImportSalesSupportSeaDetails(@RequestBody ExportLCLDetailsAction action){
+			return ImportService.getImportSalesSupportSeaDetailsInfo(action);
+		}
 	
 	    @PostMapping("/getImportLCLCustomerServiceInfo")
 	    public List<CustomerServicePOJO> getImportLCLCustomerServiceInfo(@RequestBody UserDetails userDetails) {

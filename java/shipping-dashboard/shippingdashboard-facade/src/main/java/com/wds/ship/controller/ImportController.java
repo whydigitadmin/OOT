@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wds.ship.service.export.ImportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.ExportWithinsla;
@@ -24,6 +26,22 @@ public class ImportController {
 	
 	@Autowired
     ImportService importService;
+	
+	@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getImportSalesSupportSeaInfo")
+    public List<SalesSupportPOJO> getImportSalesSupportSeaInfo(@RequestBody UserDetails userDetails)
+    {
+        return importService.getImportSalesSupportSeaInfo(userDetails);
+
+    }
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getImportSalesSupportSeaDetailsInfo")
+    public List<SalesSupportDetailsPOJO> getImportSalesSupportSeaDetailsInfo(@RequestBody ExportLCLDetailsAction action)
+    {
+        return importService.getImportSalesSupportSeaDetailsInfo(action);
+
+    }
 	
 	@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getImportLCLCustomerServiceInfo")

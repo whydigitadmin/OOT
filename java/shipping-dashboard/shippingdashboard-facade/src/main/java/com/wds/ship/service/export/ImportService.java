@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import com.wds.ship.router.DashboardRoute;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
+import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.ExportWithinsla;
@@ -20,6 +22,20 @@ public class ImportService {
 	
 	@Autowired
     DashboardRoute dashboardRoute;
+	
+	public List<SalesSupportPOJO> getImportSalesSupportSeaInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportSalesSupportSea", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<SalesSupportDetailsPOJO> getImportSalesSupportSeaDetailsInfo(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportSalesSupportSeaDetails", action, List.class);
+        return responseEntity.getBody();
+    }
 	
 	public List<CustomerServicePOJO> getImportLCLCustomerServiceInfo(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
