@@ -83,6 +83,18 @@ public class ImportServiceController {
 	    	return ImportService.getImportDocumentationDetailsOutofSla(sla.getAction(),sla.getOutofsla());
 	    }
 	    
+	    // Air Import
+	    
+	    @PostMapping("/getImportSalesSupportAir")
+		public List<SalesSupportPOJO> getImportSalesSupportAir(@RequestBody UserDetails userDetails) {
+			return ImportService.getImportSalesSupportAirInfo(userDetails);
+		}
+    
+		@PostMapping("/getImportSalesSupportAirDetails")
+		public List<SalesSupportDetailsPOJO>getImportSalesSupportAirDetails(@RequestBody ExportLCLDetailsAction action){
+			return ImportService.getImportSalesSupportDetailsAirInfo(action);
+		}
+	    
 	   
 	
 }

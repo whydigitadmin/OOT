@@ -30,10 +30,8 @@ public interface ImportService {
 	public List<ExportDetailsPOJO> getImportLCLDetailsWithinSla(String action, int withinsla);
 
     public List<ExportDetailsPOJO>getImportLCLDetailsOutofSla(String action,int outofsla);
-    
-    
-    //Sea Import
-// Import Documentation
+   
+// Sea Import Documentation
     
     public List<CustomerServicePOJO> getImportDocumentationServiceInfo(UserDetails userDetails);
     
@@ -42,6 +40,16 @@ public interface ImportService {
     public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinSla(String action, int withinsla);
 
     public List<ExportDetailsPOJO>getImportDocumentationDetailsOutofSla(String action,int outofsla);
+    
+    
+    
+    //Air Import
+    
+    List<SalesSupportPOJO> getImportSalesSupportAirInfo(UserDetails userDetails);
+    
+    List<SalesSupportDetailsPOJO> getImportSalesSupportDetailsAirInfo(ExportLCLDetailsAction action);
+
+	
 
 	
 }

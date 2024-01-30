@@ -105,5 +105,21 @@ public class ImportService {
     }
 
     
+    // Air Import
+    
+    public List<SalesSupportPOJO> getImportSalesSupportAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportSalesSupportAir", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<SalesSupportDetailsPOJO> getImportSalesSupportDetailsAirInfo(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportSalesSupportAirDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
     
 }

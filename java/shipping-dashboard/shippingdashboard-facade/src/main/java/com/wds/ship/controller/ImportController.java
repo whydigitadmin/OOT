@@ -122,21 +122,39 @@ public class ImportController {
 //  }
   
 
-@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-@PostMapping("/getImportDocumentationDetailsWithinsla")
-public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla)
-{
-    return importService.getImportDocumentationDetailsWithinsla(sla);
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportDocumentationDetailsWithinsla")
+  public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla)
+  {
+	  return importService.getImportDocumentationDetailsWithinsla(sla);
 
-}
+  }
 
 
-@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
-@PostMapping("/getImportDocumentationDetailsOutofsla")
-public List<ExportDetailsPOJO> getImportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla)
-{
-    return importService.getImportDocumentationDetailsOutofsla(sla);
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportDocumentationDetailsOutofsla")
+  public List<ExportDetailsPOJO> getImportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla)
+  {
+	  return importService.getImportDocumentationDetailsOutofsla(sla);
 
-}
+  }
+  
+  // Air Import
+  
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportSalesSupportAirInfo")
+  public List<SalesSupportPOJO> getImportSalesSupportAirInfo(@RequestBody UserDetails userDetails)
+  {
+      return importService.getImportSalesSupportAirInfo(userDetails);
+
+  }
+  
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportSalesSupportDetailsAirInfo")
+  public List<SalesSupportDetailsPOJO> getImportSalesSupportDetailsAirInfo(@RequestBody ExportLCLDetailsAction action)
+  {
+      return importService.getImportSalesSupportDetailsAirInfo(action);
+
+  }
 
 }
