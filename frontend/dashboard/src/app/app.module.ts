@@ -52,6 +52,8 @@ import { ImportFclOutofslaReportComponent } from './report/sea-import/import-fcl
 import { ImportDocumentationCountReportComponent } from './report/sea-import/import-documentation-report/import-documentation-count-report/import-documentation-count-report.component';
 import { ImportDocumentationWithinslaReportComponent } from './report/sea-import/import-documentation-report/import-documentation-withinsla-report/import-documentation-withinsla-report.component';
 import { ImportDocumentationOutofslaReportComponent } from './report/sea-import/import-documentation-report/import-documentation-outofsla-report/import-documentation-outofsla-report.component';
+import { ExportSalesCountReportComponent } from './report/sea-export/export-sales-support-report/export-sales-count-report/export-sales-count-report.component';
+import { ImportSalesCountReportComponent } from './report/sea-import/import-sales-support-report/import-sales-count-report/import-sales-count-report.component';
 
 
 @NgModule({
@@ -87,6 +89,8 @@ import { ImportDocumentationOutofslaReportComponent } from './report/sea-import/
     ImportDocumentationCountReportComponent,
     ImportDocumentationWithinslaReportComponent,
     ImportDocumentationOutofslaReportComponent,
+    ExportSalesCountReportComponent,
+    ImportSalesCountReportComponent,
     // AirExportDashboardComponent,
 
   ],

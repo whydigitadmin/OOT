@@ -13,6 +13,8 @@ const BASE_URL = "http://localhost:8080"
 })
 export class LoginService {
 
+    private exportSalesSupportCountDetails = '/api/v1/facade/export/getExportSalesSupportSeaDetailsInfo';
+    private importSalesSupportCountDetails = '/api/v1/facade/import/getImportSalesSupportSeaDetailsInfo';
     private exportLclCountDetails = '/api/v1/facade/export/getExportLCLDetails';
     private exportLclWithinslaDetails = '/api/v1/facade/export/getExportLCLDetailsWithinsla';
     private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
@@ -48,6 +50,18 @@ export class LoginService {
         return this.http.post<any>(BASE_URL + "/api/v1/facade/shipment/getShipmentCount", jsonData, { headers: headers });
 
         //return this.http.post<any>(BASE_URL + "/api/v1/facade/shipment/getShipmentCount", jsonData);
+    }
+
+    getExportSalesSupportCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportSalesSupportSeaInfo", jsonData, { headers: headers });
+    }
+
+    getImportSalesSupportCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Import_LCL_CustomerService>(BASE_URL + "/api/v1/facade/import/getImportSalesSupportSeaInfo", jsonData, { headers: headers });
     }
 
     getExportLCLCustomerServiceInfo(): Observable<any> {
@@ -101,6 +115,28 @@ export class LoginService {
     // postData(action: string): Observable<any> {
     //     return this.http.post<any>(BASE_URL + this.backendUrl,+{action});
     // }
+
+    getExportSalesSupportDetailsCount(action: string): Observable<any> {
+        const exportSalesSupportDetails = new ExportLclDetails();
+        exportSalesSupportDetails.action = action;
+        const jsonData = JSON.stringify(exportSalesSupportDetails);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportSalesSupportCountDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getImportSalesSupportDetailsCount(action: string): Observable<any> {
+        const importSalesSupportDetails = new ExportLclDetails();
+        importSalesSupportDetails.action = action;
+        const jsonData = JSON.stringify(importSalesSupportDetails);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importSalesSupportCountDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
 
     getExportLclDetailsCount(action: string): Observable<any> {
         const exportLclDetails = new ExportLclDetails();

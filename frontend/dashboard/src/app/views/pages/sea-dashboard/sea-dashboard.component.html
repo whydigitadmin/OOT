@@ -19,17 +19,44 @@
                         </mat-panel-title>
                       </mat-expansion-panel-header>
 
-                      <mat-table [dataSource]="dataSource">
+                      <mat-table
+                        [dataSource]="datasource_export_Sales_support_CS"
+                      >
                         <ng-container matColumnDef="pendinActions">
                           <mat-header-cell *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
                           <mat-cell *matCellDef="let element">{{
-                            element.name
+                            element.action
                           }}</mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_sales_support_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+
+                        <!-- <ng-container matColumnDef="count">
                           <mat-header-cell *matHeaderCellDef
                             >Count</mat-header-cell
                           >
@@ -38,7 +65,7 @@
                               element.count
                             }}</a></mat-cell
                           >
-                        </ng-container>
+                        </ng-container> -->
 
                         <mat-header-row
                           *matHeaderRowDef="displayedColumns"

@@ -17,6 +17,7 @@ import { ExportDocumentationOutofslaReportComponent } from 'src/app/report/sea-e
 import { ExportPlannerCountReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
 import { ExportPlannerWithinslaReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
 import { ExportPlannerOutofslaReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
+import { ExportSalesCountReportComponent } from 'src/app/report/sea-export/export-sales-support-report/export-sales-count-report/export-sales-count-report.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -28,7 +29,7 @@ export class SeaDashboardComponent implements OnInit {
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
 
-
+  datasource_export_Sales_support_CS: Export_LCL_CustomerService[] = [];
   datasource_export_LCL_CS = [{}];
   datasource_export_FCL_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Planner_CS: Export_LCL_CustomerService[] = [];
@@ -67,6 +68,26 @@ export class SeaDashboardComponent implements OnInit {
   constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService, private dialog: MatDialog) { }
 
   navigateToDetails(response: Export_LCL_Details[]): void {
+
+  }
+
+  get_export_sales_support_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+      // param2: 'value2'
+      // Add more parameters as needed
+    };
+
+    const dialogRef = this.dialog.open(ExportSalesCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
 
   }
 
@@ -284,6 +305,23 @@ export class SeaDashboardComponent implements OnInit {
     this.get_export_fcl_Customer_Info();
     this.get_export_Planner_Customer_Info();
     this.get_export_Documentation_Customer_Info();
+    this.get_export_sales_support_Customer_Info();
+  }
+
+  get_export_sales_support_Customer_Info() {
+
+    this.loginService.getExportSalesSupportCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_export_Sales_support_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_export_Sales_support_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
   }
 
   get_export_lcl_Customer_Info() {

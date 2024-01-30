@@ -12,6 +12,7 @@ import { ImportLclOutofslaReportComponent } from 'src/app/report/sea-import/impo
 import { ImportDocumentationCountReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-count-report/import-documentation-count-report.component';
 import { ImportDocumentationWithinslaReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-withinsla-report/import-documentation-withinsla-report.component';
 import { ImportDocumentationOutofslaReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-outofsla-report/import-documentation-outofsla-report.component';
+import { ImportSalesCountReportComponent } from 'src/app/report/sea-import/import-sales-support-report/import-sales-count-report/import-sales-count-report.component';
 @Component({
   selector: 'app-sea-import-dashboard',
   templateUrl: './sea-import-dashboard.component.html',
@@ -22,7 +23,7 @@ export class SeaImportDashboardComponent implements OnInit {
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
 
-
+  datasource_import_Sales_Support_CS: Import_LCL_CustomerService[] = [];
   datasource_import_LCL_CS: Import_LCL_CustomerService[] = [];
   datasource_import_FCL_CS: Import_LCL_CustomerService[] = [];
   datasource_import_Documentation_CS: Import_LCL_CustomerService[] = [];
@@ -122,6 +123,23 @@ export class SeaImportDashboardComponent implements OnInit {
     this.get_import_lcl_Customer_Info();
     this.get_import_fcl_Customer_Info();
     this.get_import_documentation_Customer_Info();
+    this.get_import_sales_support_Customer_Info();
+  }
+
+  get_import_sales_support_Customer_Info() {
+
+    this.loginService.getImportSalesSupportCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_import_Sales_Support_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_import_Sales_Support_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
   }
 
   get_import_lcl_Customer_Info() {
@@ -174,6 +192,26 @@ export class SeaImportDashboardComponent implements OnInit {
           console.error('Error:', error);
         }
       );
+  }
+
+  get_import_sales_support_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+      // param2: 'value2'
+      // Add more parameters as needed
+    };
+
+    const dialogRef = this.dialog.open(ImportSalesCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
   }
 
   get_export_lcl_details_navigation(action: string): void {
