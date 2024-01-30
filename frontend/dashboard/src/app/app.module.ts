@@ -43,6 +43,16 @@ import { ExportPlannerWithinslaReportComponent } from './report/sea-export/expor
 import { ExportPlannerOutofslaReportComponent } from './report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
 import { ChartComponent } from './chart/chart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ImportLclCountReportComponent } from './report/sea-import/import-lcl-report/import-lcl-count-report/import-lcl-count-report.component';
+import { ImportLclWithinslaReportComponent } from './report/sea-import/import-lcl-report/import-lcl-withinsla-report/import-lcl-withinsla-report.component';
+import { ImportLclOutofslaReportComponent } from './report/sea-import/import-lcl-report/import-lcl-outofsla-report/import-lcl-outofsla-report.component';
+import { ImportFclCountReportComponent } from './report/sea-import/import-fcl-report/import-fcl-count-report/import-fcl-count-report.component';
+import { ImportFclWithinslaReportComponent } from './report/sea-import/import-fcl-report/import-fcl-withinsla-report/import-fcl-withinsla-report.component';
+import { ImportFclOutofslaReportComponent } from './report/sea-import/import-fcl-report/import-fcl-outofsla-report/import-fcl-outofsla-report.component';
+import { ImportDocumentationCountReportComponent } from './report/sea-import/import-documentation-report/import-documentation-count-report/import-documentation-count-report.component';
+import { ImportDocumentationWithinslaReportComponent } from './report/sea-import/import-documentation-report/import-documentation-withinsla-report/import-documentation-withinsla-report.component';
+import { ImportDocumentationOutofslaReportComponent } from './report/sea-import/import-documentation-report/import-documentation-outofsla-report/import-documentation-outofsla-report.component';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +78,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ExportPlannerWithinslaReportComponent,
     ExportPlannerOutofslaReportComponent,
     ChartComponent,
+    ImportLclCountReportComponent,
+    ImportLclWithinslaReportComponent,
+    ImportLclOutofslaReportComponent,
+    ImportFclCountReportComponent,
+    ImportFclWithinslaReportComponent,
+    ImportFclOutofslaReportComponent,
+    ImportDocumentationCountReportComponent,
+    ImportDocumentationWithinslaReportComponent,
+    ImportDocumentationOutofslaReportComponent,
     // AirExportDashboardComponent,
 
   ],

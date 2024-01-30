@@ -32,7 +32,23 @@ export class ExportLclDetails {
     }
 }
 
+export class ImportLclDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
 export class ExportDocumentationDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class ImportDocumentationDetails {
     action: string;
 
     constructor() {
