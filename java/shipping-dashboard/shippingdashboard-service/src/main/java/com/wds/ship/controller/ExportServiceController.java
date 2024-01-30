@@ -20,37 +20,37 @@ import java.util.List;
 public class ExportServiceController {
 
     @Autowired
-    ExportService exportCustomerServiceLCLService;
+    ExportService exportService;
     
 
     @PostMapping("/getExportSalesSupportSea")
     public List<SalesSupportPOJO> getExportSalesSupportSea(@RequestBody UserDetails userDetails) {
-        return exportCustomerServiceLCLService.getExportSalesSupportSeaInfo(userDetails);
+        return exportService.getExportSalesSupportSeaInfo(userDetails);
     }
     
     @PostMapping("/getExportSalesSupportSeaDetails")
     public List<SalesSupportDetailsPOJO>getExportSalesSupportSeaDetails(@RequestBody ExportLCLDetailsAction action){
-    	return exportCustomerServiceLCLService.getExportSalesSupportSeaDetailsInfo(action);
+    	return exportService.getExportSalesSupportSeaDetailsInfo(action);
     }
     
     @GetMapping("/getCustomerServiceLCL1")
     public List<ExportCustomerServiceLCL> findByUserId(@RequestParam(name = "userId") Long userId) {
-        return exportCustomerServiceLCLService.getCustomerServiceLCLInfo();
+        return exportService.getCustomerServiceLCLInfo();
     }
 
     @PostMapping("/getCustomerServiceLCL")
     public List<CustomerServicePOJO> getInfo(@RequestBody UserDetails userDetails) {
-        return exportCustomerServiceLCLService.getLCLCustomerServiceInfo(userDetails);
+        return exportService.getLCLCustomerServiceInfo(userDetails);
     }
 
     @PostMapping("/getLCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(@RequestBody UserDetails userDetails) {
-        return exportCustomerServiceLCLService.getLCLCustomerServiceInfo(userDetails);
+        return exportService.getLCLCustomerServiceInfo(userDetails);
     }
 
     @PostMapping("/getFCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(@RequestBody UserDetails userDetails) {
-        return exportCustomerServiceLCLService.getFCLCustomerServiceInfo(userDetails);
+        return exportService.getFCLCustomerServiceInfo(userDetails);
     }
     
 //    @GetMapping("/exportlcldetails")
@@ -60,7 +60,7 @@ public class ExportServiceController {
     
     @PostMapping("/exportlcldetails")
     public List<ExportDetailsPOJO>getAllLCL(@RequestBody ExportLCLDetailsAction action){
-    	return exportCustomerServiceLCLService.getAllLCLDetails(action);
+    	return exportService.getAllLCLDetails(action);
     }
      
     
@@ -71,7 +71,7 @@ public class ExportServiceController {
     
       @PostMapping("/exportlcldetailswihtinsla")
       public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
-    	  return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+    	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
       }
     
 //    @GetMapping("/exportlcldetailsoutofsla")
@@ -81,15 +81,25 @@ public class ExportServiceController {
     
     @PostMapping("/exportlcldetailsoutofsla")
     public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
-  	  return exportCustomerServiceLCLService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
     }
     
     
  // Air Export Service 
     
+    @PostMapping("/getExportSalesSupportAir")
+    public List<SalesSupportPOJO> getExportSalesSupportAir(@RequestBody UserDetails userDetails) {
+        return exportService.getExportSalesSupportAirInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportSalesSupportAirDetails")
+    public List<SalesSupportDetailsPOJO>getExportSalesSupportAirDetails(@RequestBody ExportLCLDetailsAction action){
+    	return exportService.getExportSalesSupportAirDetailsInfo(action);
+    }
+    
     @PostMapping("/getCustomerServiceAir")
     public List<CustomerServicePOJO> getExportServiceAirInfo(@RequestBody UserDetails userDetails) {
-        return exportCustomerServiceLCLService.getExportCustomerServiceAirInfo(userDetails);
+        return exportService.getExportCustomerServiceAirInfo(userDetails);
     }
     
     

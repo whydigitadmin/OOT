@@ -81,6 +81,20 @@ public class ExportService {
     
     // Air Export Service
     
+    public List<SalesSupportPOJO> getExportSalesSupportAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportSalesSupportAir", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<SalesSupportDetailsPOJO> getExportSalesSupportAirDetailsInfo(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportSalesSupportAirDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
     public List<CustomerServicePOJO> getAirExportCustomerService(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =

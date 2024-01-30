@@ -39,6 +39,9 @@ public interface ExportService {
     
     
     //Air Export
+    public List<SalesSupportPOJO> getExportSalesSupportAirInfo(UserDetails userDetails);
+	
+	public List<SalesSupportDetailsPOJO> getExportSalesSupportAirDetailsInfo(ExportLCLDetailsAction action);
     
     public List<CustomerServicePOJO> getExportCustomerServiceAirInfo(UserDetails userDetails);
 

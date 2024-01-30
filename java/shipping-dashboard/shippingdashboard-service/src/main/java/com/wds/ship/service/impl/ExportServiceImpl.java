@@ -6,12 +6,16 @@ import com.wds.ship.entity.ExportCustomerServiceAir;
 import com.wds.ship.entity.ExportCustomerServiceLCL;
 import com.wds.ship.entity.ExportFCLCustomerServiceEntity;
 import com.wds.ship.entity.ExportLCLDetails;
+import com.wds.ship.entity.ExportSalesSupportAir;
+import com.wds.ship.entity.ExportSalesSupportDetailsAir;
 import com.wds.ship.entity.ExportSalesSupportSea;
 import com.wds.ship.entity.ExportSalesSupportSeaDetails;
 import com.wds.ship.repository.ExportCustomerServiceAirRepository;
 import com.wds.ship.repository.ExportCustomerServiceLCLRepository;
 import com.wds.ship.repository.ExportFCLCustomerServiceRepository;
 import com.wds.ship.repository.ExportLCLRepository;
+import com.wds.ship.repository.ExportSalesSupportAirRepository;
+import com.wds.ship.repository.ExportSalesSupportDetailsAirRepository;
 import com.wds.ship.repository.ExportSalesSupportSeaDetailsRepository;
 import com.wds.ship.repository.ExportSalesSupportSeaRepository;
 import com.wds.ship.service.ExportService;
@@ -19,7 +23,6 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,17 +44,23 @@ public class ExportServiceImpl implements ExportService {
     
     private final ExportSalesSupportSeaDetailsRepository exportSalesSupportSeaDetailsRepo;
     
+    private final ExportSalesSupportAirRepository exportSalesSupportAirRepo;
+    
+    private final ExportSalesSupportDetailsAirRepository exportSalesSupportDetailsAirRepo;
 
     @Autowired
     public ExportServiceImpl(ExportCustomerServiceLCLRepository repository, ExportFCLCustomerServiceRepository exportFCLCustomerServiceRepository,
     		ExportLCLRepository lclRepo,ExportCustomerServiceAirRepository airExportRepo,ExportSalesSupportSeaRepository exportSalesSupportSeaRepo,
-    		ExportSalesSupportSeaDetailsRepository exportSalesSupportSeaDetailsRepo) {
+    		ExportSalesSupportSeaDetailsRepository exportSalesSupportSeaDetailsRepo,ExportSalesSupportAirRepository exportSalesSupportAirRepo,
+    		ExportSalesSupportDetailsAirRepository exportSalesSupportDetailsAirRepo) {
         this.repository = repository;
         this.exportFCLCustomerServiceRepository = exportFCLCustomerServiceRepository;
 		this.lclRepo = lclRepo;
 		this.airExportRepo=airExportRepo;
 		this.exportSalesSupportSeaRepo=exportSalesSupportSeaRepo;
 		this.exportSalesSupportSeaDetailsRepo=exportSalesSupportSeaDetailsRepo;
+		this.exportSalesSupportAirRepo = exportSalesSupportAirRepo;
+		this.exportSalesSupportDetailsAirRepo = exportSalesSupportDetailsAirRepo;
         
     }
     
@@ -137,6 +146,24 @@ public class ExportServiceImpl implements ExportService {
 	// Air Export Service 
 	
 	@Override
+	public List<SalesSupportPOJO> getExportSalesSupportAirInfo(UserDetails userDetails) {
+		List<ExportSalesSupportAir> list = exportSalesSupportAirRepo.findAll();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<SalesSupportPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	@Override
+	public List<SalesSupportDetailsPOJO> getExportSalesSupportAirDetailsInfo(ExportLCLDetailsAction action) {
+		List<ExportSalesSupportDetailsAir> list = exportSalesSupportDetailsAirRepo.findByAction(action.getAction());
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<SalesSupportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+	
+	@Override
 	public List<CustomerServicePOJO> getExportCustomerServiceAirInfo(UserDetails userDetails) {
 		List<ExportCustomerServiceAir> list = airExportRepo.findAll();
         Gson gson = new Gson();
@@ -144,6 +171,8 @@ public class ExportServiceImpl implements ExportService {
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
         return destinationList;
 	}
+
+	
 
 	
 
