@@ -9,6 +9,12 @@ import { ExportLclWithinslaReportComponent } from '../report/sea-export/export-l
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ExportLclOutofslaReportComponent } from '../report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
 import { ExportLclReportComponent } from '../report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
+import { ExportDocumentationWithinslaReportComponent } from '../report/sea-export/export-documentation-report/export-documentation-withinsla-report/export-documentation-withinsla-report.component';
+import { ExportDocumentationOutofslaReportComponent } from '../report/sea-export/export-documentation-report/export-documentation-outofsla-report/export-documentation-outofsla-report.component';
+import { ExportDocumentationCountReportComponent } from '../report/sea-export/export-documentation-report/export-documentation-count-report/export-documentation-count-report.component';
+import { ExportPlannerOutofslaReportComponent } from '../report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
+import { ExportPlannerWithinslaReportComponent } from '../report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
+import { ExportPlannerCountReportComponent } from '../report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
 
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
@@ -224,8 +230,8 @@ export class ChartComponent implements OnInit {
     },
     plotOptions: {
       series: {
-        stacking: 'normal',        
-        events : {
+        stacking: 'normal',
+        events: {
           click: this.openLclReport.bind(this)
         }
       }
@@ -244,49 +250,131 @@ export class ChartComponent implements OnInit {
 
     tooltip: {
       backgroundColor: '#FCFFC5'
-    }    
+    }
   }
-  
-  
-  openLclReport(event: any){
+
+
+  openLclReport(event: any) {
 
     let queryParams = {};
     let dialogRef: any;
-    
-        
-    if(event.point.series.name === "outofSLA"){      
+
+
+    if (event.point.series.name === "outofSLA") {
       dialogRef = this.dialog.open(ExportLclOutofslaReportComponent, {
         width: '1200px',
-        height: '500px',        
+        height: '500px',
         data: {
           action: event.point.category,
           withinsla: 0,
           outofsla: 0
-      }
+        }
       });
-    } else if(event.point.series.name === "withinsla"){
-      
+    } else if (event.point.series.name === "withinsla") {
+
       dialogRef = this.dialog.open(ExportLclWithinslaReportComponent, {
         width: '1200px',
         height: '500px',
-        
+
         data: {
           action: event.point.category,
-          withinsla: 0          
-      }
+          withinsla: 0
+        }
       });
-  } else{
-    dialogRef = this.dialog.open(ExportLclReportComponent, {
-      width: '1200px',
-      height: '500px',      
-      data: event.point.category,
-    });
-  }    
+    } else {
+      dialogRef = this.dialog.open(ExportLclReportComponent, {
+        width: '1200px',
+        height: '500px',
+        data: event.point.category,
+      });
+    }
 
     dialogRef.afterClosed().subscribe((result: any) => {
       // Handle any result or clean-up logic after the modal is closed
       console.log('Modal closed with result:', result);
-    });    
+    });
+  }
+
+  openDocumentationReport(event: any) {
+
+    let queryParams = {};
+    let dialogRef: any;
+
+
+    if (event.point.series.name === "outofSLA") {
+      dialogRef = this.dialog.open(ExportDocumentationOutofslaReportComponent, {
+        width: '1200px',
+        height: '500px',
+        data: {
+          action: event.point.category,
+          withinsla: 0,
+          outofsla: 0
+        }
+      });
+    } else if (event.point.series.name === "withinsla") {
+
+      dialogRef = this.dialog.open(ExportDocumentationWithinslaReportComponent, {
+        width: '1200px',
+        height: '500px',
+
+        data: {
+          action: event.point.category,
+          withinsla: 0
+        }
+      });
+    } else {
+      dialogRef = this.dialog.open(ExportDocumentationCountReportComponent, {
+        width: '1200px',
+        height: '500px',
+        data: event.point.category,
+      });
+    }
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+  }
+
+  openPlannerReport(event: any) {
+
+    let queryParams = {};
+    let dialogRef: any;
+
+
+    if (event.point.series.name === "outofSLA") {
+      dialogRef = this.dialog.open(ExportPlannerOutofslaReportComponent, {
+        width: '1200px',
+        height: '500px',
+        data: {
+          action: event.point.category,
+          withinsla: 0,
+          outofsla: 0
+        }
+      });
+    } else if (event.point.series.name === "withinsla") {
+
+      dialogRef = this.dialog.open(ExportPlannerWithinslaReportComponent, {
+        width: '1200px',
+        height: '500px',
+
+        data: {
+          action: event.point.category,
+          withinsla: 0
+        }
+      });
+    } else {
+      dialogRef = this.dialog.open(ExportPlannerCountReportComponent, {
+        width: '1200px',
+        height: '500px',
+        data: event.point.category,
+      });
+    }
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
   }
 
   get_export_lcl_Customer_Info_stackedChart() {
@@ -460,7 +548,10 @@ export class ChartComponent implements OnInit {
     },
     plotOptions: {
       series: {
-        stacking: 'normal'
+        stacking: 'normal',
+        events: {
+          click: this.openPlannerReport.bind(this)
+        }
       }
     },
     title: {
@@ -556,7 +647,10 @@ export class ChartComponent implements OnInit {
     },
     plotOptions: {
       series: {
-        stacking: 'normal'
+        stacking: 'normal',
+        events: {
+          click: this.openDocumentationReport.bind(this)
+        }
       }
     },
     title: {

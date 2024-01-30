@@ -4,7 +4,14 @@ import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
-import { Export_LCL_CustomerService } from 'src/app/model/export-model';
+import { Export_LCL_CustomerService, Import_LCL_CustomerService } from 'src/app/model/export-model';
+import { ImportLclCountReportComponent } from 'src/app/report/sea-import/import-lcl-report/import-lcl-count-report/import-lcl-count-report.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ImportLclWithinslaReportComponent } from 'src/app/report/sea-import/import-lcl-report/import-lcl-withinsla-report/import-lcl-withinsla-report.component';
+import { ImportLclOutofslaReportComponent } from 'src/app/report/sea-import/import-lcl-report/import-lcl-outofsla-report/import-lcl-outofsla-report.component';
+import { ImportDocumentationCountReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-count-report/import-documentation-count-report.component';
+import { ImportDocumentationWithinslaReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-withinsla-report/import-documentation-withinsla-report.component';
+import { ImportDocumentationOutofslaReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-outofsla-report/import-documentation-outofsla-report.component';
 @Component({
   selector: 'app-sea-import-dashboard',
   templateUrl: './sea-import-dashboard.component.html',
@@ -16,7 +23,9 @@ export class SeaImportDashboardComponent implements OnInit {
   accordion!: MatAccordion;
 
 
-  datasource_export_LCL_CS: Export_LCL_CustomerService[] = [];
+  datasource_import_LCL_CS: Import_LCL_CustomerService[] = [];
+  datasource_import_FCL_CS: Import_LCL_CustomerService[] = [];
+  datasource_import_Documentation_CS: Import_LCL_CustomerService[] = [];
   dataSource = [
     { name: 'Unapproved Quotation', count: 25 },
     { name: 'Approved Quotation List', count: 30 }
@@ -88,7 +97,7 @@ export class SeaImportDashboardComponent implements OnInit {
   user_roles: any;
   roles_matching!: any;
 
-  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService) { }
+  constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -110,19 +119,19 @@ export class SeaImportDashboardComponent implements OnInit {
   }
 
   loadAllItems() {
-    this.get_export_lcl_Customer_Info();
+    this.get_import_lcl_Customer_Info();
+    this.get_import_fcl_Customer_Info();
+    this.get_import_documentation_Customer_Info();
   }
 
-  get_export_lcl_Customer_Info() {
+  get_import_lcl_Customer_Info() {
 
-
-
-    this.loginService.getExportLCLCustomerServiceInfo()
+    this.loginService.getImportLCLCustomerServiceInfo()
       .subscribe(
         (response) => {
-          this.datasource_export_LCL_CS = response;
+          this.datasource_import_LCL_CS = response;
           // Handle the response data here
-          console.log('Response:', this.datasource_export_LCL_CS);
+          console.log('Response:', this.datasource_import_LCL_CS);
         },
         (error) => {
           // Handle any errors here
@@ -131,22 +140,180 @@ export class SeaImportDashboardComponent implements OnInit {
       );
   }
 
-  get_export_fcl_Customer_Info() {
+  get_import_fcl_Customer_Info() {
 
 
 
-    this.loginService.getExportLCLCustomerServiceInfo()
+    this.loginService.getImportFCLCustomerServiceInfo()
       .subscribe(
         (response) => {
-          this.datasource_export_LCL_CS = response;
+          this.datasource_import_FCL_CS = response;
           // Handle the response data here
-          console.log('Response:', this.datasource_export_LCL_CS);
+          console.log('Response:', this.datasource_import_FCL_CS);
         },
         (error) => {
           // Handle any errors here
           console.error('Error:', error);
         }
       );
+  }
+
+  get_import_documentation_Customer_Info() {
+
+
+
+    this.loginService.getImportDocumentationCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_import_Documentation_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_import_Documentation_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
+
+  get_export_lcl_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+      // param2: 'value2'
+      // Add more parameters as needed
+    };
+
+    const dialogRef = this.dialog.open(ImportLclCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_lcl_Count_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+    };
+
+    const dialogRef = this.dialog.open(ImportLclCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_lcl_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ImportLclWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_lcl_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ImportLclOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_documentation_Count_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+    };
+
+    const dialogRef = this.dialog.open(ImportDocumentationCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_documentation_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ImportDocumentationWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_documentation_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ImportDocumentationOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
   }
 
 }

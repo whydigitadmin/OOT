@@ -28,15 +28,15 @@ export class LoginScreenComponent implements OnInit {
 	private unsubscribe: Subject<any> | undefined;
 
 
-	loginForm: FormGroup ;
+	loginForm: FormGroup;
 
-	constructor(private formBuilder: FormBuilder , private loginService: LoginService , private router: Router , private globals : Globals) {
-		
-		
+	constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router, private globals: Globals) {
+
+
 		this.loginForm = this.formBuilder.group({
-			username: [null , [Validators.required, Validators.email , Validators.minLength(3) , Validators.maxLength(100) ] ],
-			password :  [null , [Validators.required , Validators.minLength(2) , Validators.maxLength(10)] ]
-		  });
+			username: [null, [Validators.required, Validators.email, Validators.minLength(3), Validators.maxLength(100)]],
+			password: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(25)]]
+		});
 	}
 
 	ngOnInit(): void {
@@ -57,30 +57,30 @@ export class LoginScreenComponent implements OnInit {
 
 	submit() {
 		const controls = this.loginForm.controls;
-		
+
 		this.loading = true;
 
-		const formData = new UserLogin(this.logindata.username , this.logindata.password);
-		this.loginService.submitLoginInfo(formData).subscribe( response => {			
-			if(response !=null){				
+		const formData = new UserLogin(this.logindata.username, this.logindata.password);
+		this.loginService.submitLoginInfo(formData).subscribe(response => {
+			if (response != null) {
 				this.globals.isUserLoggedIn = true;
 				this.globals.id = response['id'];
-				this.globals.companyId = response ['companyId'];
-				this.globals.deptName = response ['deptName'];
-				this.globals.homeDeptId = response ['homeDeptId'];
+				this.globals.companyId = response['companyId'];
+				this.globals.deptName = response['deptName'];
+				this.globals.homeDeptId = response['homeDeptId'];
 				this.globals.email = response['email'];
 				this.globals.productRoles = response['productRoles'];
 				this.globals.userDetails = response;
-				localStorage.setItem('user_data',JSON.stringify(response));
-   				localStorage.setItem('roles',JSON.stringify(this.globals.productRoles));					
+				localStorage.setItem('user_data', JSON.stringify(response));
+				localStorage.setItem('roles', JSON.stringify(this.globals.productRoles));
 				this.router.navigateByUrl('/landing');
 			}
-			else{
+			else {
 
 			}
 		})
-		
 
-		
+
+
 	}
 }

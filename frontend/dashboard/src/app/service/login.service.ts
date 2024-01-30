@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { ExportDocumentationDetails, ExportLclDetails, ExportPlannerDetails, Globals, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
-import { Air_Export_CustomerService, Export_LCL_CustomerService } from "../model/export-model";
+import { ExportDocumentationDetails, ExportLclDetails, ExportPlannerDetails, Globals, ImportDocumentationDetails, ImportLclDetails, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
+import { Air_Export_CustomerService, Export_LCL_CustomerService, Import_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
-const BASE_URL = "https://18.140.188.121:8080"
-// const BASE_URL = "http://localhost:8080"
+// const BASE_URL = "https://18.140.188.121:8080"
+const BASE_URL = "http://localhost:8080"
 
 @Injectable({
     providedIn: 'root'
@@ -22,6 +22,13 @@ export class LoginService {
     private exportPlannerCountDetails = '/api/v1/facade/export/getExportPlannerServiceCount';
     private exportPlannerWithinslaDetails = '/api/v1/facade/export/getExportPlannerServicewithinsla';
     private exportPlannerOutofslaDetails = '/api/v1/facade/export/getExportPlannerServiceOutofsla';
+    private importLclCountDetails = '/api/v1/facade/import/getImportLCLDetails';
+    private importLclWithinslaDetails = '/api/v1/facade/import/getImportLCLDetailsWithinsla';
+    private importLclOutOfSlaDetails = '/api/v1/facade/import/getImportLCLDetailsOutofsla';
+    private importDocumentationCountDetails = '	/api/v1/facade/import/getImportDocumentationDetails';
+    private importDocumentationWithinslaDetails = '/api/v1/facade/import/getImportDocumentationDetailsWithinsla';
+    private importDocumentationOutofslaDetails = '	/api/v1/facade/import/getImportDocumentationDetailsOutofsla';
+
 
     constructor(private http: HttpClient, private globals: Globals) { }
 
@@ -49,10 +56,22 @@ export class LoginService {
         return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getLCLCustomerServiceInfo", jsonData, { headers: headers });
     }
 
+    getImportLCLCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Import_LCL_CustomerService>(BASE_URL + "/api/v1/facade/import/getImportLCLCustomerServiceInfo", jsonData, { headers: headers });
+    }
+
     getExportFCLCustomerServiceInfo(): Observable<any> {
         const jsonData = JSON.stringify(this.globals.userDetails);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getFCLCustomerServiceInfo", jsonData, { headers: headers });
+    }
+
+    getImportFCLCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Import_LCL_CustomerService>(BASE_URL + "/api/v1/facade/import/getImportFCLCustomerServiceInfo", jsonData, { headers: headers });
     }
 
     getExportPlannerCustomerServiceInfo(): Observable<any> {
@@ -65,6 +84,12 @@ export class LoginService {
         const jsonData = JSON.stringify(this.globals.userDetails);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<Export_LCL_CustomerService>(BASE_URL + "/api/v1/facade/export/getExportDocumentationServiceInfo", jsonData, { headers: headers });
+    }
+
+    getImportDocumentationCustomerServiceInfo(): Observable<any> {
+        const jsonData = JSON.stringify(this.globals.userDetails);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<Import_LCL_CustomerService>(BASE_URL + "/api/v1/facade/import/getImportDocumentationCustomerServiceInfo", jsonData, { headers: headers });
     }
 
     getAirExportCsCustomerServiceInfo(): Observable<any> {
@@ -112,6 +137,52 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
 
+    getImportLclDetailsCount(action: string): Observable<any> {
+        const importLclDetails = new ImportLclDetails();
+        importLclDetails.action = action;
+        const jsonData = JSON.stringify(importLclDetails);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importLclCountDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getImportLclDetailsWithinSla(action: string): Observable<any> {
+        console.log("action", action);
+        const importLclDetailsWithinsla = new ImportLclDetails();
+        importLclDetailsWithinsla.action = action;
+        const jsonData = JSON.stringify(importLclDetailsWithinsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importLclWithinslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getImportLclDetailsOutOfSla(action: string): Observable<any> {
+        console.log("action", action);
+        const importLclDetailsOutofsla = new ImportLclDetails();
+        importLclDetailsOutofsla.action = action;
+        const jsonData = JSON.stringify(importLclDetailsOutofsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importLclOutOfSlaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    // getImportFclDetailsCount(action: string): Observable<any> {
+    //     const importLclDetails = new ImportLclDetails();
+    //     importLclDetails.action = action;
+    //     const jsonData = JSON.stringify(importLclDetails);
+    //     console.log('jsonData', jsonData);
+    //     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    //     const urlWithParams = `${BASE_URL}${this.importLclCountDetails}`;
+    //     // const variable = encodeURIComponent(`${action}`);
+    //     return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    // }
+
     getExportDocumentationCountDetails(action: string): Observable<any> {
         const exportDocumentationDetails = new ExportDocumentationDetails();
         exportDocumentationDetails.action = action;
@@ -119,6 +190,17 @@ export class LoginService {
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportDocumentationCountDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getImportDocumentationCountDetails(action: string): Observable<any> {
+        const importDocumentationDetails = new ImportDocumentationDetails();
+        importDocumentationDetails.action = action;
+        const jsonData = JSON.stringify(importDocumentationDetails);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importDocumentationCountDetails}`;
         // const variable = encodeURIComponent(`${action}`);
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
@@ -135,6 +217,18 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
 
+    getImportDocumentationWithinslaDetails(action: string): Observable<any> {
+        console.log("action", action);
+        const importDocumentationDetailsWithinsla = new ImportDocumentationDetails();
+        importDocumentationDetailsWithinsla.action = action;
+        const jsonData = JSON.stringify(importDocumentationDetailsWithinsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importDocumentationWithinslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
     getExportDocumentationDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
         const exportDocumentationDetailsOutofsla = new ExportDocumentationDetails();
@@ -143,6 +237,18 @@ export class LoginService {
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportDocumentationOutofslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getImportDocumentationDetailsOutOfSla(action: string): Observable<any> {
+        console.log("action", action);
+        const importDocumentationDetailsOutofsla = new ImportDocumentationDetails();
+        importDocumentationDetailsOutofsla.action = action;
+        const jsonData = JSON.stringify(importDocumentationDetailsOutofsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.importDocumentationOutofslaDetails}`;
         // const variable = encodeURIComponent(`${action}`);
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
