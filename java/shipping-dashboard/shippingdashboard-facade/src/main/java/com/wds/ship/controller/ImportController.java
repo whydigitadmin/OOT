@@ -139,6 +139,51 @@ public class ImportController {
 
   }
   
+//Sea Import Transhipment
+  
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportTranshipmentServiceInfo")
+  public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(@RequestBody UserDetails userDetails)
+  {
+    return importService.getImportTranshipmentServiceInfo(userDetails);
+
+  }
+
+
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportTranshipmentDetails")
+  public List<ExportDetailsPOJO> getImportTranshipmentDetails(@RequestBody ExportLCLDetailsAction action)
+  {
+    return importService.getAllImportTranshipmentDetailsByAction(action);
+
+  }
+
+//@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+//@GetMapping("/getImportLCLDetails")
+//public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
+//{
+//    return exportService.getExportLCLDetails(action);
+//
+//}
+
+
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportTranshipmentDetailsWithinsla")
+  public List<ExportDetailsPOJO> getImportTranshipmentDetailsWithinsla(@RequestBody ExportWithinsla sla)
+  {
+	  return importService.getImportTranshipmentDetailsWithinsla(sla);
+
+  }
+
+
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getImportTranshipmentDetailsOutofsla")
+  public List<ExportDetailsPOJO> getImportTranshipmentDetailsOutofsla(@RequestBody ExportOutofSla sla)	
+  {
+	  return importService.getImportTranshipmentDetailsOutofsla(sla);
+
+  }
+  
   // Air Import
   
   @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})

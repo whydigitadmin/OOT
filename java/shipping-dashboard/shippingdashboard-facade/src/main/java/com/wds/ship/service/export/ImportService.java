@@ -104,6 +104,36 @@ public class ImportService {
         return responseEntity.getBody();
     }
 
+   // Sea Import Transhipment Desk 
+    
+    public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getAllImportTranshipmentDetailsByAction(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getImportTranshipmentDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceWithinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getImportTranshipmentDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
     
     // Air Import
     

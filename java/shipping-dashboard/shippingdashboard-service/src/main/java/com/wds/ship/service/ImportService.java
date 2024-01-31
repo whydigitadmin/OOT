@@ -41,6 +41,18 @@ public interface ImportService {
 
     public List<ExportDetailsPOJO>getImportDocumentationDetailsOutofSla(String action,int outofsla);
     
+    //Transhipment
+    
+    public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(UserDetails userDetails);
+    
+    public List<ExportDetailsPOJO>getImportTranshipmentDetailsByAction(ExportLCLDetailsAction action);
+    
+    public List<ExportDetailsPOJO> getImportTranshipmentDetailsWithinSla(String action, int withinsla);
+
+    public List<ExportDetailsPOJO>getImportTranshipmentDetailsOutofSla(String action,int outofsla);
+    
+    
+    
     
     
     //Air Import

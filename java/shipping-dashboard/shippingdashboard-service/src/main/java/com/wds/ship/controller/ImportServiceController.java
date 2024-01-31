@@ -83,6 +83,28 @@ public class ImportServiceController {
 	    	return ImportService.getImportDocumentationDetailsOutofSla(sla.getAction(),sla.getOutofsla());
 	    }
 	    
+	    // Sea Import Transhipment Desk
+	    
+	    @PostMapping("/getImportTranshipmentServiceInfo")
+	    public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(@RequestBody UserDetails userDetails) {
+	        return ImportService.getImportTranshipmentServiceInfo(userDetails);
+	    }
+	    
+	    @PostMapping("/getImportTranshipmentDetails")
+	    public List<ExportDetailsPOJO>getAllImportTranshipmentDetailsByAction(@RequestBody ExportLCLDetailsAction action){
+	    	return ImportService.getImportTranshipmentDetailsByAction(action);
+	    }
+	    
+	    @PostMapping("/getImportTranshipmentServiceWithinsla")
+	    public List<ExportDetailsPOJO>getImportTranshipmentDetailsWithinsla(@RequestBody ExportWithinsla sla){
+	    	return ImportService.getImportTranshipmentDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    }
+	    
+	    @PostMapping("/getImportTranshipmentServiceOutofsla")
+	    public List<ExportDetailsPOJO>getImportTranshipmentDetailsOutofsla(@RequestBody ExportOutofSla sla){
+	    	return ImportService.getImportTranshipmentDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    }
+	    
 	    // Air Import
 	    
 	    @PostMapping("/getImportSalesSupportAir")
