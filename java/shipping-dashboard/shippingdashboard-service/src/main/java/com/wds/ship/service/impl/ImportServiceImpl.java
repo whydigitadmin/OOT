@@ -19,6 +19,8 @@ import com.wds.ship.entity.ImportSalesSupportAir;
 import com.wds.ship.entity.ImportSalesSupportDetailsAir;
 import com.wds.ship.entity.ImportSalesSupportSea;
 import com.wds.ship.entity.ImportSalesSupportSeaDetails;
+import com.wds.ship.entity.ImportTranshipmentDeskAir;
+import com.wds.ship.entity.ImportTranshipmentDeskDetailsAir;
 import com.wds.ship.entity.ImportTranshipmentDeskDetailsSea;
 import com.wds.ship.entity.ImportTranshipmentDeskSea;
 import com.wds.ship.repository.ImportCustomerServiceFCLRepository;
@@ -30,6 +32,8 @@ import com.wds.ship.repository.ImportSalesSupportAirRepository;
 import com.wds.ship.repository.ImportSalesSupportDetailsAirRepository;
 import com.wds.ship.repository.ImportSalesSupportSeaDetailsRepository;
 import com.wds.ship.repository.ImportSalesSupportSeaRepository;
+import com.wds.ship.repository.ImportTranshipmentDeskAirRepository;
+import com.wds.ship.repository.ImportTranshipmentDeskDetailsAirRepository;
 import com.wds.ship.repository.ImportTranshipmentDeskDetailsSeaRepository;
 import com.wds.ship.repository.ImportTranshipmentDeskSeaRepository;
 import com.wds.ship.service.ImportService;
@@ -65,12 +69,17 @@ public class ImportServiceImpl implements ImportService {
 	
 	private final ImportTranshipmentDeskDetailsSeaRepository importTranshipmentDeskDetailsSeaRepo;
 	
+	private final ImportTranshipmentDeskAirRepository importTranshipmentDeskAirRepo;
+	
+	private final ImportTranshipmentDeskDetailsAirRepository importTranshipmentDeskDetailsAirRepo;
+	
 	@Autowired
 	public ImportServiceImpl(ImportSalesSupportSeaDetailsRepository importSalesSupportSeaDetailsRepo,ImportSalesSupportSeaRepository importSalesSupportSeaRepo,
 			ImportCustomerServiceLCLRepository importLclRepo,ImportCustomerServiceFCLRepository importFclRepo,ImportDocumentationRepository importDocumentationRepo,
 			ImportCustomerServiceLCLDetailsRepository importLclDetailsRepo,ImportDocumentationDetailsRepository importDocumentationDetailsRepo,
 			ImportSalesSupportAirRepository importSalesSupportAirRepo,ImportSalesSupportDetailsAirRepository importSalesSupportDetailsAirRepo, 
-			ImportTranshipmentDeskDetailsSeaRepository importTranshipmentDeskDetailsSeaRepo,ImportTranshipmentDeskSeaRepository importTranshipmentDeskSeaRepo) {
+			ImportTranshipmentDeskDetailsSeaRepository importTranshipmentDeskDetailsSeaRepo,ImportTranshipmentDeskSeaRepository importTranshipmentDeskSeaRepo,
+			ImportTranshipmentDeskAirRepository importTranshipmentDeskAirRepo,ImportTranshipmentDeskDetailsAirRepository importTranshipmentDeskDetailsAirRepo) {
         this.importLclRepo = importLclRepo;
         this.importFclRepo= importFclRepo;
         this.importDocumentationRepo=importDocumentationRepo;
@@ -82,6 +91,8 @@ public class ImportServiceImpl implements ImportService {
 		this.importSalesSupportDetailsAirRepo = importSalesSupportDetailsAirRepo;
 		this.importTranshipmentDeskSeaRepo = importTranshipmentDeskSeaRepo;
 		this.importTranshipmentDeskDetailsSeaRepo = importTranshipmentDeskDetailsSeaRepo;
+		this.importTranshipmentDeskAirRepo = importTranshipmentDeskAirRepo;
+		this.importTranshipmentDeskDetailsAirRepo = importTranshipmentDeskDetailsAirRepo;
 		
     }
 
@@ -189,7 +200,7 @@ public class ImportServiceImpl implements ImportService {
 	// Sea Import Transhipment
 	
 	@Override
-	public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(UserDetails userDetails) {
+	public List<CustomerServicePOJO> getImportTranshipmentServiceSeaInfo(UserDetails userDetails) {
 		List<ImportTranshipmentDeskSea> list = importTranshipmentDeskSeaRepo.findAll();
         Gson gson = new Gson();
         String json = gson.toJson(list);
@@ -199,7 +210,7 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentDetailsByAction(ExportLCLDetailsAction action) {
+	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsByAction(ExportLCLDetailsAction action) {
 		List<ImportTranshipmentDeskDetailsSea> list = importTranshipmentDeskDetailsSeaRepo.findByAction(action.getAction());
         Gson gson = new Gson();
         String json = gson.toJson(list);
@@ -209,7 +220,7 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentDetailsWithinSla(String action, int withinsla) {
+	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsWithinSla(String action, int withinsla) {
 		List<ImportTranshipmentDeskDetailsSea> documentation=importTranshipmentDeskDetailsSeaRepo.findAllByActionAndWithinsla(action,withinsla);
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
@@ -219,7 +230,7 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentDetailsOutofSla(String action, int outofsla) {
+	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsOutofSla(String action, int outofsla) {
 		List<ImportTranshipmentDeskDetailsSea> documentation=importTranshipmentDeskDetailsSeaRepo.findAllByActionAndOutofsla(action,outofsla);
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
@@ -245,6 +256,47 @@ public class ImportServiceImpl implements ImportService {
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<SalesSupportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+// Air import Transhipment
+	
+	@Override
+	public List<CustomerServicePOJO> getImportTranshipmentServiceAirInfo(UserDetails userDetails) {
+		List<ImportTranshipmentDeskAir> list = importTranshipmentDeskAirRepo.findAll();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
+        return destinationList;	
+	}
+
+
+	@Override
+	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsByAction(ExportLCLDetailsAction action) {
+		List<ImportTranshipmentDeskDetailsAir> list = importTranshipmentDeskDetailsAirRepo.findByAction(action.getAction());
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+
+	@Override
+	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsWithinSla(String action, int withinsla) {
+		List<ImportTranshipmentDeskDetailsAir> documentation=importTranshipmentDeskDetailsAirRepo.findAllByActionAndWithinsla(action,withinsla);
+		Gson gson = new Gson();
+        String json = gson.toJson(documentation);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+
+	@Override
+	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsOutofSla(String action, int outofsla) {
+		List<ImportTranshipmentDeskDetailsAir> documentation=importTranshipmentDeskDetailsAirRepo.findAllByActionAndOutofsla(action,outofsla);
+		Gson gson = new Gson();
+        String json = gson.toJson(documentation);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
         return destinationList;
 	}
 	

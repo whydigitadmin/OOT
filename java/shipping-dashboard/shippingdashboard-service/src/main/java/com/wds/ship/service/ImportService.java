@@ -43,13 +43,13 @@ public interface ImportService {
     
     //Transhipment
     
-    public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(UserDetails userDetails);
+    public List<CustomerServicePOJO> getImportTranshipmentServiceSeaInfo(UserDetails userDetails);
     
-    public List<ExportDetailsPOJO>getImportTranshipmentDetailsByAction(ExportLCLDetailsAction action);
+    public List<ExportDetailsPOJO>getImportTranshipmentSeaDetailsByAction(ExportLCLDetailsAction action);
     
-    public List<ExportDetailsPOJO> getImportTranshipmentDetailsWithinSla(String action, int withinsla);
+    public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsWithinSla(String action, int withinsla);
 
-    public List<ExportDetailsPOJO>getImportTranshipmentDetailsOutofSla(String action,int outofsla);
+    public List<ExportDetailsPOJO>getImportTranshipmentSeaDetailsOutofSla(String action,int outofsla);
     
     
     
@@ -60,8 +60,17 @@ public interface ImportService {
     List<SalesSupportPOJO> getImportSalesSupportAirInfo(UserDetails userDetails);
     
     List<SalesSupportDetailsPOJO> getImportSalesSupportDetailsAirInfo(ExportLCLDetailsAction action);
+    
+    
+    // Air Transhipment
 
-	
+    public List<CustomerServicePOJO> getImportTranshipmentServiceAirInfo(UserDetails userDetails);
+    
+    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsByAction(ExportLCLDetailsAction action);
+    
+    public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsWithinSla(String action, int withinsla);
+
+    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsOutofSla(String action,int outofsla);
 
 	
 }

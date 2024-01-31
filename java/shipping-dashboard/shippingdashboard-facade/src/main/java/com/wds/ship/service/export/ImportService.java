@@ -106,32 +106,32 @@ public class ImportService {
 
    // Sea Import Transhipment Desk 
     
-    public List<CustomerServicePOJO> getImportTranshipmentServiceInfo(UserDetails userDetails){
+    public List<CustomerServicePOJO> getImportTranshipmentServiceSeaInfo(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceInfo", userDetails, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceSeaInfo", userDetails, List.class);
         return responseEntity.getBody();
     }
     
-    public List<ExportDetailsPOJO> getAllImportTranshipmentDetailsByAction(ExportLCLDetailsAction action){
+    public List<ExportDetailsPOJO> getAllImportTranshipmentSeaDetailsByAction(ExportLCLDetailsAction action){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentDetails", action, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentSeaDetails", action, List.class);
         return responseEntity.getBody();
     }
     
-    public List<ExportDetailsPOJO> getImportTranshipmentDetailsWithinsla(ExportWithinsla sla){
+    public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsWithinsla(ExportWithinsla sla){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceWithinsla",sla, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentSeaServiceWithinsla",sla, List.class);
         return responseEntity.getBody();
     }
     
     
-    public List<ExportDetailsPOJO> getImportTranshipmentDetailsOutofsla(ExportOutofSla sla){
+    public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsOutofsla(ExportOutofSla sla){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceOutofsla",sla ,List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentSeaServiceOutofsla",sla ,List.class);
         return responseEntity.getBody();
     }
     
@@ -151,5 +151,35 @@ public class ImportService {
         return responseEntity.getBody();
     }
     
+// Air Import Transhipment Desk 
+    
+    public List<CustomerServicePOJO> getImportTranshipmentServiceAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentServiceAirInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getAllImportTranshipmentAirDetailsByAction(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentAirDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentAirServiceWithinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportTranshipmentAirServiceOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
     
 }
