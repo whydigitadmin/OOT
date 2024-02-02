@@ -52,4 +52,25 @@ public class ExportDocumentationServiceController {
     	return exportDocumentService.getExportDocumentationDetailsOutofsla(sla.getAction(),sla.getOutofsla());
     }
 
+    // Air Export Docuementation
+    
+    @PostMapping("/getExportDocumentServiceAirInfo")
+    public List<CustomerServicePOJO> getExportDocumentServiceAirInfo(@RequestBody UserDetails userDetails) {
+        return exportDocumentService.getExportDocumentationServiceAirInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportDocumentationAirCount")
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsCount(@RequestBody ExportLCL action){
+    	return exportDocumentService.getExportDocumentationAirDetailsCount(action);
+    }
+    
+    @PostMapping("/getExportDocumentationAirWithinsla")
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
+    	return exportDocumentService.getExportDocumentationAirDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    }
+    
+    @PostMapping("/getExportDocumentationAirOutofsla")
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
+    	return exportDocumentService.getExportDocumentationAirDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    }
 }

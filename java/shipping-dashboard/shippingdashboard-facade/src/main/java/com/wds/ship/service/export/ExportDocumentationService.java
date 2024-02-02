@@ -49,6 +49,36 @@ public class ExportDocumentationService {
         return responseEntity.getBody();
     }
     
+    // Air Export Documentation
+    
+    public List<CustomerServicePOJO> getExportDocumentationServiceAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportDocumentServiceAirInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportDocumentationAirCount(ExportLCL action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportDocumentationAirCount", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportDocumentationAirWithinsla(ExportWithinsla withinsla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportDocumentationAirWithinsla", withinsla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportDocumentationAirOutofsla(ExportOutofSla outofsla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportDocumentationAirOutofsla", outofsla, List.class);
+        return responseEntity.getBody();
+    }
+    
     
 
 }

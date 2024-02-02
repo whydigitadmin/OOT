@@ -58,5 +58,40 @@ public class ExportDocumentationController {
 
     }
     
+    // Air Export Documentation
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportDocumentationServiceAirInfo")
+    public List<CustomerServicePOJO> getExportDocumentationServiceAirInfo(@RequestBody UserDetails userDetails)
+    {
+        return exportdocumentationservice.getExportDocumentationServiceAirInfo(userDetails);
+
+    }
+    
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportDocumentationAirCount")
+    public List<ExportDetailsPOJO> getExportDocumentationAirCount(@RequestBody ExportLCL action)
+    {
+        return exportdocumentationservice.getExportDocumentationAirCount(action);
+
+    }
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportDocumentationAirWithinsla")
+    public List<ExportDetailsPOJO> getExportDocumentationAirWithinsla(@RequestBody ExportWithinsla sla)
+    {
+        return exportdocumentationservice.getExportDocumentationAirWithinsla(sla);
+
+    }
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportDocumentationAirOutofsla")
+    public List<ExportDetailsPOJO> getExportDocumentationAirOutofsla(@RequestBody ExportOutofSla sla)
+    {
+        return exportdocumentationservice.getExportDocumentationAirOutofsla(sla);
+
+    }
+    
 
 }
