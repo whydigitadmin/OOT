@@ -48,4 +48,39 @@ public class ExportPlannerService {
                 restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerServiceOutofsla", outofsla, List.class);
         return responseEntity.getBody();
     }
+    
+    
+    
+    // Air Export
+    
+    
+    public List<CustomerServicePOJO> getExportPlannerAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerServiceAirInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+	
+	public List<ExportDetailsPOJO> getExportPlannerAirCount(ExportLCL action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerAirCount", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportPlannerAirWithinsla(ExportWithinsla withinsla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerAirWithinsla", withinsla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportPlannerAirOutofsla(ExportOutofSla outofsla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportPlannerAirOutofsla", outofsla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
 }

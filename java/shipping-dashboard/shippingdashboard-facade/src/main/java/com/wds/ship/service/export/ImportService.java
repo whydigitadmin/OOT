@@ -151,6 +151,45 @@ public class ImportService {
         return responseEntity.getBody();
     }
     
+    // Air Import Customer Service
+    
+    public List<CustomerServicePOJO> getImportCustomerServiceAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportCustomerServicetAir", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+ // Air Import Documentation
+    public List<CustomerServicePOJO> getImportDocumentationServiceAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentationServiceAirInfo", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getAllImportDocumentationAirDetailsByAction(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentationDetailsAir", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getImportDocumentationAirDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentationAirWithinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getImportDocumentationAirDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportDocumentationAirOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
+    
 // Air Import Transhipment Desk 
     
     public List<CustomerServicePOJO> getImportTranshipmentServiceAirInfo(UserDetails userDetails){

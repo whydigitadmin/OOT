@@ -9,7 +9,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wds.ship.entity.ExportDocumentationDetails;
 import com.wds.ship.entity.ExportPlanner;
+import com.wds.ship.entity.ExportPlannerAir;
 import com.wds.ship.entity.ExportPlannerDetails;
+import com.wds.ship.entity.ExportPlannerDetailsAir;
+import com.wds.ship.repository.ExportPlannerAirRepository;
+import com.wds.ship.repository.ExportPlannerDetailsAirRepository;
 import com.wds.ship.repository.ExportPlannerDetailsRepo;
 import com.wds.ship.repository.ExportPlannerRepository;
 import com.wds.ship.service.ExportPlannerService;
@@ -24,15 +28,19 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	@Autowired
 	private final ExportPlannerRepository exportplannerepository;
 	
+	private final ExportPlannerDetailsRepo plannerDetailsRepo;
+	
+	private final ExportPlannerAirRepository exportPlannerAirRepo;
+	
+	private final ExportPlannerDetailsAirRepository exportPlannerDetailsAirRepo;
+	
 	@Autowired
-	ExportPlannerDetailsRepo plannerDetailsRepo;
-	
-	
-	
-	
-	public ExportPlannerServiceImpl(ExportPlannerRepository exportplannerepository,ExportPlannerDetailsRepo plannerDetailsRepo) {
+	public ExportPlannerServiceImpl(ExportPlannerRepository exportplannerepository,ExportPlannerDetailsRepo plannerDetailsRepo,
+			ExportPlannerAirRepository exportPlannerAirRepo,ExportPlannerDetailsAirRepository exportPlannerDetailsAirRepo) {
         this.exportplannerepository = exportplannerepository;
         this.plannerDetailsRepo=plannerDetailsRepo;
+		this.exportPlannerAirRepo = exportPlannerAirRepo;
+		this.exportPlannerDetailsAirRepo = exportPlannerDetailsAirRepo;
        
     }
 
@@ -73,6 +81,43 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	@Override
 	public List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(String action, int outofsla) {
 		List<ExportPlannerDetails> planner=plannerDetailsRepo.findByActionAndOutofsla(action,outofsla);
+		Gson gson = new Gson();
+        String json = gson.toJson(planner);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	// Air Export planner
+	@Override
+	public List<CustomerServicePOJO> getExportPlannerAirInfo(UserDetails userDetails) {
+		List<ExportPlannerAir> list = exportPlannerAirRepo.findAll();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
+        return destinationList;
+	}
+	
+	@Override
+	public List<ExportDetailsPOJO> getExportPlannerAirDetailsCount(ExportLCL action) {
+		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findAllByAction(action.getAction());
+		Gson gson = new Gson();
+        String json = gson.toJson(planner);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportPlannerAirDetailsWithinsla(String action, int withinsla) {
+		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findByActionAndWithinsla(action,withinsla);
+		Gson gson = new Gson();
+        String json = gson.toJson(planner);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(String action, int outofsla) {
+		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findByActionAndOutofsla(action,outofsla);
 		Gson gson = new Gson();
         String json = gson.toJson(planner);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());

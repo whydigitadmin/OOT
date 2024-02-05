@@ -117,6 +117,35 @@ public class ImportServiceController {
 			return ImportService.getImportSalesSupportDetailsAirInfo(action);
 		}
 		
+		// Air Import Customer Service
+		@PostMapping("/getImportCustomerServicetAir")
+		public List<CustomerServicePOJO> getImportCustomerServiceAir(@RequestBody UserDetails userDetails) {
+			return ImportService.getImportCustomerServiceAirInfo(userDetails);
+		}
+		
+		// Air Import Documentation
+	    
+	    @PostMapping("/getImportDocumentationServiceAirInfo")
+	    public List<CustomerServicePOJO> getImportDocumentationServiceAirInfo(@RequestBody UserDetails userDetails) {
+	        return ImportService.getImportDocumentationServiceAirInfo(userDetails);
+	    }
+	    
+	    @PostMapping("/getImportDocumentationDetailsAir")
+	    public List<ExportDetailsPOJO>getAllImportDocumentationAirDetailsByAction(@RequestBody ExportLCLDetailsAction action){
+	    	return ImportService.getImportDocumentationAirDetailsByAction(action);
+	    }
+	    
+	    @PostMapping("/getImportDocumentationAirWithinsla")
+	    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
+	    	return ImportService.getImportDocumentationAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    }
+	    
+	    @PostMapping("/getImportDocumentationAirOutofsla")
+	    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
+	    	return ImportService.getImportDocumentationAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    }
+		
+		
 		// AIr Import Transhipment Desk
 	    
 		@PostMapping("/getImportTranshipmentServiceAirInfo")

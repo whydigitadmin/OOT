@@ -61,7 +61,18 @@ public interface ImportService {
     
     List<SalesSupportDetailsPOJO> getImportSalesSupportDetailsAirInfo(ExportLCLDetailsAction action);
     
+    //Air Import Customer Service
+    public List<CustomerServicePOJO> getImportCustomerServiceAirInfo(UserDetails userDetails);
     
+    // Air Documentation
+    
+    public List<CustomerServicePOJO> getImportDocumentationServiceAirInfo(UserDetails userDetails);
+    
+    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsByAction(ExportLCLDetailsAction action);
+    
+    public List<ExportDetailsPOJO> getImportDocumentationAirDetailsWithinSla(String action, int withinsla);
+
+    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsOutofSla(String action,int outofsla);
     // Air Transhipment
 
     public List<CustomerServicePOJO> getImportTranshipmentServiceAirInfo(UserDetails userDetails);

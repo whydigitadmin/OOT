@@ -27,6 +27,7 @@ public class ExportPlannerServiceController {
 	@Autowired
     ExportPlannerService exportPlannerService;
 	
+	// Sea Export Planner
 	@GetMapping("/getExportPlannerService")
     public List<ExportPlanner> findByUserId(@RequestParam(name = "userId") Long userId) {
         return exportPlannerService.getExportPlanner();
@@ -50,5 +51,27 @@ public class ExportPlannerServiceController {
     @PostMapping("/getExportPlannerServiceOutofsla")
     public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla){
     	return exportPlannerService.getExportPlannerDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    }
+    
+    // Air Export planner
+    
+    @PostMapping("/getExportPlannerServiceAirInfo")
+    public List<CustomerServicePOJO> getExportPlannerServiceAirInfo(@RequestBody UserDetails userDetails) {
+        return exportPlannerService.getExportPlannerAirInfo(userDetails);
+    }
+
+    @PostMapping("/getExportPlannerAirCount")
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsCount(@RequestBody ExportLCL action){
+    	return exportPlannerService.getExportPlannerAirDetailsCount(action);
+    }
+    
+    @PostMapping("/getExportPlannerAirWithinsla")
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
+    	return exportPlannerService.getExportPlannerAirDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    }
+    
+    @PostMapping("/getExportPlannerAirOutofsla")
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
+    	return exportPlannerService.getExportPlannerAirDetailsOutofsla(sla.getAction(),sla.getOutofsla());
     }
 }

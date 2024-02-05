@@ -21,6 +21,16 @@ public interface ExportPlannerService {
 	List<ExportDetailsPOJO> getExportPlannerDetailsCount(ExportLCL action);
 
 	List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(String action, int outofsla);
+	
+	// Air Export Planner
+	
+	public List<CustomerServicePOJO> getExportPlannerAirInfo(UserDetails userDetails);
+
+	List<ExportDetailsPOJO> getExportPlannerAirDetailsWithinsla(String action, int withinsla);
+
+	List<ExportDetailsPOJO> getExportPlannerAirDetailsCount(ExportLCL action);
+
+	List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(String action, int outofsla);
 
 
 }

@@ -58,4 +58,39 @@ public class ExportPlannerController {
         return exportplannerservice.getExportPlannerServiceOutofsla(sla);
 
     }
+    
+    
+    // Air Export 
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportPlannerServiceAirInfo")
+    public List<CustomerServicePOJO> getExportPlannerServiceAirInfo(@RequestBody UserDetails userDetails)
+    {
+        return exportplannerservice.getExportPlannerAirInfo(userDetails);
+
+    }
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportPlannerAirCount")
+    public List<ExportDetailsPOJO> getExportPlannerAirCount(@RequestBody ExportLCL action)
+    {
+        return exportplannerservice.getExportPlannerAirCount(action);
+
+    }
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportPlannerAirWithinsla")
+    public List<ExportDetailsPOJO> getExportPlannerAirWithinsla(@RequestBody ExportWithinsla sla)
+    {
+        return exportplannerservice.getExportPlannerAirWithinsla(sla);
+
+    }
+    
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @PostMapping("/getExportPlannerAIrOutofsla")
+    public List<ExportDetailsPOJO> getExportPlannerAirOutofsla(@RequestBody ExportOutofSla sla)
+    {
+        return exportplannerservice.getExportPlannerAirOutofsla(sla);
+
+    }
 }
