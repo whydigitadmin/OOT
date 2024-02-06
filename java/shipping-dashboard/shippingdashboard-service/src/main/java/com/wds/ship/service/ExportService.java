@@ -43,7 +43,15 @@ public interface ExportService {
 	
 	public List<SalesSupportDetailsPOJO> getExportSalesSupportAirDetailsInfo(ExportLCLDetailsAction action);
     
+	
+	// Air Export Customer Service 
     public List<CustomerServicePOJO> getExportCustomerServiceAirInfo(UserDetails userDetails);
+    
+    public List<ExportDetailsPOJO>getExportCustomerServiceDetailsAirInfor(ExportLCLDetailsAction action);
+    
+    public List<ExportDetailsPOJO> getExportCustomerServiceDetailsAirWithinsla(String action, int withinsla);
+
+    public List<ExportDetailsPOJO>getExportCustomerServiceDetailsAirOutofsla(String action,int outofsla);
 
 
 }

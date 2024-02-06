@@ -119,6 +119,31 @@ public class ExportController {
 
   }
   
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getAirExportCustomerServiceDetails")
+  public List<ExportDetailsPOJO> getAirExportCustomerServiceDetails(@RequestBody ExportLCLDetailsAction action)
+  {
+      return exportService.getAirExportCustomerServiceDetails(action);
+
+  }
+    
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getAirExportCustomerServiceDetailsWithinsla")
+public List<ExportDetailsPOJO> getAirExportCustomerServiceDetailsWithinsla(@RequestBody ExportWithinsla sla)
+{
+    return exportService.getAirExportCustomerServiceDetailsWithinsla(sla);
+
+}
+
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getAirExportCustomerServiceDetailsOutofsla")
+public List<ExportDetailsPOJO> getAirExportCustomerServiceDetailsOutofsla(@RequestBody ExportOutofSla sla)
+{
+    return exportService.getAirExportCustomerServiceDetailsOutofsla(sla);
+
+}
   
 
 

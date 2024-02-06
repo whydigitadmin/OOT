@@ -98,9 +98,30 @@ public class ExportService {
     public List<CustomerServicePOJO> getAirExportCustomerService(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getCustomerServiceAir", userDetails, List.class);
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportCustomerServiceAir", userDetails, List.class);
         return responseEntity.getBody();
     }
     
+    public List<ExportDetailsPOJO> getAirExportCustomerServiceDetails(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportCustomerServiceDetailsAir", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getAirExportCustomerServiceDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportCustomerServiceDetailsAirWihtinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getAirExportCustomerServiceDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportCustomerServiceDetailsAirOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
     
 }

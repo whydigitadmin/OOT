@@ -97,12 +97,24 @@ public class ExportServiceController {
     	return exportService.getExportSalesSupportAirDetailsInfo(action);
     }
     
-    @PostMapping("/getCustomerServiceAir")
+    @PostMapping("/getExportCustomerServiceAir")
     public List<CustomerServicePOJO> getExportServiceAirInfo(@RequestBody UserDetails userDetails) {
         return exportService.getExportCustomerServiceAirInfo(userDetails);
     }
     
+    @PostMapping("/getExportCustomerServiceDetailsAir")
+    public List<ExportDetailsPOJO> getExportServiceDetailsAirInfo(@RequestBody ExportLCLDetailsAction action) {
+        return exportService.getExportCustomerServiceDetailsAirInfor(action);
+    }
     
+    @PostMapping("/getExportCustomerServiceDetailsAirWihtinsla")
+    public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody ExportWithinsla sla){
+  	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+    }
     
+    @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
+    public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody ExportOutofSla sla){
+  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+    }
     
 }

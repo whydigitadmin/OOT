@@ -160,6 +160,28 @@ public class ImportService {
         return responseEntity.getBody();
     }
     
+    public List<ExportDetailsPOJO> getAllImportCustomerServiceAirDetailsByAction(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportCustomerServiceAirDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportCustomerServiceAirWithinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/import/getImportCustomerServiceAirOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
+    
  // Air Import Documentation
     public List<CustomerServicePOJO> getImportDocumentationServiceAirInfo(UserDetails userDetails){
         RestTemplate restTemplate = new RestTemplate();

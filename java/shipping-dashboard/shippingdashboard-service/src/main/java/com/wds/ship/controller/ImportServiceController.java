@@ -123,6 +123,21 @@ public class ImportServiceController {
 			return ImportService.getImportCustomerServiceAirInfo(userDetails);
 		}
 		
+		@PostMapping("/getImportCustomerServiceAirDetails")
+	    public List<ExportDetailsPOJO>getAllImportCustomerServiceAirDetailsByAction(@RequestBody ExportLCLDetailsAction action){
+	    	return ImportService.getImportCustomerServiceAirDetailsByAction(action);
+	    }
+	    
+	    @PostMapping("/getImportCustomerServiceAirWithinsla")
+	    public List<ExportDetailsPOJO>getImportCustomerServiceAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
+	    	return ImportService.getImportCustomerServiceAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    }
+	    
+	    @PostMapping("/getImportCustomerServiceAirOutofsla")
+	    public List<ExportDetailsPOJO>getImportCustomerServiceAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
+	    	return ImportService.getImportCustomerServiceAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    }
+		
 		// Air Import Documentation
 	    
 	    @PostMapping("/getImportDocumentationServiceAirInfo")
@@ -167,6 +182,8 @@ public class ImportServiceController {
 	    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
 	    	return ImportService.getImportTranshipmentAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
 	    }
+	    
+	    
 	   
 	
 }
