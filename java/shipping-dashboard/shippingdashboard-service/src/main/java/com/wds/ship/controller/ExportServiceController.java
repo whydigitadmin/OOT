@@ -84,6 +84,28 @@ public class ExportServiceController {
   	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
     }
     
+    // Sea Export BL Release Desk
+    
+    @PostMapping("/getExportBLReleaseDeskSea")
+    public List<CustomerServicePOJO> getExportBLReleaseDeskSeaInfo(@RequestBody UserDetails userDetails) {
+        return exportService.getExportBLReleaseSeaServiceInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportBLReleaseDeskSeaDetails")
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetailsAirInfo(@RequestBody ExportLCLDetailsAction action) {
+        return exportService.getExportBLReleaseSeaDetails(action);
+    }
+    
+    @PostMapping("/getExportBLReleaseDeskSeaDetailsWihtinsla")
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsWithinSla(@RequestBody ExportWithinsla sla){
+  	  return exportService.getExportBLReleaseSeaDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+    }
+    
+    @PostMapping("/getExportBLReleaseDeskSeaDetailsOutofsla")
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsOutofSla(@RequestBody ExportOutofSla sla){
+  	  return exportService.getExportBLReleaseSeaDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+    }
+    
     
  // Air Export Service 
     
@@ -115,6 +137,28 @@ public class ExportServiceController {
     @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
     public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody ExportOutofSla sla){
   	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+    }
+    
+    // Air Export BL Release Desk
+    
+    @PostMapping("/getExportBLReleaseDeskAir")
+    public List<CustomerServicePOJO> getExportBLReleaseDeskAirInfo(@RequestBody UserDetails userDetails) {
+        return exportService.getExportBLReleaseAirServiceInfo(userDetails);
+    }
+    
+    @PostMapping("/getExportBLReleaseDeskAirDetails")
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetailsAirInfo(@RequestBody ExportLCLDetailsAction action) {
+        return exportService.getExportBLReleaseAirDetails(action);
+    }
+    
+    @PostMapping("/getExportBLReleaseDeskAirDetailsWihtinsla")
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsWithinSla(@RequestBody ExportWithinsla sla){
+  	  return exportService.getExportBLReleaseAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+    }
+    
+    @PostMapping("/getExportBLReleaseDeskAirDetailsOutofsla")
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsOutofSla(@RequestBody ExportOutofSla sla){
+  	  return exportService.getExportBLReleaseAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
     }
     
 }

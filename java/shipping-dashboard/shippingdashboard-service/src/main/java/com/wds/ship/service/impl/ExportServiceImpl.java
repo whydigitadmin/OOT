@@ -2,6 +2,10 @@ package com.wds.ship.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wds.ship.entity.ExportBLReleaseDeskAir;
+import com.wds.ship.entity.ExportBLReleaseDeskDetailsAir;
+import com.wds.ship.entity.ExportBLReleaseDeskDetailsSea;
+import com.wds.ship.entity.ExportBLReleaseDeskSea;
 import com.wds.ship.entity.ExportCustomerServiceAir;
 import com.wds.ship.entity.ExportCustomerServiceDetailsAir;
 import com.wds.ship.entity.ExportCustomerServiceLCL;
@@ -11,6 +15,10 @@ import com.wds.ship.entity.ExportSalesSupportAir;
 import com.wds.ship.entity.ExportSalesSupportDetailsAir;
 import com.wds.ship.entity.ExportSalesSupportSea;
 import com.wds.ship.entity.ExportSalesSupportSeaDetails;
+import com.wds.ship.repository.ExportBLReleaseDeskAirRepository;
+import com.wds.ship.repository.ExportBLReleaseDeskDetailsAirRepository;
+import com.wds.ship.repository.ExportBLReleaseDeskDetailsSeaRepository;
+import com.wds.ship.repository.ExportBLReleaseDeskSeaRepository;
 import com.wds.ship.repository.ExportCustomerServiceAirRepository;
 import com.wds.ship.repository.ExportCustomerServiceDetailsAirRepository;
 import com.wds.ship.repository.ExportCustomerServiceLCLRepository;
@@ -51,12 +59,24 @@ public class ExportServiceImpl implements ExportService {
     private final ExportSalesSupportAirRepository exportSalesSupportAirRepo;
     
     private final ExportSalesSupportDetailsAirRepository exportSalesSupportDetailsAirRepo;
+    
+    private final ExportBLReleaseDeskSeaRepository exportBLReleaseDeskSeaRepo;
+    
+    private final ExportBLReleaseDeskDetailsSeaRepository exportBLReleaseDeskDetailsSeaRepo;
+    
+    private final ExportBLReleaseDeskAirRepository exportBLReleaseDeskAirRepo;
+    
+    private final ExportBLReleaseDeskDetailsAirRepository exportBLReleaseDeskDetailsAirRepo;
+    
 
     @Autowired
     public ExportServiceImpl(ExportCustomerServiceLCLRepository repository, ExportFCLCustomerServiceRepository exportFCLCustomerServiceRepository,
     		ExportLCLRepository lclRepo,ExportCustomerServiceAirRepository airExportRepo,ExportSalesSupportSeaRepository exportSalesSupportSeaRepo,
     		ExportSalesSupportSeaDetailsRepository exportSalesSupportSeaDetailsRepo,ExportSalesSupportAirRepository exportSalesSupportAirRepo,
-    		ExportSalesSupportDetailsAirRepository exportSalesSupportDetailsAirRepo,ExportCustomerServiceDetailsAirRepository exportCustomerServiceDetailsAirRepo) {
+    		ExportSalesSupportDetailsAirRepository exportSalesSupportDetailsAirRepo,ExportCustomerServiceDetailsAirRepository exportCustomerServiceDetailsAirRepo,
+    		ExportBLReleaseDeskSeaRepository exportBLReleaseDeskSeaRepo,ExportBLReleaseDeskDetailsSeaRepository exportBLReleaseDeskDetailsSeaRepo,
+    		ExportBLReleaseDeskAirRepository exportBLReleaseDeskAirRepo,ExportBLReleaseDeskDetailsAirRepository exportBLReleaseDeskDetailsAirRepo
+    		) {
         this.repository = repository;
         this.exportFCLCustomerServiceRepository = exportFCLCustomerServiceRepository;
 		this.lclRepo = lclRepo;
@@ -66,9 +86,14 @@ public class ExportServiceImpl implements ExportService {
 		this.exportSalesSupportSeaDetailsRepo=exportSalesSupportSeaDetailsRepo;
 		this.exportSalesSupportAirRepo = exportSalesSupportAirRepo;
 		this.exportSalesSupportDetailsAirRepo = exportSalesSupportDetailsAirRepo;
+		this.exportBLReleaseDeskSeaRepo = exportBLReleaseDeskSeaRepo;
+		this.exportBLReleaseDeskDetailsSeaRepo = exportBLReleaseDeskDetailsSeaRepo;
+		this.exportBLReleaseDeskAirRepo = exportBLReleaseDeskAirRepo;
+		this.exportBLReleaseDeskDetailsAirRepo = exportBLReleaseDeskDetailsAirRepo;
         
     }
     
+    // Sea 
     @Override
 	public List<SalesSupportPOJO> getExportSalesSupportSeaInfo(UserDetails userDetails) {
     	List<ExportSalesSupportSea> list = exportSalesSupportSeaRepo.findAll();
@@ -147,6 +172,44 @@ public class ExportServiceImpl implements ExportService {
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
         return destinationList;
 	}
+	
+	// Sea BL Release Desk
+	
+	@Override
+	public List<CustomerServicePOJO> getExportBLReleaseSeaServiceInfo(UserDetails userDetails) {
+		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findAll();
+	        Gson gson = new Gson();
+	        String json = gson.toJson(list);
+	        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
+	        return destinationList;
+	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportBLReleaseSeaDetails(ExportLCLDetailsAction action) {
+		List<ExportBLReleaseDeskDetailsSea> list = exportBLReleaseDeskDetailsSeaRepo.findByAction(action.getAction());
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsWithinSla(String action, int withinsla) {
+		List<ExportBLReleaseDeskDetailsSea> list = exportBLReleaseDeskDetailsSeaRepo.findByActionAndWithinsla(action,withinsla);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
+	@Override
+	public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsOutofSla(String action, int outofsla) {
+		List<ExportBLReleaseDeskDetailsSea> list = exportBLReleaseDeskDetailsSeaRepo.findByActionAndOutofsla(action,outofsla);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
 
 	// Air Export Service 
 	
@@ -205,13 +268,43 @@ public class ExportServiceImpl implements ExportService {
         return destinationList;
 	}
 
-	
+	//Air Export BL Release Desk
 
-	
+	@Override
+	public List<CustomerServicePOJO> getExportBLReleaseAirServiceInfo(UserDetails userDetails) {
+		 List<ExportBLReleaseDeskAir> list = exportBLReleaseDeskAirRepo.findAll();
+	        Gson gson = new Gson();
+	        String json = gson.toJson(list);
+	        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
+	        return destinationList;
+	}
 
-	
+	@Override
+	public List<ExportDetailsPOJO> getExportBLReleaseAirDetails(ExportLCLDetailsAction action) {
+		List<ExportBLReleaseDeskDetailsAir> list = exportBLReleaseDeskDetailsAirRepo.findByAction(action.getAction());
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
 
+	@Override
+	public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsWithinSla(String action, int withinsla) {
+		List<ExportBLReleaseDeskDetailsAir> list = exportBLReleaseDeskDetailsAirRepo.findByActionAndWithinsla(action,withinsla);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
 
-	
+	@Override
+	public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsOutofSla(String action, int outofsla) {
+		List<ExportBLReleaseDeskDetailsAir> list = exportBLReleaseDeskDetailsAirRepo.findByActionAndOutofsla(action,outofsla);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
+
 
 }

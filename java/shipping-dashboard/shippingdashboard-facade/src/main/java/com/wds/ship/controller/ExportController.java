@@ -92,6 +92,42 @@ public class ExportController {
 
   }
   
+  // Sea Export BL Release Desk
+  
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getExportBLReleaseDeskSeaInfo")
+  public List<CustomerServicePOJO> getExportBLReleaseDeskSeaInfo(@RequestBody UserDetails userDetails)
+  {
+      return exportService.getExportBLReleaseDeskSeaInfo(userDetails);
+
+  }
+  
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @PostMapping("/getExportBLReleaseDeskSeaDetails")
+  public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetails(@RequestBody ExportLCLDetailsAction action)
+  {
+      return exportService.getExportBLReleaseDeskSeaDetails(action);
+
+  }
+    
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getExportBLReleaseDeskSeaDetailsWithinsla")
+public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetailsWithinsla(@RequestBody ExportWithinsla sla)
+{
+    return exportService.getExportBLReleaseDeskSeaDetailsWithinsla(sla);
+
+}
+
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getExportBLReleaseDeskSeaDetailsOutofsla")
+public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetailsOutofsla(@RequestBody ExportOutofSla sla)
+{
+    return exportService.getExportBLReleaseDeskSeaDetailsOutofsla(sla);
+
+}
+  
   
   // Air Export Service
   
@@ -145,6 +181,41 @@ public List<ExportDetailsPOJO> getAirExportCustomerServiceDetailsOutofsla(@Reque
 
 }
   
+//Air Export BL Release Desk
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getExportBLReleaseDeskAirInfo")
+public List<CustomerServicePOJO> getExportBLReleaseDeskAirInfo(@RequestBody UserDetails userDetails)
+{
+   return exportService.getExportBLReleaseDeskAirInfo(userDetails);
+
+}
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getExportBLReleaseDeskAirDetails")
+public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetails(@RequestBody ExportLCLDetailsAction action)
+{
+   return exportService.getExportBLReleaseDeskAirDetails(action);
+
+}
+ 
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getExportBLReleaseDeskAirDetailsWithinsla")
+public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetailsWithinsla(@RequestBody ExportWithinsla sla)
+{
+ return exportService.getExportBLReleaseDeskAirDetailsWithinsla(sla);
+
+}
+
+
+@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+@PostMapping("/getExportBLReleaseDeskAirDetailsOutofsla")
+public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetailsOutofsla(@RequestBody ExportOutofSla sla)
+{
+ return exportService.getExportBLReleaseDeskAirDetailsOutofsla(sla);
+
+}
 
 
 

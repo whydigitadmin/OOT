@@ -79,6 +79,36 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
+    // Sea Export BL Release Desk
+    
+    public List<CustomerServicePOJO> getExportBLReleaseDeskSeaInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskSea", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetails(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskSeaDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskSeaDetailsWihtinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskSeaDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskSeaDetailsOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
     // Air Export Service
     
     public List<SalesSupportPOJO> getExportSalesSupportAirInfo(UserDetails userDetails){
@@ -124,4 +154,34 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
+// Air Export BL Release Desk
+    
+    public List<CustomerServicePOJO> getExportBLReleaseDeskAirInfo(UserDetails userDetails){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskAir", userDetails, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetails(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskAirDetails", action, List.class);
+        return responseEntity.getBody();
+    }
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskAirDetailsWihtinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+    
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseDeskAirDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/getExportBLReleaseDeskAirDetailsOutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
 }

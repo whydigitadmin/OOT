@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="proc_export_BL_release_desk_details_sea")
-public class ExportCustomerServiceDetailsAir {
+@Table(name="proc_export_BL_release_desk_details_Sea")
+public class ExportBLReleaseDeskDetailsSea {
 	
 	@Id
 	private Long id;

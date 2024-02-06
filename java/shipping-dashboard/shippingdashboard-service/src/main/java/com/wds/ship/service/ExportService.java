@@ -38,6 +38,17 @@ public interface ExportService {
 	//public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
     
     
+    // Sea Export BL Release Desk
+    
+    public List<CustomerServicePOJO> getExportBLReleaseSeaServiceInfo(UserDetails userDetails);
+    
+    public List<ExportDetailsPOJO>getExportBLReleaseSeaDetails(ExportLCLDetailsAction action);
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsWithinSla(String action, int withinsla);
+
+    public List<ExportDetailsPOJO>getExportBLReleaseSeaDetailsOutofSla(String action,int outofsla);
+    
+    
     //Air Export
     public List<SalesSupportPOJO> getExportSalesSupportAirInfo(UserDetails userDetails);
 	
@@ -53,5 +64,14 @@ public interface ExportService {
 
     public List<ExportDetailsPOJO>getExportCustomerServiceDetailsAirOutofsla(String action,int outofsla);
 
+    
+    // Air Export BL Release Desk
+    
+    public List<CustomerServicePOJO> getExportBLReleaseAirServiceInfo(UserDetails userDetails);
+    
+    public List<ExportDetailsPOJO>getExportBLReleaseAirDetails(ExportLCLDetailsAction action);
+    
+    public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsWithinSla(String action, int withinsla);
 
+    public List<ExportDetailsPOJO>getExportBLReleaseAirDetailsOutofSla(String action,int outofsla);
 }
