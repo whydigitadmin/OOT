@@ -11,7 +11,7 @@ import com.wds.ship.entity.ExportPlannerDetailsAir;
 public interface ExportPlannerDetailsAirRepository extends JpaRepository<ExportPlannerDetailsAir, Integer> {
 
 	
-
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_PLANNER_details_air a where A.ACTION=?1")
 	List<ExportPlannerDetailsAir> findAllByAction(String action);
 	
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_PLANNER_details_air a where A.ACTION=?1 and  A.withinsla>?2")

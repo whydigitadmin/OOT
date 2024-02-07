@@ -10,6 +10,8 @@ import com.wds.ship.entity.ImportTranshipmentDeskDetailsAir;
 
 public interface ImportTranshipmentDeskDetailsAirRepository  extends JpaRepository<ImportTranshipmentDeskDetailsAir, Long>{
 
+	
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_IMPORT_TRANSHIPMENT_DESK_DETAILS_AIR a where A.ACTION=?1")
 	List<ImportTranshipmentDeskDetailsAir> findByAction(String action);
 
 	

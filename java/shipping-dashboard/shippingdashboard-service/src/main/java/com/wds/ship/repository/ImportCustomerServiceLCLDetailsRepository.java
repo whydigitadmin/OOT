@@ -11,6 +11,7 @@ import com.wds.ship.entity.ImportCustomerServiceLCLDetails;
 
 public interface ImportCustomerServiceLCLDetailsRepository extends JpaRepository<ImportCustomerServiceLCLDetails, Integer> {
 
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_import_Customer_Service_LCL_DETAILS a where A.ACTION=:action")
 	List<ImportCustomerServiceLCLDetails> findByAction(String action);
 
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_import_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla")

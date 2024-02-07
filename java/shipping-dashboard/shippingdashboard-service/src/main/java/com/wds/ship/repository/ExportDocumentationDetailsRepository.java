@@ -11,7 +11,7 @@ import com.wds.ship.shared.user.ExportLCL;
 
 public interface ExportDocumentationDetailsRepository extends JpaRepository<ExportDocumentationDetails, Integer> {
 
-	
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_DOCUMENTATION_DETAILS a where A.ACTION=?1")
 	List<ExportDocumentationDetails> findAllByAction(String string);
 	
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_DOCUMENTATION_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla")

@@ -10,6 +10,7 @@ import com.wds.ship.entity.ImportDocumentationDetailsAir;
 
 public interface ImportDocumentationDetailsAirRepository extends JpaRepository<ImportDocumentationDetailsAir, Integer> {
 
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_IMPORT_DOCUMENTATION_DETAILS_air a where A.ACTION=?1")
 	List<ImportDocumentationDetailsAir> findByAction(String action);
 
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_IMPORT_DOCUMENTATION_DETAILS_air a where A.ACTION=?1 and  A.withinsla>?2")
