@@ -1,5 +1,6 @@
 package com.wds.ship.service;
 
+import com.wds.ship.shared.user.LoginInfo;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,16 @@ public class LoginService {
     }
 
 
-
+    public UserDetails authlogin(LoginInfo loginInfo) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<UserDetails> responseEntity = restTemplate.postForEntity(serviceUrl + "api/v1/user/findByLoginInfo", loginInfo, UserDetails.class);
+        if (responseEntity.getStatusCode() == HttpStatus.OK) {
+            return responseEntity.getBody();
+        } else {
+            //
+        }
+        return null; // or throw an exception if the response is not successful
+    }
 
 
 }

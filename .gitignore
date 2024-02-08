@@ -17,3 +17,5 @@ java/shipping-dashboard/shippingdashboard-service/target/classes/application-uat
 java/shipping-dashboard/shippingdashboard-service/target/maven-archiver/pom.properties
 java/shipping-dashboard/shippingdashboard-shared/target/maven-archiver/pom.properties
 java/shipping-dashboard/shippingdashboard-facade/target/maven-archiver/pom.properties
+*.txt
+java/shipping-dashboard/shippingdashboard-facade/target/surefire-reports/com.wds.ship.ShipApplicationTests.txt
