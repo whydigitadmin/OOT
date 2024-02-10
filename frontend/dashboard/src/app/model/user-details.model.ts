@@ -64,6 +64,38 @@ export class ExportPlannerDetails {
     }
 }
 
+export class ExportCustomerServiceDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class ImportCustomerServiceDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class AirExportBlreleaseDeskDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class ImportTranshipmentDeskDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
 export class UserLogin {
     private email: string;
     private password: string;

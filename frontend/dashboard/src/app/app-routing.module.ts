@@ -38,6 +38,11 @@ const routes: Routes = [
 				path: 'landing',
 				loadChildren: () => import('../app/landing-page/landing-page.module').then(m => m.LandingPageModule)
 			},
+
+			// {
+			// 	path: 'landing-chart',
+			// 	loadChildren: () => import('../app/landing-chart/landing-chart.module').then(m => m.LandingChartModule)
+			// },
 			{
 				path: 'chart',
 				loadChildren: () => import('../app/chart/chart.module').then(m => m.ChartModule)

@@ -472,7 +472,9 @@
                           B/L release desk
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <mat-table [dataSource]="dataSource1">
+                      <mat-table
+                        [dataSource]="datasource_export_BLreleaseDesk_CS"
+                      >
                         <ng-container matColumnDef="pendinActions">
                           <mat-header-cell *matHeaderCellDef
                             >Pending Actions</mat-header-cell
@@ -486,33 +488,72 @@
                           <mat-header-cell *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_blrealeaseDesk_Count_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
                           <mat-header-cell *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.withinSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_blrealeaseDesk_details_Withinsla_navigation(
+                                    element.action,
+                                    element.withinSLA
+                                  )
+                                "
+                                >{{ element.withinSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
+                          <mat-header-cell *matHeaderCellDef
+                            >Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.outofSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_blrealeaseDesk_details_OutOfSla_navigation(
+                                    element.action,
+                                    element.withinSLA,
+                                    element.outOfSLA
+                                  )
+                                "
+                                >{{ element.outOfSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
                         <mat-header-row
                           *matHeaderRowDef="displayedColumnsSLA"

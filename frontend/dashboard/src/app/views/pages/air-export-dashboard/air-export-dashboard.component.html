@@ -19,16 +19,41 @@
                         </mat-panel-title>
                       </mat-expansion-panel-header>
 
-                      <mat-table [dataSource]="dataSource">
+                      <mat-table [dataSource]="datasource_air_export_sales">
                         <ng-container matColumnDef="pendinActions">
                           <mat-header-cell *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
                           <mat-cell *matCellDef="let element">{{
-                            element.name
+                            element.action
                           }}</mat-cell>
                         </ng-container>
 
+                        <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_sales_support_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+                        <!-- 
                         <ng-container matColumnDef="count">
                           <mat-header-cell *matHeaderCellDef
                             >Count</mat-header-cell
@@ -38,7 +63,7 @@
                               element.count
                             }}</a></mat-cell
                           >
-                        </ng-container>
+                        </ng-container> -->
 
                         <mat-header-row
                           *matHeaderRowDef="displayedColumns"
@@ -57,7 +82,7 @@
                     >
                       <mat-expansion-panel-header>
                         <mat-panel-title class="title-class">
-                          CS
+                          Customer Service
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <mat-divider></mat-divider>
@@ -75,33 +100,72 @@
                           <mat-header-cell *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_customerService_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
                           <mat-header-cell *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.withinSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_customerService_withinsla_details_navigation(
+                                    element.action,
+                                    element.withinSLA
+                                  )
+                                "
+                                >{{ element.withinSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
+                          <mat-header-cell *matHeaderCellDef
+                            >Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.outOfSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_customerService_Outofsla_details_navigation(
+                                    element.action,
+                                    element.withinSLA,
+                                    element.outOfSLA
+                                  )
+                                "
+                                >{{ element.outOfSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <mat-header-row
@@ -126,7 +190,9 @@
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <mat-divider></mat-divider>
-                      <mat-table [dataSource]="dataSource2">
+                      <mat-table
+                        [dataSource]="datasource_air_export_documentation"
+                      >
                         <ng-container matColumnDef="pendinActions">
                           <mat-header-cell *matHeaderCellDef
                             >Pending Actions</mat-header-cell
@@ -140,33 +206,72 @@
                           <mat-header-cell *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_documentation_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
                           <mat-header-cell *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.withinSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_documentation_withinsla_details_navigation(
+                                    element.action,
+                                    element.withinSLA
+                                  )
+                                "
+                                >{{ element.withinSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
+                          <mat-header-cell *matHeaderCellDef
+                            >Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.outofSLA
-                            }}</a></mat-cell
-                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_documentation_Outofsla_details_navigation(
+                                    element.action,
+                                    element.withinSLA,
+                                    element.outOfSLA
+                                  )
+                                "
+                                >{{ element.outOfSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <mat-header-row
@@ -178,6 +283,211 @@
                       </mat-table>
                     </mat-expansion-panel>
                     <!--</mat-accordion>-->
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <!-- <mat-accordion>-->
+                    <mat-expansion-panel
+                      [expanded]="true"
+                      *ngIf="isRoleMatching(4)"
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="title-class">
+                          Planner
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-table [dataSource]="datasource_air_export_planner">
+                        <ng-container matColumnDef="pendinActions">
+                          <mat-header-cell *matHeaderCellDef
+                            >Pending Actions</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">{{
+                            element.action
+                          }}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_planner_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="countSLA">
+                          <mat-header-cell *matHeaderCellDef
+                            >Within SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.withinSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_planner_withinsla_details_navigation(
+                                    element.action,
+                                    element.withinSLA
+                                  )
+                                "
+                                >{{ element.withinSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="countOSLA">
+                          <mat-header-cell *matHeaderCellDef
+                            >Out of SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_planner_Outofsla_details_navigation(
+                                    element.action,
+                                    element.withinSLA,
+                                    element.outOfSLA
+                                  )
+                                "
+                                >{{ element.outOfSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumnsSLA"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumnsSLA"
+                        ></mat-row>
+                      </mat-table>
+                    </mat-expansion-panel>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <!-- <mat-accordion>-->
+                    <mat-expansion-panel
+                      [expanded]="true"
+                      *ngIf="isRoleMatching(4)"
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="title-class">
+                          B/L release desk
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-table
+                        [dataSource]="datasource_air_export_blreleaseDesk"
+                      >
+                        <ng-container matColumnDef="pendinActions">
+                          <mat-header-cell *matHeaderCellDef
+                            >Pending Actions</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">{{
+                            element.action
+                          }}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="count">
+                          <mat-header-cell *matHeaderCellDef
+                            >Count</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_blrealeaseDesk_Count_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="countSLA">
+                          <mat-header-cell *matHeaderCellDef
+                            >Within SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.withinSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_blrealeaseDesk_details_Withinsla_navigation(
+                                    element.action,
+                                    element.withinSLA
+                                  )
+                                "
+                                >{{ element.withinSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="countOSLA">
+                          <mat-header-cell *matHeaderCellDef
+                            >Out of SLA</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element">
+                            <ng-container
+                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_air_export_blrealeaseDesk_details_OutOfSla_navigation(
+                                    element.action,
+                                    element.withinSLA,
+                                    element.outOfSLA
+                                  )
+                                "
+                                >{{ element.outOfSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
+                        </ng-container>
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumnsSLA"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumnsSLA"
+                        ></mat-row>
+                      </mat-table>
+                    </mat-expansion-panel>
                   </div>
                 </div>
               </div>
