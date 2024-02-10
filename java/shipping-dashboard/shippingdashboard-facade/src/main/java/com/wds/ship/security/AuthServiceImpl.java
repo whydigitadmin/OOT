@@ -27,13 +27,10 @@ public class AuthServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("User details not found" + username);
         }
         List<String> roles = user.getUserGroups().stream().map(x -> String.valueOf(x.getUserGroup())).collect(Collectors.toList());
-        roles.forEach(x -> {
-            System.out.println(x);
-        });
-        user.getRoleMapping().forEach(role -> {
+         user.getRoleMapping().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority(role.getRoleMaster().getProductName()));
         });
         return new org.springframework.security.core.userdetails.User(user.getLoginName() , "123", authorities);
     }
 }
-// ALLEY.NG@FMGLOBALLOGISTICS.COM
+
