@@ -1,3 +1,15 @@
+How to disable Spring Security in FACADE service.
+
+1. Open the application.properties file
+Uncomment below Line
+spring.profiles.active=secdisable
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+How to enable Spring Security in FACADE service. 
+1. Open the application.properties file
+Comment below line 
+#spring.profiles.active=secdisable
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 Apache location
 /etc/httpd/conf
 
