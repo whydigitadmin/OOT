@@ -18,6 +18,8 @@ const routes: Routes = [
 
 	{ path: 'lcl-withinsla-details', component: ExportLclWithinslaReportComponent },
 
+	
+
 	// {
 	// 	path: 'dashboard/chart',
 	// 	component: ChartComponent
@@ -39,10 +41,10 @@ const routes: Routes = [
 				loadChildren: () => import('../app/landing-page/landing-page.module').then(m => m.LandingPageModule)
 			},
 
-			// {
-			// 	path: 'landing-chart',
-			// 	loadChildren: () => import('../app/landing-chart/landing-chart.module').then(m => m.LandingChartModule)
-			// },
+			{
+				path: 'landing-chart',
+				loadChildren: () => import('../app/landing-chart/landing-chart.module').then(m => m.LandingChartModule)
+			},
 			{
 				path: 'chart',
 				loadChildren: () => import('../app/chart/chart.module').then(m => m.ChartModule)

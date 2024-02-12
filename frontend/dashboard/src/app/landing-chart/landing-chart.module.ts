@@ -57,46 +57,46 @@ import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard
         path: '',
         component: LandingChartComponent
       },
-      {
-        path: 'landing-chart',
-        component: LandingChartComponent
-      },
-      {
-        path: 'dashboard',
-        component: SeaDashboardComponent
-      },
-      {
-        path: 'sea-import-dashboard',
-        component: SeaImportDashboardComponent
-      },
-      {
-        path: 'sea-export-details',
-        component: SeaExportDetailsComponent
-      },
-      {
-        path: 'air-export-details',
-        component: AirExportDashboardComponent
-      },
-      {
-        path: 'air-import-details',
-        component: AirImportDashboardComponent
-      },
-      {
-        path: 'chart',
-        component: ChartComponent
-      },
+      // {
+      //   path: 'landing-chart',
+      //   component: LandingChartComponent
+      // },
+      // {
+      //   path: 'dashboard',
+      //   component: SeaDashboardComponent
+      // },
+      // {
+      //   path: 'sea-import-dashboard',
+      //   component: SeaImportDashboardComponent
+      // },
+      // {
+      //   path: 'sea-export-details',
+      //   component: SeaExportDetailsComponent
+      // },
+      // {
+      //   path: 'air-export-details',
+      //   component: AirExportDashboardComponent
+      // },
+      // {
+      //   path: 'air-import-details',
+      //   component: AirImportDashboardComponent
+      // },
+      // {
+      //   path: 'chart',
+      //   component: ChartComponent
+      // },
     ]),
   ],
   providers: [
     BsModalService
   ],
   declarations: [
-    SeaDashboardComponent,
-    SeaImportDashboardComponent,
-    SeaExportDetailsComponent,
-    AirExportDashboardComponent,
-    AirImportDashboardComponent,
-    LandingChartComponent,
+    // SeaDashboardComponent,
+    // SeaImportDashboardComponent,
+    // SeaExportDetailsComponent,
+    // AirExportDashboardComponent,
+    // AirImportDashboardComponent,
+     LandingChartComponent,
 
   ]
 })
