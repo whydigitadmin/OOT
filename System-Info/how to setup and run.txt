@@ -19,6 +19,19 @@ Source Code
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Before Build You can do some works in frontend files
+1) In login service.ts file ===> uncommand the server http line
+   const BASE_URL = "https://18.140.188.121:8080"
+2) In application.ts facade file
+   uncommand the below line
+   server.ssl.key-store = keystore.p12
+   server.ssl.key-store-password = Dec-pass23
+   server.ssl.keyStoreType = PKCS12
+   server.ssl.keyAlias = tomcat
+
+
+   server.ssl.enabled=true
+
 How to make prod build
 
 	>ng build --configuration "production"
