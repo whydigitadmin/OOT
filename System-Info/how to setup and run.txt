@@ -52,6 +52,8 @@ sudo systemctl status nginx
 
 /var/www/html/java/facade
 
+whenever you run the backend make sure the file location
+
 
 nohup java -jar shippingdashboard-facade-0.0.1-SNAPSHOT.jar &
 nohup java -jar shippingdashboard-service-0.0.1-SNAPSHOT.jar &
@@ -60,6 +62,7 @@ nohup java -jar shippingdashboard-service-0.0.1-SNAPSHOT.jar &
 ps aux | grep tomcat
 lsof -i :8080
 lsof -i :9443
+kill -9 PID
 
 
 Check Logs
