@@ -97,8 +97,8 @@ export class ImportTranshipmentDeskDetails {
 }
 
 export class UserLogin {
-    private email: string;
-    private password: string;
+    email: string;
+    password: string;
 
     constructor(email: string, password: string) {
         this.email = email;

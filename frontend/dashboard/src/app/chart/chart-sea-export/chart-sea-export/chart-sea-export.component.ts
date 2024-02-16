@@ -58,9 +58,13 @@ export class ChartSeaExportComponent implements OnInit {
   exportDocumentation_cs_sc_xAxis: string[] = [];
   exportBlreleaseDesk_cs_sc_xAxis: string[] = [];
 
+  numberOfChartsLoaded : number = 0;
+  isChartsLoading: boolean = true;
   constructor(private loginService: LoginService, private dialog: MatDialog) { }
 
   public ngOnInit(): void {
+    this.numberOfChartsLoaded = 0
+    this.isChartsLoading = true;
     this.get_export_salesSupport_Customer_Info_stackedChart();
     this.get_export_sales_support_Customer_Info();
     this.get_export_lcl_Customer_Info();
@@ -76,6 +80,12 @@ export class ChartSeaExportComponent implements OnInit {
 
   }
 
+  loadedChartCount(){
+    this.numberOfChartsLoaded ++;
+    if( this.numberOfChartsLoaded >= 5){
+      this.isChartsLoading = false;
+    }
+  }
   showExport_CS_Sales_Chart() {
     this.export_sales_cs_chartData.series = this.exportsalesarea;       // assign data to the series.
     Highcharts.chart('div-container', this.export_sales_cs_chartData);    // Update the chart.
@@ -415,7 +425,12 @@ export class ChartSeaExportComponent implements OnInit {
 
   public stackedChartData5: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -478,7 +493,12 @@ export class ChartSeaExportComponent implements OnInit {
 
   public stackedChartData: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -806,7 +826,12 @@ export class ChartSeaExportComponent implements OnInit {
 
   public stackedChartData1: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -902,7 +927,12 @@ export class ChartSeaExportComponent implements OnInit {
 
   public stackedChartData2: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -1001,7 +1031,12 @@ export class ChartSeaExportComponent implements OnInit {
 
   public stackedChartData3: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.

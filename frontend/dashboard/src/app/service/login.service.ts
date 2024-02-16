@@ -71,8 +71,12 @@ export class LoginService {
 
     submitLoginInfo(_userDetailsRef: UserLogin): Observable<UserDetails> {
         //return this.http.post<UserInfo>(API_URL);
+        const httpheaders = new HttpHeaders({ 
+            'Authorization': 'Basic ' + btoa(_userDetailsRef.email + ':' + '123'),
+            'Content-Type': 'application/json'
+        });
         const jsonData = JSON.stringify(_userDetailsRef);
-        return this.http.post<UserDetails>(BASE_URL + "/api/v1/facade/user/loginInfo1", jsonData);
+        return this.http.post<UserDetails>(BASE_URL + "/api/v1/facade/user/loginInfo1", jsonData, { headers: httpheaders });
     }
 
     getShipmentCount(_shipment: Shipment): Observable<any> {
