@@ -63,6 +63,10 @@ export class LoginScreenComponent implements OnInit {
 		const formData = new UserLogin(this.logindata.username, this.logindata.password);
 		this.loginService.submitLoginInfo(formData).subscribe(response => {
 			if (response != null) {
+				// NEED to change password
+				const details = { email:  response['email'], password : '123' }; 
+				sessionStorage.setItem('details', JSON.stringify(details));
+
 				this.globals.isUserLoggedIn = true;
 				this.globals.id = response['id'];
 				this.globals.companyId = response['companyId'];

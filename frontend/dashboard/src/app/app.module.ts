@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -83,6 +83,7 @@ import { AirImportDocumentationOutofslaReportComponent } from './report/air-impo
 import { AirImportTranshipmentDeskCountReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-count-report/air-import-transhipment-desk-count-report.component';
 import { AirImportTranshipmentDeskWithinslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-withinsla-report/air-import-transhipment-desk-withinsla-report.component';
 import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-outofsla-report/air-import-transhipment-desk-outofsla-report.component';
+import { LoginInterceptor } from './interceptor/LoginInterceptor';
 // import { ChartAirImportComponent } from './chart/chart-air-import/chart-air-import/chart-air-import.component';
 // import { ChartAirExportComponent } from './chart/chart-air-export/chart-air-export/chart-air-export.component';
 // import { LandingChartComponent } from './landing-chart/landing-chart.component';
@@ -177,7 +178,11 @@ import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-i
     MatDialogModule,
     MatProgressSpinnerModule
   ],
-  providers: [Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
+  providers: [ {
+    provide : HTTP_INTERCEPTORS,
+    useClass : LoginInterceptor,
+    multi : true
+}, Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
     MenuConfigService, LoginScreenService],
   bootstrap: [AppComponent]
 })
