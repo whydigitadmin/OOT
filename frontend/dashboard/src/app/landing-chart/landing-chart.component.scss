@@ -86,3 +86,28 @@
   color: #ffffff;
   border-color: #ffffff;
 }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the loader container occupies the full height of the tab */
+}
+
+/* Only center the loader within the tab */
+.mat-tab-body-wrapper {
+  display: flex;
+}
+
+.mat-tab-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.custom-spinner {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  border-radius: 50%;
+  width: 50px; /* Diameter */
+  height: 50px; /* Diameter */
+}

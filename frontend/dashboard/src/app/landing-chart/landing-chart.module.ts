@@ -24,8 +24,13 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard/air-export-dashboard.component';
-import { ChartComponent } from '../chart/chart.component';
+// import { ChartComponent } from '../chart/chart.component';
 import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard/air-import-dashboard.component';
+import { ChartSeaExportComponent } from '../chart/chart-sea-export/chart-sea-export/chart-sea-export.component';
+import { ChartSeaImportComponent } from '../chart/chart-sea-import/chart-sea-import/chart-sea-import.component';
+import { ChartAirExportComponent } from '../chart/chart-air-export/chart-air-export/chart-air-export.component';
+import { ChartAirImportComponent } from '../chart/chart-air-import/chart-air-import/chart-air-import.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -51,12 +56,18 @@ import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard
     HighchartsChartModule,
     MatTabsModule,
     SidebarComponent,
+    MatProgressSpinnerModule,
     // LogoutComponent,
     RouterModule.forChild([
       {
         path: '',
         component: LandingChartComponent
       },
+
+      // {
+      //   path: '',
+      //   component: ChartComponent
+      // },
       // {
       //   path: 'landing-chart',
       //   component: LandingChartComponent
@@ -65,22 +76,22 @@ import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard
       //   path: 'dashboard',
       //   component: SeaDashboardComponent
       // },
-      // {
-      //   path: 'sea-import-dashboard',
-      //   component: SeaImportDashboardComponent
-      // },
-      // {
-      //   path: 'sea-export-details',
-      //   component: SeaExportDetailsComponent
-      // },
-      // {
-      //   path: 'air-export-details',
-      //   component: AirExportDashboardComponent
-      // },
-      // {
-      //   path: 'air-import-details',
-      //   component: AirImportDashboardComponent
-      // },
+      {
+        path: 'sea-import-chart',
+        component: ChartSeaImportComponent
+      },
+      {
+        path: 'sea-export-chart',
+        component: ChartSeaExportComponent
+      },
+      {
+        path: 'air-export-chart',
+        component: ChartAirExportComponent
+      },
+      {
+        path: 'air-import-chart',
+        component: ChartAirImportComponent
+      },
       // {
       //   path: 'chart',
       //   component: ChartComponent
@@ -96,7 +107,12 @@ import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard
     // SeaExportDetailsComponent,
     // AirExportDashboardComponent,
     // AirImportDashboardComponent,
-     LandingChartComponent,
+    // ChartComponent,
+    ChartSeaExportComponent,
+    ChartSeaImportComponent,
+    LandingChartComponent,
+    ChartAirExportComponent,
+    ChartAirImportComponent
 
   ]
 })

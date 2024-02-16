@@ -188,9 +188,9 @@ export class SeaImportDashboardComponent implements OnInit {
     this.loginService.getImportDocumentationCustomerServiceInfo()
       .subscribe(
         (response) => {
-          this.datasource_import_transhipmentDesk_CS = response;
+          this.datasource_import_Documentation_CS = response;
           // Handle the response data here
-          console.log('Response:', this.datasource_import_transhipmentDesk_CS);
+          console.log('Response:', this.datasource_import_Documentation_CS);
         },
         (error) => {
           // Handle any errors here
@@ -204,9 +204,9 @@ export class SeaImportDashboardComponent implements OnInit {
     this.loginService.getImportTranshipmentDeskCustomerServiceInfo()
       .subscribe(
         (response) => {
-          this.datasource_import_Documentation_CS = response;
+          this.datasource_import_transhipmentDesk_CS = response;
           // Handle the response data here
-          console.log('Response:', this.datasource_import_Documentation_CS);
+          console.log('Response:', this.datasource_import_transhipmentDesk_CS);
         },
         (error) => {
           // Handle any errors here

@@ -4,7 +4,7 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ExportLclReportComponent } from './report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
 import { ExportLclWithinslaReportComponent } from './report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
-import { ChartComponent } from './chart/chart.component';
+// import { ChartComponent } from './chart/chart.component';
 
 const routes: Routes = [
 
@@ -18,7 +18,7 @@ const routes: Routes = [
 
 	{ path: 'lcl-withinsla-details', component: ExportLclWithinslaReportComponent },
 
-	
+
 
 	// {
 	// 	path: 'dashboard/chart',
@@ -45,10 +45,10 @@ const routes: Routes = [
 				path: 'landing-chart',
 				loadChildren: () => import('../app/landing-chart/landing-chart.module').then(m => m.LandingChartModule)
 			},
-			{
-				path: 'chart',
-				loadChildren: () => import('../app/chart/chart.module').then(m => m.ChartModule)
-			},
+			// {
+			// 	path: 'chart',
+			// 	loadChildren: () => import('../app/chart/chart.module').then(m => m.ChartModule)
+			// },
 			// {
 			// 	path: 'operations',
 			// 	loadChildren: () => import('./operation-dashboard1/operation-dashboard1.module').then(m => m.OperationDashboard1Module)

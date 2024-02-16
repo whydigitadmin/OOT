@@ -1,10 +1,69 @@
+<div class="button-container">
+  <button class="styled-button" type="button" routerLink="/landing">
+    Back
+  </button>
+</div>
 <div>
-  <mat-tab-group>
-    <mat-tab label="Sea Export"></mat-tab>
-    <mat-tab label="Sea Import"></mat-tab>
-    <mat-tab label="Air Export"></mat-tab>
-    <mat-tab label="Air Import"></mat-tab>
+  <mat-tab-group (selectedIndexChange)="tabChanged($event)">
+    <mat-tab label="Sea Export">
+      <ng-container *ngIf="!seaExportDataLoading">
+        <app-chart-sea-export></app-chart-sea-export>
+      </ng-container>
+      <ng-template [ngIf]="seaExportDataLoading">
+        <!-- Loader container with centering -->
+        <div class="loader-container">
+          <mat-spinner
+            class="custom-spinner"
+            diameter="50"
+            color="primary"
+          ></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Sea Import">
+      <ng-container *ngIf="!seaImportDataLoading">
+        <app-chart-sea-import></app-chart-sea-import>
+      </ng-container>
+      <ng-template [ngIf]="seaImportDataLoading">
+        <!-- Loader container with centering -->
+        <div class="loader-container">
+          <mat-spinner
+            class="custom-spinner"
+            diameter="50"
+            color="primary"
+          ></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Air Export">
+      <ng-container *ngIf="!airExportDataLoading">
+        <app-chart-air-export></app-chart-air-export>
+      </ng-container>
+      <ng-template [ngIf]="airExportDataLoading">
+        <!-- Loader container with centering -->
+        <div class="loader-container">
+          <mat-spinner
+            class="custom-spinner"
+            diameter="50"
+            color="primary"
+          ></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Air Import">
+      <ng-container *ngIf="!airImportDataLoading">
+        <app-chart-air-import></app-chart-air-import>
+      </ng-container>
+      <ng-template [ngIf]="airImportDataLoading">
+        <!-- Loader container with centering -->
+        <div class="loader-container">
+          <mat-spinner
+            class="custom-spinner"
+            diameter="50"
+            color="primary"
+          ></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-tab>
   </mat-tab-group>
 </div>
-
-<router-outlet></router-outlet>

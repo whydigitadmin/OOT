@@ -41,7 +41,7 @@ import { ExportDocumentationOutofslaReportComponent } from './report/sea-export/
 import { ExportPlannerCountReportComponent } from './report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
 import { ExportPlannerWithinslaReportComponent } from './report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
 import { ExportPlannerOutofslaReportComponent } from './report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
-import { ChartComponent } from './chart/chart.component';
+// import { ChartComponent } from './chart/chart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ImportLclCountReportComponent } from './report/sea-import/import-lcl-report/import-lcl-count-report/import-lcl-count-report.component';
 import { ImportLclWithinslaReportComponent } from './report/sea-import/import-lcl-report/import-lcl-withinsla-report/import-lcl-withinsla-report.component';
@@ -83,6 +83,8 @@ import { AirImportDocumentationOutofslaReportComponent } from './report/air-impo
 import { AirImportTranshipmentDeskCountReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-count-report/air-import-transhipment-desk-count-report.component';
 import { AirImportTranshipmentDeskWithinslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-withinsla-report/air-import-transhipment-desk-withinsla-report.component';
 import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-outofsla-report/air-import-transhipment-desk-outofsla-report.component';
+// import { ChartAirImportComponent } from './chart/chart-air-import/chart-air-import/chart-air-import.component';
+// import { ChartAirExportComponent } from './chart/chart-air-export/chart-air-export/chart-air-export.component';
 // import { LandingChartComponent } from './landing-chart/landing-chart.component';
 // import { AirImportDashboardComponent } from './views/pages/air-import-dashboard/air-import-dashboard.component';
 
@@ -110,7 +112,7 @@ import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-i
     ExportPlannerCountReportComponent,
     ExportPlannerWithinslaReportComponent,
     ExportPlannerOutofslaReportComponent,
-    ChartComponent,
+    // ChartComponent,
     ImportLclCountReportComponent,
     ImportLclWithinslaReportComponent,
     ImportLclOutofslaReportComponent,
@@ -151,6 +153,8 @@ import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-i
     AirImportTranshipmentDeskCountReportComponent,
     AirImportTranshipmentDeskWithinslaReportComponent,
     AirImportTranshipmentDeskOutofslaReportComponent,
+    // ChartAirImportComponent,
+    // ChartAirExportComponent,
     // LandingChartComponent,
     // AirImportDashboardComponent,
     // AirExportDashboardComponent,
