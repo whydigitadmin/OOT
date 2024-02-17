@@ -4,7 +4,7 @@ import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
 import { LoginService } from 'src/app/service/login.service';
-import { Chart_AirExportLcl, Chart_ExportLcl } from 'src/app/model/user-details.model';
+import { ChartData, Chart_AirExportLcl, Chart_ExportLcl } from 'src/app/model/user-details.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AirExportSalesCountReportComponent } from 'src/app/report/air-export/export-sales-report/air-export-sales-count-report/air-export-sales-count-report.component';
 import { AirExportCustomerOutofslaReportComponent } from 'src/app/report/air-export/export-customer-report/air-export-customer-outofsla-report/air-export-customer-outofsla-report.component';
@@ -56,8 +56,7 @@ export class ChartAirExportComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.get_airexport_salesSupport_Customer_Info_stackedChart();
-    this.get_airexport_sales_support_Customer_Info();
+    this.get_airexport_salesSupport_Customer_Info();
     this.get_airexport_customerService_Customer_Info_stackedChart();
     this.get_airexport_CustomerService_Customer_Info();
     this.get_airexport_Documentation_Customer_Info_stackedChart();
@@ -344,67 +343,24 @@ export class ChartAirExportComponent implements OnInit {
       );
   }
 
-  showAirExport_CS_SalesSupport_StackedChart() {
-    this.stackedChartData5.series = this.airexportSalesStackedarea;
-    this.stackedChartData5.xAxis.categories = this.airexportSales_cs_sc_xAxis;       // assign data to the series.
-    Highcharts.chart('div-container-stackedchart-air-sales', this.stackedChartData5);    // Update the chart.
+
+  showAirExport_CS_SalesSupport_PieChart() {
+    this.airExportSalesSupportChart.series[0].data = this.airexportsalesarea;
+    Highcharts.chart('div-container-stackedchart-air-sales', this.airExportSalesSupportChart);    // Update the chart.
   }
 
-  public stackedChartData5: any = {
+  public airExportSalesSupportChart: any = {
     chart: {
-      type: 'column'
-    },
-    credits: { enabled: false },
-    xAxis: {    // the 'x' axis or 'category' axis.
-      categories: ['1', '2', '3', '4', '5', '6', '7']
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Count'
-      },
-      stackLabels: {
-        enabled: true,
-        style: {
-          fontWeight: 'bold',
-          color: (Highcharts.theme) || 'gray'
-        }
-      }
-    },
-    legend: {
-      align: 'right',
-      x: -70,
-      verticalAlign: 'top',
-      y: 20,
-      floating: true,
-      backgroundColor: (Highcharts.theme) || 'white',
-      borderColor: '#CCC',
-      borderWidth: 1,
-      shadow: false,
-    },
-    plotOptions: {
-      series: {
-        stacking: 'normal',
-        events: {
-          click: this.openSalesReport.bind(this)
-        }
-      }
+      type: 'pie'
     },
     title: {
       text: 'Sales Support'
     },
-
-    series: [
-      {
-        data: []
-      }
-    ],
-
-    colors: ['#000', 'rgb(102,203,22)', 'red', '#9e77f3', '#034C65'],
-
-    tooltip: {
-      backgroundColor: '#FCFFC5'
-    }
+    series: [{
+      name: 'Actions',
+      colorByPoint: true,
+      data: []
+    }]
   }
 
   showAirExport_CS_CustomerService_StackedChart() {
@@ -665,36 +621,21 @@ export class ChartAirExportComponent implements OnInit {
     });
   }
 
-  get_airexport_salesSupport_Customer_Info_stackedChart() {
-
-    const emptyList1: Chart_ExportLcl[] = [];
-    let withinSlaList: string[] = [];
-    let outOfSlaList: string[] = [];
-    let totalList: string[] = [];
-
+  get_airexport_salesSupport_Customer_Info() {
+    const list: ChartData[] = [];
     this.loginService.getAirExportSalesCustomerServiceInfo()
       .subscribe(
         (response) => {
           this.datasource_airexport_Sales_Support_CS = response;
-          // Handle the response data here
+          response.map((x: { action: string; count: string }) => {
+            var chart_exportsales = new ChartData(x.action, x.count);
+            list.push(chart_exportsales);
 
-
-          response.map((y: any) => {
-            if (y.count != 1726) {
-              withinSlaList.push(y.withinSLA)
-              outOfSlaList.push(y.outOfSLA)
-              //totalList.push(y.count)
-              this.airexportSales_cs_sc_xAxis.push(y.action)
-            }
           })
-          this.airexportSalesStackedarea.push({ "name": "withinsla", "data": withinSlaList });
-          this.airexportSalesStackedarea.push({ "name": "outofSLA", "data": outOfSlaList });
-          //this.exportlclStackedarea.push({ "name": "total", "data": totalList });
-          console.log(JSON.stringify(this.airexportSalesStackedarea))
-          this.showAirExport_CS_SalesSupport_StackedChart();         // show the chart.
+          this.airexportsalesarea = list;
+          this.showAirExport_CS_SalesSupport_PieChart();         // show the chart.
         },
         (error) => {
-          // Handle any errors here
           console.error('Error:', error);
         }
       );

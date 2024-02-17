@@ -4,7 +4,7 @@ import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
 import { LoginService } from 'src/app/service/login.service';
-import { Chart_ImportLcl } from 'src/app/model/user-details.model';
+import { ChartData, Chart_ImportLcl } from 'src/app/model/user-details.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ImportSalesCountReportComponent } from 'src/app/report/sea-import/import-sales-support-report/import-sales-count-report/import-sales-count-report.component';
 import { ImportLclOutofslaReportComponent } from 'src/app/report/sea-import/import-lcl-report/import-lcl-outofsla-report/import-lcl-outofsla-report.component';
@@ -56,7 +56,6 @@ export class ChartSeaImportComponent implements OnInit {
   public ngOnInit(): void {
     this.numberOfChartsLoaded = 0
     this.isChartsLoading = true;
-    this.get_import_salesSupport_Customer_Info_stackedChart();
     this.get_import_sales_support_Customer_Info();
     this.get_import_lcl_Customer_Info_stackedChart();
     this.get_import_lcl_Customer_Info();
@@ -256,31 +255,6 @@ export class ChartSeaImportComponent implements OnInit {
     }
   }
 
-  get_import_sales_support_Customer_Info() {
-
-    const emptyList1: Chart_ImportLcl[] = [];
-    this.loginService.getImportSalesSupportCustomerServiceInfo()
-      .subscribe(
-        (response) => {
-          this.datasource_import_Sales_Support_CS = response;
-          // Handle the response data here
-          console.log('Response:', this.datasource_import_Sales_Support_CS);
-          response.map((x: { action: any; count: any }) => {
-            var chart_importsales = new Chart_ImportLcl(x.action, [x.count]);
-            emptyList1.push(chart_importsales);
-
-          })
-          this.importsalesarea = emptyList1;    // populate array with json.
-          this.showImport_CS_Sales_Chart();         // show the chart.
-        },
-        (error) => {
-          // Handle any errors here
-          console.error('Error:', error);
-        }
-      );
-  }
-
-
   get_import_lcl_Customer_Info() {
 
     const emptyList1: Chart_ImportLcl[] = [];
@@ -355,72 +329,23 @@ export class ChartSeaImportComponent implements OnInit {
       );
   }
 
-  showImport_CS_SalesSupport_StackedChart() {
-    this.stackedChartData5.series = this.importSalesStackedarea;
-    this.stackedChartData5.xAxis.categories = this.importSales_cs_sc_xAxis;       // assign data to the series.
-    Highcharts.chart('div-container-stackedchartImport-sales', this.stackedChartData5);    // Update the chart.
+  showImport_CS_SalesSupport_PieChart() {
+    this.seaImportSalesSupportChart.series[0].data = this.importsalesarea;
+    Highcharts.chart('div-container-stackedchartImport-sales', this.seaImportSalesSupportChart);    // Update the chart.
   }
 
-  public stackedChartData5: any = {
+  public seaImportSalesSupportChart: any = {
     chart: {
-      type: 'column',
-      events: {
-        load: () => {
-          this.loadedChartCount();
-        }
-      }
-    },
-    credits: { enabled: false },
-    xAxis: {    // the 'x' axis or 'category' axis.
-      categories: ['1', '2', '3', '4', '5', '6', '7']
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Count'
-      },
-      stackLabels: {
-        enabled: true,
-        style: {
-          fontWeight: 'bold',
-          color: (Highcharts.theme) || 'gray'
-        }
-      }
-    },
-    legend: {
-      align: 'right',
-      x: -70,
-      verticalAlign: 'top',
-      y: 20,
-      floating: true,
-      backgroundColor: (Highcharts.theme) || 'white',
-      borderColor: '#CCC',
-      borderWidth: 1,
-      shadow: false,
-    },
-    plotOptions: {
-      series: {
-        stacking: 'normal',
-        events: {
-          click: this.openSalesReport.bind(this)
-        }
-      }
+      type: 'pie'
     },
     title: {
       text: 'Sales Support'
     },
-
-    series: [
-      {
-        data: []
-      }
-    ],
-
-    colors: ['#000', 'rgb(102,203,22)', 'red', '#9e77f3', '#034C65'],
-
-    tooltip: {
-      backgroundColor: '#FCFFC5'
-    }
+    series: [{
+      name: 'Actions',
+      colorByPoint: true,
+      data: []
+    }]
   }
 
   showImport_CS_LCL_StackedChart() {
@@ -647,36 +572,21 @@ export class ChartSeaImportComponent implements OnInit {
     });
   }
 
-  get_import_salesSupport_Customer_Info_stackedChart() {
-
-    const emptyList1: Chart_ImportLcl[] = [];
-    let withinSlaList: string[] = [];
-    let outOfSlaList: string[] = [];
-    let totalList: string[] = [];
-
+  get_import_sales_support_Customer_Info() {
+    const list: ChartData[] = [];
     this.loginService.getImportSalesSupportCustomerServiceInfo()
       .subscribe(
         (response) => {
           this.datasource_import_Sales_Support_CS = response;
-          // Handle the response data here
+          response.map((x: { action: string; count: string }) => {
+            var chart_exportsales = new ChartData(x.action, x.count);
+            list.push(chart_exportsales);
 
-
-          response.map((y: any) => {
-            if (y.count != 1726) {
-              withinSlaList.push(y.withinSLA)
-              outOfSlaList.push(y.outOfSLA)
-              //totalList.push(y.count)
-              this.importlcl_cs_sc_xAxis.push(y.action)
-            }
           })
-          this.importSalesStackedarea.push({ "name": "withinsla", "data": withinSlaList });
-          this.importSalesStackedarea.push({ "name": "outofSLA", "data": outOfSlaList });
-          //this.exportlclStackedarea.push({ "name": "total", "data": totalList });
-          console.log(JSON.stringify(this.importSalesStackedarea))
-          this.showImport_CS_SalesSupport_StackedChart();         // show the chart.
+          this.importsalesarea = list;
+          this.showImport_CS_SalesSupport_PieChart();         // show the chart.
         },
         (error) => {
-          // Handle any errors here
           console.error('Error:', error);
         }
       );
