@@ -429,7 +429,14 @@ export class ChartSeaExportComponent implements OnInit {
       name: 'Actions',
       colorByPoint: true,
       data: []
-    }]
+    }],
+    plotOptions: {
+      series: {        
+        events: {
+          click: this.openSalesReport.bind(this)
+        }
+      }
+    }
   }
 
   showExport_CS_LCL_StackedChart() {
@@ -506,7 +513,7 @@ export class ChartSeaExportComponent implements OnInit {
     let dialogRef: any;
 
 
-    if (event.point.series.name === "count") {
+    if (event.point.series.name === "count") {      
       dialogRef = this.dialog.open(ExportSalesCountReportComponent, {
         width: '1200px',
         height: '500px',
@@ -516,11 +523,11 @@ export class ChartSeaExportComponent implements OnInit {
           outofsla: 0
         }
       });
-    } else {
+    } else {      
       dialogRef = this.dialog.open(ExportSalesCountReportComponent, {
         width: '1200px',
         height: '500px',
-        data: event.point.category,
+        data: event.point.options.name,
       });
     }
 
