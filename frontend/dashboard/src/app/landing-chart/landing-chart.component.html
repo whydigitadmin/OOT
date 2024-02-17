@@ -6,14 +6,16 @@
 <div>
   <mat-tab-group (selectedIndexChange)="tabChanged($event)">
     <mat-tab label="Sea Export">
-        <app-chart-sea-export></app-chart-sea-export>
+      <app-chart-sea-export></app-chart-sea-export>
     </mat-tab>
     <mat-tab label="Sea Import">
+      <app-chart-sea-import></app-chart-sea-import>
+    </mat-tab>
+    <!-- <mat-tab label="Sea Import">
       <ng-container *ngIf="!seaImportDataLoading">
         <app-chart-sea-import></app-chart-sea-import>
       </ng-container>
       <ng-template [ngIf]="seaImportDataLoading">
-        <!-- Loader container with centering -->
         <div class="loader-container">
           <mat-spinner
             class="custom-spinner"
@@ -22,7 +24,7 @@
           ></mat-spinner>
         </div>
       </ng-template>
-    </mat-tab>
+    </mat-tab> -->
     <mat-tab label="Air Export">
       <ng-container *ngIf="!airExportDataLoading">
         <app-chart-air-export></app-chart-air-export>

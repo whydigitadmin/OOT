@@ -1,0 +1,48 @@
+#chart-gauge,
+#chart-pie,
+#chart-column,
+#chart-line {
+  display: block;
+  min-width: 150px;
+  max-width: 400px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.button-container {
+  text-align: right;
+}
+
+.styled-button {
+  display: inline-block;
+  padding: 5px 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  color: #3498db;
+  background-color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.styled-button:hover {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.spinner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure spinner is on top of other content */
+}
+
+.spinner-container mat-spinner {
+  display: block;
+  margin: 0 auto;
+}

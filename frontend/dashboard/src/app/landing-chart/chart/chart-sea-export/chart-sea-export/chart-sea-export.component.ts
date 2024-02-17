@@ -4,7 +4,7 @@ import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
 import { LoginService } from 'src/app/service/login.service';
-import { Chart_ExportLcl } from 'src/app/model/user-details.model';
+import { ChartData, Chart_ExportLcl } from 'src/app/model/user-details.model';
 import { ExportLclWithinslaReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-withinsla-report/export-lcl-withinsla-report.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ExportLclOutofslaReportComponent } from 'src/app/report/sea-export/export-lcl-report/export-lcl-outofsla-report/export-lcl-outofsla-report.component';
@@ -58,14 +58,14 @@ export class ChartSeaExportComponent implements OnInit {
   exportDocumentation_cs_sc_xAxis: string[] = [];
   exportBlreleaseDesk_cs_sc_xAxis: string[] = [];
 
-  numberOfChartsLoaded : number = 0;
+  numberOfChartsLoaded: number = 0;
   isChartsLoading: boolean = true;
   constructor(private loginService: LoginService, private dialog: MatDialog) { }
 
   public ngOnInit(): void {
     this.numberOfChartsLoaded = 0
     this.isChartsLoading = true;
-    this.get_export_salesSupport_Customer_Info_stackedChart();
+    // this.get_export_salesSupport_Customer_Info_stackedChart();
     this.get_export_sales_support_Customer_Info();
     this.get_export_lcl_Customer_Info();
     this.get_export_lcl_Customer_Info_stackedChart();
@@ -77,12 +77,12 @@ export class ChartSeaExportComponent implements OnInit {
     this.get_export_Documentation_Customer_Info_stackedChart();
     this.get_export_BlreleaseDesk_Customer_Info();
     this.get_export_blreleaseDesk_Customer_Info_stackedChart();
-
+    this.isChartsLoading = false;
   }
 
-  loadedChartCount(){
-    this.numberOfChartsLoaded ++;
-    if( this.numberOfChartsLoaded >= 5){
+  loadedChartCount() {
+    this.numberOfChartsLoaded++;
+    if (this.numberOfChartsLoaded >= 5) {
       this.isChartsLoading = false;
     }
   }
@@ -273,24 +273,20 @@ export class ChartSeaExportComponent implements OnInit {
   }
 
   get_export_sales_support_Customer_Info() {
-
-    const emptyList1: Chart_ExportLcl[] = [];
+    const list: ChartData[] = [];
     this.loginService.getExportSalesSupportCustomerServiceInfo()
       .subscribe(
         (response) => {
           this.datasource_export_Sales_Support_CS = response;
-          // Handle the response data here
-          console.log('Response:', this.datasource_export_Sales_Support_CS);
-          response.map((x: { action: any; count: any }) => {
-            var chart_exportsales = new Chart_ExportLcl(x.action, [x.count]);
-            emptyList1.push(chart_exportsales);
+          response.map((x: { action: string; count: string }) => {
+            var chart_exportsales = new ChartData(x.action, x.count);
+            list.push(chart_exportsales);
 
           })
-          this.exportsalesarea = emptyList1;    // populate array with json.
-          this.showExport_CS_Sales_Chart();         // show the chart.
+          this.exportsalesarea = list;
+          this.showExport_CS_SalesSupport_PieChart();         // show the chart.
         },
         (error) => {
-          // Handle any errors here
           console.error('Error:', error);
         }
       );
@@ -417,72 +413,23 @@ export class ChartSeaExportComponent implements OnInit {
       );
   }
 
-  showExport_CS_SalesSupport_StackedChart() {
-    this.stackedChartData5.series = this.exportSalesStackedarea;
-    this.stackedChartData5.xAxis.categories = this.exportSales_cs_sc_xAxis;       // assign data to the series.
-    Highcharts.chart('div-container-stackedchart-sales', this.stackedChartData5);    // Update the chart.
+  showExport_CS_SalesSupport_PieChart() {
+    this.seaExportSalesSupportChart.series[0].data = this.exportsalesarea;
+    Highcharts.chart('div-container-stackedchart-sales', this.seaExportSalesSupportChart);    // Update the chart.
   }
 
-  public stackedChartData5: any = {
+  public seaExportSalesSupportChart: any = {
     chart: {
-      type: 'column',
-      events: {
-        load: () => {
-          this.loadedChartCount();
-        }
-      }
-    },
-    credits: { enabled: false },
-    xAxis: {    // the 'x' axis or 'category' axis.
-      categories: ['1', '2', '3', '4', '5', '6', '7']
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Count'
-      },
-      stackLabels: {
-        enabled: true,
-        style: {
-          fontWeight: 'bold',
-          color: (Highcharts.theme) || 'gray'
-        }
-      }
-    },
-    legend: {
-      align: 'right',
-      x: -70,
-      verticalAlign: 'top',
-      y: 20,
-      floating: true,
-      backgroundColor: (Highcharts.theme) || 'white',
-      borderColor: '#CCC',
-      borderWidth: 1,
-      shadow: false,
-    },
-    plotOptions: {
-      series: {
-        stacking: 'normal',
-        events: {
-          click: this.openSalesReport.bind(this)
-        }
-      }
+      type: 'pie'
     },
     title: {
       text: 'Sales Support'
     },
-
-    series: [
-      {
-        data: []
-      }
-    ],
-
-    colors: ['#000', 'rgb(102,203,22)', 'red', '#9e77f3', '#034C65'],
-
-    tooltip: {
-      backgroundColor: '#FCFFC5'
-    }
+    series: [{
+      name: 'Actions',
+      colorByPoint: true,
+      data: []
+    }]
   }
 
   showExport_CS_LCL_StackedChart() {
@@ -748,40 +695,40 @@ export class ChartSeaExportComponent implements OnInit {
     });
   }
 
-  get_export_salesSupport_Customer_Info_stackedChart() {
+  // get_export_salesSupport_Customer_Info_stackedChart() {
 
-    const emptyList1: Chart_ExportLcl[] = [];
-    let withinSlaList: string[] = [];
-    let outOfSlaList: string[] = [];
-    let totalList: string[] = [];
+  //   const emptyList1: Chart_ExportLcl[] = [];
+  //   let withinSlaList: string[] = [];
+  //   let outOfSlaList: string[] = [];
+  //   let totalList: string[] = [];
 
-    this.loginService.getExportSalesSupportCustomerServiceInfo()
-      .subscribe(
-        (response) => {
-          this.datasource_export_Sales_Support_CS = response;
-          // Handle the response data here
+  //   this.loginService.getExportSalesSupportCustomerServiceInfo()
+  //     .subscribe(
+  //       (response) => {
+  //         this.datasource_export_Sales_Support_CS = response;
+  //         // Handle the response data here
 
 
-          response.map((y: any) => {
-            if (y.count != 1726) {
-              withinSlaList.push(y.withinSLA)
-              outOfSlaList.push(y.outOfSLA)
-              //totalList.push(y.count)
-              this.exportlcl_cs_sc_xAxis.push(y.action)
-            }
-          })
-          this.exportSalesStackedarea.push({ "name": "withinsla", "data": withinSlaList });
-          this.exportSalesStackedarea.push({ "name": "outofSLA", "data": outOfSlaList });
-          //this.exportlclStackedarea.push({ "name": "total", "data": totalList });
-          console.log(JSON.stringify(this.exportSalesStackedarea))
-          this.showExport_CS_SalesSupport_StackedChart();         // show the chart.
-        },
-        (error) => {
-          // Handle any errors here
-          console.error('Error:', error);
-        }
-      );
-  }
+  //         response.map((y: any) => {
+  //           if (y.count != 1726) {
+  //             withinSlaList.push(y.withinSLA)
+  //             outOfSlaList.push(y.outOfSLA)
+  //             //totalList.push(y.count)
+  //             this.exportlcl_cs_sc_xAxis.push(y.action)
+  //           }
+  //         })
+  //         this.exportSalesStackedarea.push({ "name": "withinsla", "data": withinSlaList });
+  //         this.exportSalesStackedarea.push({ "name": "outofSLA", "data": outOfSlaList });
+  //         //this.exportlclStackedarea.push({ "name": "total", "data": totalList });
+  //         console.log(JSON.stringify(this.exportSalesStackedarea))
+  //         this.showExport_CS_SalesSupport_StackedChart();         // show the chart.
+  //       },
+  //       (error) => {
+  //         // Handle any errors here
+  //         console.error('Error:', error);
+  //       }
+  //     );
+  // }
 
   get_export_lcl_Customer_Info_stackedChart() {
 

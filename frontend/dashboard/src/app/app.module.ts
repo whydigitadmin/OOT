@@ -28,7 +28,6 @@ import { LoginScreenHeaderComponent } from './views/layout/login-screen-header/l
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LogoutModalComponent } from './logout-modal/logout-modal.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-// import { ExportLclComponent } from './export-lcl/export-lcl.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ExportLclReportComponent } from './report/sea-export/export-lcl-report/export-lcl-report/export-lcl-report.component';
@@ -41,7 +40,6 @@ import { ExportDocumentationOutofslaReportComponent } from './report/sea-export/
 import { ExportPlannerCountReportComponent } from './report/sea-export/export-planner-report/export-planner-count-report/export-planner-count-report.component';
 import { ExportPlannerWithinslaReportComponent } from './report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
 import { ExportPlannerOutofslaReportComponent } from './report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
-// import { ChartComponent } from './chart/chart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ImportLclCountReportComponent } from './report/sea-import/import-lcl-report/import-lcl-count-report/import-lcl-count-report.component';
 import { ImportLclWithinslaReportComponent } from './report/sea-import/import-lcl-report/import-lcl-withinsla-report/import-lcl-withinsla-report.component';
@@ -84,11 +82,6 @@ import { AirImportTranshipmentDeskCountReportComponent } from './report/air-impo
 import { AirImportTranshipmentDeskWithinslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-withinsla-report/air-import-transhipment-desk-withinsla-report.component';
 import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-outofsla-report/air-import-transhipment-desk-outofsla-report.component';
 import { LoginInterceptor } from './interceptor/LoginInterceptor';
-// import { ChartAirImportComponent } from './chart/chart-air-import/chart-air-import/chart-air-import.component';
-// import { ChartAirExportComponent } from './chart/chart-air-export/chart-air-export/chart-air-export.component';
-// import { LandingChartComponent } from './landing-chart/landing-chart.component';
-// import { AirImportDashboardComponent } from './views/pages/air-import-dashboard/air-import-dashboard.component';
-
 
 @NgModule({
   declarations: [
@@ -103,7 +96,6 @@ import { LoginInterceptor } from './interceptor/LoginInterceptor';
     LoginScreenHeaderComponent,
     SubheaderComponent,
     Subheader1Component,
-    // ExportLclComponent,
     ExportLclReportComponent,
     ExportLclWithinslaReportComponent,
     ExportLclOutofslaReportComponent,
@@ -113,7 +105,6 @@ import { LoginInterceptor } from './interceptor/LoginInterceptor';
     ExportPlannerCountReportComponent,
     ExportPlannerWithinslaReportComponent,
     ExportPlannerOutofslaReportComponent,
-    // ChartComponent,
     ImportLclCountReportComponent,
     ImportLclWithinslaReportComponent,
     ImportLclOutofslaReportComponent,
@@ -154,11 +145,6 @@ import { LoginInterceptor } from './interceptor/LoginInterceptor';
     AirImportTranshipmentDeskCountReportComponent,
     AirImportTranshipmentDeskWithinslaReportComponent,
     AirImportTranshipmentDeskOutofslaReportComponent,
-    // ChartAirImportComponent,
-    // ChartAirExportComponent,
-    // LandingChartComponent,
-    // AirImportDashboardComponent,
-    // AirExportDashboardComponent,
 
   ],
   imports: [
@@ -178,11 +164,11 @@ import { LoginInterceptor } from './interceptor/LoginInterceptor';
     MatDialogModule,
     MatProgressSpinnerModule
   ],
-  providers: [ {
-    provide : HTTP_INTERCEPTORS,
-    useClass : LoginInterceptor,
-    multi : true
-}, Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoginInterceptor,
+    multi: true
+  }, Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
     MenuConfigService, LoginScreenService],
   bootstrap: [AppComponent]
 })

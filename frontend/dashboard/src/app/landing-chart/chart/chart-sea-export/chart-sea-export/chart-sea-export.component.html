@@ -1,6 +1,5 @@
 <div class="container-fluid main-container">
-
-  <div *ngIf="isChartsLoading" >
+  <div *ngIf="isChartsLoading" class="spinner-container">
     <div>
       <mat-spinner></mat-spinner>
       <p>Loading charts...</p>
@@ -9,7 +8,10 @@
   <div [hidden]="isChartsLoading">
     <div class="row mt-5">
       <div class="col-md-6">
-        <div id="div-container-stackedchart-sales" class="chart-container"></div>
+        <div
+          id="div-container-stackedchart-sales"
+          class="chart-container"
+        ></div>
       </div>
       <div class="col-md-6">
         <div id="div-container-stackedchart" class="chart-container"></div>

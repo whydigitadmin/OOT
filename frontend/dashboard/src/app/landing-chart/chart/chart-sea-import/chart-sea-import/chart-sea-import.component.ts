@@ -49,10 +49,13 @@ export class ChartSeaImportComponent implements OnInit {
   importDocumentation_cs_sc_xAxis: string[] = [];
   importTranshipmentDesk_cs_sc_xAxis: string[] = [];
 
+  numberOfChartsLoaded: number = 0;
+  isChartsLoading: boolean = true;
   constructor(private loginService: LoginService, private dialog: MatDialog) { }
 
   public ngOnInit(): void {
-
+    this.numberOfChartsLoaded = 0
+    this.isChartsLoading = true;
     this.get_import_salesSupport_Customer_Info_stackedChart();
     this.get_import_sales_support_Customer_Info();
     this.get_import_lcl_Customer_Info_stackedChart();
@@ -63,6 +66,15 @@ export class ChartSeaImportComponent implements OnInit {
     this.get_import_Documentation_Customer_Info();
     this.get_import_transhipmentDesk_Customer_Info_stackedChart();
     this.get_import_TranshipmentDesk_Customer_Info();
+    this.isChartsLoading = false;
+  }
+
+  loadedChartCount() {
+    this.numberOfChartsLoaded++;
+    console.log("mani", this.numberOfChartsLoaded)
+    if (this.numberOfChartsLoaded >= 1) {
+      this.isChartsLoading = false;
+    }
   }
 
   showImport_CS_Sales_Chart() {
@@ -86,8 +98,8 @@ export class ChartSeaImportComponent implements OnInit {
   }
 
   showImport_CS_TranshipmentDesk_Chart() {
-    this.import_transhipmentDesk_cs_chartData.series = this.importTranshipmentDeskarea;       // assign data to the series.
-    Highcharts.chart('div-container', this.import_transhipmentDesk_cs_chartData);    // Update the chart.
+    this.import_TranshipmentDesk_cs_chartData.series = this.importTranshipmentDeskarea;       // assign data to the series.
+    Highcharts.chart('div-container', this.import_TranshipmentDesk_cs_chartData);    // Update the chart.
   }
 
   public import_sales_cs_chartData: any = {
@@ -218,7 +230,7 @@ export class ChartSeaImportComponent implements OnInit {
     }
   }
 
-  public import_transhipmentDesk_cs_chartData: any = {
+  public import_TranshipmentDesk_cs_chartData: any = {
     chart: {
       type: 'column'
     },
@@ -351,7 +363,12 @@ export class ChartSeaImportComponent implements OnInit {
 
   public stackedChartData5: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -414,7 +431,12 @@ export class ChartSeaImportComponent implements OnInit {
 
   public stackedChartData: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -759,7 +781,12 @@ export class ChartSeaImportComponent implements OnInit {
 
   public stackedChartDataFcl: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -827,12 +854,12 @@ export class ChartSeaImportComponent implements OnInit {
 
 
           response.map((y: any) => {
-            if (y.count != 1726) {
-              withinSlaList.push(y.withinSLA)
-              outOfSlaList.push(y.outOfSLA)
-              totalList.push(y.count)
-              this.importfcl_cs_sc_xAxis.push(y.action)
-            }
+            // if (y.count != 1726) {
+            withinSlaList.push(y.withinSLA)
+            outOfSlaList.push(y.outOfSLA)
+            totalList.push(y.count)
+            this.importfcl_cs_sc_xAxis.push(y.action)
+            // }
           })
           this.importfclStackedarea.push({ "name": "withinsla", "data": withinSlaList });
           this.importfclStackedarea.push({ "name": "outofSLA", "data": outOfSlaList });
@@ -856,7 +883,12 @@ export class ChartSeaImportComponent implements OnInit {
 
   public stackedChartData3: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -955,7 +987,12 @@ export class ChartSeaImportComponent implements OnInit {
 
   public stackedChartData4: any = {
     chart: {
-      type: 'column'
+      type: 'column',
+      events: {
+        load: () => {
+          this.loadedChartCount();
+        }
+      }
     },
     credits: { enabled: false },
     xAxis: {    // the 'x' axis or 'category' axis.
@@ -1021,7 +1058,7 @@ export class ChartSeaImportComponent implements OnInit {
     this.loginService.getImportTranshipmentDeskCustomerServiceInfo()
       .subscribe(
         (response) => {
-          this.importTranshipmentDesk_cs_sc_xAxis = response;
+          this.datasource_import_TranshipmentDesk_CS = response;
           // Handle the response data here
 
 

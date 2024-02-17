@@ -174,3 +174,13 @@ export class Globals {
     roles = "";
     userDetails: UserDetails = new UserDetails();
 }
+
+export class ChartData {
+    private name: string;
+    private y: string;
+    count: any;
+    constructor(name: string, y: string) {
+        this.name = name;
+        this.y = y;
+    }
+}
