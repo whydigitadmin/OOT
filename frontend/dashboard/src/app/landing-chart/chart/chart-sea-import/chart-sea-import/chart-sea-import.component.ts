@@ -345,7 +345,14 @@ export class ChartSeaImportComponent implements OnInit {
       name: 'Actions',
       colorByPoint: true,
       data: []
-    }]
+    }],
+    plotOptions: {
+      series: {
+        events: {
+          click: this.openSalesReport.bind(this)
+        }
+      }
+    }
   }
 
   showImport_CS_LCL_StackedChart() {
@@ -422,7 +429,7 @@ export class ChartSeaImportComponent implements OnInit {
     let dialogRef: any;
 
 
-    if (event.point.series.name === "outofSLA") {
+    if (event.point.series.name === "count") {
       dialogRef = this.dialog.open(ImportSalesCountReportComponent, {
         width: '1200px',
         height: '500px',
@@ -436,7 +443,7 @@ export class ChartSeaImportComponent implements OnInit {
       dialogRef = this.dialog.open(ImportSalesCountReportComponent, {
         width: '1200px',
         height: '500px',
-        data: event.point.category,
+        data: event.point.options.name,
       });
     }
 

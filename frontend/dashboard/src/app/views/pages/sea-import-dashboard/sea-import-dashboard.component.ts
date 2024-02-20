@@ -61,9 +61,9 @@ export class SeaImportDashboardComponent implements OnInit {
   ];
 
   dataSource5 = [
-    { name: 'Master Job Listing', count: 10 },
-    { name: 'House Job Listing', count: 10 },
-    { name: 'Approved Quotation', count: 10 },
+    { name: 'Master Job Listing', count: 10, countSLA: 10, outofSLA: 32 },
+    { name: 'House Job Listing', count: 18, countSLA: 6, outofSLA: 15 },
+    { name: 'Approved Quotation', count: 2, countSLA: 89, outofSLA: 14 },
     { name: 'Pending clearance docs verification', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending Carrier payment', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending D.O Collection', count: 56, countSLA: 30, outofSLA: 26 },
@@ -78,9 +78,9 @@ export class SeaImportDashboardComponent implements OnInit {
   ];
 
   dataSource6 = [
-    { name: 'Master Job Listing', count: 10 },
-    { name: 'House Job Listing', count: 10 },
-    { name: 'Approved Quotation', count: 10 },
+    { name: 'Master Job Listing', count: 10, countSLA: 10, outofSLA: 32 },
+    { name: 'House Job Listing', count: 10, countSLA: 6, outofSLA: 15 },
+    { name: 'Approved Quotation', count: 10, countSLA: 89, outofSLA: 14 },
     { name: 'Pending clearance docs verification', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending Co-loader payment', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending D.O Collection', count: 56, countSLA: 30, outofSLA: 26 },

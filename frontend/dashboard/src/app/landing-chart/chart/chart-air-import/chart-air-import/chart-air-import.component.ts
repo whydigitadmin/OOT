@@ -254,11 +254,11 @@ export class ChartAirImportComponent implements OnInit {
   }
 
   showAirImport_CS_SalesSupport_PieChart() {
-    this.airExportSalesSupportChart.series[0].data = this.airimportsalesarea;
-    Highcharts.chart('div-container-stackedchart-airimport-sales', this.airExportSalesSupportChart);    // Update the chart.
+    this.airImportSalesSupportChart.series[0].data = this.airimportsalesarea;
+    Highcharts.chart('div-container-stackedchart-airimport-sales', this.airImportSalesSupportChart);    // Update the chart.
   }
 
-  public airExportSalesSupportChart: any = {
+  public airImportSalesSupportChart: any = {
     chart: {
       type: 'pie'
     },
@@ -269,7 +269,14 @@ export class ChartAirImportComponent implements OnInit {
       name: 'Actions',
       colorByPoint: true,
       data: []
-    }]
+    }],
+    plotOptions: {
+      series: {
+        events: {
+          click: this.openSalesReport.bind(this)
+        }
+      }
+    }
   }
 
   showAirImport_CS_CustomerService_StackedChart() {
@@ -355,7 +362,7 @@ export class ChartAirImportComponent implements OnInit {
       dialogRef = this.dialog.open(AirImportSalesSupportCountReportComponent, {
         width: '1200px',
         height: '500px',
-        data: event.point.category,
+        data: event.point.options.name,
       });
     }
 

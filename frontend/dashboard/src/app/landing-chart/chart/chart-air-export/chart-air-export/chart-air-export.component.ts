@@ -67,7 +67,7 @@ export class ChartAirExportComponent implements OnInit {
     this.get_airexport_BlreleaseDesk_Customer_Info();
   }
 
-  showAirExport_CS_Sales_Chart() {
+  showAirExport_CS_SalesSupport_Chart() {
     this.airexport_sales_cs_chartData.series = this.airexportsalesarea;       // assign data to the series.
     Highcharts.chart('div-container', this.airexport_sales_cs_chartData);    // Update the chart.
   }
@@ -222,29 +222,29 @@ export class ChartAirExportComponent implements OnInit {
     }
   }
 
-  get_airexport_sales_support_Customer_Info() {
+  // get_airexport_sales_support_Customer_Info() {
 
-    const emptyList1: Chart_AirExportLcl[] = [];
-    this.loginService.getAirExportSalesCustomerServiceInfo()
-      .subscribe(
-        (response) => {
-          this.datasource_airexport_Sales_Support_CS = response;
-          // Handle the response data here
-          console.log('Response:', this.datasource_airexport_Sales_Support_CS);
-          response.map((x: { action: any; count: any }) => {
-            var chart_airexportsales = new Chart_AirExportLcl(x.action, [x.count]);
-            emptyList1.push(chart_airexportsales);
+  //   const emptyList1: Chart_AirExportLcl[] = [];
+  //   this.loginService.getAirExportSalesCustomerServiceInfo()
+  //     .subscribe(
+  //       (response) => {
+  //         this.datasource_airexport_Sales_Support_CS = response;
+  //         // Handle the response data here
+  //         console.log('Response:', this.datasource_airexport_Sales_Support_CS);
+  //         response.map((x: { action: any; count: any }) => {
+  //           var chart_airexportsales = new Chart_AirExportLcl(x.action, [x.count]);
+  //           emptyList1.push(chart_airexportsales);
 
-          })
-          this.airexportsalesarea = emptyList1;    // populate array with json.
-          this.showAirExport_CS_Sales_Chart();         // show the chart.
-        },
-        (error) => {
-          // Handle any errors here
-          console.error('Error:', error);
-        }
-      );
-  }
+  //         })
+  //         this.airexportsalesarea = emptyList1;    // populate array with json.
+  //         this.showAirExport_CS_Sales_Chart();         // show the chart.
+  //       },
+  //       (error) => {
+  //         // Handle any errors here
+  //         console.error('Error:', error);
+  //       }
+  //     );
+  // }
 
 
   get_airexport_CustomerService_Customer_Info() {
@@ -360,7 +360,14 @@ export class ChartAirExportComponent implements OnInit {
       name: 'Actions',
       colorByPoint: true,
       data: []
-    }]
+    }],
+    plotOptions: {
+      series: {
+        events: {
+          click: this.openSalesReport.bind(this)
+        }
+      }
+    }
   }
 
   showAirExport_CS_CustomerService_StackedChart() {
@@ -446,7 +453,7 @@ export class ChartAirExportComponent implements OnInit {
       dialogRef = this.dialog.open(AirExportSalesCountReportComponent, {
         width: '1200px',
         height: '500px',
-        data: event.point.category,
+        data: event.point.options.name,
       });
     }
 

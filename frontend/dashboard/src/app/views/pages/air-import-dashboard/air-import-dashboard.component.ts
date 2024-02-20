@@ -39,9 +39,9 @@ export class AirImportDashboardComponent implements OnInit {
   ];
 
   dataSource2 = [
-    { name: 'ENQ  LIST', count: 25, countSLA: 10, countOSLA: 15 },
-    { name: 'Approved Quotations', count: 22 },
-    { name: 'New Nomination Routing Order', count: 45, countSLA: 10, countOSLA: 30 },
+    { action: 'ENQ  LIST', count: 25, withinSLA: 10, outofSLA: 15 },
+    { action: 'Approved Quotations', count: 25, withinSLA: 10, outofSLA: 15 },
+    { action: 'New Nomination Routing Order', count: 45, withinSLA: 10, outofSLA: 30 },
   ];
 
   dataSource3 = [
