@@ -13,6 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry registry) {
 
+	  
     registry.addMapping("/api/**")
       .allowedOrigins("https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200")
       .allowCredentials(true).maxAge(3600);
