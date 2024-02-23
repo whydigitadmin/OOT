@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/facade/export")
 public class ExportController {
@@ -25,7 +25,7 @@ public class ExportController {
     @Autowired
     ExportService exportService;
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    
     @PostMapping("/getExportSalesSupportSeaInfo")
     public List<SalesSupportPOJO> getExportSalesSupportSeaInfo(@RequestBody UserDetails userDetails)
     {
@@ -33,7 +33,6 @@ public class ExportController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
     @PostMapping("/getExportSalesSupportSeaDetailsInfo")
     public List<SalesSupportDetailsPOJO> getExportSalesSupportSeaDetailsInfo(@RequestBody ExportLCLDetailsAction action)
     {
