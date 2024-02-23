@@ -13,6 +13,9 @@ import { ImportDocumentationCountReportComponent } from 'src/app/report/sea-impo
 import { ImportDocumentationWithinslaReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-withinsla-report/import-documentation-withinsla-report.component';
 import { ImportDocumentationOutofslaReportComponent } from 'src/app/report/sea-import/import-documentation-report/import-documentation-outofsla-report/import-documentation-outofsla-report.component';
 import { ImportSalesCountReportComponent } from 'src/app/report/sea-import/import-sales-support-report/import-sales-count-report/import-sales-count-report.component';
+import { ImportTranshipmentDeskCountReportComponent } from 'src/app/report/sea-import/import-transhipmentDesk-report/import-transhipment-desk-count-report/import-transhipment-desk-count-report.component';
+import { ImportTranshipmentDeskWithinslaReportComponent } from 'src/app/report/sea-import/import-transhipmentDesk-report/import-transhipment-desk-withinsla-report/import-transhipment-desk-withinsla-report.component';
+import { ImportTranshipmentDeskOutofslaReportComponent } from 'src/app/report/sea-import/import-transhipmentDesk-report/import-transhipment-desk-outofsla-report/import-transhipment-desk-outofsla-report.component';
 @Component({
   selector: 'app-sea-import-dashboard',
   templateUrl: './sea-import-dashboard.component.html',
@@ -27,6 +30,7 @@ export class SeaImportDashboardComponent implements OnInit {
   datasource_import_LCL_CS: Import_LCL_CustomerService[] = [];
   datasource_import_FCL_CS: Import_LCL_CustomerService[] = [];
   datasource_import_Documentation_CS: Import_LCL_CustomerService[] = [];
+  datasource_import_transhipmentDesk_CS: Import_LCL_CustomerService[] = [];
   dataSource = [
     { name: 'Unapproved Quotation', count: 25 },
     { name: 'Approved Quotation List', count: 30 }
@@ -57,9 +61,9 @@ export class SeaImportDashboardComponent implements OnInit {
   ];
 
   dataSource5 = [
-    { name: 'Master Job Listing', count: 10 },
-    { name: 'House Job Listing', count: 10 },
-    { name: 'Approved Quotation', count: 10 },
+    { name: 'Master Job Listing', count: 10, countSLA: 10, outofSLA: 32 },
+    { name: 'House Job Listing', count: 18, countSLA: 6, outofSLA: 15 },
+    { name: 'Approved Quotation', count: 2, countSLA: 89, outofSLA: 14 },
     { name: 'Pending clearance docs verification', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending Carrier payment', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending D.O Collection', count: 56, countSLA: 30, outofSLA: 26 },
@@ -74,9 +78,9 @@ export class SeaImportDashboardComponent implements OnInit {
   ];
 
   dataSource6 = [
-    { name: 'Master Job Listing', count: 10 },
-    { name: 'House Job Listing', count: 10 },
-    { name: 'Approved Quotation', count: 10 },
+    { name: 'Master Job Listing', count: 10, countSLA: 10, outofSLA: 32 },
+    { name: 'House Job Listing', count: 10, countSLA: 6, outofSLA: 15 },
+    { name: 'Approved Quotation', count: 10, countSLA: 89, outofSLA: 14 },
     { name: 'Pending clearance docs verification', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending Co-loader payment', count: 25, countSLA: 10, outofSLA: 15 },
     { name: 'Pending D.O Collection', count: 56, countSLA: 30, outofSLA: 26 },
@@ -124,6 +128,7 @@ export class SeaImportDashboardComponent implements OnInit {
     this.get_import_fcl_Customer_Info();
     this.get_import_documentation_Customer_Info();
     this.get_import_sales_support_Customer_Info();
+    this.get_import_transhipmentDesk_Customer_Info();
   }
 
   get_import_sales_support_Customer_Info() {
@@ -186,6 +191,22 @@ export class SeaImportDashboardComponent implements OnInit {
           this.datasource_import_Documentation_CS = response;
           // Handle the response data here
           console.log('Response:', this.datasource_import_Documentation_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
+
+  get_import_transhipmentDesk_Customer_Info() {
+
+    this.loginService.getImportTranshipmentDeskCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_import_transhipmentDesk_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_import_transhipmentDesk_CS);
         },
         (error) => {
           // Handle any errors here
@@ -342,6 +363,66 @@ export class SeaImportDashboardComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(ImportDocumentationOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_transhipmentDesk_Count_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+    };
+
+    const dialogRef = this.dialog.open(ImportTranshipmentDeskCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_transhipmentDesk_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ImportTranshipmentDeskWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_import_transhipmentDesk_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ImportTranshipmentDeskOutofslaReportComponent, {
       width: '1200px',
       height: '500px',
       data: queryParams,

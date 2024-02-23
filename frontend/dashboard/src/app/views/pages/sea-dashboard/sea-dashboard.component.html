@@ -10,10 +10,17 @@
                 <div class="row">
                   <div class="col-md-6 mb-4 h-80">
                     <mat-expansion-panel
+                      style="
+                        background-color: #393a3b;
+                        color: #fff;
+                        border-radius: 10px;
+                      "
                       [expanded]="true"
                       *ngIf="isRoleMatching(3)"
                     >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header
+                        style="background-color: #0a0a0d"
+                      >
                         <mat-panel-title class="title-class">
                           Sales Support
                         </mat-panel-title>
@@ -23,24 +30,42 @@
                         [dataSource]="datasource_export_Sales_support_CS"
                       >
                         <ng-container matColumnDef="pendinActions">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">{{
-                            element.action
-                          }}</mat-cell>
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            >{{ element.action }}</mat-cell
+                          >
                         </ng-container>
 
                         <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.count > 0; else noData"
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_sales_support_details_navigation(
@@ -55,17 +80,6 @@
                             <ng-template #noData>_</ng-template>
                           </mat-cell>
                         </ng-container>
-
-                        <!-- <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
-                            >Count</mat-header-cell
-                          >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
-                        </ng-container> -->
 
                         <mat-header-row
                           *matHeaderRowDef="displayedColumns"
@@ -83,8 +97,15 @@
                     <mat-expansion-panel
                       [expanded]="true"
                       *ngIf="isRoleMatching(1)"
+                      style="
+                        background-color: #393a3b;
+                        color: #fff;
+                        border-radius: 10px;
+                      "
                     >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header
+                        style="background-color: #0a0a0d"
+                      >
                         <mat-panel-title class="title-class">
                           Customer Service (LCL)
                         </mat-panel-title>
@@ -92,24 +113,42 @@
                       <div class="scrollable-content">
                         <mat-table [dataSource]="datasource_export_LCL_CS">
                           <ng-container matColumnDef="pendinActions">
-                            <mat-header-cell *matHeaderCellDef
+                            <mat-header-cell
+                              style="
+                                background-color: #393a3b;
+                                color: #fff;
+                                font-size: 16px;
+                              "
+                              *matHeaderCellDef
                               >Pending Actions</mat-header-cell
                             >
-                            <mat-cell *matCellDef="let element">{{
-                              element.action
-                            }}</mat-cell>
+                            <mat-cell
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                              >{{ element.action }}</mat-cell
+                            >
                           </ng-container>
 
                           <ng-container matColumnDef="count">
-                            <mat-header-cell *matHeaderCellDef
+                            <mat-header-cell
+                              style="
+                                background-color: #393a3b;
+                                color: #fff;
+                                font-size: 16px;
+                              "
+                              *matHeaderCellDef
                               >Count</mat-header-cell
                             >
-                            <mat-cell *matCellDef="let element">
+                            <mat-cell
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                            >
                               <ng-container
                                 *ngIf="element.count > 0; else noData"
                               >
                                 <!-- Display count and provide click event if count is greater than 0 -->
                                 <a
+                                  style="color: #fff"
                                   href="javascript:void(0);"
                                   (click)="
                                     get_export_lcl_details_navigation(
@@ -126,10 +165,19 @@
                           </ng-container>
 
                           <ng-container matColumnDef="countSLA">
-                            <mat-header-cell *matHeaderCellDef
+                            <mat-header-cell
+                              style="
+                                background-color: #393a3b;
+                                color: #fff;
+                                font-size: 16px;
+                              "
+                              *matHeaderCellDef
                               >Within SLA</mat-header-cell
                             >
-                            <mat-cell *matCellDef="let element">
+                            <mat-cell
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                            >
                               <ng-container
                                 *ngIf="
                                   element.withinSLA !== 0;
@@ -137,6 +185,7 @@
                                 "
                               >
                                 <a
+                                  style="color: #fff"
                                   href="javascript:void(0);"
                                   (click)="
                                     get_export_lcl_details_Withinsla_navigation(
@@ -152,14 +201,24 @@
                           </ng-container>
 
                           <ng-container matColumnDef="countOSLA">
-                            <mat-header-cell *matHeaderCellDef
+                            <mat-header-cell
+                              style="
+                                background-color: #393a3b;
+                                color: #fff;
+                                font-size: 16px;
+                              "
+                              *matHeaderCellDef
                               >Out of SLA</mat-header-cell
                             >
-                            <mat-cell *matCellDef="let element">
+                            <mat-cell
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                            >
                               <ng-container
                                 *ngIf="element.outOfSLA !== 0; else noDataFound"
                               >
                                 <a
+                                  style="color: #fff"
                                   href="javascript:void(0);"
                                   (click)="
                                     get_export_lcl_details_OutOfSla_navigation(
@@ -194,8 +253,15 @@
                     <mat-expansion-panel
                       [expanded]="true"
                       *ngIf="isRoleMatching(2)"
+                      style="
+                        background-color: #393a3b;
+                        color: #fff;
+                        border-radius: 10px;
+                      "
                     >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header
+                        style="background-color: #0a0a0d"
+                      >
                         <mat-panel-title class="title-class">
                           Customer Service (FCL)
                         </mat-panel-title>
@@ -203,42 +269,75 @@
                       <mat-divider></mat-divider>
                       <mat-table [dataSource]="datasource_export_FCL_CS">
                         <ng-container matColumnDef="pendinActions">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">{{
-                            element.action
-                          }}</mat-cell>
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            >{{ element.action }}</mat-cell
+                          >
                         </ng-container>
 
                         <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            ><a style="color: #fff" href="/landing">{{
                               element.count
                             }}</a></mat-cell
                           >
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            ><a style="color: #fff" href="/landing">{{
                               element.withinSLA
                             }}</a></mat-cell
                           >
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
+                          >
                             Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            ><a style="color: #fff" href="/landing">{{
                               element.outOfSLA
                             }}</a></mat-cell
                           >
@@ -260,8 +359,15 @@
                     <mat-expansion-panel
                       [expanded]="true"
                       *ngIf="isRoleMatching(4)"
+                      style="
+                        background-color: #393a3b;
+                        color: #fff;
+                        border-radius: 10px;
+                      "
                     >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header
+                        style="background-color: #0a0a0d"
+                      >
                         <mat-panel-title class="title-class">
                           Documentation
                         </mat-panel-title>
@@ -270,24 +376,42 @@
                         [dataSource]="datasource_export_Documentation_CS"
                       >
                         <ng-container matColumnDef="pendinActions">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">{{
-                            element.action
-                          }}</mat-cell>
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            >{{ element.action }}</mat-cell
+                          >
                         </ng-container>
 
                         <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.count > 0; else noData"
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_documentation_Count_details_navigation(
@@ -304,14 +428,24 @@
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.withinSLA !== 0; else noDataFound"
                             >
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_documentation_details_Withinsla_navigation(
@@ -327,14 +461,24 @@
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.outOfSLA !== 0; else noDataFound"
                             >
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_documentation_details_OutOfSla_navigation(
@@ -364,32 +508,57 @@
                     <mat-expansion-panel
                       [expanded]="true"
                       *ngIf="isRoleMatching(4)"
+                      style="
+                        background-color: #393a3b;
+                        color: #fff;
+                        border-radius: 10px;
+                      "
                     >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header
+                        style="background-color: #0a0a0d"
+                      >
                         <mat-panel-title class="title-class">
                           Planner
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <mat-table [dataSource]="datasource_export_Planner_CS">
                         <ng-container matColumnDef="pendinActions">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">{{
-                            element.action
-                          }}</mat-cell>
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            >{{ element.action }}</mat-cell
+                          >
                         </ng-container>
 
                         <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.count > 0; else noData"
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_planner_Count_details_navigation(
@@ -406,14 +575,24 @@
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.withinSLA !== 0; else noDataFound"
                             >
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_planner_details_Withinsla_navigation(
@@ -429,14 +608,24 @@
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                          >
                             <ng-container
                               *ngIf="element.outOfSLA !== 0; else noDataFound"
                             >
                               <a
+                                style="color: #fff"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_planner_details_OutOfSla_navigation(
@@ -466,53 +655,139 @@
                     <mat-expansion-panel
                       [expanded]="true"
                       *ngIf="isRoleMatching(4)"
+                      style="
+                        background-color: #393a3b;
+                        color: #fff;
+                        border-radius: 10px;
+                      "
                     >
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header
+                        style="background-color: #0a0a0d"
+                      >
                         <mat-panel-title class="title-class">
                           B/L release desk
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <mat-table [dataSource]="dataSource1">
+                      <mat-table
+                        [dataSource]="datasource_export_BLreleaseDesk_CS"
+                      >
                         <ng-container matColumnDef="pendinActions">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Pending Actions</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element">{{
-                            element.action
-                          }}</mat-cell>
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
+                            >{{ element.action }}</mat-cell
+                          >
                         </ng-container>
 
                         <ng-container matColumnDef="count">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Count</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
                           >
+                            <ng-container
+                              *ngIf="element.count > 0; else noData"
+                            >
+                              <!-- Display count and provide click event if count is greater than 0 -->
+                              <a
+                                style="color: #fff"
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_blrealeaseDesk_Count_details_navigation(
+                                    element.action
+                                  )
+                                "
+                              >
+                                {{ element.count }}
+                              </a>
+                            </ng-container>
+                            <!-- If count is 0, display 'No data found' message -->
+                            <ng-template #noData>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
-                          <mat-header-cell *matHeaderCellDef
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
                             >Within SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
                           >
+                            <ng-container
+                              *ngIf="element.withinSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                style="color: #fff"
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_blrealeaseDesk_details_Withinsla_navigation(
+                                    element.action,
+                                    element.withinSLA
+                                  )
+                                "
+                                >{{ element.withinSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
-                          <mat-header-cell *matHeaderCellDef>
-                            Out of SLA</mat-header-cell
+                          <mat-header-cell
+                            style="
+                              background-color: #393a3b;
+                              color: #fff;
+                              font-size: 16px;
+                            "
+                            *matHeaderCellDef
+                            >Out of SLA</mat-header-cell
                           >
-                          <mat-cell *matCellDef="let element"
-                            ><a href="/landing">{{
-                              element.outofSLA
-                            }}</a></mat-cell
+                          <mat-cell
+                            style="background-color: #393a3b; color: #fff"
+                            *matCellDef="let element"
                           >
+                            <ng-container
+                              *ngIf="element.outOfSLA !== 0; else noDataFound"
+                            >
+                              <a
+                                style="color: #fff"
+                                href="javascript:void(0);"
+                                (click)="
+                                  get_export_blrealeaseDesk_details_OutOfSla_navigation(
+                                    element.action,
+                                    element.withinSLA,
+                                    element.outOfSLA
+                                  )
+                                "
+                                >{{ element.outOfSLA }}</a
+                              >
+                            </ng-container>
+                            <ng-template #noDataFound>_</ng-template>
+                          </mat-cell>
                         </ng-container>
                         <mat-header-row
                           *matHeaderRowDef="displayedColumnsSLA"

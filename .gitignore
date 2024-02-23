@@ -19,3 +19,5 @@ java/shipping-dashboard/shippingdashboard-shared/target/maven-archiver/pom.prope
 java/shipping-dashboard/shippingdashboard-facade/target/maven-archiver/pom.properties
 *.txt
 java/shipping-dashboard/shippingdashboard-facade/target/surefire-reports/com.wds.ship.ShipApplicationTests.txt
+*.txt
+*.xml

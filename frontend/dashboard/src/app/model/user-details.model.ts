@@ -64,9 +64,41 @@ export class ExportPlannerDetails {
     }
 }
 
+export class ExportCustomerServiceDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class ImportCustomerServiceDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class AirExportBlreleaseDeskDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
+export class ImportTranshipmentDeskDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
 export class UserLogin {
-    private email: string;
-    private password: string;
+    email: string;
+    password: string;
 
     constructor(email: string, password: string) {
         this.email = email;
@@ -98,6 +130,37 @@ export class Chart_ExportLcl {
         this.data = data;
     }
 }
+
+export class Chart_AirExportLcl {
+    private name: string;
+    private data: string[];
+    count: any;
+    constructor(name: string, data: string[]) {
+        this.name = name;
+        this.data = data;
+    }
+}
+
+export class Chart_ImportLcl {
+    private name: string;
+    private data: string[];
+    count: any;
+    constructor(name: string, data: string[]) {
+        this.name = name;
+        this.data = data;
+    }
+}
+
+export class Chart_AirImportLcl {
+    private name: string;
+    private data: string[];
+    count: any;
+    constructor(name: string, data: string[]) {
+        this.name = name;
+        this.data = data;
+    }
+}
+
 @Injectable()
 export class Globals {
     isUserLoggedIn = false;
@@ -110,4 +173,14 @@ export class Globals {
     status = "";
     roles = "";
     userDetails: UserDetails = new UserDetails();
+}
+
+export class ChartData {
+    private name: string;
+    private y: string;
+    count: any;
+    constructor(name: string, y: string) {
+        this.name = name;
+        this.y = y;
+    }
 }

@@ -18,6 +18,9 @@ import { ExportPlannerCountReportComponent } from 'src/app/report/sea-export/exp
 import { ExportPlannerWithinslaReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-withinsla-report/export-planner-withinsla-report.component';
 import { ExportPlannerOutofslaReportComponent } from 'src/app/report/sea-export/export-planner-report/export-planner-outofsla-report/export-planner-outofsla-report.component';
 import { ExportSalesCountReportComponent } from 'src/app/report/sea-export/export-sales-support-report/export-sales-count-report/export-sales-count-report.component';
+import { SeaExportBLreleaseDeskCountReportComponent } from 'src/app/report/sea-export/export-blreleaseDesk-report/sea-export-b-lrelease-desk-count-report/sea-export-b-lrelease-desk-count-report.component';
+import { SeaExportBLreleaseDeskWithinslaReportComponent } from 'src/app/report/sea-export/export-blreleaseDesk-report/sea-export-b-lrelease-desk-withinsla-report/sea-export-b-lrelease-desk-withinsla-report.component';
+import { SeaExportBLreleaseDeskOutofslaReportComponent } from 'src/app/report/sea-export/export-blreleaseDesk-report/sea-export-b-lrelease-desk-outofsla-report/sea-export-b-lrelease-desk-outofsla-report.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -34,6 +37,7 @@ export class SeaDashboardComponent implements OnInit {
   datasource_export_FCL_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Planner_CS: Export_LCL_CustomerService[] = [];
   datasource_export_Documentation_CS: Export_LCL_CustomerService[] = [];
+  datasource_export_BLreleaseDesk_CS: Export_LCL_CustomerService[] = [];
   dataSource = [
     { name: 'Unapproved Quotation', count: 25 },
     { name: 'Approved Quotation List', count: 30 }
@@ -287,6 +291,66 @@ export class SeaDashboardComponent implements OnInit {
 
   }
 
+  get_export_blrealeaseDesk_Count_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+    };
+
+    const dialogRef = this.dialog.open(SeaExportBLreleaseDeskCountReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_blrealeaseDesk_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(SeaExportBLreleaseDeskWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_blrealeaseDesk_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(SeaExportBLreleaseDeskOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
   ngOnInit() {
     this.localSession = localStorage.getItem('user_data');
     this.user_roles = JSON.parse(this.localSession).productRoles;
@@ -306,6 +370,7 @@ export class SeaDashboardComponent implements OnInit {
     this.get_export_Planner_Customer_Info();
     this.get_export_Documentation_Customer_Info();
     this.get_export_sales_support_Customer_Info();
+    this.get_export_BLreleaseDesk_Customer_Info();
   }
 
   get_export_sales_support_Customer_Info() {
@@ -384,6 +449,24 @@ export class SeaDashboardComponent implements OnInit {
           this.datasource_export_Documentation_CS = response;
           // Handle the response data here
           console.log('Response:', this.datasource_export_Documentation_CS);
+        },
+        (error) => {
+          // Handle any errors here
+          console.error('Error:', error);
+        }
+      );
+  }
+
+  get_export_BLreleaseDesk_Customer_Info() {
+
+
+
+    this.loginService.getExportBLreleaseDeskCustomerServiceInfo()
+      .subscribe(
+        (response) => {
+          this.datasource_export_BLreleaseDesk_CS = response;
+          // Handle the response data here
+          console.log('Response:', this.datasource_export_BLreleaseDesk_CS);
         },
         (error) => {
           // Handle any errors here

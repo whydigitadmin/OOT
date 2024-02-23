@@ -1,10 +1,5 @@
-<!-- <div class="frt-mng-das">    
-    <div class="col-md-12 mb-0-2">
-        <div class="kt-portlet frt-das-port">
-            <div class="kt-portlet-body">
-                <div class="kt-portlet-preview"> -->
 <div class="button-container">
-  <button class="styled-button" type="button" routerLink="/chart">
+  <button class="styled-button" type="button" routerLink="/landing-chart">
     View Chart
   </button>
 </div>
@@ -19,7 +14,9 @@
     <mat-tab label="Air Export"
       ><app-air-export-dashboard></app-air-export-dashboard
     ></mat-tab>
-    <mat-tab label="Air Import"> Air Import </mat-tab>
+    <mat-tab label="Air Import">
+      <app-air-import-dashboard></app-air-import-dashboard>
+    </mat-tab>
   </mat-tab-group>
 </div>
 <router-outlet></router-outlet>

@@ -1,0 +1,37 @@
+<div class="container-fluid main-container">
+  <div *ngIf="isChartsLoading" class="spinner-container">
+    <div>
+      <mat-spinner></mat-spinner>
+      <p>Loading charts...</p>
+    </div>
+  </div>
+  <div [hidden]="isChartsLoading">
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div
+          id="div-container-stackedchart-sales"
+          class="chart-container"
+        ></div>
+      </div>
+      <div class="col-md-6">
+        <div id="div-container-stackedchart" class="chart-container"></div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div id="div-container-stackedchart1" class="chart-container"></div>
+      </div>
+      <div class="col-md-6">
+        <div id="div-container-stackedchart3" class="chart-container"></div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div id="div-container-stackedchart2" class="chart-container"></div>
+      </div>
+      <div class="col-md-6">
+        <div id="div-container-stackedchart4" class="chart-container"></div>
+      </div>
+    </div>
+  </div>
+</div>

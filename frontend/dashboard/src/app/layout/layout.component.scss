@@ -194,3 +194,20 @@ kt-base {
   padding: 16px;
   margin-left: 70px;
 }
+
+.kt-grid__item--fluid.kt-grid {
+  min-height: 100vh; /* Set min-height to fill the viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+#kt_content {
+  flex: 1; /* Make the content area grow to fill remaining space */
+}
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

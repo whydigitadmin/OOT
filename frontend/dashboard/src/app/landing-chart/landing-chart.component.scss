@@ -1,0 +1,113 @@
+// @import "./../../assets/scss/crm/crm-common.scss";
+
+:host {
+  ::ng-deep {
+    ngb-tabset > .nav-tabs {
+      display: none;
+    }
+  }
+}
+.top-hd {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+
+.frt-mng-das {
+  .das-ml-0 {
+    margin-left: 0px !important;
+  }
+  .frt-das-port {
+    height: 87vh;
+    padding: 20px !important;
+  }
+  .frt-das-port-cen {
+    padding: 5px 10px 5px 10px !important;
+  }
+
+  .kt-portlet {
+    box-shadow: 0 1px 5px 0 rgba(111, 111, 111, 0.5) !important;
+    margin: 4px 10px 0px !important;
+
+    .container {
+      max-width: 99% !important;
+    }
+  }
+
+  .frt-das-port-mr-0 {
+    margin-right: 0px !important;
+  }
+  h5 {
+    padding: 8px 10px 6px 20px;
+    margin: -14px -14px 15px !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    text-transform: capitalize;
+    text-align: left !important;
+    background-image: radial-gradient(
+      circle farthest-corner at 49% 73%,
+      #00aeef 0,
+      #3f51b5 171%
+    ) !important;
+    border-bottom: 1px solid #009dd8;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .frt-mng-das {
+    .frt-das-port,
+    .frt-das-port-cen {
+      margin-right: 0px !important;
+    }
+  }
+}
+
+.button-container {
+  text-align: right;
+}
+
+.styled-button {
+  display: inline-block;
+  padding: 5px 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  color: #3498db;
+  background-color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.styled-button:hover {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the loader container occupies the full height of the tab */
+}
+
+/* Only center the loader within the tab */
+.mat-tab-body-wrapper {
+  display: flex;
+}
+
+.mat-tab-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.custom-spinner {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  border-radius: 50%;
+  width: 50px; /* Diameter */
+  height: 50px; /* Diameter */
+}

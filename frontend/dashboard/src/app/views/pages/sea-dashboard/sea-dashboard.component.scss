@@ -27,6 +27,7 @@
 .scrollable-content {
   max-height: calc(100vh - 60px); /* Adjust the max-height accordingly */
   overflow-y: auto;
+  background-color: #fff;
 }
 
 .mat-table {
@@ -142,7 +143,8 @@ mat-grid-tile {
 }
 
 .title-class {
-  color: blue;
+  color: #fff;
+  font-size: 17px;
 }
 
 table {

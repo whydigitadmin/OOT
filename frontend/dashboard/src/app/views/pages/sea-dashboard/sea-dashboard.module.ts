@@ -22,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SeaExportComponent } from 'src/app/sea-export/sea-export.component';
-import { ChartComponent } from 'src/app/chart/chart.component';
+// import { ChartComponent } from 'src/app/chart/chart.component';
 
 @NgModule({
 	imports: [
@@ -58,17 +58,17 @@ import { ChartComponent } from 'src/app/chart/chart.component';
 				path: 'dashboard/sea-export',
 				component: SeaExportComponent
 			},
-			{
-				path: 'chart',
-				component: ChartComponent
-			},
+			// {
+			// 	path: 'chart',
+			// 	component: ChartComponent
+			// },
 		]),
 	],
 	providers: [],
 	declarations: [
 		SeaDashboardComponent,
 		SeaExportComponent,
-		ChartComponent
+		// ChartComponent
 	]
 })
 export class SeaDashboardModule {
