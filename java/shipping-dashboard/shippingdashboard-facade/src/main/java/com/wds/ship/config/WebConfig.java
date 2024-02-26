@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 	  
     registry.addMapping("/api/**")
-      .allowedOrigins("https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200")
+      .allowedOrigins("https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co")
       .allowCredentials(true).maxAge(3600);
 
     // Add more mappings...

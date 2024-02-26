@@ -52,4 +52,15 @@ public class LoginService {
     }
 
 
+    public String hello() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(serviceUrl + "api/v1/hello",  String.class);
+        if (responseEntity.getStatusCode() == HttpStatus.OK) {
+            return responseEntity.getBody();
+        } else {
+            //
+        }
+        return null; // or throw an exception if the response is not successful
+    }
+
 }

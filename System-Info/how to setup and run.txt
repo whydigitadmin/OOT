@@ -19,19 +19,6 @@ Source Code
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Before Build You can do some works in frontend files
-1) In login service.ts file ===> uncommand the server http line
-   const BASE_URL = "https://18.140.188.121:8080"
-2) In application.ts facade file
-   uncommand the below line
-   server.ssl.key-store = keystore.p12
-   server.ssl.key-store-password = Dec-pass23
-   server.ssl.keyStoreType = PKCS12
-   server.ssl.keyAlias = tomcat
-
-
-   server.ssl.enabled=true
-
 How to make prod build
 
 	>ng build --configuration "production"
@@ -52,8 +39,6 @@ sudo systemctl status nginx
 
 /var/www/html/java/facade
 
-whenever you run the backend make sure the file location
-
 
 nohup java -jar shippingdashboard-facade-0.0.1-SNAPSHOT.jar &
 nohup java -jar shippingdashboard-service-0.0.1-SNAPSHOT.jar &
@@ -62,7 +47,6 @@ nohup java -jar shippingdashboard-service-0.0.1-SNAPSHOT.jar &
 ps aux | grep tomcat
 lsof -i :8080
 lsof -i :9443
-kill -9 PID
 
 
 Check Logs
@@ -198,5 +182,18 @@ keytool -importkeystore -srckeystore baeldung.jks -destkeystore baeldung.p12 -de
    Redirect permanent / https://devphp.shipsoft.co/
 </VirtualHost>
 
-Header set X-Frame-Options: "SAMEORIGIN"
 
+
+
+
+HOW TO GENERATE P12 file.
+
+GOT TO /var/www/html/sslcrt/WDS
+
+onlinetracking_co.crt , private.key [These files should be there]
+
+1. cat onlinetracking_co.crt private.key > combined.pem
+
+2. openssl pkcs12 -export -out onlinetracking_co.p12 -in combined.pem -inkey private.key
+
+pass - Dec-pass23

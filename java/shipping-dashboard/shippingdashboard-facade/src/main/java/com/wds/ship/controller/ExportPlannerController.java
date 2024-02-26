@@ -27,7 +27,7 @@ public class ExportPlannerController {
 	ExportPlannerService exportplannerservice;
 	
 
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerServiceInfo")
     public List<CustomerServicePOJO> getExportPlannerServiceInfo(@RequestBody UserDetails userDetails)
     {
@@ -35,7 +35,7 @@ public class ExportPlannerController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerServiceCount")
     public List<ExportDetailsPOJO> getExportPlannerServiceCount(@RequestBody ExportLCL action)
     {
@@ -43,7 +43,7 @@ public class ExportPlannerController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerServicewithinsla")
     public List<ExportDetailsPOJO> getExportPlannerServiceWithinsla(@RequestBody ExportWithinsla sla)
     {
@@ -51,7 +51,7 @@ public class ExportPlannerController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerServiceOutofsla")
     public List<ExportDetailsPOJO> getExportPlannerServiceOutofsla(@RequestBody ExportOutofSla sla)
     {
@@ -62,7 +62,7 @@ public class ExportPlannerController {
     
     // Air Export 
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerServiceAirInfo")
     public List<CustomerServicePOJO> getExportPlannerServiceAirInfo(@RequestBody UserDetails userDetails)
     {
@@ -70,7 +70,7 @@ public class ExportPlannerController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerAirCount")
     public List<ExportDetailsPOJO> getExportPlannerAirCount(@RequestBody ExportLCL action)
     {
@@ -78,7 +78,7 @@ public class ExportPlannerController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerAirWithinsla")
     public List<ExportDetailsPOJO> getExportPlannerAirWithinsla(@RequestBody ExportWithinsla sla)
     {
@@ -86,7 +86,7 @@ public class ExportPlannerController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportPlannerAIrOutofsla")
     public List<ExportDetailsPOJO> getExportPlannerAirOutofsla(@RequestBody ExportOutofSla sla)
     {

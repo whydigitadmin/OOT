@@ -18,7 +18,7 @@ public class LoginController {
     LoginService loginService;
 
     // @CrossOrigin(origins = "http://localhost:4200")
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/loginInfo")
     public UserDetails loginInfo(@RequestBody UserDetails userDetails)
     {
@@ -28,7 +28,7 @@ public class LoginController {
 
     // @CrossOrigin(origins = "http://localhost:4200")
     //@CrossOrigin(origins = "https://devphp.shipsoft.co")
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/loginInfo1")
     public UserDetails loginInfo1(@RequestBody String reqUserDetails)
     {

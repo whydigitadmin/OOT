@@ -25,7 +25,7 @@ public class ExportDocumentationController {
 	ExportDocumentationService exportdocumentationservice;
 	
 
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationServiceInfo")
     public List<CustomerServicePOJO> getExportDocumentationServiceInfo(@RequestBody UserDetails userDetails)
     {
@@ -34,7 +34,7 @@ public class ExportDocumentationController {
     }
     
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationServiceCount")
     public List<ExportDetailsPOJO> getExportDocumentationServiceCount(@RequestBody ExportLCL action)
     {
@@ -42,7 +42,7 @@ public class ExportDocumentationController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationServicewithinsla")
     public List<ExportDetailsPOJO> getExportDocumentationServiceWithinsla(@RequestBody ExportWithinsla sla)
     {
@@ -50,7 +50,7 @@ public class ExportDocumentationController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationServiceOutofsla")
     public List<ExportDetailsPOJO> getExportDocumentationServiceOutofsla(@RequestBody ExportOutofSla sla)
     {
@@ -60,7 +60,7 @@ public class ExportDocumentationController {
     
     // Air Export Documentation
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationServiceAirInfo")
     public List<CustomerServicePOJO> getExportDocumentationServiceAirInfo(@RequestBody UserDetails userDetails)
     {
@@ -69,7 +69,7 @@ public class ExportDocumentationController {
     }
     
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationAirCount")
     public List<ExportDetailsPOJO> getExportDocumentationAirCount(@RequestBody ExportLCL action)
     {
@@ -77,7 +77,7 @@ public class ExportDocumentationController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationAirWithinsla")
     public List<ExportDetailsPOJO> getExportDocumentationAirWithinsla(@RequestBody ExportWithinsla sla)
     {
@@ -85,7 +85,7 @@ public class ExportDocumentationController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportDocumentationAirOutofsla")
     public List<ExportDetailsPOJO> getExportDocumentationAirOutofsla(@RequestBody ExportOutofSla sla)
     {

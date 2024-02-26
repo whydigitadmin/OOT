@@ -27,7 +27,7 @@ public class ImportController {
 	@Autowired
     ImportService importService;
 	
-	@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getImportSalesSupportSeaInfo")
     public List<SalesSupportPOJO> getImportSalesSupportSeaInfo(@RequestBody UserDetails userDetails)
     {
@@ -35,7 +35,7 @@ public class ImportController {
 
     }
     
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getImportSalesSupportSeaDetailsInfo")
     public List<SalesSupportDetailsPOJO> getImportSalesSupportSeaDetailsInfo(@RequestBody ExportLCLDetailsAction action)
     {
@@ -43,7 +43,7 @@ public class ImportController {
 
     }
 	
-	@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getImportLCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getImportLCLCustomerServiceInfo(@RequestBody UserDetails userDetails)
     {
@@ -51,7 +51,7 @@ public class ImportController {
 
     }
 
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getImportFCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getImportFCLCustomerServiceInfo(@RequestBody UserDetails userDetails)
     {
@@ -60,7 +60,7 @@ public class ImportController {
     }
     
 
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getImportLCLDetails")
     public List<ExportDetailsPOJO> getImportLCLDetails(@RequestBody ExportLCLDetailsAction action)
     {
@@ -68,7 +68,7 @@ public class ImportController {
 
     }
     
-//    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+//    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
 //    @GetMapping("/getImportLCLDetails")
 //    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
 //    {
@@ -77,7 +77,7 @@ public class ImportController {
 //    }
     
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportLCLDetailsWithinsla")
   public List<ExportDetailsPOJO> getImportLCLDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
@@ -86,7 +86,7 @@ public class ImportController {
   }
   
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportLCLDetailsOutofsla")
   public List<ExportDetailsPOJO> getImportLCLDetailsOutofsla(@RequestBody ExportOutofSla sla)
   {
@@ -96,7 +96,7 @@ public class ImportController {
   
   //  Documentation
   
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationCustomerServiceInfo")
   public List<CustomerServicePOJO> getImportDocumentationCustomerServiceInfo(@RequestBody UserDetails userDetails)
   {
@@ -105,7 +105,7 @@ public class ImportController {
   }
   
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationDetails")
   public List<ExportDetailsPOJO> getImportDocumentationDetails(@RequestBody ExportLCLDetailsAction action)
   {
@@ -113,7 +113,7 @@ public class ImportController {
 
   }
   
-//  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+//  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
 //  @GetMapping("/getImportLCLDetails")
 //  public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
 //  {
@@ -122,7 +122,7 @@ public class ImportController {
 //  }
   
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationDetailsWithinsla")
   public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
@@ -131,7 +131,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationDetailsOutofsla")
   public List<ExportDetailsPOJO> getImportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla)
   {
@@ -141,7 +141,7 @@ public class ImportController {
   
 //Sea Import Transhipment
   
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentServiceSeaInfo")
   public List<CustomerServicePOJO> getImportTranshipmentSeaServiceInfo(@RequestBody UserDetails userDetails)
   {
@@ -150,7 +150,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentSeaDetails")
   public List<ExportDetailsPOJO> getImportTranshipmentSeaDetails(@RequestBody ExportLCLDetailsAction action)
   {
@@ -158,7 +158,7 @@ public class ImportController {
 
   }
 
-//@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+//@CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
 //@GetMapping("/getImportLCLDetails")
 //public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
 //{
@@ -167,7 +167,7 @@ public class ImportController {
 //}
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentSeaDetailsWithinsla")
   public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
@@ -176,7 +176,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentSeaDetailsOutofsla")
   public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsOutofsla(@RequestBody ExportOutofSla sla)	
   {
@@ -186,7 +186,7 @@ public class ImportController {
   
   // Air Import
   
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportSalesSupportAirInfo")
   public List<SalesSupportPOJO> getImportSalesSupportAirInfo(@RequestBody UserDetails userDetails)
   {
@@ -194,7 +194,7 @@ public class ImportController {
 
   }
   
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportSalesSupportDetailsAirInfo")
   public List<SalesSupportDetailsPOJO> getImportSalesSupportDetailsAirInfo(@RequestBody ExportLCLDetailsAction action)
   {
@@ -203,7 +203,7 @@ public class ImportController {
   }
   
   // Customer Service
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportCustomerServiceAirInfo")
   public List<CustomerServicePOJO> getImportCustomerServiceAirInfo(@RequestBody UserDetails userDetails)
   {
@@ -211,7 +211,7 @@ public class ImportController {
 
   }
   
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportCustomerServiceAirDetails")
   public List<ExportDetailsPOJO> getImportCustomerServiceAirDetails(@RequestBody ExportLCLDetailsAction action)
   {
@@ -221,7 +221,7 @@ public class ImportController {
 
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportCustomerServiceAirDetailsWithinsla")
   public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
@@ -230,7 +230,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportCustomerServiceAirDetailsOutofsla")
   public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsOutofsla(@RequestBody ExportOutofSla sla)	
   {
@@ -239,7 +239,7 @@ public class ImportController {
   }
   
   // Air Import Documentation
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationServiceAirInfo")
   public List<CustomerServicePOJO> getImportDocumentationCustomerServiceAirInfo(@RequestBody UserDetails userDetails)
   {
@@ -248,7 +248,7 @@ public class ImportController {
   }
   
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationAirDetails")
   public List<ExportDetailsPOJO> getImportDocumentationAirDetails(@RequestBody ExportLCLDetailsAction action)
   {
@@ -256,7 +256,7 @@ public class ImportController {
 
   }
   
-//  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+//  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
 //  @GetMapping("/getImportLCLDetails")
 //  public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
 //  {
@@ -265,7 +265,7 @@ public class ImportController {
 //  }
   
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationAirDetailsWithinsla")
   public List<ExportDetailsPOJO> getImportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
@@ -274,7 +274,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportDocumentationAirDetailsOutofsla")
   public List<ExportDetailsPOJO> getImportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla)
   {
@@ -284,7 +284,7 @@ public class ImportController {
   
 //Air Import Transhipment
   
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentServiceAirInfo")
   public List<CustomerServicePOJO> getImportTranshipmentServiceAirInfo(@RequestBody UserDetails userDetails)
   {
@@ -293,7 +293,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentAirDetails")
   public List<ExportDetailsPOJO> getImportTranshipmentAirDetails(@RequestBody ExportLCLDetailsAction action)
   {
@@ -303,7 +303,7 @@ public class ImportController {
 
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentAirDetailsWithinsla")
   public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsWithinsla(@RequestBody ExportWithinsla sla)
   {
@@ -312,7 +312,7 @@ public class ImportController {
   }
 
 
-  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200"})
+  @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getImportTranshipmentAirDetailsOutofsla")
   public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsOutofsla(@RequestBody ExportOutofSla sla)	
   {
