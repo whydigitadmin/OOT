@@ -14,12 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-public class AuthServiceImpl implements UserDetailsService {
+//@Service
+public class AuthServiceImpl {
+        //implements UserDetailsService {
     @Autowired
     AuthRepository authRepository;
 
-    @Override
+   // @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         List<GrantedAuthority> authorities = new ArrayList<>();
         User user = authRepository.findByLoginName(username);
