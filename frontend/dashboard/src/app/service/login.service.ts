@@ -6,7 +6,8 @@ import { Air_Export_CustomerService, Air_Import_CustomerService, Export_LCL_Cust
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
 // const BASE_URL = "https://18.140.188.121:8080"
-const BASE_URL = "http://localhost:8080"
+// const BASE_URL = "http://localhost:8080"
+const BASE_URL = "https://os.onlinetracking.co:8080/hello/hello"
 
 @Injectable({
     providedIn: 'root'
@@ -71,7 +72,7 @@ export class LoginService {
 
     submitLoginInfo(_userDetailsRef: UserLogin): Observable<UserDetails> {
         //return this.http.post<UserInfo>(API_URL);
-        const httpheaders = new HttpHeaders({ 
+        const httpheaders = new HttpHeaders({
             'Authorization': 'Basic ' + btoa(_userDetailsRef.email + ':' + '123'),
             'Content-Type': 'application/json'
         });
