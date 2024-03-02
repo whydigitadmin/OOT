@@ -7,6 +7,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,7 +19,15 @@ import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import static com.wds.ship.constants.OOTConstants.*;
+
 public class JWTTokenValidatorFilter extends OncePerRequestFilter {
+
+    @Value("${jwt.header.auth}")
+    private  String JWTHeader;
+
+    @Value("${jwt.key}")
+    private  String JWTKey;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (isFirstTime(request)) {
@@ -26,17 +35,17 @@ public class JWTTokenValidatorFilter extends OncePerRequestFilter {
             return;
         }
 
-        String jwt = request.getHeader("Authorization");
+        String jwt = request.getHeader(JWTHeader);
         if(null != jwt){
-            SecretKey key = Keys.hmacShaKeyFor("venkat12345venkadefjfdanmdasndasdvenkadehsinfhidevivaishdasaindhuve".getBytes(StandardCharsets.UTF_8));
+            SecretKey key = Keys.hmacShaKeyFor(JWTKey.getBytes(StandardCharsets.UTF_8));
             Claims claims = Jwts.parser()
                     .verifyWith(key)
                     .build()
                     . parseSignedClaims(jwt)
                     .getPayload();
 
-                    String username = String.valueOf(claims.get("username"));
-                    String authorities =(String) claims.get("authorities");
+                    String username = String.valueOf(claims.get(JWT_CLAIMS_USERNAME));
+                    String authorities =(String) claims.get(JWT_CLAIMS_AUTHORITIES);
 
                     Authentication auth = new UsernamePasswordAuthenticationToken(username ,null, AuthorityUtils.commaSeparatedStringToAuthorityList(authorities) );
             SecurityContextHolder.getContext().setAuthentication(auth);
@@ -48,6 +57,6 @@ public class JWTTokenValidatorFilter extends OncePerRequestFilter {
     private boolean isFirstTime(HttpServletRequest request) {
         // Check if it's a login endpoint or an OPTIONS request
         String path = request.getServletPath();
-        return "/api/v1/facade/user/loginInfo1".equals(path) || HttpMethod.OPTIONS.matches(request.getMethod());
+        return JWT_URL_SKIP.equals(path) || HttpMethod.OPTIONS.matches(request.getMethod());
     }
 }
