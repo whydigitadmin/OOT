@@ -106,19 +106,14 @@ export class SeaImportDashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    //console.log("I AM LOG OF METHOD")
     this.localSession = localStorage.getItem('user_data');
-    // console.log("localSession :", this.localSession);   
     this.user_roles = JSON.parse(this.localSession).productRoles;
-    // console.log("user_roles :", this.user_roles);
-
-    //this.search();
     this.loadAllItems();
   }
 
   isRoleMatching(roleId: number): any {
     //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    return this.user_roles.find((role: any) => role.roleId === roleId);
+    return this.globals.productRoles.find((role: any) => role.roleId === roleId);
     //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
 
   }

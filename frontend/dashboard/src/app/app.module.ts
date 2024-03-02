@@ -82,6 +82,7 @@ import { AirImportTranshipmentDeskCountReportComponent } from './report/air-impo
 import { AirImportTranshipmentDeskWithinslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-withinsla-report/air-import-transhipment-desk-withinsla-report.component';
 import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-outofsla-report/air-import-transhipment-desk-outofsla-report.component';
 import { LoginInterceptor } from './interceptor/LoginInterceptor';
+import { JWTService } from './service/JWTService.';
 
 @NgModule({
   declarations: [
@@ -169,7 +170,7 @@ import { LoginInterceptor } from './interceptor/LoginInterceptor';
     useClass: LoginInterceptor,
     multi: true
   }, Globals, LayoutConfigService, HtmlClassService, MenuHorizontalService,
-    MenuConfigService, LoginScreenService],
+    MenuConfigService, LoginScreenService , JWTService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

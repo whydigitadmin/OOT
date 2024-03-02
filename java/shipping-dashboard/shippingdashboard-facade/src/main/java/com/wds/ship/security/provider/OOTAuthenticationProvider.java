@@ -30,14 +30,26 @@ public class OOTAuthenticationProvider implements AuthenticationProvider {
         String email = authentication.getName();
         String pwd = authentication.getCredentials().toString();
         List<GrantedAuthority> authorities = new ArrayList<>();
+
+        List<GrantedAuthority> authorities1 = new ArrayList<>();
+
         User user = authRepository.findByLoginName(email);
         if( null != user){
            if(passwordEncoder.matches(pwd, "123")) {
+               // Working code
+//               List<String> roles = user.getUserGroups().stream().map(x -> String.valueOf(x.getUserGroup())).collect(Collectors.toList());
+//               user.getRoleMapping().forEach(role -> {
+//                   authorities.add(new SimpleGrantedAuthority(role.getRoleMaster().getProductName()));
+//               });
+//               return new UsernamePasswordAuthenticationToken(email ,pwd , authorities);
+
                List<String> roles = user.getUserGroups().stream().map(x -> String.valueOf(x.getUserGroup())).collect(Collectors.toList());
                user.getRoleMapping().forEach(role -> {
-                   authorities.add(new SimpleGrantedAuthority(role.getRoleMaster().getProductName()));
+                   authorities.add(new OOTAuthority(role.getRoleMaster().getProductName() , String.valueOf(role.getRoleMaster().getRoleId())));
                });
+
                return new UsernamePasswordAuthenticationToken(email ,pwd , authorities);
+
            } else{
                throw new BadCredentialsException("Invalid Password");
            }

@@ -6,8 +6,8 @@ import { Air_Export_CustomerService, Air_Import_CustomerService, Export_LCL_Cust
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
 // const BASE_URL = "https://18.140.188.121:8080"
-// const BASE_URL = "http://localhost:8080"
-const BASE_URL = "https://os.onlinetracking.co:8080/hello/hello"
+ const BASE_URL = "http://localhost:8080"
+//const BASE_URL = "https://os.onlinetracking.co:8080/hello/hello"
 
 @Injectable({
     providedIn: 'root'
@@ -70,14 +70,13 @@ export class LoginService {
         return this.http.get<any>(BASE_URL);
     }
 
-    submitLoginInfo(_userDetailsRef: UserLogin): Observable<UserDetails> {
-        //return this.http.post<UserInfo>(API_URL);
+    submitLoginInfo(_userDetailsRef: UserLogin) {
         const httpheaders = new HttpHeaders({
             'Authorization': 'Basic ' + btoa(_userDetailsRef.email + ':' + '123'),
             'Content-Type': 'application/json'
         });
         const jsonData = JSON.stringify(_userDetailsRef);
-        return this.http.post<UserDetails>(BASE_URL + "/api/v1/facade/user/loginInfo1", jsonData, { headers: httpheaders });
+        return this.http.post(BASE_URL + "/api/v1/facade/user/loginInfo1", jsonData, {  headers: httpheaders ,  observe: 'response', withCredentials : true });
     }
 
     getShipmentCount(_shipment: Shipment): Observable<any> {

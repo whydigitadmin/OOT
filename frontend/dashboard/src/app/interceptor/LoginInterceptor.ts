@@ -15,18 +15,16 @@ implements HttpInterceptor{
         let modifiedRequest = req; 
 
         if(sessionStorage.getItem("details")) {
-           let  userLogin  = JSON.parse((sessionStorage.getItem("details"))!);
+           let  userLogin1  = sessionStorage.getItem("details")!;
             
-           let email = userLogin.email;
-           let password = '123';
-              
             const httpheaders = new HttpHeaders({ 
-                'Authorization': 'Basic ' + btoa(email + ':' + password),
+                'Authorization': userLogin1,
                 'Content-Type': 'application/json'
             });
 
             modifiedRequest = req.clone({
-                headers: httpheaders
+                headers: httpheaders,
+                withCredentials: true,
             });
 
         }

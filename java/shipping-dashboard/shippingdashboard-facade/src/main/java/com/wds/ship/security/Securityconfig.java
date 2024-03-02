@@ -7,6 +7,7 @@ import com.wds.ship.security.filter.RequestValidationBeforeFilter;
 import com.wds.ship.security.repository.AuthRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -29,11 +30,17 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static com.wds.ship.constants.OOTConstants.JWT_HEADER_AUTH;
+
 @Configuration
 @EnableWebSecurity
 public class Securityconfig {
 
+    @Value("${jwt.header.auth}")
+    private  String JWTHeader;
 
+    @Value("${jwt.key}")
+    private  String JWTKey;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -47,6 +54,7 @@ public class Securityconfig {
                 config.setAllowedMethods(Collections.singletonList("*"));
                 config.setAllowCredentials(true);
                 config.setAllowedHeaders(Collections.singletonList("*"));
+                config.setExposedHeaders(Arrays.asList(JWT_HEADER_AUTH));
                 config.setMaxAge(360L);
                 return config;
             }
