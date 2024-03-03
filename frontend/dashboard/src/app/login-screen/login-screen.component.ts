@@ -26,7 +26,7 @@ export class LoginScreenComponent implements OnInit {
 		? localStorage.getItem("logout_msg")
 		: "";
 	private unsubscribe: Subject<any> | undefined;
-
+	userDetails: UserDetails = new UserDetails();
 
 	loginForm: FormGroup;
 
@@ -63,20 +63,21 @@ export class LoginScreenComponent implements OnInit {
 		const formData = new UserLogin(this.logindata.username, this.logindata.password);
 		this.loginService.submitLoginInfo(formData).subscribe(response => {
 			if (response != null) {
-				// NEED to change password
-				const details = { email:  response['email'], password : '123' }; 
-				sessionStorage.setItem('details', JSON.stringify(details));
 
+				sessionStorage.setItem('details', response.headers.get("Authorization")!);
+				this.userDetails = response.body as UserDetails;
 				this.globals.isUserLoggedIn = true;
-				this.globals.id = response['id'];
-				this.globals.companyId = response['companyId'];
-				this.globals.deptName = response['deptName'];
-				this.globals.homeDeptId = response['homeDeptId'];
-				this.globals.email = response['email'];
-				this.globals.productRoles = response['productRoles'];
-				this.globals.userDetails = response;
+				this.globals.id = this.userDetails.id;
+				this.globals.companyId = this.userDetails .companyId;
+				this.globals.deptName = this.userDetails.deptName;
+				this.globals.homeDeptId = this.userDetails.homeDeptId;
+				this.globals.email = this.userDetails.email;
+				this.globals.productRoles = this.userDetails.productRoles ;
+				this.globals.userDetails = this.userDetails ;
+
+				sessionStorage.setItem('roles', JSON.stringify(this.globals.productRoles));
 				localStorage.setItem('user_data', JSON.stringify(response));
-				localStorage.setItem('roles', JSON.stringify(this.globals.productRoles));
+				sessionStorage.setItem('roles', JSON.stringify(this.globals.productRoles));
 				this.router.navigateByUrl('/landing');
 			}
 			else {

@@ -103,10 +103,12 @@ export class AirExportDashboardComponent implements OnInit {
   }
 
   isRoleMatching(roleId: number): any {
-    //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
-
+    const rolesString = sessionStorage.getItem('roles');
+    const rolesArray = rolesString ? JSON.parse(rolesString) : [];
+    return rolesArray.find((role: any) => role.roleId === roleId);
+   
+   // return this.globals.productRoles.find((role: any) => role.roleId === roleId);
+   
   }
 
   loadAllItems() {
@@ -386,7 +388,7 @@ export class AirExportDashboardComponent implements OnInit {
 
 
   get_air_export_customer_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirExportCsCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -402,7 +404,7 @@ export class AirExportDashboardComponent implements OnInit {
   }
 
   get_air_export_sales_service_Info() {
-    console.log("mani")
+  
     this.loginService.getAirExportSalesCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -418,7 +420,7 @@ export class AirExportDashboardComponent implements OnInit {
   }
 
   get_air_export_documentation_service_Info() {
-    console.log("mani")
+   
     this.loginService.getAirExportDocumentationCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -434,7 +436,7 @@ export class AirExportDashboardComponent implements OnInit {
   }
 
   get_air_export_planner_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirExportPlannerCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -450,7 +452,7 @@ export class AirExportDashboardComponent implements OnInit {
   }
 
   get_air_export_BlreleaseDesk_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirExportBlreleaseDeskCustomerServiceInfo()
       .subscribe(
         (response) => {

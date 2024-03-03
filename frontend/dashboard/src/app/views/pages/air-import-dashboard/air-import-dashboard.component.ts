@@ -68,10 +68,14 @@ export class AirImportDashboardComponent implements OnInit {
   }
 
   isRoleMatching(roleId: number): any {
-    //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
 
+    const rolesString = sessionStorage.getItem('roles');
+    const rolesArray = rolesString ? JSON.parse(rolesString) : [];
+    return rolesArray.find((role: any) => role.roleId === roleId);
+
+     
+    //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
+  
   }
 
   loadAllItems() {
@@ -286,7 +290,7 @@ export class AirImportDashboardComponent implements OnInit {
   }
 
   get_air_import_sales_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirImportSalesCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -302,7 +306,7 @@ export class AirImportDashboardComponent implements OnInit {
   }
 
   get_air_import_Cs_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirImportCSCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -318,7 +322,7 @@ export class AirImportDashboardComponent implements OnInit {
   }
 
   get_air_import_documentation_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirImportDocumentationCustomerServiceInfo()
       .subscribe(
         (response) => {
@@ -334,7 +338,7 @@ export class AirImportDashboardComponent implements OnInit {
   }
 
   get_air_import_transhipmentDesk_service_Info() {
-    console.log("mani")
+
     this.loginService.getAirImportTranshipmentDeskCustomerServiceInfo()
       .subscribe(
         (response) => {

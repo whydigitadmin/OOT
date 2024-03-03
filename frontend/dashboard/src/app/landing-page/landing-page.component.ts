@@ -11,6 +11,7 @@ import { JWTService } from '../service/JWTService.';
 
 })
 export class LandingPageComponent implements OnInit {
+ 
 
 
   constructor(private router: Router, private globals: Globals, private loginService: LoginService , private jwtService : JWTService) { }
@@ -21,9 +22,12 @@ export class LandingPageComponent implements OnInit {
   }
 
   isProductMatching(product: string): any {
-    return this.globals.productRoles.find((role: any) => role.productCode === product);
-    //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
 
-  }
+    const rolesString = sessionStorage.getItem('roles');
+    const rolesArray = rolesString ? JSON.parse(rolesString) : [];
+    return rolesArray.find((role: any) => role.productCode === product);
+
+    //return this.globals.productRoles.find((role: any) => role.productCode === product);
+      }
 }
 

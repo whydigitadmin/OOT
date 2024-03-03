@@ -36,7 +36,7 @@ export class AirExportDocumentationOutofslaReportComponent implements OnInit {
 
   get_air_export_documentation_details_OutOfSla_navigation(): void {
     const action = this.data;
-    console.log("mani", this.data, action);
+
 
     this.loginService.getAirExportDocumentationDetailsOutOfSla(action).subscribe(
       (response: any) => {

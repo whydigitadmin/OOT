@@ -22,12 +22,10 @@ export class SidebarComponent {
     const main = this.el.nativeElement.querySelector('#main');
 
     if (this.mini) {
-      console.log('Opening sidebar');
       this.renderer.setStyle(mySidebar, 'width', '250px');
       this.renderer.setStyle(main, 'marginLeft', '250px');
       this.mini = false;
     } else {
-      console.log('Closing sidebar');
       this.renderer.setStyle(mySidebar, 'width', '62px');
       this.renderer.setStyle(main, 'marginLeft', '70px');
       this.mini = true;

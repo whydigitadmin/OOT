@@ -7,7 +7,7 @@ import { Air_Export_CustomerService, Air_Import_CustomerService, Export_LCL_Cust
 
 // const BASE_URL = "https://18.140.188.121:8080"
  const BASE_URL = "http://localhost:8080"
-//const BASE_URL = "https://os.onlinetracking.co:8080/hello/hello"
+//const BASE_URL = "https://os.onlinetracking.co:8080"
 
 @Injectable({
     providedIn: 'root'

@@ -112,10 +112,13 @@ export class SeaImportDashboardComponent implements OnInit {
   }
 
   isRoleMatching(roleId: number): any {
-    //return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    return this.globals.productRoles.find((role: any) => role.roleId === roleId);
-    //return this.user_roles.forEach((role: any) => (role.roleId === roleId) ? console.log("isRoleMatching :", role.roleId) : console.log("isRoleMatching1 :", role.roleId));
+    
+    const rolesString = sessionStorage.getItem('roles');
+    const rolesArray = rolesString ? JSON.parse(rolesString) : [];
+    return rolesArray.find((role: any) => role.roleId === roleId);
 
+   // return this.globals.productRoles.find((role: any) => role.roleId === roleId);
+   
   }
 
   loadAllItems() {
