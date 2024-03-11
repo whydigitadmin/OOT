@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { AirExportBlreleaseDeskDetails, ExportCustomerServiceDetails, ExportDocumentationDetails, ExportLclDetails, ExportPlannerDetails, Globals, ImportCustomerServiceDetails, ImportDocumentationDetails, ImportLclDetails, ImportTranshipmentDeskDetails, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
+import { ActionDetails, AirExportBlreleaseDeskDetails, ExportCustomerServiceDetails, ExportDocumentationDetails, ExportLclDetails, ExportPlannerDetails, Globals, ImportCustomerServiceDetails, ImportDocumentationDetails, ImportLclDetails, ImportTranshipmentDeskDetails, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
 import { Air_Export_CustomerService, Air_Import_CustomerService, Export_LCL_CustomerService, Import_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
@@ -19,6 +19,9 @@ export class LoginService {
     private exportLclCountDetails = '/api/v1/facade/export/getExportLCLDetails';
     private exportLclWithinslaDetails = '/api/v1/facade/export/getExportLCLDetailsWithinsla';
     private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
+    private exportFclCountDetails = '/api/v1/facade/export/getExportFCLDetails';
+    private exportFclWithinslaDetails = '/api/v1/facade/export/getExportFCLDetailsWithinsla';
+    private exportFclOutOfSlaDetails = '/api/v1/facade/export/getExportFCLDetailsOutofsla';
     private exportDocumentationCountDetails = '/api/v1/facade/export/getExportDocumentationServiceCount';
     private exportDocumentationWithinslaDetails = '/api/v1/facade/export/getExportDocumentationServicewithinsla';
     private exportDocumentationOutofslaDetails = '/api/v1/facade/export/getExportDocumentationServiceOutofsla';
@@ -275,6 +278,41 @@ export class LoginService {
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportLclOutOfSlaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getExportFclDetailsCount(action: string): Observable<any> {
+        const exportFclDetails = new ActionDetails();
+        exportFclDetails.action = action;
+        const jsonData = JSON.stringify(exportFclDetails);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportFclCountDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getExportFclDetailsWithinSla(action: string): Observable<any> {
+        console.log("action", action);
+        const exportFclDetailsWithinsla = new ActionDetails();
+        exportFclDetailsWithinsla.action = action;
+        const jsonData = JSON.stringify(exportFclDetailsWithinsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportFclWithinslaDetails}`;
+        // const variable = encodeURIComponent(`${action}`);
+        return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
+    }
+
+    getExportFclDetailsOutOfSla(action: string): Observable<any> {
+        console.log("action", action);
+        const exportFclDetailsOutofsla = new ActionDetails();
+        exportFclDetailsOutofsla.action = action;
+        const jsonData = JSON.stringify(exportFclDetailsOutofsla.action);
+        console.log('jsonData', jsonData);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const urlWithParams = `${BASE_URL}${this.exportFclOutOfSlaDetails}`;
         // const variable = encodeURIComponent(`${action}`);
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }

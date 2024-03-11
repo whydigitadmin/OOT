@@ -27,13 +27,15 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getAllLCLDetails(ExportLCLDetailsAction action);
 
-//    public List<ExportDetailsPOJO>getAllLCLDetails(String action);
-    
-//    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(String action,int withinsla);
-
 	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
 
     public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(String action,int outofsla);
+
+    public List<ExportDetailsPOJO>getAllFCLDetails(ExportLCLDetailsAction action);
+
+    public List<ExportDetailsPOJO> getExportFCLDetailsWithinSla(String action, int withinsla);
+
+    public List<ExportDetailsPOJO>getExportFCLDetailsOutofSla(String action,int outofsla);
 
 	//public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
     

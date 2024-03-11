@@ -65,14 +65,7 @@ public class ExportController {
 
     }
     
-//    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
-//    @GetMapping("/getExportLCLDetails")
-//    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestParam(value="action") String action)
-//    {
-//        return exportService.getExportLCLDetails(action);
-//
-//    }
-    
+
 
   @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
   @PostMapping("/getExportLCLDetailsWithinsla")
@@ -90,6 +83,33 @@ public class ExportController {
       return exportService.getExportLCLDetailsOutofsla(sla);
 
   }
+
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
+    @PostMapping("/getExportFCLDetails")
+    public List<ExportDetailsPOJO> getExportFCLDetails(@RequestBody ExportLCLDetailsAction action)
+    {
+        return exportService.getExportFCLDetails(action);
+
+    }
+
+
+
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
+    @PostMapping("/getExportFCLDetailsWithinsla")
+    public List<ExportDetailsPOJO> getExportFCLDetailsWithinsla(@RequestBody ExportWithinsla sla)
+    {
+        return exportService.getExportFCLDetailsWithinsla(sla);
+
+    }
+
+
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
+    @PostMapping("/getExportFCLDetailsOutofsla")
+    public List<ExportDetailsPOJO> getExportFCLDetailsOutofsla(@RequestBody ExportOutofSla sla)
+    {
+        return exportService.getExportFCLDetailsOutofsla(sla);
+
+    }
   
   // Sea Export BL Release Desk
   

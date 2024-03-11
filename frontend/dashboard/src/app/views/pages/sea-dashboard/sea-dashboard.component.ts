@@ -21,6 +21,9 @@ import { ExportSalesCountReportComponent } from 'src/app/report/sea-export/expor
 import { SeaExportBLreleaseDeskCountReportComponent } from 'src/app/report/sea-export/export-blreleaseDesk-report/sea-export-b-lrelease-desk-count-report/sea-export-b-lrelease-desk-count-report.component';
 import { SeaExportBLreleaseDeskWithinslaReportComponent } from 'src/app/report/sea-export/export-blreleaseDesk-report/sea-export-b-lrelease-desk-withinsla-report/sea-export-b-lrelease-desk-withinsla-report.component';
 import { SeaExportBLreleaseDeskOutofslaReportComponent } from 'src/app/report/sea-export/export-blreleaseDesk-report/sea-export-b-lrelease-desk-outofsla-report/sea-export-b-lrelease-desk-outofsla-report.component';
+import { ExportFclReportComponent } from 'src/app/report/sea-export/export-fcl-report/export-fcl-report/export-fcl-report.component';
+import { ExportFclWithinslaReportComponent } from 'src/app/report/sea-export/export-fcl-report/export-fcl-withinsla-report/export-fcl-withinsla-report.component';
+import { ExportFclOutofslaReportComponent } from 'src/app/report/sea-export/export-fcl-report/export-fcl-outofsla-report/export-fcl-outofsla-report.component';
 
 @Component({
   selector: 'app-sea-dashboard',
@@ -100,21 +103,7 @@ export class SeaDashboardComponent implements OnInit {
       param1: action,
       // param2: 'value2'
       // Add more parameters as needed
-    };
-    // const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
-    // const url = this.router.serializeUrl(urlTree);
-    // window.open(url, '_blank', 'width=800,height=600');
-    // const urlTree = this.router.createUrlTree(['/lcl-details'], { queryParams });
-
-    // // Serialize the URL tree into a string
-    // const url = this.router.serializeUrl(urlTree);
-
-    // // Open the URL in a modal popup
-    // const dialogRef = this.dialog.open(ExportLclReportComponent, {
-    //   width: '1000px',
-    //   height: '500px',
-    //   data: { url: url }, // Pass the URL as data to the modal component
-    // });
+    };    
 
     const dialogRef = this.dialog.open(ExportLclReportComponent, {
       width: '1200px',
@@ -159,6 +148,68 @@ export class SeaDashboardComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(ExportLclOutofslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_fcl_details_navigation(action: string): void {
+    const queryParams = {
+      param1: action,
+      // param2: 'value2'
+      // Add more parameters as needed
+    };    
+
+    const dialogRef = this.dialog.open(ExportFclReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: action,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_fcl_details_Withinsla_navigation(action: string, withinsla: string): void {
+    console.log("pass", action, withinsla);
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+    };
+
+    const dialogRef = this.dialog.open(ExportFclWithinslaReportComponent, {
+      width: '1200px',
+      height: '500px',
+      data: queryParams,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any result or clean-up logic after the modal is closed
+      console.log('Modal closed with result:', result);
+    });
+
+  }
+
+  get_export_fcl_details_OutOfSla_navigation(action: string, withinsla: string, outofsla: string): void {
+
+    const queryParams = {
+      action: action,
+      withinsla: 0,
+      outofsla: 0
+    };
+
+    const dialogRef = this.dialog.open(ExportFclOutofslaReportComponent, {
       width: '1200px',
       height: '500px',
       data: queryParams,

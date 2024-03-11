@@ -83,6 +83,32 @@ public class ExportServiceController {
     public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
   	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
     }
+
+    @PostMapping("/exportfcldetails")
+    public List<ExportDetailsPOJO>getAllFCL(@RequestBody ExportLCLDetailsAction action){
+        return exportService.getAllFCLDetails(action);
+    }
+
+
+//    @GetMapping("/exportfcldetailswihtinsla")
+//    public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestParam(value="action")String action,@RequestParam(value="withinsla")int withinsla){
+//    	return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(action, withinsla);
+//    }
+
+    @PostMapping("/exportfcldetailswihtinsla")
+    public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
+        return exportService.getExportFCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+    }
+
+//    @GetMapping("/exportlcldetailsoutofsla")
+//    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(@RequestParam(value="action")String action,@RequestParam(value="outofsla")int outofsla){
+//    	return exportCustomerServiceLCLService.getExportLCLDetailsOutofSla(action, outofsla);
+//    }
+
+    @PostMapping("/exportfcldetailsoutofsla")
+    public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
+        return exportService.getExportFCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+    }
     
     // Sea Export BL Release Desk
     

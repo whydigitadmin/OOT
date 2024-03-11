@@ -296,12 +296,28 @@
                             >Count</mat-header-cell
                           >
                           <mat-cell
-                            style="background-color: #393a3b; color: #fff"
-                            *matCellDef="let element"
-                            ><a style="color: #fff" href="/landing">{{
-                              element.count
-                            }}</a></mat-cell
-                          >
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                            >
+                              <ng-container
+                                *ngIf="element.count > 0; else noData"
+                              >
+                                <!-- Display count and provide click event if count is greater than 0 -->
+                                <a
+                                  style="color: #fff"
+                                  href="javascript:void(0);"
+                                  (click)="
+                                    get_export_fcl_details_navigation(
+                                      element.action
+                                    )
+                                  "
+                                >
+                                  {{ element.count }}
+                                </a>
+                              </ng-container>
+                              <!-- If count is 0, display 'No data found' message -->
+                              <ng-template #noData>_</ng-template>
+                            </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countSLA">
@@ -315,12 +331,29 @@
                             >Within SLA</mat-header-cell
                           >
                           <mat-cell
-                            style="background-color: #393a3b; color: #fff"
-                            *matCellDef="let element"
-                            ><a style="color: #fff" href="/landing">{{
-                              element.withinSLA
-                            }}</a></mat-cell
-                          >
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                            >
+                              <ng-container
+                                *ngIf="
+                                  element.withinSLA !== 0;
+                                  else noDataFound
+                                "
+                              >
+                                <a
+                                  style="color: #fff"
+                                  href="javascript:void(0);"
+                                  (click)="
+                                    get_export_fcl_details_Withinsla_navigation(
+                                      element.action,
+                                      element.withinSLA
+                                    )
+                                  "
+                                  >{{ element.withinSLA }}</a
+                                >
+                              </ng-container>
+                              <ng-template #noDataFound>_</ng-template>
+                            </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="countOSLA">
@@ -335,12 +368,27 @@
                             Out of SLA</mat-header-cell
                           >
                           <mat-cell
-                            style="background-color: #393a3b; color: #fff"
-                            *matCellDef="let element"
-                            ><a style="color: #fff" href="/landing">{{
-                              element.outOfSLA
-                            }}</a></mat-cell
-                          >
+                              style="background-color: #393a3b; color: #fff"
+                              *matCellDef="let element"
+                            >
+                              <ng-container
+                                *ngIf="element.outOfSLA !== 0; else noDataFound"
+                              >
+                                <a
+                                  style="color: #fff"
+                                  href="javascript:void(0);"
+                                  (click)="
+                                    get_export_fcl_details_OutOfSla_navigation(
+                                      element.action,
+                                      element.withinSLA,
+                                      element.outOfSLA
+                                    )
+                                  "
+                                  >{{ element.outOfSLA }}</a
+                                >
+                              </ng-container>
+                              <ng-template #noDataFound>_</ng-template>
+                            </mat-cell>
                         </ng-container>
 
                         <mat-header-row

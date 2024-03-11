@@ -24,6 +24,14 @@ export class UserDetails {
     }
 }
 
+export class ActionDetails {
+    action: string;
+
+    constructor() {
+        this.action = '';
+    }
+}
+
 export class ExportLclDetails {
     action: string;
 
