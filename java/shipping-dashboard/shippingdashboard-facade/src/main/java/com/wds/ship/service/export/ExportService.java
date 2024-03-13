@@ -57,13 +57,6 @@ public class ExportService {
         return responseEntity.getBody();
     }
 
-//	public List<ExportDetailsPOJO> getExportLCLDetails(String action) {
-//		RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<List> responseEntity =
-//                restTemplate.getForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails?action="+action, List.class);
-//        return responseEntity.getBody();
-//	}
-    
     public List<ExportDetailsPOJO> getExportLCLDetailsWithinsla(ExportWithinsla sla){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
@@ -76,6 +69,28 @@ public class ExportService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
                 restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailsoutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
+
+    public List<ExportDetailsPOJO> getExportFCLDetails(ExportLCLDetailsAction action){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportfcldetails", action, List.class);
+        return responseEntity.getBody();
+    }
+
+    public List<ExportDetailsPOJO> getExportFCLDetailsWithinsla(ExportWithinsla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportfcldetailswihtinsla",sla, List.class);
+        return responseEntity.getBody();
+    }
+
+
+    public List<ExportDetailsPOJO> getExportFCLDetailsOutofsla(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportfcldetailsoutofsla",sla ,List.class);
         return responseEntity.getBody();
     }
     

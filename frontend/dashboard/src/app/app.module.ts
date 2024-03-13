@@ -83,6 +83,9 @@ import { AirImportTranshipmentDeskWithinslaReportComponent } from './report/air-
 import { AirImportTranshipmentDeskOutofslaReportComponent } from './report/air-import/air-import-transhipmentDesk-report/air-import-transhipment-desk-outofsla-report/air-import-transhipment-desk-outofsla-report.component';
 import { LoginInterceptor } from './interceptor/LoginInterceptor';
 import { JWTService } from './service/JWTService.';
+import { ExportFclOutofslaReportComponent } from './report/sea-export/export-fcl-report/export-fcl-outofsla-report/export-fcl-outofsla-report.component';
+import { ExportFclReportComponent } from './report/sea-export/export-fcl-report/export-fcl-report/export-fcl-report.component';
+import { ExportFclWithinslaReportComponent } from './report/sea-export/export-fcl-report/export-fcl-withinsla-report/export-fcl-withinsla-report.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,9 @@ import { JWTService } from './service/JWTService.';
     ExportLclReportComponent,
     ExportLclWithinslaReportComponent,
     ExportLclOutofslaReportComponent,
+    ExportFclReportComponent,
+    ExportFclWithinslaReportComponent,
+    ExportFclOutofslaReportComponent,
     ExportDocumentationCountReportComponent,
     ExportDocumentationWithinslaReportComponent,
     ExportDocumentationOutofslaReportComponent,
