@@ -31,6 +31,24 @@ import { SeaExportBLreleaseDeskOutofslaReportComponent } from 'src/app/report/se
 export class SeaDashboardComponent implements OnInit {
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
+  
+  countlinkStyles = {
+    'color': '#aa0fa2',
+    'font-size': '16px',
+    'font-weight': 'bold'
+  };
+
+  withinSLAlinkStyles = {
+    'color': '#51c007c0',
+    'font-size': '16px',
+    'font-weight': 'bold'
+  };
+
+  outOfSLAlinkStyles = {
+    'color': '#aa0f0f',
+    'font-size': '16px',
+    'font-weight': 'bold'
+  };
 
   datasource_export_Sales_support_CS: Export_LCL_CustomerService[] = [];
   datasource_export_LCL_CS = [{}];

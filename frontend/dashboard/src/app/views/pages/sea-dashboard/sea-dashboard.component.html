@@ -65,7 +65,7 @@
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
-                                style="color: #fff"
+                                [ngStyle]="countlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_sales_support_details_navigation(
@@ -148,7 +148,7 @@
                               >
                                 <!-- Display count and provide click event if count is greater than 0 -->
                                 <a
-                                  style="color: #fff"
+                                [ngStyle]="countlinkStyles"
                                   href="javascript:void(0);"
                                   (click)="
                                     get_export_lcl_details_navigation(
@@ -185,7 +185,7 @@
                                 "
                               >
                                 <a
-                                  style="color: #fff"
+                                  [ngStyle]="withinSLAlinkStyles"
                                   href="javascript:void(0);"
                                   (click)="
                                     get_export_lcl_details_Withinsla_navigation(
@@ -216,9 +216,9 @@
                             >
                               <ng-container
                                 *ngIf="element.outOfSLA !== 0; else noDataFound"
-                              >
+                                >
                                 <a
-                                  style="color: #fff"
+                                  [ngStyle]="outOfSLAlinkStyles"
                                   href="javascript:void(0);"
                                   (click)="
                                     get_export_lcl_details_OutOfSla_navigation(
@@ -298,7 +298,7 @@
                           <mat-cell
                             style="background-color: #393a3b; color: #fff"
                             *matCellDef="let element"
-                            ><a style="color: #fff" href="/landing">{{
+                            ><a [ngStyle]="countlinkStyles"  href="/landing">{{
                               element.count
                             }}</a></mat-cell
                           >
@@ -317,7 +317,7 @@
                           <mat-cell
                             style="background-color: #393a3b; color: #fff"
                             *matCellDef="let element"
-                            ><a style="color: #fff" href="/landing">{{
+                            ><a [ngStyle]="withinSLAlinkStyles" href="/landing">{{
                               element.withinSLA
                             }}</a></mat-cell
                           >
@@ -337,7 +337,8 @@
                           <mat-cell
                             style="background-color: #393a3b; color: #fff"
                             *matCellDef="let element"
-                            ><a style="color: #fff" href="/landing">{{
+                            ><a [ngStyle]="outOfSLAlinkStyles"
+                            href="/landing">{{
                               element.outOfSLA
                             }}</a></mat-cell
                           >
@@ -411,7 +412,7 @@
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
-                                style="color: #fff"
+                                 [ngStyle]="countlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_documentation_Count_details_navigation(
@@ -445,7 +446,7 @@
                               *ngIf="element.withinSLA !== 0; else noDataFound"
                             >
                               <a
-                                style="color: #fff"
+                              [ngStyle]="withinSLAlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_documentation_details_Withinsla_navigation(
@@ -478,7 +479,7 @@
                               *ngIf="element.outOfSLA !== 0; else noDataFound"
                             >
                               <a
-                                style="color: #fff"
+                              [ngStyle]="outOfSLAlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_documentation_details_OutOfSla_navigation(
@@ -558,7 +559,7 @@
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
-                                style="color: #fff"
+                                [ngStyle]="countlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_planner_Count_details_navigation(
@@ -592,7 +593,7 @@
                               *ngIf="element.withinSLA !== 0; else noDataFound"
                             >
                               <a
-                                style="color: #fff"
+                                [ngStyle]="withinSLAlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_planner_details_Withinsla_navigation(
@@ -625,7 +626,7 @@
                               *ngIf="element.outOfSLA !== 0; else noDataFound"
                             >
                               <a
-                                style="color: #fff"
+                                [ngStyle]="outOfSLAlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_planner_details_OutOfSla_navigation(
@@ -707,7 +708,7 @@
                             >
                               <!-- Display count and provide click event if count is greater than 0 -->
                               <a
-                                style="color: #fff"
+                              [ngStyle]="countlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_blrealeaseDesk_Count_details_navigation(
@@ -741,7 +742,7 @@
                               *ngIf="element.withinSLA !== 0; else noDataFound"
                             >
                               <a
-                                style="color: #fff"
+                              [ngStyle]="withinSLAlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_blrealeaseDesk_details_Withinsla_navigation(
@@ -774,7 +775,7 @@
                               *ngIf="element.outOfSLA !== 0; else noDataFound"
                             >
                               <a
-                                style="color: #fff"
+                              [ngStyle]="outOfSLAlinkStyles"
                                 href="javascript:void(0);"
                                 (click)="
                                   get_export_blrealeaseDesk_details_OutOfSla_navigation(
