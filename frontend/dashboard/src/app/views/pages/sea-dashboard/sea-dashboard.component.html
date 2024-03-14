@@ -298,7 +298,11 @@
                           <mat-cell
                             style="background-color: #393a3b; color: #fff"
                             *matCellDef="let element"
-                            ><a [ngStyle]="countlinkStyles"  href="/landing">{{
+                            ><a  href="javascript:void(0);" (click)="
+                            get_export_fcl_details_navigation(
+                              element.action
+                            )
+                          " [ngStyle]="countlinkStyles"  >{{
                               element.count
                             }}</a></mat-cell
                           >
@@ -317,7 +321,15 @@
                           <mat-cell
                             style="background-color: #393a3b; color: #fff"
                             *matCellDef="let element"
-                            ><a [ngStyle]="withinSLAlinkStyles" href="/landing">{{
+                            ><a 
+                            href="javascript:void(0);"
+                                  (click)="
+                                    get_export_fcl_details_Withinsla_navigation(
+                                      element.action,
+                                      element.withinSLA
+                                    )
+                                  "
+                             [ngStyle]="withinSLAlinkStyles">{{
                               element.withinSLA
                             }}</a></mat-cell
                           >
@@ -337,8 +349,17 @@
                           <mat-cell
                             style="background-color: #393a3b; color: #fff"
                             *matCellDef="let element"
-                            ><a [ngStyle]="outOfSLAlinkStyles"
-                            href="/landing">{{
+                            ><a 
+                            href="javascript:void(0);"
+                            (click)="
+                            get_export_fcl_details_OutOfSla_navigation(
+                              element.action,
+                              element.withinSLA,
+                              element.outOfSLA
+                            )
+                          "
+                            [ngStyle]="outOfSLAlinkStyles"
+                            >{{
                               element.outOfSLA
                             }}</a></mat-cell
                           >
