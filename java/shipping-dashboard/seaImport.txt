@@ -1,0 +1,33 @@
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "DEVPHP"."PROC_IMPORT_SALES_SUPPORT" ("ID", "DEPT", "PRODUCT", "ACTION", "COUNT", "WITHIN_EXPIRY_DATE", "EXCEEDED_EXPIRY_DATE") AS
+  SELECT sno id,
+          DEPT,
+          PRODUCT,
+          ACTION,
+          COUNT,Within_Expiry_Date,Exceeded_Expiry_Date
+     FROM (
+              select sno,dept,product,action,(within_expiry_date+Exceeded_Expiry_Date) count,Within_Expiry_Date,Exceeded_Expiry_Date from(
+     select sno,dept,product,action,sum(Within_Expiry_date) Within_Expiry_Date,sum(Exceeded_Expiry_Date) Exceeded_Expiry_Date from(
+     SELECT 1 sno,
+                  'Sales Support' Dept,
+                  'Sea Import' Product,
+                  'Active Quotations' Action,
+                  case when to_date(RTEY_EXPIRY_DATE)-to_date(sysdate)>=0 then 1 else 0 end Within_Expiry_date,
+                  case when to_date(RTEY_EXPIRY_DATE)-to_date(sysdate)<0 then 1 else 0 end Exceeded_Expiry_Date
+             FROM RTEY_RATE_ENTRY
+            WHERE RTEY_STATUS IN (NULL, 'Pending') group by to_date(RTEY_EXPIRY_DATE)-to_date(sysdate))group by sno,dept,product,action)
+            UNION
+           select sno,dept,product,action,(within_expiry_date+Exceeded_Expiry_Date) count,Within_Expiry_Date,Exceeded_Expiry_Date from(
+     select sno,dept,product,action,sum(Within_Expiry_date) Within_Expiry_Date,sum(Exceeded_Expiry_Date) Exceeded_Expiry_Date from(
+     SELECT 2 sno,
+                  'Sales Support' Dept,
+                  'Sea Import' Product,
+                  'Approved Quotations' Action,
+                  case when to_date(RTEY_EXPIRY_DATE)-to_date(sysdate)>=0 then 1 else 0 end Within_Expiry_date,
+                  case when to_date(RTEY_EXPIRY_DATE)-to_date(sysdate)<0 then 1 else 0 end Exceeded_Expiry_Date
+             FROM RTEY_RATE_ENTRY
+            WHERE RTEY_STATUS IN ('Approved') group by RTEY_RATE_NO,
+                    RTEY_RATE_DATE,
+                    RTEY_TYPE,
+                    RTEY_RATE_TYPE,to_date(RTEY_EXPIRY_DATE)-to_date(sysdate))group by sno,dept,product,action));
+
