@@ -28,6 +28,18 @@ public class ImportTranshipmentDeskSea {
     private Long withinSLA;
     @Column(name = "OUTOFSLA")
     private Long outOfSLA;
+
+	@Column(name = "CMPY")
+	private Long company;
+
+	public Long getCompany() {
+		return company;
+	}
+
+	public void setCompany(Long company) {
+		this.company = company;
+	}
+
 	public Long getId() {
 		return id;
 	}

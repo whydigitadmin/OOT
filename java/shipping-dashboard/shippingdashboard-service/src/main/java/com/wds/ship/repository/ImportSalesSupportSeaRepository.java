@@ -9,5 +9,5 @@ import com.wds.ship.entity.ImportSalesSupportSeaDetails;
 
 public interface ImportSalesSupportSeaRepository extends JpaRepository<ImportSalesSupportSea, Long> {
 
-
+    List<ImportSalesSupportSea> findByCompany(Long company);
 }

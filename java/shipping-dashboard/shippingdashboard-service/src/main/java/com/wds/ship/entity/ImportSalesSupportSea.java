@@ -1,5 +1,6 @@
 package com.wds.ship.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -44,5 +45,15 @@ public class ImportSalesSupportSea {
 	public void setCount(long count) {
 		this.count = count;
 	}
-	
+
+	@Column(name = "CMPY")
+	private Long company;
+
+	public Long getCompany() {
+		return company;
+	}
+
+	public void setCompany(Long company) {
+		this.company = company;
+	}
 }

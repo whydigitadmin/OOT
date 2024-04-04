@@ -1,17 +1,17 @@
 Export
 API 
-1- getLCLCustomerServiceInfo 	- PROC_Export_Customer_Service_LCL_1 
-2. getFCLCustomerServiceInfo
+1- getLCLCustomerServiceInfo 	- PROC_Export_Customer_Service_LCL_1  -- Done
+2. getFCLCustomerServiceInfo	- PROC_EXPORT_CUSTOMER_SERVICE_FCL_1   --Done
 3. getExportPlannerServiceInfo   - PROC_Export_Planner  	-- Done
 4. getExportDocumentationServiceInfo - PROC_Export_Documentation -- Done
 5. getExportSalesSupportSeaInfo - PROC_EXPORT_SALES_SUPPORT  -- Done
-6. getExportBLReleaseDeskSeaInfo - PROC_EXPORT_BL_RELEASE_DESK_SEA 
+6. getExportBLReleaseDeskSeaInfo - PROC_EXPORT_BL_RELEASE_DESK_SEA  -- Done
 
 IMPORT
-1. getImportLCLCustomerServiceInfo
-2. getImportFCLCustomerServiceInfo
-3. getImportDocumentationCustomerServiceInfo
-4. getImportSalesSupportSeaInfo
-5. getImportTranshipmentServiceSeaInfo 
+1. getImportLCLCustomerServiceInfo - PROC_IMPORT_CUSTOMER_SERVICE_LCL   -- Done
+2. getImportFCLCustomerServiceInfo - PROC_IMPORT_CUSTOMER_SERVICE_FCL   -- Done
+3. getImportDocumentationCustomerServiceInfo - Not needed
+4. getImportSalesSupportSeaInfo - proc_import_sales_support   		-- Done
+5. getImportTranshipmentServiceSeaInfo - PROC_IMPORT_TRANSHIPMENT_DESK_SEA  -- Done
 6. custom Clearnce - FCL
 7. Custom Clearnce - LCL

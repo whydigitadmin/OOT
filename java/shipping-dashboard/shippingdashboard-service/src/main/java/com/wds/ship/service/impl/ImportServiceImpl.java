@@ -122,7 +122,7 @@ public class ImportServiceImpl implements ImportService {
 	
 	@Override
 	public List<SalesSupportPOJO> getImportSalesSupportSeaInfo(UserDetails userDetails) {
-		List<ImportSalesSupportSea> list = importSalesSupportSeaRepo.findAll();
+		List<ImportSalesSupportSea> list = importSalesSupportSeaRepo.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<SalesSupportPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportPOJO>>() {}.getType());
@@ -224,7 +224,7 @@ public class ImportServiceImpl implements ImportService {
 	
 	@Override
 	public List<CustomerServicePOJO> getImportTranshipmentServiceSeaInfo(UserDetails userDetails) {
-		List<ImportTranshipmentDeskSea> list = importTranshipmentDeskSeaRepo.findAll();
+		List<ImportTranshipmentDeskSea> list = importTranshipmentDeskSeaRepo.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
