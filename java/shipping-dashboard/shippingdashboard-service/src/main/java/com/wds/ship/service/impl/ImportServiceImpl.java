@@ -141,7 +141,7 @@ public class ImportServiceImpl implements ImportService {
 	
 	@Override
 	public List<CustomerServicePOJO> getImportLCLCustomerServiceInfo(UserDetails userDetails) {
-		List<ImportCustomerServiceLCL> list = importLclRepo.findAll();
+		List<ImportCustomerServiceLCL> list = importLclRepo.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -150,7 +150,7 @@ public class ImportServiceImpl implements ImportService {
 
 	@Override
 	public List<CustomerServicePOJO> getImportFCLCustomerServiceInfo(UserDetails userDetails) {
-		List<ImportCustomerServiceFCL> list = importFclRepo.findAll();
+		List<ImportCustomerServiceFCL> list = importFclRepo.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());

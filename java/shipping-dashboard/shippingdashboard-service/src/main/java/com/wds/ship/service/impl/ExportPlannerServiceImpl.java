@@ -51,7 +51,7 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 
 	@Override
 	public List<CustomerServicePOJO> getExportPlannerInfo(UserDetails userDetails) {
-		List<ExportPlanner> list = exportplannerepository.findAll();
+		List<ExportPlanner> list = exportplannerepository.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());

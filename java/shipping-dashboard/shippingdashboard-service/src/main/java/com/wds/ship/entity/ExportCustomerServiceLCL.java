@@ -29,6 +29,17 @@ public class ExportCustomerServiceLCL {
     @Column(name = "OUTOFSLA")
     private Long outOfSLA;
 
+    public Long getCompany() {
+        return company;
+    }
+
+    public void setCompany(Long company) {
+        this.company = company;
+    }
+
+    @Column(name = "CMPY")
+    private Long company;
+
     public Long getId() {
         return id;
     }

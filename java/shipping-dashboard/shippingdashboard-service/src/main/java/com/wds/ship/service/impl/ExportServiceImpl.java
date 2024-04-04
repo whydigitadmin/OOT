@@ -75,7 +75,7 @@ public class ExportServiceImpl implements ExportService {
     // Sea 
     @Override
 	public List<SalesSupportPOJO> getExportSalesSupportSeaInfo(UserDetails userDetails) {
-    	List<ExportSalesSupportSea> list = exportSalesSupportSeaRepo.findAll();
+    	List<ExportSalesSupportSea> list = exportSalesSupportSeaRepo.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<SalesSupportPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportPOJO>>() {}.getType());
@@ -98,7 +98,7 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails) {
-        List<ExportCustomerServiceLCL> list = repository.findAll();
+        List<ExportCustomerServiceLCL> list = repository.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -107,7 +107,7 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails) {
-        List<ExportFCLCustomerServiceEntity> list = exportFCLCustomerServiceRepository.findAll();
+        List<ExportFCLCustomerServiceEntity> list = exportFCLCustomerServiceRepository.findByCompany(userDetails.getCompanyId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -193,7 +193,7 @@ public class ExportServiceImpl implements ExportService {
 	
 	@Override
 	public List<CustomerServicePOJO> getExportBLReleaseSeaServiceInfo(UserDetails userDetails) {
-		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findAll();
+		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findByCompany(userDetails.getCompanyId());
 	        Gson gson = new Gson();
 	        String json = gson.toJson(list);
 	        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());

@@ -4,7 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.wds.ship.entity.ExportPlanner;
 
+import java.util.List;
+
 public interface ExportPlannerRepository extends JpaRepository<ExportPlanner, Long> {
-	
-	  // You can add custom query methods here if needed.
+
+    List<ExportPlanner> findByCompany(Long company);
 }
