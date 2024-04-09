@@ -217,6 +217,7 @@ export class LoginService {
     getExportSalesSupportDetailsCount(action: string): Observable<any> {
         const exportSalesSupportDetails = new ExportLclDetails();
         exportSalesSupportDetails.action = action;
+        exportSalesSupportDetails.company = this.globals.userDetails.companyId;
         const jsonData = JSON.stringify(exportSalesSupportDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -250,6 +251,7 @@ export class LoginService {
     getExportLclDetailsCount(action: string): Observable<any> {
         const exportLclDetails = new ExportLclDetails();
         exportLclDetails.action = action;
+        exportLclDetails.company = this.globals.userDetails.companyId;
         const jsonData = JSON.stringify(exportLclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

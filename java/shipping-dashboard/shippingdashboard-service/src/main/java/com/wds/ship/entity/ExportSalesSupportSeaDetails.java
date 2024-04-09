@@ -2,6 +2,7 @@ package com.wds.ship.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -20,6 +21,17 @@ public class ExportSalesSupportSeaDetails {
 	private Date ref_date;
 	private String ref_type;
 	private String ref_mode;
+
+	@Column(name = "CMPY")
+	private Long company;
+
+	public Long getCompany() {
+		return company;
+	}
+
+	public void setCompany(Long company) {
+		this.company = company;
+	}
 	public Long getId() {
 		return id;
 	}

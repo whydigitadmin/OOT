@@ -4,6 +4,7 @@ import com.wds.ship.entity.User;
 //import com.wds.ship.repository.StaffRepository;
 import com.wds.ship.repository.UserRepository;
 import com.wds.ship.service.UserService;
+import com.wds.ship.shared.user.BranchIds;
 import com.wds.ship.shared.user.ProductRole;
 import com.wds.ship.shared.user.UserDetails;
 import com.wds.ship.shared.user.UserInfo;
@@ -78,6 +79,17 @@ public class UserServiceImpl implements UserService {
         }).collect(Collectors.toList());
         userDetails.setRoles(roles);
         userDetails.setProductRoles(productRoles);
+
+        userDetails.setCompanyIds(user.getCompanyList().stream().map(x -> x.getCompanyId()).collect(Collectors.toList()));
+        userDetails.setBranchIds(user.getBranchList().stream().map(x ->
+                {BranchIds branchIds = new BranchIds();
+                    branchIds.setBranchId(x.getBranchId());
+                    branchIds.setCompanyId(x.getCompanyId());
+                    branchIds.setStatus(x.getStatus());
+                    return branchIds;
+                }
+        ).collect(Collectors.toList()));
+
         return userDetails;
     }
 

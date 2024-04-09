@@ -63,9 +63,11 @@ export class LoginScreenComponent implements OnInit {
 		const formData = new UserLogin(this.logindata.username, this.logindata.password);
 		this.loginService.submitLoginInfo(formData).subscribe(response => {
 			if (response != null) {
-
+				console.log('login componenet0')
+				
 				sessionStorage.setItem('details', response.headers.get("Authorization")!);
 				this.userDetails = response.body as UserDetails;
+				console.log(this.userDetails)
 				this.globals.isUserLoggedIn = true;
 				this.globals.id = this.userDetails.id;
 				this.globals.companyId = this.userDetails .companyId;
@@ -73,6 +75,8 @@ export class LoginScreenComponent implements OnInit {
 				this.globals.homeDeptId = this.userDetails.homeDeptId;
 				this.globals.email = this.userDetails.email;
 				this.globals.productRoles = this.userDetails.productRoles ;
+				this.globals.companyIds = this.userDetails.companyIds;
+				this.globals.branchIds = this.userDetails.branchIds;
 				this.globals.userDetails = this.userDetails ;
 
 				sessionStorage.setItem('roles', JSON.stringify(this.globals.productRoles));

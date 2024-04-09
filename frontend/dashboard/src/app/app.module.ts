@@ -86,6 +86,7 @@ import { JWTService } from './service/JWTService.';
 import { ExportFclOutofslaReportComponent } from './report/sea-export/export-fcl-report/export-fcl-outofsla-report/export-fcl-outofsla-report.component';
 import { ExportFclReportComponent } from './report/sea-export/export-fcl-report/export-fcl-report/export-fcl-report.component';
 import { ExportFclWithinslaReportComponent } from './report/sea-export/export-fcl-report/export-fcl-withinsla-report/export-fcl-withinsla-report.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -169,7 +170,8 @@ import { ExportFclWithinslaReportComponent } from './report/sea-export/export-fc
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

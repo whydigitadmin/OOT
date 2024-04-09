@@ -84,7 +84,7 @@ public class ExportServiceImpl implements ExportService {
     
     @Override
 	public List<SalesSupportDetailsPOJO> getExportSalesSupportSeaDetailsInfo(ExportLCLDetailsAction action) {
-    	List<ExportSalesSupportSeaDetails> list = exportSalesSupportSeaDetailsRepo.findByAction(action.getAction());
+    	List<ExportSalesSupportSeaDetails> list = exportSalesSupportSeaDetailsRepo.findByActionAndCompany(action.getAction() , action.getCompany());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<SalesSupportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportDetailsPOJO>>() {}.getType());
@@ -116,7 +116,7 @@ public class ExportServiceImpl implements ExportService {
     
     @Override
 	public List<ExportDetailsPOJO> getAllLCLDetails(ExportLCLDetailsAction action) {
-    	List<ExportLCLDetails> list = lclRepo.findByAction(action.getAction());
+    	List<ExportLCLDetails> list = lclRepo.findByActionAndCompany(action.getAction(), action.getCompany());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -135,8 +135,8 @@ public class ExportServiceImpl implements ExportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla) {
-		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla , Long company) {
+		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(action,withinsla, company);
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -144,8 +144,8 @@ public class ExportServiceImpl implements ExportService {
 	}
 	
 	@Override
-	public List<ExportDetailsPOJO> getExportLCLDetailsOutofSla(String action, int outofsla) {
-		List<ExportLCLDetails> list = lclRepo.findByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getExportLCLDetailsOutofSla(String action, int outofsla , Long company) {
+		List<ExportLCLDetails> list = lclRepo.findByActionAndOutofsla(action,outofsla , company);
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());

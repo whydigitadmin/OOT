@@ -111,4 +111,32 @@ public class User {
     public void setRoleMapping(List<UserRoleMapping> roleMapping) {
         this.roleMapping = roleMapping;
     }
+
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="SCPY_STFF")
+    private List<MasterCompany> companyList;
+
+    public List<MasterCompany> getCompanyList() {
+        return companyList;
+    }
+
+    public void setCompanyList(List<MasterCompany> companyList) {
+        this.companyList = companyList;
+    }
+
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="SBRN_STFF")
+    private List<MasterBranch> branchList;
+
+    public List<MasterBranch> getBranchList() {
+        return branchList;
+    }
+
+    public void setBranchList(List<MasterBranch> branchList) {
+        this.branchList = branchList;
+    }
+
+
 }

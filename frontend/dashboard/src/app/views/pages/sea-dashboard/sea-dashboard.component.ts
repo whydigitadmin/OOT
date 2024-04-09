@@ -79,9 +79,10 @@ export class SeaDashboardComponent implements OnInit {
   }
 
   get_export_sales_support_details_navigation(action: string): void {
+
     const queryParams = {
       param1: action,
-      // param2: 'value2'
+      param2: this.globals.userDetails.companyId
       // Add more parameters as needed
     };
 

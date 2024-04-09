@@ -21,7 +21,16 @@ public class ExportOutofSla {
 	public void setOutofsla(int outofsla) {
 		this.outofsla = outofsla;
 	}
-	
+
+	private Long company;
+
+	public Long getCompany() {
+		return company;
+	}
+
+	public void setCompany(Long company) {
+		this.company = company;
+	}
 	
 
 }

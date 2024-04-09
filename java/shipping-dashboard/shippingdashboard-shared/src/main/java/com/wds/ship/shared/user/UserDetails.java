@@ -102,5 +102,25 @@ public class UserDetails {
         this.homeDeptId = homeDeptId;
     }
 
+    private List<Long> companyIds;
+    public List<Long> getCompanyIds() {
+        return companyIds;
+    }
+
+    public void setCompanyIds(List<Long> companyIds) {
+        this.companyIds = companyIds;
+    }
+
+    private List<BranchIds> branchIds;
+    public List<BranchIds> getBranchIds() {
+        return branchIds;
+    }
+
+    public void setBranchIds(List<BranchIds> branchIds) {
+        this.branchIds = branchIds;
+    }
+
+
+
 
 }

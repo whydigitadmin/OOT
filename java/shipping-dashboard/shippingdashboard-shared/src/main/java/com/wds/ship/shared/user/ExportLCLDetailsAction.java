@@ -21,5 +21,14 @@ public class ExportLCLDetailsAction {
 		public void setWihtinsla(int wihtinsla) {
 			this.wihtinsla = wihtinsla;
 		}
-		
+
+	private Long company;
+
+	public Long getCompany() {
+		return company;
+	}
+
+	public void setCompany(Long company) {
+		this.company = company;
+	}
 }

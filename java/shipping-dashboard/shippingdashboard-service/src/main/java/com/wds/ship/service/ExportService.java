@@ -27,9 +27,9 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getAllLCLDetails(ExportLCLDetailsAction action);
 
-	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla, Long company);
 
-    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(String action,int outofsla);
+    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(String action,int outofsla, Long company);
 
     public List<ExportDetailsPOJO>getAllFCLDetails(ExportLCLDetailsAction action);
 

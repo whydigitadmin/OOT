@@ -1,8 +1,52 @@
-<div class="button-container">
-  <button class="styled-button" type="button" routerLink="/landing-chart">
-    View Chart
-  </button>
+<!-- <div>
+  Company DD
 </div>
+<div>
+  Department DD
+</div> -->
+<div class="container">
+  <div class="row">
+    <!-- <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div> -->
+    <div class="col float-end text-end">
+      <div class="float-end text-end">
+          <form>
+            <mat-form-field>
+              <mat-label>Company</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="allcompanyid">
+                <mat-option *ngFor="let allcompanyid of companyIds" [value]="allcompanyid">{{allcompanyid}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <p> Selected company: {{selectedValue}} </p>
+          </form>
+      </div>
+
+      
+      <!-- <button class="styled-button" type="button" routerLink="/landing-chart">
+        View Chart
+      </button> -->
+    </div>
+    <div class="col">
+      <div class="float-end text-end">
+        <form>
+          <mat-form-field>
+            <mat-label>Favorite food</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="food">
+              <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p> Selected food: {{selectedValue}} </p>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
 <div>
   <mat-tab-group>
     <mat-tab label="Sea Export"

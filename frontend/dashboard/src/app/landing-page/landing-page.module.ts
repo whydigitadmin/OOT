@@ -26,6 +26,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard/air-export-dashboard.component';
 import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard/air-import-dashboard.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
 	imports: [
@@ -51,6 +52,7 @@ import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard
 		HighchartsChartModule,
 		MatTabsModule,
 		SidebarComponent,
+		MatSelectModule,
 		RouterModule.forChild([
 			{
 				path: '',

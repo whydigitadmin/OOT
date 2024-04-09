@@ -10,7 +10,8 @@ export class UserDetails {
     homeDeptId: number;
     roles: string[];
     productRoles!: [];
-
+    companyIds: string[];
+    branchIds: branchIds[] = [];
     constructor() {
         this.email = '';
         this.password = '';
@@ -21,6 +22,19 @@ export class UserDetails {
         this.homeDeptId = 0;
         this.roles = [];
         this.productRoles = [];
+        this.companyIds = [];
+    }
+}
+
+export class branchIds{
+
+    companyId : string;
+    branchId : string;
+    status : string;
+    constructor() {
+        this.companyId = '';
+        this.branchId = '';
+        this.status = '';
     }
 }
 
@@ -34,9 +48,10 @@ export class ActionDetails {
 
 export class ExportLclDetails {
     action: string;
-
+    company : number;
     constructor() {
         this.action = '';
+        this.company = 0;
     }
 }
 
@@ -181,6 +196,8 @@ export class Globals {
     status = "";
     roles = "";
     userDetails: UserDetails = new UserDetails();
+    companyIds: string[] = [];
+    branchIds: branchIds[] = [];
 }
 
 export class ChartData {

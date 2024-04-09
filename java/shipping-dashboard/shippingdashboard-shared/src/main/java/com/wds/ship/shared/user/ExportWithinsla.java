@@ -21,7 +21,15 @@ public class ExportWithinsla {
 	public void setWithinsla(int withinsla) {
 		this.withinsla = withinsla;
 	}
-	
-	
+
+	private Long company;
+
+	public Long getCompany() {
+		return company;
+	}
+
+	public void setCompany(Long company) {
+		this.company = company;
+	}
 
 }
