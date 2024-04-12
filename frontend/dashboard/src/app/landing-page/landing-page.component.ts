@@ -40,6 +40,11 @@ export class LandingPageComponent implements OnInit {
     //this.selectedValue = 'steak-0'
   }
 
+  onChangeCompany(){
+    console.log('changecompany')
+    console.log(this.selectedValue)
+  }
+
   isProductMatching(product: string): any {
 
     const rolesString = sessionStorage.getItem('roles');
