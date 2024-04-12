@@ -17,11 +17,11 @@
           <form>
             <mat-form-field>
               <mat-label>Company</mat-label>
-              <mat-select [(ngModel)]="selectedValue" name="allcompanyid" (change)="onChangeCompany()">
+              <mat-select [(ngModel)]="selectedCompany" name="allcompanyid" (ngModelChange)="onChangeCompany()">
                 <mat-option *ngFor="let allcompanyid of companyIds" [value]="allcompanyid">{{allcompanyid}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <p> Selected company: {{selectedValue}} </p>
+            <p> Selected company: {{selectedCompany}} </p>
           </form>
       </div>
 
@@ -35,11 +35,11 @@
         <form>
           <mat-form-field>
             <mat-label>Branch</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="food">
+            <mat-select [(ngModel)]="selectedBranch" name="food">
               <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <p> Selected Branch: {{selectedValue}} </p>
+          <p> Selected Branch: {{selectedBranch}} </p>
         </form>
     </div>
     </div>

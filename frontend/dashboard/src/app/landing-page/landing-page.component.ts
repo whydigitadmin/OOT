@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Globals } from 'src/app/model/user-details.model';
+import { Globals, branchIds } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
 import { JWTService } from '../service/JWTService.';
 import {MatInputModule} from '@angular/material/input';
@@ -21,7 +21,10 @@ interface Food {
 })
 export class LandingPageComponent implements OnInit {
   selectedValue: string | undefined;
+  selectedCompany: string | undefined;
+  selectedBranch: string | undefined;
   companyIds: string[] = [];
+  companyBranchIds: branchIds[] = [];
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
@@ -43,6 +46,10 @@ export class LandingPageComponent implements OnInit {
   onChangeCompany(){
     console.log('changecompany')
     console.log(this.selectedValue)
+    this.companyBranchIds = this.globals.userDetails.branchIds;
+    this.companyBranchIds.map( x => {
+      x.branchId
+    })
   }
 
   isProductMatching(product: string): any {
