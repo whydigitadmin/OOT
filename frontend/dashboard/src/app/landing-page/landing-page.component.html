@@ -35,8 +35,8 @@
         <form>
           <mat-form-field>
             <mat-label>Branch</mat-label>
-            <mat-select [(ngModel)]="selectedBranch" name="food">
-              <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option>
+            <mat-select [(ngModel)]="selectedBranch" name="food" (ngModelChange)="onChangeBranch()">
+              <mat-option *ngFor="let branchid of companyBranchIds1" [value]="branchid">{{branchid}}</mat-option>
             </mat-select>
           </mat-form-field>
           <p> Selected Branch: {{selectedBranch}} </p>
@@ -50,7 +50,7 @@
 <div>
   <mat-tab-group>
     <mat-tab label="Sea Export"
-      ><app-sea-dashboard></app-sea-dashboard
+      ><app-sea-dashboard [selectedCompanyId]="selectedCompany"></app-sea-dashboard
     ></mat-tab>
     <mat-tab label="Sea Import"
       ><app-sea-import-dashboard></app-sea-import-dashboard>

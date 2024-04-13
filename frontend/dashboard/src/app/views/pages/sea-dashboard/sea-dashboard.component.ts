@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivityService } from '../apps/service/activity.service';
 import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
@@ -31,10 +31,10 @@ import { ExportFclOutofslaReportComponent } from 'src/app/report/sea-export/expo
   styleUrls: ['./sea-dashboard.component.scss'],
 
 })
-export class SeaDashboardComponent implements OnInit {
+export class SeaDashboardComponent implements OnInit, OnChanges {
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
-
+  @Input() selectedCompanyId: string | '' | undefined;
   datasource_export_Sales_support_CS: Export_LCL_CustomerService[] = [];
   datasource_export_LCL_CS = [{}];
   datasource_export_FCL_CS: Export_LCL_CustomerService[] = [];
@@ -73,6 +73,9 @@ export class SeaDashboardComponent implements OnInit {
   roles_matching!: any;
 
   constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService, private dialog: MatDialog) { }
+  ngOnChanges(changes: SimpleChanges): void {
+   console.log('Export onChanges .....')
+  }
 
   navigateToDetails(response: Export_LCL_Details[]): void {
 
@@ -418,6 +421,9 @@ export class SeaDashboardComponent implements OnInit {
     // return this.globals.productRoles.find((role: any) => role.roleId === roleId);
     
   }
+  loadAllItems1() {
+    console.log('Load all items 12222')
+  }
 
   loadAllItems() {
     this.get_export_lcl_Customer_Info();
@@ -444,7 +450,7 @@ export class SeaDashboardComponent implements OnInit {
       );
   }
 
-  get_export_lcl_Customer_Info() {
+get_export_lcl_Customer_Info() {
 
     this.loginService.getExportLCLCustomerServiceInfo()
       .subscribe(

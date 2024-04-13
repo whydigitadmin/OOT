@@ -28,11 +28,33 @@ public class UserDetails {
 
     private Long homeDeptId;
 
+    private String homeBranch;
+
     private List<ProductRole> productRoles;
+
+    private List<CompnayIds> companyInfo;
+
+    public List<CompnayIds> getCompanyInfo() {
+        return companyInfo;
+    }
+
+    public void setCompanyInfo(List<CompnayIds> companyInfo) {
+        this.companyInfo = companyInfo;
+    }
 
     public List<ProductRole> getProductRoles() {
         return productRoles;
     }
+
+    public String getHomeBranch() {
+        return homeBranch;
+    }
+
+    public void setHomeBranch(String homeBranch) {
+        this.homeBranch = homeBranch;
+    }
+
+
 
     public void setProductRoles(List<ProductRole> productRoles) {
         this.productRoles = productRoles;

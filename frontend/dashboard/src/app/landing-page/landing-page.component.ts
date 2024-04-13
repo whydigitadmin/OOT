@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Globals, branchIds } from 'src/app/model/user-details.model';
 import { LoginService } from 'src/app/service/login.service';
@@ -7,11 +7,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+import { SeaDashboardComponent } from '../views/pages/sea-dashboard/sea-dashboard.component';
+import { SeaImportDashboardComponent } from '../views/pages/sea-import-dashboard/sea-import-dashboard.component';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-landing-page',
@@ -21,16 +19,14 @@ interface Food {
 })
 export class LandingPageComponent implements OnInit {
   selectedValue: string | undefined;
-  selectedCompany: string | undefined;
+  selectedCompany: string | '' | undefined;
   selectedBranch: string | undefined;
   companyIds: string[] = [];
   companyBranchIds: branchIds[] = [];
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  companyBranchIds1: string[] = [];
 
+  @ViewChild(SeaDashboardComponent) childSeaDashboardComponent: SeaDashboardComponent | undefined;
+  @ViewChild(SeaImportDashboardComponent) childSeaImportDashboardComponent : SeaImportDashboardComponent | undefined;
   constructor(private router: Router, private globals: Globals, private loginService: LoginService , private jwtService : JWTService) { }
 
   ngOnInit() {
@@ -45,13 +41,31 @@ export class LandingPageComponent implements OnInit {
 
   onChangeCompany(){
     console.log('changecompany')
-    console.log(this.selectedValue)
     this.companyBranchIds = this.globals.userDetails.branchIds;
-    this.companyBranchIds.map( x => {
-      x.branchId
+    this.companyBranchIds1 = this.companyBranchIds.filter(x => x.companyId == this.selectedCompany).map( x => {
+      return x.branchId
     })
+    console.log(this.companyBranchIds1)
   }
 
+  onChangeBranch(){
+      console.log("On Branch change.....")
+      if (this.childSeaDashboardComponent) {
+        console.log("childSeaDashboardComponent loadedd")
+        this.childSeaDashboardComponent.loadAllItems1();
+      } else {
+        console.log("errorrrr childSeaDashboardComponent")
+        console.error('Child childSeaDashboardComponent component is not available yet.');
+      }
+      
+      if (this.childSeaImportDashboardComponent) {
+        console.log("childSeaImportDashboardComponent loadedd")
+        this.childSeaImportDashboardComponent.loadAllItems1();
+      } else {
+        console.log("errorrrr childSeaImportDashboardComponent")
+        console.error('Child childSeaImportDashboardComponent component is not available yet.');
+      }
+  }
   isProductMatching(product: string): any {
 
     const rolesString = sessionStorage.getItem('roles');

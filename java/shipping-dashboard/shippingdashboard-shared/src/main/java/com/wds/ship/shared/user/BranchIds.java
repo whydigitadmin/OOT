@@ -31,4 +31,14 @@ public class BranchIds {
     private Long branchId;
 
     private String status;
+
+    private String branchName;
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
 }

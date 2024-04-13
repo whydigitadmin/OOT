@@ -2,6 +2,8 @@ package com.wds.ship.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Scpy_staff_company")
 public class MasterCompany {
@@ -56,4 +58,19 @@ public class MasterCompany {
 //    @ManyToOne
 //    @JoinColumn(name = "USER_ID"  , referencedColumnName = "STFF_RID")
 //    private User userRole;
+
+//    @OneToOne(cascade=CascadeType.ALL)
+//    @JoinColumn(name="MCPY_RID")
+//    @OneToOne(mappedBy = "masterCompany", cascade = CascadeType.ALL)
+//    private MasterCompanyDetails companyDetails;
+//
+//    public MasterCompanyDetails getCompanyDetails() {
+//        return companyDetails;
+//    }
+//
+//    public void setCompanyDetails(MasterCompanyDetails companyDetails) {
+//        this.companyDetails = companyDetails;
+//    }
+
+
 }

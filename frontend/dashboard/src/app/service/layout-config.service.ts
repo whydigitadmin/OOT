@@ -42,6 +42,7 @@ export class LayoutConfigService {
 		try {
 			return JSON.parse(config || '');
 		} catch (e) {
+			
 		}
 		return JSON.parse(config || '');
 	}

@@ -47,10 +47,10 @@ export class FooterComponent implements OnInit {
 	 * On init
 	 */
 	ngOnInit(): void {
-		const config = this.layoutConfigService.getConfig();
+		//const config = this.layoutConfigService.getConfig();
 		this.headerLogo = this.layoutConfigService.getLogo();
 		this.headerStickyLogo = this.layoutConfigService.getStickyLogo();
 		// footer width fluid
-		this.fluid = objectPath.get(config, 'footer.self.width') === 'fluid';
+	//	this.fluid = objectPath.get(config, 'footer.self.width') === 'fluid';
 	}
 }

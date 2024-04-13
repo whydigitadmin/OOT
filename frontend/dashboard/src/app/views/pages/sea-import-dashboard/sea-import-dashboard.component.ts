@@ -121,6 +121,10 @@ export class SeaImportDashboardComponent implements OnInit {
    
   }
 
+  loadAllItems1() {
+    console.log("LOADED ALL ITEMS")
+  }
+
   loadAllItems() {
     this.get_import_lcl_Customer_Info();
     this.get_import_fcl_Customer_Info();

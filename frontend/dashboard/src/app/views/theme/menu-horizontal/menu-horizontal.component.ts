@@ -99,7 +99,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 	 * On init
 	 */
 	ngOnInit(): void {
-		this.rootArrowEnabled = this.layoutConfigService.getConfig('header.menu.self.root-arrow');
+		//this.rootArrowEnabled = this.layoutConfigService.getConfig('header.menu.self.root-arrow');
 
 		this.currentRouteUrl = this.router.url;
 		this.router.events

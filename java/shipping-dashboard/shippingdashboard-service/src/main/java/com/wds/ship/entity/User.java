@@ -25,6 +25,17 @@ public class User {
     @Column(name = "STFF_DEPARTMENT_NAME")
     private String staffDepartmentName;
 
+    @Column(name = "STFF_MBRN_HOME_BRANCH")
+    private String homeBranch;
+
+    public String getHomeBranch() {
+        return homeBranch;
+    }
+
+    public void setHomeBranch(String homeBranch) {
+        this.homeBranch = homeBranch;
+    }
+
     public String getStaffDepartmentName() {
         return staffDepartmentName;
     }

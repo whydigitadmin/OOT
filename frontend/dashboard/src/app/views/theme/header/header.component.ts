@@ -74,19 +74,19 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 	 * On init
 	 */
 	ngOnInit(): void {
-		const config = this.layoutConfigService.getConfig();
+		// const config = this.layoutConfigService.getConfig();
 
-		// get menu header display option
-		this.menuHeaderDisplay = objectPath.get(config, 'header.menu.self.display');
+		// // get menu header display option
+		// this.menuHeaderDisplay = objectPath.get(config, 'header.menu.self.display');
 
-		// header width fluid
-		this.fluid = objectPath.get(config, 'header.self.width') === 'fluid';
+		// // header width fluid
+		// this.fluid = objectPath.get(config, 'header.self.width') === 'fluid';
 
-		// animate the header minimize the height on scroll down
-		if (objectPath.get(config, 'header.self.fixed.desktop.enabled') || objectPath.get(config, 'header.self.fixed.desktop')) {
-			// header minimize on scroll down
-			this.ktHeader?.nativeElement.setAttribute('data-ktheader-minimize', '1');
-		}
+		// // animate the header minimize the height on scroll down
+		// if (objectPath.get(config, 'header.self.fixed.desktop.enabled') || objectPath.get(config, 'header.self.fixed.desktop')) {
+		// 	// header minimize on scroll down
+		// 	this.ktHeader?.nativeElement.setAttribute('data-ktheader-minimize', '1');
+		// }
 	}
 
 	ngAfterViewInit(): void {
