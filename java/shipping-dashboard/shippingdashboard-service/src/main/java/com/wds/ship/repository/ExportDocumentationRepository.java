@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface ExportDocumentationRepository extends JpaRepository<ExportDocumentation, Long> {
     List<ExportDocumentation> findByCompany(Long company);
+
+    List<ExportDocumentation> findByCompanyAndBranch(Long company, Long department);
+
 }

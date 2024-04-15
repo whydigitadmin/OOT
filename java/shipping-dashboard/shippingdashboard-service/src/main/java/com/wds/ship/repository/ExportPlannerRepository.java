@@ -9,4 +9,7 @@ import java.util.List;
 public interface ExportPlannerRepository extends JpaRepository<ExportPlanner, Long> {
 
     List<ExportPlanner> findByCompany(Long company);
+
+    List<ExportPlanner> findByCompanyAndBranch(Long company, Long department);
+
 }

@@ -20,12 +20,12 @@ IMPORT
 WITH JAVA FILE NAME
 ---------------------------------------------------
 API 
-1- getLCLCustomerServiceInfo 	- ExportController.java  PROC_Export_Customer_Service_LCL_1  -- Done
-2. getFCLCustomerServiceInfo	- PROC_EXPORT_CUSTOMER_SERVICE_FCL_1   --Done
-3. getExportPlannerServiceInfo   - PROC_Export_Planner  	-- Done
-4. getExportDocumentationServiceInfo - PROC_Export_Documentation -- Done
-5. getExportSalesSupportSeaInfo - PROC_EXPORT_SALES_SUPPORT  -- Done
-6. getExportBLReleaseDeskSeaInfo - PROC_EXPORT_BL_RELEASE_DESK_SEA  -- Done
+1- getLCLCustomerServiceInfo 	- ExportController.java, ExportServiceController.java[/getLCLCustomerServiceInfo]  PROC_Export_Customer_Service_LCL_1  -- Done
+2. getFCLCustomerServiceInfo	- ExportController.java, ExportServiceController.java[/getLCLCustomerServiceInfo]  PROC_EXPORT_CUSTOMER_SERVICE_FCL_1   --Done
+3. getExportPlannerServiceInfo   - ExportPlannerServiceController.java[/getExportPlannerServiceInfo] PROC_Export_Planner  	-- Done
+4. getExportDocumentationServiceInfo - 	ExportDocumentationServiceController.java[/getExportDocumentServiceInfo]   PROC_Export_Documentation -- Done
+5. getExportSalesSupportSeaInfo -  ExportServiceController.java [/getExportSalesSupportSea] PROC_EXPORT_SALES_SUPPORT  -- Done
+6. getExportBLReleaseDeskSeaInfo -  ExportServiceController.java [/getExportBLReleaseDeskSea] PROC_EXPORT_BL_RELEASE_DESK_SEA  -- Done
 
 IMPORT
 1. getImportLCLCustomerServiceInfo - PROC_IMPORT_CUSTOMER_SERVICE_LCL   -- Done

@@ -10,4 +10,6 @@ public interface ExportCustomerServiceLCLRepository extends JpaRepository<Export
     // You can add custom query methods here if needed.
 
     List<ExportCustomerServiceLCL> findByCompany(Long company);
+
+    List<ExportCustomerServiceLCL> findByCompanyAndBranch(Long company, Long department);
 }

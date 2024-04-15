@@ -32,6 +32,16 @@ public class ExportBLReleaseDeskSea {
 	@Column(name = "CMPY")
 	private Long company;
 
+	@Column(name = "BRNID")
+	private Long branch;
+
+	public Long getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Long branch) {
+		this.branch = branch;
+	}
 	public Long getCompany() {
 		return company;
 	}
