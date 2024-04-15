@@ -34,6 +34,26 @@ public class UserDetails {
 
     private List<CompnayIds> companyInfo;
 
+    private Long selectedCompany;
+
+    private Long selectedDepartment;
+
+    public Long getSelectedCompany() {
+        return selectedCompany;
+    }
+
+    public void setSelectedCompany(Long selectedCompany) {
+        this.selectedCompany = selectedCompany;
+    }
+
+    public Long getSelectedDepartment() {
+        return selectedDepartment;
+    }
+
+    public void setSelectedDepartment(Long selectedDepartment) {
+        this.selectedDepartment = selectedDepartment;
+    }
+
     public List<CompnayIds> getCompanyInfo() {
         return companyInfo;
     }

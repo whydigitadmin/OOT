@@ -12,6 +12,8 @@ export class UserDetails {
     productRoles!: [];
     companyIds: string[];
     branchIds: branchIds[] = [];
+    selectedCompany = 0;
+    selectedDepartment = 0;
     constructor() {
         this.email = '';
         this.password = '';
@@ -198,6 +200,9 @@ export class Globals {
     userDetails: UserDetails = new UserDetails();
     companyIds: string[] = [];
     branchIds: branchIds[] = [];
+    homeBranch = "";
+    selectedCompany = 0;
+    selectedDepartment = 0;
 }
 
 export class ChartData {

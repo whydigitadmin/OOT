@@ -409,6 +409,11 @@ export class SeaDashboardComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.localSession = localStorage.getItem('user_data');
     this.user_roles = JSON.parse(this.localSession).productRoles;
+     console.log('Sea EXPORT Dashborad page')
+     console.log(this.globals.companyIds)
+     console.log(this.globals.branchIds)
+     console.log('Company id '+ this.globals.userDetails.selectedCompany)
+     console.log('Branch id '+ this.globals.userDetails.selectedDepartment)
     this.loadAllItems();
   }
 

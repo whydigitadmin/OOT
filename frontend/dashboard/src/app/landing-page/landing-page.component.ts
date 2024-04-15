@@ -32,10 +32,10 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
     //const token = this.jwtService.getDecodedToken(sessionStorage.getItem('details')!);
     //console.log(token)
-    console.log('landing page')
-    console.log(this.globals.companyIds)
-    console.log(this.globals.branchIds)
-    this.companyIds = this.globals.companyIds;
+    // console.log('landing page')
+    // console.log(this.globals.companyIds)
+    // console.log(this.globals.branchIds)
+    // this.companyIds = this.globals.companyIds;
     //this.selectedValue = 'steak-0'
   }
 
