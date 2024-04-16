@@ -27,6 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AirExportDashboardComponent } from '../views/pages/air-export-dashboard/air-export-dashboard.component';
 import { AirImportDashboardComponent } from '../views/pages/air-import-dashboard/air-import-dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
 	imports: [
@@ -53,6 +54,7 @@ import { MatSelectModule } from '@angular/material/select';
 		MatTabsModule,
 		SidebarComponent,
 		MatSelectModule,
+		MatProgressSpinnerModule,
 		RouterModule.forChild([
 			{
 				path: '',

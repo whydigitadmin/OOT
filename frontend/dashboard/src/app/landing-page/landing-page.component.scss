@@ -86,3 +86,18 @@
   color: #ffffff;
   border-color: #ffffff;
 }
+
+.custom-spinner {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  border-radius: 50%;
+  width: 50px; /* Diameter */
+  height: 50px; /* Diameter */
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the loader container occupies the full height of the tab */
+}

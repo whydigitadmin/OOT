@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivityService } from '../apps/service/activity.service';
 import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
@@ -71,6 +71,9 @@ export class SeaDashboardComponent implements OnInit, OnChanges {
   public localSession: any = {};
   user_roles: any;
   roles_matching!: any;
+  //@Input() loading!: boolean;
+  @Output() loadingEvent = new EventEmitter<boolean>;
+  @Output() notLoadingEvent = new EventEmitter<boolean>;
 
   constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService, private dialog: MatDialog) { }
   ngOnChanges(changes: SimpleChanges): void {
@@ -426,11 +429,8 @@ export class SeaDashboardComponent implements OnInit, OnChanges {
     // return this.globals.productRoles.find((role: any) => role.roleId === roleId);
     
   }
-  loadAllItems1() {
-    console.log('Load all items 12222')
-  }
-
-  loadAllItems() {
+  
+  loadAllItems() { 
     this.get_export_lcl_Customer_Info();
     this.get_export_fcl_Customer_Info();
     this.get_export_Planner_Customer_Info();
@@ -497,6 +497,7 @@ get_export_lcl_Customer_Info() {
           this.datasource_export_Planner_CS = response;
           // Handle the response data here
           console.log('Response:', this.datasource_export_Planner_CS);
+                  
         },
         (error) => {
           // Handle any errors here
@@ -532,7 +533,8 @@ get_export_lcl_Customer_Info() {
         (response) => {
           this.datasource_export_BLreleaseDesk_CS = response;
           // Handle the response data here
-          console.log('Response:', this.datasource_export_BLreleaseDesk_CS);
+          console.log('Response:', this.datasource_export_BLreleaseDesk_CS);          
+          this.notLoadingEvent.emit(false);  
         },
         (error) => {
           // Handle any errors here

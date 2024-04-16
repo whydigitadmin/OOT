@@ -11,7 +11,8 @@ export class UserDetails {
     roles: string[];
     productRoles!: [];
     companyIds: string[];
-    branchIds: branchIds[] = [];
+    branchIds: UserCompanyBranch[] = [];
+    companyInfo: UserCompany[] = [];
     selectedCompany = 0;
     selectedDepartment = 0;
     constructor() {
@@ -26,6 +27,19 @@ export class UserDetails {
         this.productRoles = [];
         this.companyIds = [];
     }
+}
+
+export interface UserCompany {
+    companyId: number;
+    companyName: string;
+    status?: string;
+}
+
+export interface UserCompanyBranch {
+    companyId?: number;
+    branchId: number;
+    branchName: string;
+    status?: string;
 }
 
 export class branchIds{
@@ -198,11 +212,11 @@ export class Globals {
     status = "";
     roles = "";
     userDetails: UserDetails = new UserDetails();
-    companyIds: string[] = [];
-    branchIds: branchIds[] = [];
+    companyIds: UserCompany[] = [];
+    branchIds: UserCompanyBranch[] = [];
     homeBranch = "";
     selectedCompany = 0;
-    selectedDepartment = 0;
+    selectedBranch = 0;
 }
 
 export class ChartData {

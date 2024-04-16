@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivityService } from '../apps/service/activity.service';
 import { Router } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
@@ -57,6 +57,7 @@ export class AirImportDashboardComponent implements OnInit {
   public localSession: any = {};
   user_roles: any;
   roles_matching!: any;
+  @Output() notLoadingEvent = new EventEmitter<boolean>;
 
   constructor(private avt_ser: ActivityService, private cdr: ChangeDetectorRef, private router: Router, private globals: Globals, private loginService: LoginService, private modal: BsModalService, private dialog: MatDialog) { }
 
@@ -345,6 +346,7 @@ export class AirImportDashboardComponent implements OnInit {
           this.datasource_air_import_transhipmentDesk = response;
           // Handle the response data here
           console.log('Response:', this.datasource_air_import_transhipmentDesk);
+          this.notLoadingEvent.emit(false);
         },
         (error) => {
           // Handle any errors here

@@ -168,3 +168,10 @@ table {
   overflow: auto;
   top: 0;
 }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the loader container occupies the full height of the tab */
+}

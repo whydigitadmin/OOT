@@ -18,10 +18,10 @@
             <mat-form-field>
               <mat-label>Company</mat-label>
               <mat-select [(ngModel)]="selectedCompany" name="allcompanyid" (ngModelChange)="onChangeCompany()">
-                <mat-option *ngFor="let allcompanyid of companyIds" [value]="allcompanyid">{{allcompanyid}}</mat-option>
+                <mat-option *ngFor="let allcompanyid of companyIds" [value]="allcompanyid.companyId">{{allcompanyid.companyName}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <p> Selected company: {{selectedCompany}} </p>
+            <!-- <p> Selected company: {{selectedCompany}} </p>-->
           </form>
       </div>
 
@@ -35,11 +35,11 @@
         <form>
           <mat-form-field>
             <mat-label>Branch</mat-label>
-            <mat-select [(ngModel)]="selectedBranch" name="food" (ngModelChange)="onChangeBranch()">
-              <mat-option *ngFor="let branchid of companyBranchIds1" [value]="branchid">{{branchid}}</mat-option>
+            <mat-select [(ngModel)]="selectedBranch" name="branchid" (ngModelChange)="onChangeBranch()">
+              <mat-option *ngFor="let branchid of companyBranchIds1" [value]="branchid.branchId">{{branchid.branchName}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <p> Selected Branch: {{selectedBranch}} </p>
+          <!--<p> Selected Branch: {{selectedBranch}} </p>-->
         </form>
     </div>
     </div>
@@ -47,11 +47,11 @@
 </div>
 
 
-<div>
+<div> 
   <mat-tab-group>
-    <mat-tab label="Sea Export"
-      ><app-sea-dashboard [selectedCompanyId]="selectedCompany"></app-sea-dashboard
-    ></mat-tab>
+    <mat-tab label="Sea Export">
+      <app-sea-dashboard ></app-sea-dashboard>
+      </mat-tab>
     <mat-tab label="Sea Import"
       ><app-sea-import-dashboard></app-sea-import-dashboard>
     </mat-tab>
@@ -61,6 +61,7 @@
     <mat-tab label="Air Import">
       <app-air-import-dashboard></app-air-import-dashboard>
     </mat-tab>
+    
   </mat-tab-group>
 </div>
 <router-outlet></router-outlet>
