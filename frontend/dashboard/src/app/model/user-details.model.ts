@@ -65,9 +65,11 @@ export class ActionDetails {
 export class ExportLclDetails {
     action: string;
     company : number;
+    branch: number;
     constructor() {
         this.action = '';
         this.company = 0;
+        this.branch = 0;
     }
 }
 

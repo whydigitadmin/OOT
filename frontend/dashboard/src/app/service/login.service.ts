@@ -252,8 +252,8 @@ export class LoginService {
     getExportLclDetailsCount(action: string): Observable<any> {
         const exportLclDetails = new ExportLclDetails();
         exportLclDetails.action = action;
-        exportLclDetails.company = this.globals.userDetails.companyId;
-        //exportLclDetails.branch = this.globals.userDetails.homeBranch;
+        exportLclDetails.company = this.globals.userDetails.selectedCompany;
+        exportLclDetails.branch = this.globals.userDetails.selectedDepartment;
         const jsonData = JSON.stringify(exportLclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -266,7 +266,9 @@ export class LoginService {
         console.log("action", action);
         const exportLclDetailsWithinsla = new ExportLclDetails();
         exportLclDetailsWithinsla.action = action;
-        const jsonData = JSON.stringify(exportLclDetailsWithinsla.action);
+        exportLclDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
+        exportLclDetailsWithinsla.branch = this.globals.userDetails.selectedDepartment;
+        const jsonData = JSON.stringify(exportLclDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportLclWithinslaDetails}`;
@@ -278,7 +280,9 @@ export class LoginService {
         console.log("action", action);
         const exportLclDetailsOutofsla = new ExportLclDetails();
         exportLclDetailsOutofsla.action = action;
-        const jsonData = JSON.stringify(exportLclDetailsOutofsla.action);
+        exportLclDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
+        exportLclDetailsOutofsla.branch = this.globals.userDetails.selectedDepartment;
+        const jsonData = JSON.stringify(exportLclDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportLclOutOfSlaDetails}`;
