@@ -27,6 +27,15 @@ API
 5. getExportSalesSupportSeaInfo -  ExportServiceController.java [/getExportSalesSupportSea] PROC_EXPORT_SALES_SUPPORT  -- Done
 6. getExportBLReleaseDeskSeaInfo -  ExportServiceController.java [/getExportBLReleaseDeskSea] PROC_EXPORT_BL_RELEASE_DESK_SEA  -- Done
 
+SEA_EXPORT_DETAILS queries:
+---------------------------
+1. getExportLCLDetails, getExportLCLDetailsOutofsla , getExportLCLDetailsWithinsla	PROC_EXPORT_CUSTOMER_SERVICE_LCL_DETAILS		
+2. PROC_EXPORT_CUSTOMER_SERVICE_FCL_DETAILS
+3. PROC_EXPORT_PLANNER_DETAILS
+4. PROC_EXPORT_DOCUMENTATION_DETAILS
+5. getExportSalesSupportSeaDetailsInfo    						PROC_EXPORT_SALES_SUPPORT_DETAILS
+6. PROC_EXPORT_BL_RELEASE_DESK_DETAILS_SEA
+
 IMPORT
 1. getImportLCLCustomerServiceInfo - PROC_IMPORT_CUSTOMER_SERVICE_LCL   -- Done
 2. getImportFCLCustomerServiceInfo - PROC_IMPORT_CUSTOMER_SERVICE_FCL   -- Done

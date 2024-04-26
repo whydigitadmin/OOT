@@ -24,6 +24,16 @@ public class ExportWithinsla {
 
 	private Long company;
 
+	private Long branch;
+
+	public Long getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Long branch) {
+		this.branch = branch;
+	}
+
 	public Long getCompany() {
 		return company;
 	}

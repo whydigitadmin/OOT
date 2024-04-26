@@ -18,7 +18,8 @@ export class LoginService {
     private importSalesSupportCountDetails = '/api/v1/facade/import/getImportSalesSupportSeaDetailsInfo';
     private exportLclCountDetails = '/api/v1/facade/export/getExportLCLDetails';
     private exportLclWithinslaDetails = '/api/v1/facade/export/getExportLCLDetailsWithinsla';
-    private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
+    //private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
+    private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofslav1';
     private exportFclCountDetails = '/api/v1/facade/export/getExportFCLDetails';
     private exportFclWithinslaDetails = '/api/v1/facade/export/getExportFCLDetailsWithinsla';
     private exportFclOutOfSlaDetails = '/api/v1/facade/export/getExportFCLDetailsOutofsla';
@@ -252,6 +253,7 @@ export class LoginService {
         const exportLclDetails = new ExportLclDetails();
         exportLclDetails.action = action;
         exportLclDetails.company = this.globals.userDetails.companyId;
+        //exportLclDetails.branch = this.globals.userDetails.homeBranch;
         const jsonData = JSON.stringify(exportLclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

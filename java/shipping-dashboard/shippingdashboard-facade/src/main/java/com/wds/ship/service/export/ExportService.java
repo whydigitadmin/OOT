@@ -5,10 +5,7 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.ExportLCLDetailsAction;
-import com.wds.ship.shared.user.ExportOutofSla;
-import com.wds.ship.shared.user.ExportWithinsla;
-import com.wds.ship.shared.user.UserDetails;
+import com.wds.ship.shared.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -50,7 +47,7 @@ public class ExportService {
         return responseEntity.getBody();
     }
     
-    public List<ExportDetailsPOJO> getExportLCLDetails(ExportLCLDetailsAction action){
+    public List<ExportDetailsPOJO> getExportLCLDetails(DetailsAction action){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
                 restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetails", action, List.class);
@@ -69,6 +66,13 @@ public class ExportService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List> responseEntity =
                 restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailsoutofsla",sla ,List.class);
+        return responseEntity.getBody();
+    }
+
+    public List<ExportDetailsPOJO> getExportLCLDetailsOutofslav1(ExportOutofSla sla){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity =
+                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailsoutofslav1",sla ,List.class);
         return responseEntity.getBody();
     }
 

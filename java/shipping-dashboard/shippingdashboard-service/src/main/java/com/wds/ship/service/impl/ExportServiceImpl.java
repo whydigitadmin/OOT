@@ -10,6 +10,7 @@ import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
+import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -151,6 +152,16 @@ public class ExportServiceImpl implements ExportService {
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
         return destinationList;
 	}
+
+    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSlaV1(ExportOutofSla sla){
+        List<ExportLCLDetails> list = null;
+                //lclRepo.findByActionAndOutofsla(sla);
+        Gson gson = new Gson();
+
+        String json = gson.toJson(list);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+    }
 
     @Override
     public List<ExportDetailsPOJO> getAllFCLDetails(ExportLCLDetailsAction action) {

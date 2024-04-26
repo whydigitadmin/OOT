@@ -24,6 +24,16 @@ public class ExportLCLDetails {
 	private int withinsla;
 	private int outofsla;
 
+	@Column(name = "BRNID")
+	private Long branch;
+
+	public Long getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Long branch) {
+		this.branch = branch;
+	}
 	@Column(name = "CMPY")
 	private Long company;
 

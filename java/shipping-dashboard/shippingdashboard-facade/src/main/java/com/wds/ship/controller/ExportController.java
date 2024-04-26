@@ -7,10 +7,7 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.ExportLCLDetailsAction;
-import com.wds.ship.shared.user.ExportOutofSla;
-import com.wds.ship.shared.user.ExportWithinsla;
-import com.wds.ship.shared.user.UserDetails;
+import com.wds.ship.shared.user.*;
 //import com.wds.ship.shared.user.ExportLCLDetailsAction;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +56,7 @@ public class ExportController {
 
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportLCLDetails")
-    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestBody ExportLCLDetailsAction action)
+    public List<ExportDetailsPOJO> getExportLCLDetails(@RequestBody DetailsAction action)
     {
         return exportService.getExportLCLDetails(action);
 
@@ -83,6 +80,14 @@ public class ExportController {
       return exportService.getExportLCLDetailsOutofsla(sla);
 
   }
+
+    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
+    @PostMapping("/getExportLCLDetailsOutofslav1")
+    public List<ExportDetailsPOJO> getExportLCLDetailsOutofslav1(@RequestBody ExportOutofSla sla)
+    {
+        return exportService.getExportLCLDetailsOutofslav1(sla);
+
+    }
 
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportFCLDetails")
