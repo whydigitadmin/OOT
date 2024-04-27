@@ -5,11 +5,8 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.ExportLCL;
-import com.wds.ship.shared.user.ExportLCLDetailsAction;
+import com.wds.ship.shared.user.*;
 //import com.wds.ship.shared.user.ExportLCLDetailsAction;
-import com.wds.ship.shared.user.ExportOutofSla;
-import com.wds.ship.shared.user.UserDetails;
 
 import java.util.List;
 
@@ -28,9 +25,9 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getAllLCLDetails(ExportLCLDetailsAction action);
 
-	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla, Long company, Long branch);
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(ExportWithinsla sla);
 
-    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(String action,int outofsla, Long company , Long branch);
+    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(ExportOutofSla sla);
 
     public List<ExportDetailsPOJO>getExportLCLDetailsOutofSlaV1(ExportOutofSla sla);
 

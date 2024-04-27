@@ -24,6 +24,27 @@ public class ExportOutofSla {
 
 	private Long company;
 
+	private Long branch;
+
+	private Long deptid;
+
+	public Long getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Long branch) {
+		this.branch = branch;
+	}
+
+	public Long getDeptid() {
+		return deptid;
+	}
+
+	public void setDeptid(Long deptid) {
+		this.deptid = deptid;
+	}
+
+
 	public Long getCompany() {
 		return company;
 	}
