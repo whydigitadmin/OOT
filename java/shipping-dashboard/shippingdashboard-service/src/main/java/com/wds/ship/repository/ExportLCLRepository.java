@@ -18,11 +18,14 @@ public interface ExportLCLRepository extends JpaRepository<ExportLCLDetails, Int
 
 	List<ExportLCLDetails> findByActionAndCompanyAndBranch(String action, Long company, Long Branch);
 
-	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla and  A.cmpy = :cmpy")
-	List<ExportLCLDetails> findByActionAndWithinsla(@Param("action") String action, @Param("withinsla")int withinsla , @Param("cmpy")Long cmpy);
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy , a.brnid from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action  and  A.cmpy = :cmpy and A.brnid= :brnid")
+	List<ExportLCLDetails> findByActionAndCompanyAndBranchv1(String action, Long company, Long Branch , @Param("brnid")Long brnid);
+
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy , a.brnid from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla and  A.cmpy = :cmpy and A.brnid= :brnid")
+	List<ExportLCLDetails> findByActionAndWithinsla(@Param("action") String action, @Param("withinsla")int withinsla , @Param("cmpy")Long cmpy , @Param("brnid")Long brnid);
 	
-	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla and A.cmpy = :cmpy")
-	List<ExportLCLDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla, @Param("cmpy") Long cmpy);
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy  , a.brnid  from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla and A.cmpy = :cmpy and A.brnid= :brnid")
+	List<ExportLCLDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla, @Param("cmpy") Long cmpy , @Param("brnid")Long brnid);
 
 	//List<ExportLCLDetails> findByActionAndOutofsla(ExportOutofSla sla);
 

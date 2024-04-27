@@ -71,8 +71,10 @@ public class ExportServiceController {
     
       @PostMapping("/exportlcldetailswihtinsla")
       public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
-    	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla(), sla.getCompany());
+    	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla(), sla.getCompany(), sla.getBranch());
       }
+
+
     
 //    @GetMapping("/exportlcldetailsoutofsla")
 //    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(@RequestParam(value="action")String action,@RequestParam(value="outofsla")int outofsla){
@@ -81,7 +83,7 @@ public class ExportServiceController {
     
     @PostMapping("/exportlcldetailsoutofsla")
     public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
-  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla() , sla.getCompany());
+  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla() , sla.getCompany() , sla.getBranch());
     }
 
     @PostMapping("/exportlcldetailsoutofslav1")
@@ -162,12 +164,12 @@ public class ExportServiceController {
     
     @PostMapping("/getExportCustomerServiceDetailsAirWihtinsla")
     public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody ExportWithinsla sla){
-  	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla(), sla.getCompany());
+  	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla(), sla.getCompany() , sla.getBranch());
     }
     
     @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
     public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody ExportOutofSla sla){
-  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla()  , sla.getCompany());
+  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla()  , sla.getCompany() , sla.getBranch());
     }
     
     // Air Export BL Release Desk
