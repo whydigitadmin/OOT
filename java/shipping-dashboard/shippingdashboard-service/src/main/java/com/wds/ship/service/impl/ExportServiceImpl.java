@@ -100,7 +100,7 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails) {
-        List<ExportCustomerServiceLCL> list = repository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
+        List<ExportCustomerServiceLCL> list = repository.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -109,7 +109,8 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails) {
-        List<ExportFCLCustomerServiceEntity> list = exportFCLCustomerServiceRepository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
+        List<ExportFCLCustomerServiceEntity> list = exportFCLCustomerServiceRepository.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
+
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -205,8 +206,9 @@ public class ExportServiceImpl implements ExportService {
 	
 	@Override
 	public List<CustomerServicePOJO> getExportBLReleaseSeaServiceInfo(UserDetails userDetails) {
-		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
-	        Gson gson = new Gson();
+		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
+
+        Gson gson = new Gson();
 	        String json = gson.toJson(list);
 	        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
 	        return destinationList;
