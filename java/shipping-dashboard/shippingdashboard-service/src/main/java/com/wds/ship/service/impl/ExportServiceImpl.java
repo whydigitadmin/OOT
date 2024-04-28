@@ -77,7 +77,7 @@ public class ExportServiceImpl implements ExportService {
     // Sea 
     @Override
 	public List<SalesSupportPOJO> getExportSalesSupportSeaInfo(UserDetails userDetails) {
-    	List<ExportSalesSupportSea> list = exportSalesSupportSeaRepo.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedDepartment(), userDetails.getHomeDeptId());
+    	List<ExportSalesSupportSea> list = exportSalesSupportSeaRepo.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<SalesSupportPOJO> destinationList = gson.fromJson(json, new TypeToken<List<SalesSupportPOJO>>() {}.getType());
@@ -100,7 +100,7 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails) {
-        List<ExportCustomerServiceLCL> list = repository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedDepartment());
+        List<ExportCustomerServiceLCL> list = repository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -109,7 +109,7 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails) {
-        List<ExportFCLCustomerServiceEntity> list = exportFCLCustomerServiceRepository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedDepartment());
+        List<ExportFCLCustomerServiceEntity> list = exportFCLCustomerServiceRepository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -205,7 +205,7 @@ public class ExportServiceImpl implements ExportService {
 	
 	@Override
 	public List<CustomerServicePOJO> getExportBLReleaseSeaServiceInfo(UserDetails userDetails) {
-		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedDepartment());
+		 List<ExportBLReleaseDeskSea> list = exportBLReleaseDeskSeaRepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
 	        Gson gson = new Gson();
 	        String json = gson.toJson(list);
 	        List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());

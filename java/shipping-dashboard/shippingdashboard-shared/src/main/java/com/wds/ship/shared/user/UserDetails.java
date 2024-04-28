@@ -36,7 +36,7 @@ public class UserDetails {
 
     private Long selectedCompany;
 
-    private Long selectedDepartment;
+    private Long selectedBranch;
 
     public Long getSelectedCompany() {
         return selectedCompany;
@@ -46,12 +46,12 @@ public class UserDetails {
         this.selectedCompany = selectedCompany;
     }
 
-    public Long getSelectedDepartment() {
-        return selectedDepartment;
+    public Long getSelectedBranch() {
+        return selectedBranch;
     }
 
-    public void setSelectedDepartment(Long selectedDepartment) {
-        this.selectedDepartment = selectedDepartment;
+    public void setSelectedBranch(Long selectedBranch) {
+        this.selectedBranch = selectedBranch;
     }
 
     public List<CompnayIds> getCompanyInfo() {

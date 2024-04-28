@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wds.ship.entity.ExportDocumentationDetails;
 import com.wds.ship.entity.ExportPlanner;
 import com.wds.ship.entity.ExportPlannerAir;
 import com.wds.ship.entity.ExportPlannerDetails;
@@ -51,7 +50,7 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 
 	@Override
 	public List<CustomerServicePOJO> getExportPlannerInfo(UserDetails userDetails) {
-		List<ExportPlanner> list = exportplannerepository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedDepartment());
+		List<ExportPlanner> list = exportplannerepository.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());

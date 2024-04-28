@@ -116,7 +116,7 @@ public class UserServiceImpl implements UserService {
                 }
         ).collect(Collectors.toList()));
         userDetails.setSelectedCompany(user.getCompany());
-        userDetails.setSelectedDepartment(Long.valueOf(user.getHomeBranch()));
+        userDetails.setSelectedBranch(Long.valueOf(user.getHomeBranch()));
         return userDetails;
     }
 
