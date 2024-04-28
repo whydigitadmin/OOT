@@ -71,7 +71,7 @@ public class ExportServiceController {
     
       @PostMapping("/exportlcldetailswihtinsla")
       public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
-    	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla(), sla.getCompany(), sla.getBranch());
+    	  return exportService.getExportLCLDetailsWithinSla(sla);
       }
 
 
@@ -83,7 +83,7 @@ public class ExportServiceController {
     
     @PostMapping("/exportlcldetailsoutofsla")
     public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
-  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla() , sla.getCompany() , sla.getBranch());
+  	  return exportService.getExportLCLDetailsOutofSla(sla);
     }
 
     @PostMapping("/exportlcldetailsoutofslav1")
@@ -104,7 +104,7 @@ public class ExportServiceController {
 
     @PostMapping("/exportfcldetailswihtinsla")
     public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
-        return exportService.getExportFCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+        return exportService.getExportFCLDetailsWithinSla(sla);
     }
 
 //    @GetMapping("/exportlcldetailsoutofsla")
@@ -114,7 +114,7 @@ public class ExportServiceController {
 
     @PostMapping("/exportfcldetailsoutofsla")
     public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
-        return exportService.getExportFCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+        return exportService.getExportFCLDetailsOutofSla(sla);
     }
     
     // Sea Export BL Release Desk
@@ -131,12 +131,12 @@ public class ExportServiceController {
     
     @PostMapping("/getExportBLReleaseDeskSeaDetailsWihtinsla")
     public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsWithinSla(@RequestBody ExportWithinsla sla){
-  	  return exportService.getExportBLReleaseSeaDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+  	  return exportService.getExportBLReleaseSeaDetailsWithinSla(sla);
     }
     
     @PostMapping("/getExportBLReleaseDeskSeaDetailsOutofsla")
     public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsOutofSla(@RequestBody ExportOutofSla sla){
-  	  return exportService.getExportBLReleaseSeaDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+  	  return exportService.getExportBLReleaseSeaDetailsOutofSla(sla);
     }
     
     
@@ -164,12 +164,12 @@ public class ExportServiceController {
     
     @PostMapping("/getExportCustomerServiceDetailsAirWihtinsla")
     public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody ExportWithinsla sla){
-  	  return exportService.getExportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla(), sla.getCompany() , sla.getBranch());
+  	  return exportService.getExportLCLDetailsWithinSla(sla);
     }
     
     @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
     public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody ExportOutofSla sla){
-  	  return exportService.getExportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla()  , sla.getCompany() , sla.getBranch());
+  	  return exportService.getExportLCLDetailsOutofSla(sla);
     }
     
     // Air Export BL Release Desk
@@ -186,12 +186,12 @@ public class ExportServiceController {
     
     @PostMapping("/getExportBLReleaseDeskAirDetailsWihtinsla")
     public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsWithinSla(@RequestBody ExportWithinsla sla){
-  	  return exportService.getExportBLReleaseAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+  	  return exportService.getExportBLReleaseAirDetailsWithinSla(sla);
     }
     
     @PostMapping("/getExportBLReleaseDeskAirDetailsOutofsla")
     public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsOutofSla(@RequestBody ExportOutofSla sla){
-  	  return exportService.getExportBLReleaseAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+  	  return exportService.getExportBLReleaseAirDetailsOutofSla(sla);
     }
     
 }
