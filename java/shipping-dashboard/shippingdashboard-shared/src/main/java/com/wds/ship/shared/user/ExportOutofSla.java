@@ -8,6 +8,10 @@ public class ExportOutofSla {
 
 	private Long branch;
 
+	private Long company;
+
+	private Long deptid;
+
 	public String getAction() {
 		return action;
 	}
@@ -24,7 +28,13 @@ public class ExportOutofSla {
 		this.outofsla = outofsla;
 	}
 
-	private Long company;
+
+	public Long getDeptid() {
+		return deptid;
+	}
+	public void setDeptid(Long deptid) {
+		this.deptid = deptid;
+	}
 
 	public Long getCompany() {
 		return company;

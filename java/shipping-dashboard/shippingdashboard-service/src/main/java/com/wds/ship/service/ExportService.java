@@ -16,8 +16,6 @@ public interface ExportService {
 	public List<SalesSupportPOJO> getExportSalesSupportSeaInfo(UserDetails userDetails);
 	
 	public List<SalesSupportDetailsPOJO> getExportSalesSupportSeaDetailsInfo(ExportLCLDetailsAction action);
-	
-    public List<ExportCustomerServiceLCL> getCustomerServiceLCLInfo();
 
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails);
 

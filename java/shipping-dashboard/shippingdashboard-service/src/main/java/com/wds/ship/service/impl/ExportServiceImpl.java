@@ -93,11 +93,6 @@ public class ExportServiceImpl implements ExportService {
         return destinationList;
 	}
 
-    public List<ExportCustomerServiceLCL> getCustomerServiceLCLInfo(){
-        return repository.findAll();
-
-    }
-
     @Override
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails) {
         List<ExportCustomerServiceLCL> list = repository.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
@@ -119,7 +114,8 @@ public class ExportServiceImpl implements ExportService {
     
     @Override
 	public List<ExportDetailsPOJO> getAllLCLDetails(ExportLCLDetailsAction action) {
-    	List<ExportLCLDetails> list = lclRepo.findByActionAndCompany(action.getAction(), action.getCompany());
+    	List<ExportLCLDetails> list = lclRepo.findByActionAndCompanyAndBranchAndDeptid(action.getAction(), action.getCompany(), action.getBranch(), action.getDeptid());
+
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -139,7 +135,7 @@ public class ExportServiceImpl implements ExportService {
 
 	@Override
 	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(ExportWithinsla sla) {
-		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(sla.getAction(), sla.getWithinsla(), sla.getCompany() , sla.getBranch());
+		List<ExportLCLDetails> list = lclRepo.findByActionAndWithinsla(sla.getAction(), sla.getWithinsla(), sla.getCompany() , sla.getBranch(), sla.getDeptid());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -148,7 +144,7 @@ public class ExportServiceImpl implements ExportService {
 	
 	@Override
 	public List<ExportDetailsPOJO> getExportLCLDetailsOutofSla(ExportOutofSla sla) {
-		List<ExportLCLDetails> list = lclRepo.findByActionAndOutofsla(sla.getAction(),sla.getOutofsla() , sla.getCompany() , sla.getBranch());
+		List<ExportLCLDetails> list = lclRepo.findByActionAndOutofsla(sla.getAction(),sla.getOutofsla() , sla.getCompany() , sla.getBranch(), sla.getDeptid());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());

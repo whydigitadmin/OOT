@@ -26,6 +26,15 @@ public class ExportWithinsla {
 
 	private Long branch;
 
+
+	private Long deptid;
+	public Long getDeptid() {
+		return deptid;
+	}
+	public void setDeptid(Long deptid) {
+		this.deptid = deptid;
+	}
+
 	public Long getBranch() {
 		return branch;
 	}

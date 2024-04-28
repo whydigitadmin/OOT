@@ -32,16 +32,6 @@ public class ExportServiceController {
     public List<SalesSupportDetailsPOJO>getExportSalesSupportSeaDetails(@RequestBody ExportLCLDetailsAction action){
     	return exportService.getExportSalesSupportSeaDetailsInfo(action);
     }
-    
-    @GetMapping("/getCustomerServiceLCL1")
-    public List<ExportCustomerServiceLCL> findByUserId(@RequestParam(name = "userId") Long userId) {
-        return exportService.getCustomerServiceLCLInfo();
-    }
-
-    @PostMapping("/getCustomerServiceLCL")
-    public List<CustomerServicePOJO> getInfo(@RequestBody UserDetails userDetails) {
-        return exportService.getLCLCustomerServiceInfo(userDetails);
-    }
 
     @PostMapping("/getLCLCustomerServiceInfo")
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(@RequestBody UserDetails userDetails) {
@@ -62,25 +52,12 @@ public class ExportServiceController {
     public List<ExportDetailsPOJO>getAllLCL(@RequestBody ExportLCLDetailsAction action){
     	return exportService.getAllLCLDetails(action);
     }
-     
-    
-//    @GetMapping("/exportlcldetailswihtinsla")
-//    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestParam(value="action")String action,@RequestParam(value="withinsla")int withinsla){
-//    	return exportCustomerServiceLCLService.getExportLCLDetailsWithinSla(action, withinsla);
-//    }
-    
+
       @PostMapping("/exportlcldetailswihtinsla")
       public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
     	  return exportService.getExportLCLDetailsWithinSla(sla);
       }
 
-
-    
-//    @GetMapping("/exportlcldetailsoutofsla")
-//    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(@RequestParam(value="action")String action,@RequestParam(value="outofsla")int outofsla){
-//    	return exportCustomerServiceLCLService.getExportLCLDetailsOutofSla(action, outofsla);
-//    }
-    
     @PostMapping("/exportlcldetailsoutofsla")
     public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
   	  return exportService.getExportLCLDetailsOutofSla(sla);
