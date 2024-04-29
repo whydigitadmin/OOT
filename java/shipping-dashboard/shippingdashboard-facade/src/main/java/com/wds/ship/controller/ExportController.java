@@ -82,14 +82,6 @@ public class ExportController {
   }
 
     @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
-    @PostMapping("/getExportLCLDetailsOutofslav1")
-    public List<ExportDetailsPOJO> getExportLCLDetailsOutofslav1(@RequestBody ExportOutofSla sla)
-    {
-        return exportService.getExportLCLDetailsOutofslav1(sla);
-
-    }
-
-    @CrossOrigin(origins = {"https://devphp.shipsoft.co",  "https://18.140.188.121", "http://localhost", "http://localhost:4200","https://os.onlinetracking.co"})
     @PostMapping("/getExportFCLDetails")
     public List<ExportDetailsPOJO> getExportFCLDetails(@RequestBody ExportLCLDetailsAction action)
     {

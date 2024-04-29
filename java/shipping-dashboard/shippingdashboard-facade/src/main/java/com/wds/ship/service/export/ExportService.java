@@ -69,12 +69,6 @@ public class ExportService {
         return responseEntity.getBody();
     }
 
-    public List<ExportDetailsPOJO> getExportLCLDetailsOutofslav1(ExportOutofSla sla){
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<List> responseEntity =
-                restTemplate.postForEntity(dashboardRoute.dashboardServiceUrl + "/api/v1/export/exportlcldetailsoutofslav1",sla ,List.class);
-        return responseEntity.getBody();
-    }
 
     public List<ExportDetailsPOJO> getExportFCLDetails(ExportLCLDetailsAction action){
         RestTemplate restTemplate = new RestTemplate();

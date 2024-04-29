@@ -63,11 +63,6 @@ public class ExportServiceController {
   	  return exportService.getExportLCLDetailsOutofSla(sla);
     }
 
-    @PostMapping("/exportlcldetailsoutofslav1")
-    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSlaV1(@RequestBody ExportOutofSla sla){
-        return exportService.getExportLCLDetailsOutofSlaV1(sla);
-    }
-
     @PostMapping("/exportfcldetails")
     public List<ExportDetailsPOJO>getAllFCL(@RequestBody ExportLCLDetailsAction action){
         return exportService.getAllFCLDetails(action);

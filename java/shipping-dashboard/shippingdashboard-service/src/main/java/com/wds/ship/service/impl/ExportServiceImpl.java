@@ -150,16 +150,6 @@ public class ExportServiceImpl implements ExportService {
         return destinationList;
 	}
 
-    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSlaV1(ExportOutofSla sla){
-        List<ExportLCLDetails> list = null;
-                //lclRepo.findByActionAndOutofsla(sla);
-        Gson gson = new Gson();
-
-        String json = gson.toJson(list);
-        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-        return destinationList;
-    }
-
     @Override
     public List<ExportDetailsPOJO> getAllFCLDetails(ExportLCLDetailsAction action) {
         List<ExportFCLDetails> list = fclRepo.findByAction(action.getAction());
