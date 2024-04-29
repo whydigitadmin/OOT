@@ -9,6 +9,6 @@ import java.util.List;
 public interface ExportBLReleaseDeskSeaRepository extends JpaRepository<ExportBLReleaseDeskSea, Long> {
     List<ExportBLReleaseDeskSea> findByCompany(Long company);
 
-    List<ExportBLReleaseDeskSea> findByCompanyAndBranch(Long company, Long department);
+    List<ExportBLReleaseDeskSea> findByCompanyAndBranchAndDeptid(Long company, Long branch, Long deptid);
 
 }

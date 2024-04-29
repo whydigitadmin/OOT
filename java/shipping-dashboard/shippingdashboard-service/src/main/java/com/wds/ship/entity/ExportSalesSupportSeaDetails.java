@@ -25,6 +25,10 @@ public class ExportSalesSupportSeaDetails {
 	@Column(name = "CMPY")
 	private Long company;
 
+	private Long brnid;
+
+	private Long deptid;
+
 	public Long getCompany() {
 		return company;
 	}

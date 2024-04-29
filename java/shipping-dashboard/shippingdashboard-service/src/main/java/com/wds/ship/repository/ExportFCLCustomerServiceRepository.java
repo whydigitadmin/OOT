@@ -11,6 +11,6 @@ public interface ExportFCLCustomerServiceRepository extends JpaRepository<Export
 
     List<ExportFCLCustomerServiceEntity> findByCompany(Long company);
 
-    List<ExportFCLCustomerServiceEntity> findByCompanyAndBranch(Long company, Long department);
+    List<ExportFCLCustomerServiceEntity> findByCompanyAndBranchAndDeptid(Long company, Long branch, Long deptid);
 
 }

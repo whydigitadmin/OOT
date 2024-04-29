@@ -16,8 +16,6 @@ public interface ExportService {
 	public List<SalesSupportPOJO> getExportSalesSupportSeaInfo(UserDetails userDetails);
 	
 	public List<SalesSupportDetailsPOJO> getExportSalesSupportSeaDetailsInfo(ExportLCLDetailsAction action);
-	
-    public List<ExportCustomerServiceLCL> getCustomerServiceLCLInfo();
 
     public List<CustomerServicePOJO> getLCLCustomerServiceInfo(UserDetails userDetails);
 
@@ -33,9 +31,9 @@ public interface ExportService {
 
     public List<ExportDetailsPOJO>getAllFCLDetails(ExportLCLDetailsAction action);
 
-    public List<ExportDetailsPOJO> getExportFCLDetailsWithinSla(String action, int withinsla);
+    public List<ExportDetailsPOJO> getExportFCLDetailsWithinSla(ExportWithinsla sla);
 
-    public List<ExportDetailsPOJO>getExportFCLDetailsOutofSla(String action,int outofsla);
+    public List<ExportDetailsPOJO>getExportFCLDetailsOutofSla(ExportOutofSla sla);
 
 	//public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
     
@@ -46,9 +44,9 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getExportBLReleaseSeaDetails(ExportLCLDetailsAction action);
     
-    public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsWithinSla(String action, int withinsla);
+    public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsWithinSla(ExportWithinsla sla);
 
-    public List<ExportDetailsPOJO>getExportBLReleaseSeaDetailsOutofSla(String action,int outofsla);
+    public List<ExportDetailsPOJO>getExportBLReleaseSeaDetailsOutofSla(ExportOutofSla sla);
     
     
     //Air Export
@@ -73,7 +71,7 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getExportBLReleaseAirDetails(ExportLCLDetailsAction action);
     
-    public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsWithinSla(String action, int withinsla);
+    public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsWithinSla(ExportWithinsla sla);
 
-    public List<ExportDetailsPOJO>getExportBLReleaseAirDetailsOutofSla(String action,int outofsla);
+    public List<ExportDetailsPOJO>getExportBLReleaseAirDetailsOutofSla(ExportOutofSla sla);
 }

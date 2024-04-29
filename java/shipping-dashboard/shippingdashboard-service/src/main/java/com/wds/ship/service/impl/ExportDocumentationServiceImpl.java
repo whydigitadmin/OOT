@@ -19,7 +19,6 @@ import com.wds.ship.service.ExportDocumentationService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.user.ExportLCL;
-import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.UserDetails;
 
 @Service
@@ -52,7 +51,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	@Override
 	public List<CustomerServicePOJO> getExportDocumentationServiceInfo(UserDetails userDetails) {
-		List<ExportDocumentation> list = exportdocumentationrepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedDepartment());
+		List<ExportDocumentation> list = exportdocumentationrepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
