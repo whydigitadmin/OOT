@@ -12,6 +12,16 @@ public class DetailsAction {
 
     private int outofsla;
 
+    private Long deptid;
+
+
+    public Long getDeptid() {
+        return deptid;
+    }
+    public void setDeptid(Long deptid) {
+        this.deptid = deptid;
+    }
+
     public String getAction() {
         return action;
     }
