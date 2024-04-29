@@ -2,6 +2,7 @@ package com.wds.ship.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -22,8 +23,28 @@ public class ExportDocumentationDetails {
 	private String ref_mode;
 	private int withinsla;
 	private int outofsla;
-	
-	
+
+	@Column(name = "BRNID")
+	private Long branch;
+
+	public Long getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Long branch) {
+		this.branch = branch;
+	}
+	@Column(name = "CMPY")
+	private Long company;
+
+	@Column(name = "DEPTID")
+	private Long deptid;
+	public Long getDeptid() {
+		return deptid;
+	}
+	public void setDeptid(Long deptid) {
+		this.deptid = deptid;
+	}
 	
 	
 	public int getWithinsla() {

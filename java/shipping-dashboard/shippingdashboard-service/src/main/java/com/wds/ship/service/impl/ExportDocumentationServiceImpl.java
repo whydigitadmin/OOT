@@ -61,7 +61,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	@Override
 	public List<ExportDetailsPOJO> getExportDocumentationDetailsCount(ExportLCL action) {
-		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByAction(action.getAction());
+		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findByActionAndCompanyAndBranchAndDeptid( action.getAction(), action.getCompany(), action.getBranch(), action.getDeptid());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
