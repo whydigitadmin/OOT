@@ -416,7 +416,7 @@ export class SeaDashboardComponent implements OnInit, OnChanges {
      console.log(this.globals.companyIds)
      console.log(this.globals.branchIds)
      console.log('Company id '+ this.globals.userDetails.selectedCompany)
-     console.log('Branch id '+ this.globals.userDetails.selectedDepartment)
+     console.log('Branch id '+ this.globals.userDetails.selectedBranch)
     this.loadAllItems();
   }
 

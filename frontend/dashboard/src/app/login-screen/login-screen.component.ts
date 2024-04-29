@@ -79,7 +79,7 @@ export class LoginScreenComponent implements OnInit {
 				this.globals.branchIds = this.userDetails.branchIds;
 				this.globals.userDetails = this.userDetails ;
 				this.globals.selectedCompany = this.userDetails.selectedCompany;
-				this.globals.selectedBranch = this.userDetails.selectedDepartment;
+				this.globals.selectedBranch = this.userDetails.selectedBranch;
 
 				sessionStorage.setItem('roles', JSON.stringify(this.globals.productRoles));
 				localStorage.setItem('user_data', JSON.stringify(response));

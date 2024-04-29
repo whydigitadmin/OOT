@@ -58,7 +58,7 @@ export class LandingPageComponent implements OnInit {
 
   onChangeBranch(){
     this.loading = true;
-    this.globals.userDetails.selectedDepartment = this.selectedBranch;
+    this.globals.userDetails.selectedBranch = this.selectedBranch;
       console.log("On Branch change.....")
       if (this.childSeaDashboardComponent) {        
         this.childSeaDashboardComponent.loadAllItems();

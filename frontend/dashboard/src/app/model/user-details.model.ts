@@ -14,7 +14,7 @@ export class UserDetails {
     branchIds: UserCompanyBranch[] = [];
     companyInfo: UserCompany[] = [];
     selectedCompany = 0;
-    selectedDepartment = 0;
+    selectedBranch = 0;
     constructor() {
         this.email = '';
         this.password = '';
@@ -56,9 +56,12 @@ export class branchIds{
 
 export class ActionDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
@@ -75,65 +78,89 @@ export class ExportLclDetails {
 
 export class ImportLclDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class ExportDocumentationDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class ImportDocumentationDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class ExportPlannerDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class ExportCustomerServiceDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class ImportCustomerServiceDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class AirExportBlreleaseDeskDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
 export class ImportTranshipmentDeskDetails {
     action: string;
-
+    company : number;
+    branch: number;
     constructor() {
         this.action = '';
+        this.company = 0;
+        this.branch = 0;
     }
 }
 
