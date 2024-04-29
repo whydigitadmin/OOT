@@ -785,6 +785,7 @@ export class LoginService {
         airexportBlreleaseDeskDetails.action = action;
         airexportBlreleaseDeskDetails.company = this.globals.userDetails.selectedCompany;
         airexportBlreleaseDeskDetails.branch = this.globals.userDetails.selectedBranch;
+        airexportBlreleaseDeskDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airexportBlreleaseDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -799,6 +800,7 @@ export class LoginService {
         airexportBlreleaseDeskDetails.action = action;
         airexportBlreleaseDeskDetails.company = this.globals.userDetails.selectedCompany;
         airexportBlreleaseDeskDetails.branch = this.globals.userDetails.selectedBranch;
+        airexportBlreleaseDeskDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airexportBlreleaseDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -812,6 +814,7 @@ export class LoginService {
         airimportCustomerCountDetails.action = action;
         airimportCustomerCountDetails.company = this.globals.userDetails.selectedCompany;
         airimportCustomerCountDetails.branch = this.globals.userDetails.selectedBranch;
+        airimportCustomerCountDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimportCustomerCountDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -826,6 +829,7 @@ export class LoginService {
         airimportCustomerWithinslaDetails.action = action;
         airimportCustomerWithinslaDetails.company = this.globals.userDetails.selectedCompany;
         airimportCustomerWithinslaDetails.branch = this.globals.userDetails.selectedBranch;
+        airimportCustomerWithinslaDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimportCustomerWithinslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -840,6 +844,7 @@ export class LoginService {
         airexportCustomerOutofslaDetails.action = action;
         airexportCustomerOutofslaDetails.company = this.globals.userDetails.selectedCompany;
         airexportCustomerOutofslaDetails.branch = this.globals.userDetails.selectedBranch;
+        airexportCustomerOutofslaDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airexportCustomerOutofslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -853,6 +858,7 @@ export class LoginService {
         airimportDocumentationDetails.action = action;
         airimportDocumentationDetails.company = this.globals.userDetails.selectedCompany;
         airimportDocumentationDetails.branch = this.globals.userDetails.selectedBranch;
+        airimportDocumentationDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimportDocumentationDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -867,6 +873,7 @@ export class LoginService {
         airimportDocumentationWithinslaDetails.action = action;
         airimportDocumentationWithinslaDetails.company = this.globals.userDetails.selectedCompany;
         airimportDocumentationWithinslaDetails.branch = this.globals.userDetails.selectedBranch;
+        airimportDocumentationWithinslaDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimportDocumentationWithinslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -881,6 +888,7 @@ export class LoginService {
         airimportDocumentationDetailsOutofsla.action = action;
         airimportDocumentationDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
         airimportDocumentationDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
+        airimportDocumentationDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimportDocumentationDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -894,6 +902,7 @@ export class LoginService {
         airimporttranshipmentDeskDetails.action = action;
         airimporttranshipmentDeskDetails.company = this.globals.userDetails.selectedCompany;
         airimporttranshipmentDeskDetails.branch = this.globals.userDetails.selectedBranch;
+        airimporttranshipmentDeskDetails.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimporttranshipmentDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -908,6 +917,7 @@ export class LoginService {
         airimporttranshipmentDeskDetailsWithinsla.action = action;
         airimporttranshipmentDeskDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
         airimporttranshipmentDeskDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
+        airimporttranshipmentDeskDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimporttranshipmentDeskDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -922,6 +932,7 @@ export class LoginService {
         airimporttranshipmentDeskDetailsOutofsla.action = action;
         airimporttranshipmentDeskDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
         airimporttranshipmentDeskDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
+        airimporttranshipmentDeskDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
         const jsonData = JSON.stringify(airimporttranshipmentDeskDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
