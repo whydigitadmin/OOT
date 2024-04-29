@@ -58,10 +58,12 @@ export class ActionDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -69,10 +71,12 @@ export class ExportLclDetails {
     action: string;
     company : number;
     branch: number;
+    deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
         this.branch = 0;
+        this.deptid = 0
     }
 }
 
@@ -80,10 +84,12 @@ export class ImportLclDetails {
     action: string;
     company : number;
     branch: number;
+    deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
         this.branch = 0;
+        this.deptid = 0;
     }
 }
 
@@ -91,10 +97,12 @@ export class ExportDocumentationDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -102,10 +110,12 @@ export class ImportDocumentationDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -113,10 +123,12 @@ export class ExportPlannerDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -124,10 +136,12 @@ export class ExportCustomerServiceDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -135,10 +149,12 @@ export class ImportCustomerServiceDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -146,10 +162,12 @@ export class AirExportBlreleaseDeskDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
@@ -157,10 +175,12 @@ export class ImportTranshipmentDeskDetails {
     action: string;
     company : number;
     branch: number;
+deptid: number;
     constructor() {
         this.action = '';
         this.company = 0;
-        this.branch = 0;
+        this.branch = 0; 
+        this.deptid = 0;
     }
 }
 
