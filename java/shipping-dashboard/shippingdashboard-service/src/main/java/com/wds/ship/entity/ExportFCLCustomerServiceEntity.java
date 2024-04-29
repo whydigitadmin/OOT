@@ -36,6 +36,15 @@ public class ExportFCLCustomerServiceEntity {
     @Column(name = "BRNID")
     private Long branch;
 
+    @Column(name = "DEPTID")
+    private Long deptid;
+    public Long getDeptid() {
+        return deptid;
+    }
+    public void setDeptid(Long deptid) {
+        this.deptid = deptid;
+    }
+
     public Long getBranch() {
         return branch;
     }

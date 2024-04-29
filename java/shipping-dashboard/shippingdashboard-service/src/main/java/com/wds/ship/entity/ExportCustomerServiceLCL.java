@@ -29,6 +29,15 @@ public class ExportCustomerServiceLCL {
     @Column(name = "OUTOFSLA")
     private Long outOfSLA;
 
+    @Column(name = "DEPTID")
+    private Long deptid;
+    public Long getDeptid() {
+        return deptid;
+    }
+    public void setDeptid(Long deptid) {
+        this.deptid = deptid;
+    }
+
     public Long getCompany() {
         return company;
     }
