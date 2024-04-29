@@ -271,10 +271,11 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
 
-    getExportLclDetailsWithinSla(action: string): Observable<any> {
+    getExportLclDetailsWithinSla(action: any): Observable<any> {
         console.log("action", action);
         const exportLclDetailsWithinsla = new ExportLclDetails();
-        exportLclDetailsWithinsla.action = action;
+        exportLclDetailsWithinsla.action = action.action;
+        exportLclDetailsWithinsla.withinsla = action.withinsla;
         exportLclDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
         exportLclDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
         exportLclDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;

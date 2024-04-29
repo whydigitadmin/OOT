@@ -69,11 +69,13 @@ deptid: number;
 
 export class ExportLclDetails {
     action: string;
+    withinsla: number;
     company : number;
     branch: number;
     deptid: number;
     constructor() {
         this.action = '';
+        this.withinsla =0;
         this.company = 0;
         this.branch = 0;
         this.deptid = 0
