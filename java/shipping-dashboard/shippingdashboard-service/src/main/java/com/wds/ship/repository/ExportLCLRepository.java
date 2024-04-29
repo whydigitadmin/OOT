@@ -27,6 +27,8 @@ public interface ExportLCLRepository extends JpaRepository<ExportLCLDetails, Int
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy  , a.brnid , a.deptid from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla and A.cmpy = :cmpy and A.brnid= :brnid  and A.deptid= :deptid")
 	List<ExportLCLDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla, @Param("cmpy") Long cmpy , @Param("brnid")Long brnid ,@Param("deptid")Long deptid);
 
+	List<ExportLCLDetails> findByActionAndCompany(String action, Long company);
+
 	//List<ExportLCLDetails> findByActionAndOutofsla(ExportOutofSla sla);
 
 	
