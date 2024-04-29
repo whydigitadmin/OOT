@@ -34,11 +34,7 @@ public class ExportOutofSla {
 	}
 	public void setDeptid(Long deptid) {
 		this.deptid = deptid;
-	}
-
-	private Long branch;
-
-	private Long deptid;
+	}	
 
 	public Long getBranch() {
 		return branch;
@@ -46,14 +42,6 @@ public class ExportOutofSla {
 
 	public void setBranch(Long branch) {
 		this.branch = branch;
-	}
-
-	public Long getDeptid() {
-		return deptid;
-	}
-
-	public void setDeptid(Long deptid) {
-		this.deptid = deptid;
 	}
 
 
@@ -63,16 +51,6 @@ public class ExportOutofSla {
 
 	public void setCompany(Long company) {
 		this.company = company;
-	}
-
-
-
-	public Long getBranch() {
-		return branch;
-	}
-
-	public void setBranch(Long branch) {
-		this.branch = branch;
 	}
 
 }
