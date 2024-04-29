@@ -51,7 +51,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	@Override
 	public List<CustomerServicePOJO> getExportDocumentationServiceInfo(UserDetails userDetails) {
-		List<ExportDocumentation> list = exportdocumentationrepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
+		List<ExportDocumentation> list = exportdocumentationrepo.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());

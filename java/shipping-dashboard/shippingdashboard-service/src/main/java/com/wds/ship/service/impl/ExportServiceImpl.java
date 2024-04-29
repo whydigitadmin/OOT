@@ -114,7 +114,7 @@ public class ExportServiceImpl implements ExportService {
     
     @Override
 	public List<ExportDetailsPOJO> getAllLCLDetails(ExportLCLDetailsAction action) {
-    	List<ExportLCLDetails> list = lclRepo.findByActionAndCompany(action.getAction(), action.getCompany());
+    	List<ExportLCLDetails> list = lclRepo.findByActionAndCompanyAndBranchAndDeptid(action.getAction(), action.getCompany(), action.getBranch() , action.getDeptid());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
