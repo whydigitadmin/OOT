@@ -6,11 +6,7 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.ExportLCL;
-import com.wds.ship.shared.user.ExportLCLDetailsAction;
-import com.wds.ship.shared.user.ExportOutofSla;
-import com.wds.ship.shared.user.ExportWithinsla;
-import com.wds.ship.shared.user.UserDetails;
+import com.wds.ship.shared.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,17 +45,17 @@ public class ExportServiceController {
 //  }
     
     @PostMapping("/exportlcldetails")
-    public List<ExportDetailsPOJO>getAllLCL(@RequestBody ExportLCLDetailsAction action){
+    public List<ExportDetailsPOJO>getAllLCL(@RequestBody DetailsAction action){
     	return exportService.getAllLCLDetails(action);
     }
 
       @PostMapping("/exportlcldetailswihtinsla")
-      public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
+      public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody DetailsAction sla){
     	  return exportService.getExportLCLDetailsWithinSla(sla);
       }
 
     @PostMapping("/exportlcldetailsoutofsla")
-    public List<ExportDetailsPOJO>getExportLCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
+    public List<ExportDetailsPOJO>getExportLCLDetailsOutOfSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportLCLDetailsOutofSla(sla);
     }
 
@@ -135,12 +131,12 @@ public class ExportServiceController {
     }
     
     @PostMapping("/getExportCustomerServiceDetailsAirWihtinsla")
-    public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody ExportWithinsla sla){
+    public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportLCLDetailsWithinSla(sla);
     }
     
     @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
-    public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody ExportOutofSla sla){
+    public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportLCLDetailsOutofSla(sla);
     }
     

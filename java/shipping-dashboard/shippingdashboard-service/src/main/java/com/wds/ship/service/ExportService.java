@@ -21,11 +21,11 @@ public interface ExportService {
 
     public List<CustomerServicePOJO> getFCLCustomerServiceInfo(UserDetails userDetails);
     
-    public List<ExportDetailsPOJO>getAllLCLDetails(ExportLCLDetailsAction action);
+    public List<ExportDetailsPOJO>getAllLCLDetails(DetailsAction action);
 
-	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(ExportWithinsla sla);
+	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(DetailsAction sla);
 
-    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(ExportOutofSla sla);
+    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(DetailsAction sla);
 
     public List<ExportDetailsPOJO>getAllFCLDetails(ExportLCLDetailsAction action);
 
