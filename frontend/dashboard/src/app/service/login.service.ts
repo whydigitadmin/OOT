@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { ActionDetails, AirExportBlreleaseDeskDetails, ExportCustomerServiceDetails, ExportDocumentationDetails, ExportLclDetails, ExportPlannerDetails, Globals, ImportCustomerServiceDetails, ImportDocumentationDetails, ImportLclDetails, ImportTranshipmentDeskDetails, Shipment, ShipmentCount, UserDetails, UserLogin } from "../model/user-details.model";
+import { DashboarDetails, Globals, Shipment, UserLogin } from "../model/user-details.model";
 import { Air_Export_CustomerService, Air_Import_CustomerService, Export_LCL_CustomerService, Import_LCL_CustomerService } from "../model/export-model";
 //import {UserDetails} from 'src\\app\\models\\UserDetails';
 
@@ -216,11 +216,7 @@ export class LoginService {
     // }
 
     getExportSalesSupportDetailsCount(action: string): Observable<any> {
-        const exportSalesSupportDetails = new ExportLclDetails();
-        exportSalesSupportDetails.action = action;
-        exportSalesSupportDetails.company = this.globals.userDetails.selectedCompany;
-        exportSalesSupportDetails.branch = this.globals.userDetails.selectedBranch;
-        exportSalesSupportDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportSalesSupportDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportSalesSupportDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -230,11 +226,7 @@ export class LoginService {
     }
 
     getImportSalesSupportDetailsCount(action: string): Observable<any> {
-        const importSalesSupportDetails = new ExportLclDetails();
-        importSalesSupportDetails.action = action;
-        importSalesSupportDetails.company = this.globals.userDetails.selectedCompany;
-        importSalesSupportDetails.branch = this.globals.userDetails.selectedBranch;
-        importSalesSupportDetails.deptid = this.globals.userDetails.homeDeptId;
+        const importSalesSupportDetails = this.getDetailsParams(action);        
         const jsonData = JSON.stringify(importSalesSupportDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -244,11 +236,7 @@ export class LoginService {
     }
 
     getAirImportSalesSupportDetailsCount(action: string): Observable<any> {
-        const airimportSalesSupportDetails = new ImportLclDetails();
-        airimportSalesSupportDetails.action = action;
-        airimportSalesSupportDetails.company = this.globals.userDetails.selectedCompany;
-        airimportSalesSupportDetails.branch = this.globals.userDetails.selectedBranch;
-        airimportSalesSupportDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airimportSalesSupportDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimportSalesSupportDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -258,11 +246,7 @@ export class LoginService {
     }
 
     getExportLclDetailsCount(action: string): Observable<any> {
-        const exportLclDetails = new ExportLclDetails();
-        exportLclDetails.action = action;
-        exportLclDetails.company = this.globals.userDetails.selectedCompany;
-        exportLclDetails.branch = this.globals.userDetails.selectedBranch;
-        exportLclDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportLclDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportLclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -273,12 +257,7 @@ export class LoginService {
 
     getExportLclDetailsWithinSla(action: any): Observable<any> {
         console.log("action", action);
-        const exportLclDetailsWithinsla = new ExportLclDetails();
-        exportLclDetailsWithinsla.action = action.action;
-        exportLclDetailsWithinsla.withinsla = action.withinsla;
-        exportLclDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        exportLclDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        exportLclDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportLclDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportLclDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -289,11 +268,7 @@ export class LoginService {
 
     getExportLclDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const exportLclDetailsOutofsla = new ExportLclDetails();
-        exportLclDetailsOutofsla.action = action;
-        exportLclDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        exportLclDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        exportLclDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportLclDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportLclDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -303,11 +278,7 @@ export class LoginService {
     }
 
     getExportFclDetailsCount(action: string): Observable<any> {
-        const exportFclDetails = new ActionDetails();
-        exportFclDetails.action = action;
-        exportFclDetails.company = this.globals.userDetails.selectedCompany;
-        exportFclDetails.branch = this.globals.userDetails.selectedBranch;
-        exportFclDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportFclDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportFclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -318,11 +289,7 @@ export class LoginService {
 
     getExportFclDetailsWithinSla(action: string): Observable<any> {
         console.log("action", action);
-        const exportFclDetailsWithinsla = new ActionDetails();
-        exportFclDetailsWithinsla.action = action;
-        exportFclDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        exportFclDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        exportFclDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportFclDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportFclDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -333,11 +300,7 @@ export class LoginService {
 
     getExportFclDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const exportFclDetailsOutofsla = new ActionDetails();
-        exportFclDetailsOutofsla.action = action;
-        exportFclDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        exportFclDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        exportFclDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportFclDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportFclDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -347,11 +310,7 @@ export class LoginService {
     }
 
     getExportBlreleaseDeskDetailsCount(action: string): Observable<any> {
-        const exportBlreleaseDeskDetails = new ExportLclDetails();
-        exportBlreleaseDeskDetails.action = action;
-        exportBlreleaseDeskDetails.company = this.globals.userDetails.selectedCompany;
-        exportBlreleaseDeskDetails.branch = this.globals.userDetails.selectedBranch;
-        exportBlreleaseDeskDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportBlreleaseDeskDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportBlreleaseDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -362,11 +321,7 @@ export class LoginService {
 
     getExportBlreleaseDeskDetailsWithinSla(action: string): Observable<any> {
         console.log("action", action);
-        const exportBlreleaseDeskDetailsWithinsla = new ExportLclDetails();
-        exportBlreleaseDeskDetailsWithinsla.action = action;
-        exportBlreleaseDeskDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        exportBlreleaseDeskDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        exportBlreleaseDeskDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportBlreleaseDeskDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportBlreleaseDeskDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -377,11 +332,7 @@ export class LoginService {
 
     getExportBlreleaseDeskDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const exportBlreleaseDeskDetailsOutofsla = new ExportLclDetails();
-        exportBlreleaseDeskDetailsOutofsla.action = action;
-        exportBlreleaseDeskDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        exportBlreleaseDeskDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        exportBlreleaseDeskDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportBlreleaseDeskDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportBlreleaseDeskDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -391,11 +342,7 @@ export class LoginService {
     }
 
     getImportLclDetailsCount(action: string): Observable<any> {
-        const importLclDetails = new ImportLclDetails();
-        importLclDetails.action = action;
-        importLclDetails.company = this.globals.userDetails.selectedCompany;
-        importLclDetails.branch = this.globals.userDetails.selectedBranch;
-        importLclDetails.deptid = this.globals.userDetails.homeDeptId;
+        const importLclDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importLclDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -406,11 +353,7 @@ export class LoginService {
 
     getImportLclDetailsWithinSla(action: string): Observable<any> {
         console.log("action", action);
-        const importLclDetailsWithinsla = new ImportLclDetails();
-        importLclDetailsWithinsla.action = action;
-        importLclDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        importLclDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        importLclDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const importLclDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importLclDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -421,11 +364,7 @@ export class LoginService {
 
     getImportLclDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const importLclDetailsOutofsla = new ImportLclDetails();
-        importLclDetailsOutofsla.action = action;
-        importLclDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        importLclDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        importLclDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const importLclDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importLclDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -434,23 +373,9 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
 
-    // getImportFclDetailsCount(action: string): Observable<any> {
-    //     const importLclDetails = new ImportLclDetails();
-    //     importLclDetails.action = action;
-    //     const jsonData = JSON.stringify(importLclDetails);
-    //     console.log('jsonData', jsonData);
-    //     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    //     const urlWithParams = `${BASE_URL}${this.importLclCountDetails}`;
-    //     // const variable = encodeURIComponent(`${action}`);
-    //     return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
-    // }
-
+   
     getExportDocumentationCountDetails(action: string): Observable<any> {
-        const exportDocumentationDetails = new ExportDocumentationDetails();
-        exportDocumentationDetails.action = action;
-        exportDocumentationDetails.company = this.globals.userDetails.selectedCompany;
-        exportDocumentationDetails.branch = this.globals.userDetails.selectedBranch;
-        exportDocumentationDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportDocumentationDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportDocumentationDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -460,11 +385,7 @@ export class LoginService {
     }
 
     getImportDocumentationCountDetails(action: string): Observable<any> {
-        const importDocumentationDetails = new ImportDocumentationDetails();
-        importDocumentationDetails.action = action;
-        importDocumentationDetails.company = this.globals.userDetails.selectedCompany;
-        importDocumentationDetails.branch = this.globals.userDetails.selectedBranch;
-        importDocumentationDetails.deptid = this.globals.userDetails.homeDeptId;
+        const importDocumentationDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importDocumentationDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -475,11 +396,7 @@ export class LoginService {
 
     getExportDocumentationWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const exportDocumentationDetailsWithinsla = new ExportDocumentationDetails();
-        exportDocumentationDetailsWithinsla.action = action;
-        exportDocumentationDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        exportDocumentationDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        exportDocumentationDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportDocumentationDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportDocumentationDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -490,11 +407,7 @@ export class LoginService {
 
     getImportDocumentationWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const importDocumentationDetailsWithinsla = new ImportDocumentationDetails();
-        importDocumentationDetailsWithinsla.action = action;
-        importDocumentationDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        importDocumentationDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        importDocumentationDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const importDocumentationDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importDocumentationDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -505,11 +418,7 @@ export class LoginService {
 
     getExportDocumentationDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const exportDocumentationDetailsOutofsla = new ExportDocumentationDetails();
-        exportDocumentationDetailsOutofsla.action = action;
-        exportDocumentationDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        exportDocumentationDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        exportDocumentationDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const exportDocumentationDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportDocumentationDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -520,11 +429,7 @@ export class LoginService {
 
     getImportDocumentationDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const importDocumentationDetailsOutofsla = new ImportDocumentationDetails();
-        importDocumentationDetailsOutofsla.action = action;
-        importDocumentationDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        importDocumentationDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        importDocumentationDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const importDocumentationDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importDocumentationDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -534,11 +439,7 @@ export class LoginService {
     }
 
     getExportPlannerCountDetails(action: string): Observable<any> {
-        const exportPlannerDetails = new ExportPlannerDetails();
-        exportPlannerDetails.action = action;
-        exportPlannerDetails.company = this.globals.userDetails.selectedCompany;
-        exportPlannerDetails.branch = this.globals.userDetails.selectedBranch;
-        exportPlannerDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportPlannerDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportPlannerDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -549,11 +450,7 @@ export class LoginService {
 
     getExportPlannerWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const exportPlannerDetails = new ExportPlannerDetails();
-        exportPlannerDetails.action = action;
-        exportPlannerDetails.company = this.globals.userDetails.selectedCompany;
-        exportPlannerDetails.branch = this.globals.userDetails.selectedBranch;
-        exportPlannerDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportPlannerDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportPlannerDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -564,11 +461,7 @@ export class LoginService {
 
     getExportPlannerOutOfSlaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const exportPlannerDetails = new ExportPlannerDetails();
-        exportPlannerDetails.action = action;
-        exportPlannerDetails.company = this.globals.userDetails.selectedCompany;
-        exportPlannerDetails.branch = this.globals.userDetails.selectedBranch;
-        exportPlannerDetails.deptid = this.globals.userDetails.homeDeptId;
+        const exportPlannerDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportPlannerDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -578,11 +471,7 @@ export class LoginService {
     }
 
     getImporttranshipmentDeskCountDetails(action: string): Observable<any> {
-        const importtranshipmentDeskDetails = new ImportTranshipmentDeskDetails();
-        importtranshipmentDeskDetails.action = action;
-        importtranshipmentDeskDetails.company = this.globals.userDetails.selectedCompany;
-        importtranshipmentDeskDetails.branch = this.globals.userDetails.selectedBranch;
-        importtranshipmentDeskDetails.deptid = this.globals.userDetails.homeDeptId;
+        const importtranshipmentDeskDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importtranshipmentDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -593,11 +482,7 @@ export class LoginService {
 
     getImporttranshipmentDeskWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const importtranshipmentDeskDetailsWithinsla = new ImportTranshipmentDeskDetails();
-        importtranshipmentDeskDetailsWithinsla.action = action;
-        importtranshipmentDeskDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        importtranshipmentDeskDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        importtranshipmentDeskDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const importtranshipmentDeskDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importtranshipmentDeskDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -608,11 +493,7 @@ export class LoginService {
 
     getImporttranshipmentDeskDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const importtranshipmentDeskDetailsOutofsla = new ImportTranshipmentDeskDetails();
-        importtranshipmentDeskDetailsOutofsla.action = action;
-        importtranshipmentDeskDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        importtranshipmentDeskDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        importtranshipmentDeskDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const importtranshipmentDeskDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(importtranshipmentDeskDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -622,11 +503,7 @@ export class LoginService {
     }
 
     getAirExportSalesSupportDetailsCount(action: string): Observable<any> {
-        const airexportSalesSupportDetails = new ExportLclDetails();
-        airexportSalesSupportDetails.action = action;
-        airexportSalesSupportDetails.company = this.globals.userDetails.selectedCompany;
-        airexportSalesSupportDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportSalesSupportDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportSalesSupportDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportSalesSupportDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -636,11 +513,7 @@ export class LoginService {
     }
 
     getAirExportDocumentationDetailsCount(action: string): Observable<any> {
-        const airexportDocumentationDetails = new ExportLclDetails();
-        airexportDocumentationDetails.action = action;
-        airexportDocumentationDetails.company = this.globals.userDetails.selectedCompany;
-        airexportDocumentationDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportDocumentationDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportDocumentationDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportDocumentationDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -651,11 +524,7 @@ export class LoginService {
 
     getAirExportDocumentationDetailsWithinsla(action: string): Observable<any> {
         console.log("action", action);
-        const airexportDocumentationWithinslaDetails = new ExportDocumentationDetails();
-        airexportDocumentationWithinslaDetails.action = action;
-        airexportDocumentationWithinslaDetails.company = this.globals.userDetails.selectedCompany;
-        airexportDocumentationWithinslaDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportDocumentationWithinslaDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportDocumentationWithinslaDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportDocumentationWithinslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -666,11 +535,7 @@ export class LoginService {
 
     getAirExportDocumentationDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const airexportDocumentationDetailsOutofsla = new ExportDocumentationDetails();
-        airexportDocumentationDetailsOutofsla.action = action;
-        airexportDocumentationDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        airexportDocumentationDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        airexportDocumentationDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const airexportDocumentationDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportDocumentationDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -680,11 +545,7 @@ export class LoginService {
     }
 
     getAirExportPlannerCountDetails(action: string): Observable<any> {
-        const airexportPlannerDetails = new ExportPlannerDetails();
-        airexportPlannerDetails.action = action;
-        airexportPlannerDetails.company = this.globals.userDetails.selectedCompany;
-        airexportPlannerDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportPlannerDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportPlannerDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportPlannerDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -695,11 +556,7 @@ export class LoginService {
 
     getAirExportPlannerWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportPlannerDetails = new ExportPlannerDetails();
-        airexportPlannerDetails.action = action;
-        airexportPlannerDetails.company = this.globals.userDetails.selectedCompany;
-        airexportPlannerDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportPlannerDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportPlannerDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportPlannerDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -710,11 +567,7 @@ export class LoginService {
 
     getAirExportPlannerOutOfSlaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportPlannerDetails = new ExportPlannerDetails();
-        airexportPlannerDetails.action = action;
-        airexportPlannerDetails.company = this.globals.userDetails.selectedCompany;
-        airexportPlannerDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportPlannerDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportPlannerDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportPlannerDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -723,11 +576,7 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
     getAirExportCustomerCountDetails(action: string): Observable<any> {
-        const airexportCustomerCountDetails = new ExportCustomerServiceDetails();
-        airexportCustomerCountDetails.action = action;
-        airexportCustomerCountDetails.company = this.globals.userDetails.selectedCompany;
-        airexportCustomerCountDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportCustomerCountDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportCustomerCountDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportCustomerCountDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -738,11 +587,7 @@ export class LoginService {
 
     getAirExportCustomerWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportCustomerWithinslaDetails = new ExportCustomerServiceDetails();
-        airexportCustomerWithinslaDetails.action = action;
-        airexportCustomerWithinslaDetails.company = this.globals.userDetails.selectedCompany;
-        airexportCustomerWithinslaDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportCustomerWithinslaDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportCustomerWithinslaDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportCustomerWithinslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -753,11 +598,7 @@ export class LoginService {
 
     getAirExportCustomerOutOfSlaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportCustomerOutofslaDetails = new ExportCustomerServiceDetails();
-        airexportCustomerOutofslaDetails.action = action;
-        airexportCustomerOutofslaDetails.company = this.globals.userDetails.selectedCompany;
-        airexportCustomerOutofslaDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportCustomerOutofslaDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportCustomerOutofslaDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportCustomerOutofslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -767,11 +608,7 @@ export class LoginService {
     }
 
     getAirExportBlreleaseDeskCountDetails(action: string): Observable<any> {
-        const airexportBlreleaseDeskDetails = new AirExportBlreleaseDeskDetails();
-        airexportBlreleaseDeskDetails.action = action;
-        airexportBlreleaseDeskDetails.company = this.globals.userDetails.selectedCompany;
-        airexportBlreleaseDeskDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportBlreleaseDeskDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportBlreleaseDeskDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportBlreleaseDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -782,11 +619,7 @@ export class LoginService {
 
     getAirExportBlreleaseDeskWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportBlreleaseDeskDetails = new AirExportBlreleaseDeskDetails();
-        airexportBlreleaseDeskDetails.action = action;
-        airexportBlreleaseDeskDetails.company = this.globals.userDetails.selectedCompany;
-        airexportBlreleaseDeskDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportBlreleaseDeskDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportBlreleaseDeskDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportBlreleaseDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -797,11 +630,7 @@ export class LoginService {
 
     getAirExportBlreleaseDeskOutOfSlaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportBlreleaseDeskDetails = new AirExportBlreleaseDeskDetails();
-        airexportBlreleaseDeskDetails.action = action;
-        airexportBlreleaseDeskDetails.company = this.globals.userDetails.selectedCompany;
-        airexportBlreleaseDeskDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportBlreleaseDeskDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportBlreleaseDeskDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportBlreleaseDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -811,11 +640,7 @@ export class LoginService {
     }
 
     getAirImportCustomerCountDetails(action: string): Observable<any> {
-        const airimportCustomerCountDetails = new ImportCustomerServiceDetails();
-        airimportCustomerCountDetails.action = action;
-        airimportCustomerCountDetails.company = this.globals.userDetails.selectedCompany;
-        airimportCustomerCountDetails.branch = this.globals.userDetails.selectedBranch;
-        airimportCustomerCountDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airimportCustomerCountDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimportCustomerCountDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -826,11 +651,7 @@ export class LoginService {
 
     getAirImportCustomerWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airimportCustomerWithinslaDetails = new ImportCustomerServiceDetails();
-        airimportCustomerWithinslaDetails.action = action;
-        airimportCustomerWithinslaDetails.company = this.globals.userDetails.selectedCompany;
-        airimportCustomerWithinslaDetails.branch = this.globals.userDetails.selectedBranch;
-        airimportCustomerWithinslaDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airimportCustomerWithinslaDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimportCustomerWithinslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -841,11 +662,7 @@ export class LoginService {
 
     getAirImportCustomerOutOfSlaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airexportCustomerOutofslaDetails = new ImportCustomerServiceDetails();
-        airexportCustomerOutofslaDetails.action = action;
-        airexportCustomerOutofslaDetails.company = this.globals.userDetails.selectedCompany;
-        airexportCustomerOutofslaDetails.branch = this.globals.userDetails.selectedBranch;
-        airexportCustomerOutofslaDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airexportCustomerOutofslaDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airexportCustomerOutofslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -855,11 +672,7 @@ export class LoginService {
     }
 
     getAirImportDocumentationDetailsCount(action: string): Observable<any> {
-        const airimportDocumentationDetails = new ExportLclDetails();
-        airimportDocumentationDetails.action = action;
-        airimportDocumentationDetails.company = this.globals.userDetails.selectedCompany;
-        airimportDocumentationDetails.branch = this.globals.userDetails.selectedBranch;
-        airimportDocumentationDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airimportDocumentationDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimportDocumentationDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -870,11 +683,7 @@ export class LoginService {
 
     getAirImportDocumentationDetailsWithinsla(action: string): Observable<any> {
         console.log("action", action);
-        const airimportDocumentationWithinslaDetails = new ExportDocumentationDetails();
-        airimportDocumentationWithinslaDetails.action = action;
-        airimportDocumentationWithinslaDetails.company = this.globals.userDetails.selectedCompany;
-        airimportDocumentationWithinslaDetails.branch = this.globals.userDetails.selectedBranch;
-        airimportDocumentationWithinslaDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airimportDocumentationWithinslaDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimportDocumentationWithinslaDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -885,11 +694,7 @@ export class LoginService {
 
     getAirImportDocumentationDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const airimportDocumentationDetailsOutofsla = new ExportDocumentationDetails();
-        airimportDocumentationDetailsOutofsla.action = action;
-        airimportDocumentationDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        airimportDocumentationDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        airimportDocumentationDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const airimportDocumentationDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimportDocumentationDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -899,11 +704,7 @@ export class LoginService {
     }
 
     getAirImporttranshipmentDeskCountDetails(action: string): Observable<any> {
-        const airimporttranshipmentDeskDetails = new ImportTranshipmentDeskDetails();
-        airimporttranshipmentDeskDetails.action = action;
-        airimporttranshipmentDeskDetails.company = this.globals.userDetails.selectedCompany;
-        airimporttranshipmentDeskDetails.branch = this.globals.userDetails.selectedBranch;
-        airimporttranshipmentDeskDetails.deptid = this.globals.userDetails.homeDeptId;
+        const airimporttranshipmentDeskDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimporttranshipmentDeskDetails);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -914,11 +715,7 @@ export class LoginService {
 
     getAirImporttranshipmentDeskWithinslaDetails(action: string): Observable<any> {
         console.log("action", action);
-        const airimporttranshipmentDeskDetailsWithinsla = new ImportTranshipmentDeskDetails();
-        airimporttranshipmentDeskDetailsWithinsla.action = action;
-        airimporttranshipmentDeskDetailsWithinsla.company = this.globals.userDetails.selectedCompany;
-        airimporttranshipmentDeskDetailsWithinsla.branch = this.globals.userDetails.selectedBranch;
-        airimporttranshipmentDeskDetailsWithinsla.deptid = this.globals.userDetails.homeDeptId;
+        const airimporttranshipmentDeskDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimporttranshipmentDeskDetailsWithinsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -929,11 +726,7 @@ export class LoginService {
 
     getAirImporttranshipmentDeskDetailsOutOfSla(action: string): Observable<any> {
         console.log("action", action);
-        const airimporttranshipmentDeskDetailsOutofsla = new ImportTranshipmentDeskDetails();
-        airimporttranshipmentDeskDetailsOutofsla.action = action;
-        airimporttranshipmentDeskDetailsOutofsla.company = this.globals.userDetails.selectedCompany;
-        airimporttranshipmentDeskDetailsOutofsla.branch = this.globals.userDetails.selectedBranch;
-        airimporttranshipmentDeskDetailsOutofsla.deptid = this.globals.userDetails.homeDeptId;
+        const airimporttranshipmentDeskDetailsOutofsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(airimporttranshipmentDeskDetailsOutofsla);
         console.log('jsonData', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -942,5 +735,13 @@ export class LoginService {
         return this.http.post<any>(urlWithParams, jsonData, { headers: headers });
     }
 
+    getDetailsParams(action: string): DashboarDetails {
+        const dashboardDetails = new DashboarDetails();
+        dashboardDetails.action = action;
+        dashboardDetails.company = this.globals.userDetails.selectedCompany;
+        dashboardDetails.branch = this.globals.userDetails.selectedBranch;
+        dashboardDetails.deptid = this.globals.userDetails.homeDeptId;
+        return dashboardDetails;
+    }
 
 }
