@@ -14,7 +14,7 @@ public interface ExportDocumentationDetailsRepository extends JpaRepository<Expo
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_DOCUMENTATION_DETAILS a where A.ACTION=?1")
 	List<ExportDocumentationDetails> findAllByAction(String string);
 
-	List<ExportDocumentationDetails> findByActionAndCompanyAndBranchAndDeptid(String action, Long company, Long branch, Long deptid);
+	List<ExportDocumentationDetails> findByActionAndCompanyAndBranch(String action, Long company, Long branch);
 	
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_DOCUMENTATION_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla")
 	List<ExportDocumentationDetails> findAllByActionAndWithinsla(String action, int withinsla);

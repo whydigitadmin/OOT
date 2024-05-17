@@ -18,6 +18,7 @@ import com.wds.ship.repository.ExportDocumentationRepository;
 import com.wds.ship.service.ExportDocumentationService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.UserDetails;
 
@@ -51,7 +52,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	@Override
 	public List<CustomerServicePOJO> getExportDocumentationServiceInfo(UserDetails userDetails) {
-		List<ExportDocumentation> list = exportdocumentationrepo.findByCompanyAndBranchAndDeptid(userDetails.getSelectedCompany(), userDetails.getSelectedBranch(), userDetails.getHomeDeptId());
+		List<ExportDocumentation> list = exportdocumentationrepo.findByCompanyAndBranch(userDetails.getSelectedCompany(), userDetails.getSelectedBranch());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<CustomerServicePOJO> destinationList = gson.fromJson(json, new TypeToken<List<CustomerServicePOJO>>() {}.getType());
@@ -61,7 +62,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	@Override
 	public List<ExportDetailsPOJO> getExportDocumentationDetailsCount(ExportLCL action) {
-		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findByActionAndCompanyAndBranchAndDeptid( action.getAction(), action.getCompany(), action.getBranch(), action.getDeptid());
+		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findByActionAndCompanyAndBranch( action.getAction(), action.getCompany(), action.getBranch());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -69,8 +70,8 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getExportDocumentationDetailsWithinsla(String action, int withinsla) {
-		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getExportDocumentationDetailsWithinsla(DetailsAction sla) {
+		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -79,8 +80,8 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	
 	@Override
-	public List<ExportDetailsPOJO> getExportDocumentationDetailsOutofsla(String action, int outofsla) {
-		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getExportDocumentationDetailsOutofsla(DetailsAction  sla) {
+		List<ExportDocumentationDetails> documentation=documentationDetailsRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -101,7 +102,7 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	@Override
 	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsCount(ExportLCL action) {
-		List<ExportDocumentationDetailsAir> documentation=exportDocumentationDetailsAirRepo.findAllByAction(action.getAction());
+		List<ExportDocumentationDetailsAir> documentation=exportDocumentationDetailsAirRepo.findAllByAction(action.getAction(),action.getCompany(), action.getBranch());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -109,8 +110,8 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsWithinsla(String action, int withinsla) {
-		List<ExportDocumentationDetailsAir> documentation=exportDocumentationDetailsAirRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsWithinsla(DetailsAction sla) {
+		List<ExportDocumentationDetailsAir> documentation=exportDocumentationDetailsAirRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -119,12 +120,14 @@ public class ExportDocumentationServiceImpl implements ExportDocumentationServic
 	
 	
 	@Override
-	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsOutofsla(String action, int outofsla) {
-		List<ExportDocumentationDetailsAir> documentation=exportDocumentationDetailsAirRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsOutofsla(DetailsAction sla) {
+		List<ExportDocumentationDetailsAir> documentation=exportDocumentationDetailsAirRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
         return destinationList;
 	}
+
+
 
 }

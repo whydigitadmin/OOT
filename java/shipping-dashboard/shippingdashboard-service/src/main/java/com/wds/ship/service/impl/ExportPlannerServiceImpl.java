@@ -18,6 +18,7 @@ import com.wds.ship.repository.ExportPlannerRepository;
 import com.wds.ship.service.ExportPlannerService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.UserDetails;
 
@@ -58,18 +59,18 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	}
 	
 	
-	@Override
-	public List<ExportDetailsPOJO> getExportPlannerDetailsCount(ExportLCL action) {
-		List<ExportPlannerDetails> planner=plannerDetailsRepo.findAllByAction(action.getAction());
-		Gson gson = new Gson();
-        String json = gson.toJson(planner);
-        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-        return destinationList;
-	}
+//	@Override
+//	public List<ExportDetailsPOJO> getExportPlannerDetailsCount(DetailsAction action) {
+//		List<ExportPlannerDetails> planner=plannerDetailsRepo.findAllByActionAndCompanyAndBranch(action.getAction(),action.getCompany(),action.getBranch());
+//		Gson gson = new Gson();
+//        String json = gson.toJson(planner);
+//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+//        return destinationList;
+//	}
 
 	@Override
-	public List<ExportDetailsPOJO> getExportPlannerDetailsWithinsla(String action, int withinsla) {
-		List<ExportPlannerDetails> planner=plannerDetailsRepo.findByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getExportPlannerDetailsWithinsla(DetailsAction sla) {
+		List<ExportPlannerDetails> planner=plannerDetailsRepo.findByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(planner);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -78,8 +79,8 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	
 	
 	@Override
-	public List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(String action, int outofsla) {
-		List<ExportPlannerDetails> planner=plannerDetailsRepo.findByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(DetailsAction sla) {
+		List<ExportPlannerDetails> planner=plannerDetailsRepo.findByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(planner);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -98,7 +99,7 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	
 	@Override
 	public List<ExportDetailsPOJO> getExportPlannerAirDetailsCount(ExportLCL action) {
-		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findAllByAction(action.getAction());
+		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findAllByAction(action.getAction(),action.getCompany(),action.getBranch());
 		Gson gson = new Gson();
         String json = gson.toJson(planner);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -106,8 +107,8 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getExportPlannerAirDetailsWithinsla(String action, int withinsla) {
-		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getExportPlannerAirDetailsWithinsla(DetailsAction sla) {
+		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(planner);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -115,8 +116,8 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(String action, int outofsla) {
-		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(DetailsAction sla) {
+		List<ExportPlannerDetailsAir> planner=exportPlannerDetailsAirRepo.findByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(planner);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());

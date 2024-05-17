@@ -13,6 +13,7 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.ExportWithinsla;
@@ -51,13 +52,13 @@ public class ImportServiceController {
 	    }
 	    
 	    @PostMapping("/getImportLCLDetailsWihtinsla")
-	      public List<ExportDetailsPOJO>getImportLCLDetailsWihtinsla(@RequestBody ExportWithinsla sla){
-	    	  return ImportService.getImportLCLDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	      public List<ExportDetailsPOJO>getImportLCLDetailsWihtinsla(@RequestBody DetailsAction sla){
+	    	  return ImportService.getImportLCLDetailsWithinSla(sla);
 	      }
 	    
 	    @PostMapping("/getImportLCLDetailsOutofsla")
-	    public List<ExportDetailsPOJO>getImportLCLDetailsOutofsla(@RequestBody ExportOutofSla sla){
-	  	  return ImportService.getImportLCLDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    public List<ExportDetailsPOJO>getImportLCLDetailsOutofsla(@RequestBody DetailsAction sla){
+	  	  return ImportService.getImportLCLDetailsOutofSla(sla);
 	    }
 	    
 	    
@@ -74,13 +75,13 @@ public class ImportServiceController {
 	    }
 	    
 	    @PostMapping("/getImportDocumentServiceWithinsla")
-	    public List<ExportDetailsPOJO>getImportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla){
-	    	return ImportService.getImportDocumentationDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    public List<ExportDetailsPOJO>getImportDocumentationDetailsWithinsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportDocumentationDetailsWithinSla(sla);
 	    }
 	    
 	    @PostMapping("/getImportDocumentServiceOutofsla")
-	    public List<ExportDetailsPOJO>getImportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla){
-	    	return ImportService.getImportDocumentationDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    public List<ExportDetailsPOJO>getImportDocumentationDetailsOutofsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportDocumentationDetailsOutofSla(sla);
 	    }
 	    
 	    // Sea Import Transhipment Desk
@@ -96,13 +97,13 @@ public class ImportServiceController {
 	    }
 	    
 	    @PostMapping("/getImportTranshipmentSeaServiceWithinsla")
-	    public List<ExportDetailsPOJO>getImportTranshipmentSeaDetailsWithinsla(@RequestBody ExportWithinsla sla){
-	    	return ImportService.getImportTranshipmentSeaDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    public List<ExportDetailsPOJO>getImportTranshipmentSeaDetailsWithinsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportTranshipmentSeaDetailsWithinSla(sla);
 	    }
 	    
 	    @PostMapping("/getImportTranshipmentSeaServiceOutofsla")
-	    public List<ExportDetailsPOJO>getImportTranshipmentSeaDetailsOutofsla(@RequestBody ExportOutofSla sla){
-	    	return ImportService.getImportTranshipmentSeaDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    public List<ExportDetailsPOJO>getImportTranshipmentSeaDetailsOutofsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportTranshipmentSeaDetailsOutofSla(sla);
 	    }
 	    
 	    // Air Import
@@ -129,13 +130,13 @@ public class ImportServiceController {
 	    }
 	    
 	    @PostMapping("/getImportCustomerServiceAirWithinsla")
-	    public List<ExportDetailsPOJO>getImportCustomerServiceAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
-	    	return ImportService.getImportCustomerServiceAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    public List<ExportDetailsPOJO>getImportCustomerServiceAirDetailsWithinsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportCustomerServiceAirDetailsWithinSla(sla);
 	    }
 	    
 	    @PostMapping("/getImportCustomerServiceAirOutofsla")
-	    public List<ExportDetailsPOJO>getImportCustomerServiceAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
-	    	return ImportService.getImportCustomerServiceAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    public List<ExportDetailsPOJO>getImportCustomerServiceAirDetailsOutofsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportCustomerServiceAirDetailsOutofSla(sla);
 	    }
 		
 		// Air Import Documentation
@@ -151,13 +152,13 @@ public class ImportServiceController {
 	    }
 	    
 	    @PostMapping("/getImportDocumentationAirWithinsla")
-	    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
-	    	return ImportService.getImportDocumentationAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsWithinsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportDocumentationAirDetailsWithinSla(sla);
 	    }
 	    
 	    @PostMapping("/getImportDocumentationAirOutofsla")
-	    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
-	    	return ImportService.getImportDocumentationAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    public List<ExportDetailsPOJO>getImportDocumentationAirDetailsOutofsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportDocumentationAirDetailsOutofSla(sla);
 	    }
 		
 		
@@ -174,13 +175,13 @@ public class ImportServiceController {
 	    }
 	    
 	    @PostMapping("/getImportTranshipmentAirServiceWithinsla")
-	    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
-	    	return ImportService.getImportTranshipmentAirDetailsWithinSla(sla.getAction(),sla.getWithinsla());
+	    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsWithinsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportTranshipmentAirDetailsWithinSla(sla);
 	    }
 	    
 	    @PostMapping("/getImportTranshipmentAirServiceOutofsla")
-	    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
-	    	return ImportService.getImportTranshipmentAirDetailsOutofSla(sla.getAction(),sla.getOutofsla());
+	    public List<ExportDetailsPOJO>getImportTranshipmentAirDetailsOutofsla(@RequestBody DetailsAction sla){
+	    	return ImportService.getImportTranshipmentAirDetailsOutofSla(sla);
 	    }
 	    
 	    

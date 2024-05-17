@@ -10,7 +10,7 @@ import com.wds.ship.entity.ExportPlannerDetails;
 
 public interface ExportPlannerDetailsRepo extends JpaRepository<ExportPlannerDetails, Integer> {
 
-	List<ExportPlannerDetails> findAllByAction(String action);
+//	List<ExportPlannerDetails> findAllByActionAndCompanyAndBranch(String action, Long company, Long branch);
 
 	
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_PLANNER_details a where A.ACTION=:action and  A.withinsla>:withinsla")

@@ -1,16 +1,23 @@
 package com.wds.ship.controller;
 
-import com.wds.ship.entity.ExportCustomerServiceLCL;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.wds.ship.service.ExportService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import com.wds.ship.shared.user.DetailsAction;
+import com.wds.ship.shared.user.ExportLCLDetailsAction;
+import com.wds.ship.shared.user.UserDetails;
 @RestController
 @RequestMapping("/api/v1/export")
 public class ExportServiceController {
@@ -60,7 +67,7 @@ public class ExportServiceController {
     }
 
     @PostMapping("/exportfcldetails")
-    public List<ExportDetailsPOJO>getAllFCL(@RequestBody ExportLCLDetailsAction action){
+    public List<ExportDetailsPOJO>getAllFCL(@RequestBody DetailsAction action){
         return exportService.getAllFCLDetails(action);
     }
 
@@ -71,7 +78,7 @@ public class ExportServiceController {
 //    }
 
     @PostMapping("/exportfcldetailswihtinsla")
-    public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody ExportWithinsla sla){
+    public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody DetailsAction sla){
         return exportService.getExportFCLDetailsWithinSla(sla);
     }
 
@@ -81,7 +88,7 @@ public class ExportServiceController {
 //    }
 
     @PostMapping("/exportfcldetailsoutofsla")
-    public List<ExportDetailsPOJO>getExportFCLDetailsWithinSla(@RequestBody ExportOutofSla sla){
+    public List<ExportDetailsPOJO>getExportFCLDetailsWithoutSla(@RequestBody DetailsAction sla){
         return exportService.getExportFCLDetailsOutofSla(sla);
     }
     
@@ -98,12 +105,12 @@ public class ExportServiceController {
     }
     
     @PostMapping("/getExportBLReleaseDeskSeaDetailsWihtinsla")
-    public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsWithinSla(@RequestBody ExportWithinsla sla){
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsWithinSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportBLReleaseSeaDetailsWithinSla(sla);
     }
     
     @PostMapping("/getExportBLReleaseDeskSeaDetailsOutofsla")
-    public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsOutofSla(@RequestBody ExportOutofSla sla){
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskSeaDetailsOutofSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportBLReleaseSeaDetailsOutofSla(sla);
     }
     
@@ -130,15 +137,15 @@ public class ExportServiceController {
         return exportService.getExportCustomerServiceDetailsAirInfor(action);
     }
     
-    @PostMapping("/getExportCustomerServiceDetailsAirWihtinsla")
-    public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody DetailsAction sla){
-  	  return exportService.getExportLCLDetailsWithinSla(sla);
-    }
-    
-    @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
-    public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody DetailsAction sla){
-  	  return exportService.getExportLCLDetailsOutofSla(sla);
-    }
+//    @PostMapping("/getExportCustomerServiceDetailsAirWihtinsla")
+//    public List<ExportDetailsPOJO>getExportCustDetailsWithinSla(@RequestBody DetailsAction sla){
+//  	  return exportService.getExportLCLDetailsWithinSla(sla);
+//    }
+//    
+//    @PostMapping("/getExportCustomerServiceDetailsAirOutofsla")
+//    public List<ExportDetailsPOJO>getExportCustDetailsOutofSla(@RequestBody DetailsAction sla){
+//  	  return exportService.getExportLCLDetailsOutofSla(sla);
+//    }
     
     // Air Export BL Release Desk
     
@@ -153,12 +160,12 @@ public class ExportServiceController {
     }
     
     @PostMapping("/getExportBLReleaseDeskAirDetailsWihtinsla")
-    public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsWithinSla(@RequestBody ExportWithinsla sla){
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsWithinSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportBLReleaseAirDetailsWithinSla(sla);
     }
     
     @PostMapping("/getExportBLReleaseDeskAirDetailsOutofsla")
-    public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsOutofSla(@RequestBody ExportOutofSla sla){
+    public List<ExportDetailsPOJO>getExportBLReleaseDeskAirDetailsOutofSla(@RequestBody DetailsAction sla){
   	  return exportService.getExportBLReleaseAirDetailsOutofSla(sla);
     }
     

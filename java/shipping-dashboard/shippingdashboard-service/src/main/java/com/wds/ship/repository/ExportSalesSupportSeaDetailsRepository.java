@@ -8,6 +8,6 @@ import com.wds.ship.entity.ExportSalesSupportSeaDetails;
 
 public interface ExportSalesSupportSeaDetailsRepository extends JpaRepository<ExportSalesSupportSeaDetails, Long>{
 
-	List<ExportSalesSupportSeaDetails> findByActionAndCompanyAndBrnidAndDeptid(String action, Long company, Long brnid, Long deptid);
+	List<ExportSalesSupportSeaDetails> findByActionAndCompanyAndBrnid(String action, Long company, Long brnid);
 
 }

@@ -20,6 +20,9 @@ public class ExportSalesSupportDetailsAir {
 	private Date ref_date;
 	private String ref_type;
 	private String ref_mode;
+	private Long company;
+	private Long branch;
+	
 	public Long getId() {
 		return id;
 	}

@@ -14,10 +14,8 @@ import com.wds.ship.entity.ExportDocumentation;
 import com.wds.ship.service.ExportDocumentationService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCL;
-import com.wds.ship.shared.user.ExportOutofSla;
-import com.wds.ship.shared.user.ExportWithinsla;
-import com.wds.ship.shared.user.ExportWithinsla;
 import com.wds.ship.shared.user.UserDetails;
 
 @RestController
@@ -43,13 +41,13 @@ public class ExportDocumentationServiceController {
     }
     
     @PostMapping("/getExportDocumentServiceWithinsla")
-    public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla){
-    	return exportDocumentService.getExportDocumentationDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody DetailsAction sla){
+    	return exportDocumentService.getExportDocumentationDetailsWithinsla(sla);
     }
     
     @PostMapping("/getExportDocumentServiceOutofsla")
-    public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla){
-    	return exportDocumentService.getExportDocumentationDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody DetailsAction sla){
+    	return exportDocumentService.getExportDocumentationDetailsOutofsla(sla);
     }
 
     // Air Export Docuementation
@@ -65,12 +63,12 @@ public class ExportDocumentationServiceController {
     }
     
     @PostMapping("/getExportDocumentationAirWithinsla")
-    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
-    	return exportDocumentService.getExportDocumentationAirDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsWithinsla(@RequestBody DetailsAction sla){
+    	return exportDocumentService.getExportDocumentationAirDetailsWithinsla(sla);
     }
     
     @PostMapping("/getExportDocumentationAirOutofsla")
-    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
-    	return exportDocumentService.getExportDocumentationAirDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsOutofsla(@RequestBody DetailsAction sla){
+    	return exportDocumentService.getExportDocumentationAirDetailsOutofsla(sla);
     }
 }

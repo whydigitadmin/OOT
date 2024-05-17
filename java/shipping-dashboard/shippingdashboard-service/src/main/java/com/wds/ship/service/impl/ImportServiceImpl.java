@@ -49,6 +49,7 @@ import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCLDetailsAction;
 import com.wds.ship.shared.user.UserDetails;
 
@@ -167,8 +168,8 @@ public class ImportServiceImpl implements ImportService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getImportLCLDetailsWithinSla(String action, int withinsla) {
-		List<ImportCustomerServiceLCLDetails> list = importLclDetailsRepo.findByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getImportLCLDetailsWithinSla(DetailsAction sla) {
+		List<ImportCustomerServiceLCLDetails> list = importLclDetailsRepo.findByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -176,8 +177,8 @@ public class ImportServiceImpl implements ImportService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getImportLCLDetailsOutofSla(String action, int outofsla) {
-		List<ImportCustomerServiceLCLDetails> list = importLclDetailsRepo.findByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getImportLCLDetailsOutofSla(DetailsAction sla) {
+		List<ImportCustomerServiceLCLDetails> list = importLclDetailsRepo.findByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
         Gson gson = new Gson();
         String json = gson.toJson(list);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -203,8 +204,8 @@ public class ImportServiceImpl implements ImportService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinSla(String action, int withinsla) {
-		List<ImportDocumentationDetails> documentation=importDocumentationDetailsRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getImportDocumentationDetailsWithinSla(DetailsAction sla) {
+		List<ImportDocumentationDetails> documentation=importDocumentationDetailsRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -212,8 +213,8 @@ public class ImportServiceImpl implements ImportService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getImportDocumentationDetailsOutofSla(String action, int outofsla) {
-		List<ImportDocumentationDetails> documentation=importDocumentationDetailsRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getImportDocumentationDetailsOutofSla(DetailsAction sla) {
+		List<ImportDocumentationDetails> documentation=importDocumentationDetailsRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -243,8 +244,8 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsWithinSla(String action, int withinsla) {
-		List<ImportTranshipmentDeskDetailsSea> documentation=importTranshipmentDeskDetailsSeaRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsWithinSla(DetailsAction sla) {
+		List<ImportTranshipmentDeskDetailsSea> documentation=importTranshipmentDeskDetailsSeaRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -253,8 +254,8 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsOutofSla(String action, int outofsla) {
-		List<ImportTranshipmentDeskDetailsSea> documentation=importTranshipmentDeskDetailsSeaRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getImportTranshipmentSeaDetailsOutofSla(DetailsAction sla) {
+		List<ImportTranshipmentDeskDetailsSea> documentation=importTranshipmentDeskDetailsSeaRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -304,8 +305,8 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsWithinSla(String action, int withinsla) {
-		List<ImportCustomerServiceDetailsAir> documentation=importCustomerServiceDetailsAirRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsWithinSla(DetailsAction sla) {
+		List<ImportCustomerServiceDetailsAir> documentation=importCustomerServiceDetailsAirRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -314,8 +315,8 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsOutofSla(String action, int outofsla) {
-		List<ImportCustomerServiceDetailsAir> documentation=importCustomerServiceDetailsAirRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getImportCustomerServiceAirDetailsOutofSla(DetailsAction sla) {
+		List<ImportCustomerServiceDetailsAir> documentation=importCustomerServiceDetailsAirRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -342,8 +343,8 @@ public class ImportServiceImpl implements ImportService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getImportDocumentationAirDetailsWithinSla(String action, int withinsla) {
-		List<ImportDocumentationDetailsAir> documentation=importDocumentationDetailsAirRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getImportDocumentationAirDetailsWithinSla(DetailsAction sla) {
+		List<ImportDocumentationDetailsAir> documentation=importDocumentationDetailsAirRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -351,8 +352,8 @@ public class ImportServiceImpl implements ImportService {
 	}
 
 	@Override
-	public List<ExportDetailsPOJO> getImportDocumentationAirDetailsOutofSla(String action, int outofsla) {
-		List<ImportDocumentationDetailsAir> documentation=importDocumentationDetailsAirRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getImportDocumentationAirDetailsOutofSla(DetailsAction sla) {
+		List<ImportDocumentationDetailsAir> documentation=importDocumentationDetailsAirRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -382,8 +383,8 @@ public class ImportServiceImpl implements ImportService {
 	 
 		
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsWithinSla(String action, int withinsla) {
-		List<ImportTranshipmentDeskDetailsAir> documentation=importTranshipmentDeskDetailsAirRepo.findAllByActionAndWithinsla(action,withinsla);
+	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsWithinSla(DetailsAction sla) {
+		List<ImportTranshipmentDeskDetailsAir> documentation=importTranshipmentDeskDetailsAirRepo.findAllByActionAndWithinsla(sla.getAction(),sla.getWithinsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
@@ -392,8 +393,8 @@ public class ImportServiceImpl implements ImportService {
 
 
 	@Override
-	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsOutofSla(String action, int outofsla) {
-		List<ImportTranshipmentDeskDetailsAir> documentation=importTranshipmentDeskDetailsAirRepo.findAllByActionAndOutofsla(action,outofsla);
+	public List<ExportDetailsPOJO> getImportTranshipmentAirDetailsOutofSla(DetailsAction sla) {
+		List<ImportTranshipmentDeskDetailsAir> documentation=importTranshipmentDeskDetailsAirRepo.findAllByActionAndOutofsla(sla.getAction(),sla.getOutofsla());
 		Gson gson = new Gson();
         String json = gson.toJson(documentation);
         List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());

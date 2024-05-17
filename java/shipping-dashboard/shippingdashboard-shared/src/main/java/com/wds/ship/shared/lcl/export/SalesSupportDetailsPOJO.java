@@ -13,6 +13,7 @@ public class SalesSupportDetailsPOJO {
 	private String ref_type;
 	private String ref_mode;
 	
+	
 	public Long getSno() {
 		return sno;
 	}

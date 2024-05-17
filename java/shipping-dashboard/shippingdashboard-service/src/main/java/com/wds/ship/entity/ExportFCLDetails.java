@@ -22,6 +22,8 @@ public class ExportFCLDetails {
     private String ref_mode;
     private int withinsla;
     private int outofsla;
+    private Long cmpy;
+    private Long brnid;
 
 
 

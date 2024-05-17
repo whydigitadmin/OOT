@@ -4,7 +4,7 @@ public class DetailsAction {
 
     private String action;
 
-    private int wihtinsla;
+    private int withinsla;
 
     private Long company;
 
@@ -12,17 +12,20 @@ public class DetailsAction {
 
     private int outofsla;
 
-    private Long deptid;
+   
+	private String dept;
 
+	
 
-    public Long getDeptid() {
-        return deptid;
-    }
-    public void setDeptid(Long deptid) {
-        this.deptid = deptid;
-    }
+    public String getDept() {
+		return dept;
+	}
 
-    public String getAction() {
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+
+	public String getAction() {
         return action;
     }
 
@@ -30,12 +33,12 @@ public class DetailsAction {
         this.action = action;
     }
 
-    public int getWihtinsla() {
-        return wihtinsla;
+    public int getWithinsla() {
+        return withinsla;
     }
 
-    public void setWihtinsla(int wihtinsla) {
-        this.wihtinsla = wihtinsla;
+    public void setWithinsla(int wihtinsla) {
+        this.withinsla = wihtinsla;
     }
 
     public Long getCompany() {

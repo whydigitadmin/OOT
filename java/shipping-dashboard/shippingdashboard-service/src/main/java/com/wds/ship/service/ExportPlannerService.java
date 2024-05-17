@@ -5,6 +5,7 @@ import java.util.List;
 import com.wds.ship.entity.ExportPlanner;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCL;
 import com.wds.ship.shared.user.UserDetails;
 
@@ -16,21 +17,21 @@ public interface ExportPlannerService {
 	
 	public List<CustomerServicePOJO> getExportPlannerInfo(UserDetails userDetails);
 
-	List<ExportDetailsPOJO> getExportPlannerDetailsWithinsla(String action, int withinsla);
+	List<ExportDetailsPOJO> getExportPlannerDetailsWithinsla(DetailsAction sla);
 
-	List<ExportDetailsPOJO> getExportPlannerDetailsCount(ExportLCL action);
+	//List<ExportDetailsPOJO> getExportPlannerDetailsCount(DetailsAction action);
 
-	List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(String action, int outofsla);
+	List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(DetailsAction sla);
 	
 	// Air Export Planner
 	
 	public List<CustomerServicePOJO> getExportPlannerAirInfo(UserDetails userDetails);
 
-	List<ExportDetailsPOJO> getExportPlannerAirDetailsWithinsla(String action, int withinsla);
+	List<ExportDetailsPOJO> getExportPlannerAirDetailsWithinsla(DetailsAction sla);
 
 	List<ExportDetailsPOJO> getExportPlannerAirDetailsCount(ExportLCL action);
 
-	List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(String action, int outofsla);
+	List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(DetailsAction sla);
 
 
 }

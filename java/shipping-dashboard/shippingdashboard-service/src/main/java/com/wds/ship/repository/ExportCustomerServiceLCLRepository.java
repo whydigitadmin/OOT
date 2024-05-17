@@ -11,5 +11,5 @@ public interface ExportCustomerServiceLCLRepository extends JpaRepository<Export
 
     List<ExportCustomerServiceLCL> findByCompany(Long company);
 
-    List<ExportCustomerServiceLCL> findByCompanyAndBranchAndDeptid(Long company, Long branch, Long deptid);
+    List<ExportCustomerServiceLCL> findByCompanyAndBranch(Long company, Long branch);
 }

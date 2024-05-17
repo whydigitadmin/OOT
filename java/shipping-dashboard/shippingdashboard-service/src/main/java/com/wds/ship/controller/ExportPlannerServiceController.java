@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.wds.ship.entity.ExportPlanner;
 import com.wds.ship.service.ExportPlannerService;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCL;
-import com.wds.ship.shared.user.ExportOutofSla;
-import com.wds.ship.shared.user.ExportWithinsla;
 import com.wds.ship.shared.user.UserDetails;
 
 @RestController
@@ -38,19 +36,19 @@ public class ExportPlannerServiceController {
         return exportPlannerService.getExportPlannerInfo(userDetails);
     }
 
-    @PostMapping("/getExportPlannerServiceCount")
-    public List<ExportDetailsPOJO>getExportDocumentationDetailsCount(@RequestBody ExportLCL action){
-    	return exportPlannerService.getExportPlannerDetailsCount(action);
-    }
+//    @PostMapping("/getExportPlannerServiceCount")
+//    public List<ExportDetailsPOJO>getExportDocumentationDetailsCount(@RequestBody DetailsAction action){
+//    	return exportPlannerService.getExportPlannerDetailsCount(action);
+//    }
     
     @PostMapping("/getExportPlannerServiceWithinsla")
-    public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody ExportWithinsla sla){
-    	return exportPlannerService.getExportPlannerDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody DetailsAction sla){
+    	return exportPlannerService.getExportPlannerDetailsWithinsla(sla);
     }
     
     @PostMapping("/getExportPlannerServiceOutofsla")
-    public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody ExportOutofSla sla){
-    	return exportPlannerService.getExportPlannerDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsOutofsla(@RequestBody DetailsAction sla){
+    	return exportPlannerService.getExportPlannerDetailsOutofsla(sla);
     }
     
     // Air Export planner
@@ -60,18 +58,18 @@ public class ExportPlannerServiceController {
         return exportPlannerService.getExportPlannerAirInfo(userDetails);
     }
 
-    @PostMapping("/getExportPlannerAirCount")
-    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsCount(@RequestBody ExportLCL action){
-    	return exportPlannerService.getExportPlannerAirDetailsCount(action);
-    }
+   @PostMapping("/getExportPlannerAirCount")
+   public List<ExportDetailsPOJO>getExportDocumentationAirDetailsCount(@RequestBody ExportLCL action){
+   	return exportPlannerService.getExportPlannerAirDetailsCount(action);
+  }
     
     @PostMapping("/getExportPlannerAirWithinsla")
-    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsWithinsla(@RequestBody ExportWithinsla sla){
-    	return exportPlannerService.getExportPlannerAirDetailsWithinsla(sla.getAction(),sla.getWithinsla());
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsWithinsla(@RequestBody DetailsAction sla){
+    	return exportPlannerService.getExportPlannerAirDetailsWithinsla(sla);
     }
     
     @PostMapping("/getExportPlannerAirOutofsla")
-    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsOutofsla(@RequestBody ExportOutofSla sla){
-    	return exportPlannerService.getExportPlannerAirDetailsOutofsla(sla.getAction(),sla.getOutofsla());
+    public List<ExportDetailsPOJO>getExportDocumentationAirDetailsOutofsla(@RequestBody DetailsAction sla){
+    	return exportPlannerService.getExportPlannerAirDetailsOutofsla(sla);
     }
 }

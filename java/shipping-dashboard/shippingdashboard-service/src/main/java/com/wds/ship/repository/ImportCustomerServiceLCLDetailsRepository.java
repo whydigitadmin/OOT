@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.wds.ship.entity.ExportLCLDetails;
 import com.wds.ship.entity.ImportCustomerServiceLCLDetails;
+import com.wds.ship.shared.user.DetailsAction;
 
 public interface ImportCustomerServiceLCLDetailsRepository extends JpaRepository<ImportCustomerServiceLCLDetails, Integer> {
 
@@ -19,6 +20,7 @@ public interface ImportCustomerServiceLCLDetailsRepository extends JpaRepository
 
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_import_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla")
 	List<ImportCustomerServiceLCLDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla);
+
 	
 	
 

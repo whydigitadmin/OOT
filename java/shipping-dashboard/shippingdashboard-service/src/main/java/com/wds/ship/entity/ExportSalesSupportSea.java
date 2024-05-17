@@ -21,7 +21,7 @@ public class ExportSalesSupportSea {
 	@Column(name = "BRNID")
 	private Long branch;
 
-	private Long deptid;
+	//private Long deptid;
 
 	public Long getBranch() {
 		return branch;

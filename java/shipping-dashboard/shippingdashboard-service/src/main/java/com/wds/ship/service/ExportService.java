@@ -1,14 +1,15 @@
 package com.wds.ship.service;
 
-import com.wds.ship.entity.ExportCustomerServiceLCL;
+import java.util.List;
+
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportDetailsPOJO;
 import com.wds.ship.shared.lcl.export.SalesSupportPOJO;
-import com.wds.ship.shared.user.*;
 //import com.wds.ship.shared.user.ExportLCLDetailsAction;
-
-import java.util.List;
+import com.wds.ship.shared.user.DetailsAction;
+import com.wds.ship.shared.user.ExportLCLDetailsAction;
+import com.wds.ship.shared.user.UserDetails;
 
 public interface ExportService {
 
@@ -25,13 +26,13 @@ public interface ExportService {
 
 	public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(DetailsAction sla);
 
-    public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(DetailsAction sla);
+   public List<ExportDetailsPOJO>getExportLCLDetailsOutofSla(DetailsAction sla);
 
-    public List<ExportDetailsPOJO>getAllFCLDetails(ExportLCLDetailsAction action);
+    public List<ExportDetailsPOJO>getAllFCLDetails(DetailsAction action);
 
-    public List<ExportDetailsPOJO> getExportFCLDetailsWithinSla(ExportWithinsla sla);
+    public List<ExportDetailsPOJO> getExportFCLDetailsWithinSla(DetailsAction sla);
 
-    public List<ExportDetailsPOJO>getExportFCLDetailsOutofSla(ExportOutofSla sla);
+    public List<ExportDetailsPOJO>getExportFCLDetailsOutofSla(DetailsAction sla);
 
 	//public List<ExportDetailsPOJO> getExportLCLDetailsWithinSla(String action, int withinsla);
     
@@ -42,9 +43,9 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getExportBLReleaseSeaDetails(ExportLCLDetailsAction action);
     
-    public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsWithinSla(ExportWithinsla sla);
+    public List<ExportDetailsPOJO> getExportBLReleaseSeaDetailsWithinSla(DetailsAction sla);
 
-    public List<ExportDetailsPOJO>getExportBLReleaseSeaDetailsOutofSla(ExportOutofSla sla);
+    public List<ExportDetailsPOJO>getExportBLReleaseSeaDetailsOutofSla(DetailsAction sla);
     
     
     //Air Export
@@ -69,7 +70,7 @@ public interface ExportService {
     
     public List<ExportDetailsPOJO>getExportBLReleaseAirDetails(ExportLCLDetailsAction action);
     
-    public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsWithinSla(ExportWithinsla sla);
+    public List<ExportDetailsPOJO> getExportBLReleaseAirDetailsWithinSla(DetailsAction sla);
 
-    public List<ExportDetailsPOJO>getExportBLReleaseAirDetailsOutofSla(ExportOutofSla sla);
+    public List<ExportDetailsPOJO>getExportBLReleaseAirDetailsOutofSla(DetailsAction sla);
 }

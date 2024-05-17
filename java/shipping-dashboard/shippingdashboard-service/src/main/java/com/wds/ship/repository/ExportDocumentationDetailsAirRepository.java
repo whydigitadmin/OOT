@@ -12,7 +12,7 @@ import com.wds.ship.entity.ExportDocumentationDetailsAir;
 public interface ExportDocumentationDetailsAirRepository extends JpaRepository<ExportDocumentationDetailsAir, Integer> {
 
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from proc_export_documentation_details_air a where A.ACTION=?1")
-	List<ExportDocumentationDetailsAir> findAllByAction(String action);
+	List<ExportDocumentationDetailsAir> findAllByAction(String action,Long company,Long Branch);
 	
 	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from proc_export_documentation_details_air a where A.ACTION=?1 and  A.withinsla>?2")
 	List<ExportDocumentationDetailsAir> findAllByActionAndWithinsla(@Param("action") String action, @Param("withinsla")int withinsla);

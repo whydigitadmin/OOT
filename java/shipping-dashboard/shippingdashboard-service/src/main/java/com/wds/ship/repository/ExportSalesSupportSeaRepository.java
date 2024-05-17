@@ -10,7 +10,7 @@ public interface ExportSalesSupportSeaRepository extends JpaRepository<ExportSal
 
     List<ExportSalesSupportSea> findByCompany(Long company);
 
-    List<ExportSalesSupportSea> findByCompanyAndBranchAndDeptid(Long company, Long branch, Long deptid);
+    List<ExportSalesSupportSea> findByCompanyAndBranch(Long company, Long branch);
 
 
 }

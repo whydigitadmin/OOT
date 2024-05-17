@@ -8,6 +8,6 @@ import com.wds.ship.entity.ExportSalesSupportDetailsAir;
 
 public interface ExportSalesSupportDetailsAirRepository extends JpaRepository<ExportSalesSupportDetailsAir, Long> {
 
-	List<ExportSalesSupportDetailsAir> findByAction(String action);
+	List<ExportSalesSupportDetailsAir> findByActionAndCompanyAndBranch(String action, Long company, Long branch);
 
 }

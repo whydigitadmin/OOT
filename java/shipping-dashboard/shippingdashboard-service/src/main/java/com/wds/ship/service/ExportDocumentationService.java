@@ -5,8 +5,8 @@ import java.util.List;
 import com.wds.ship.entity.ExportDocumentation;
 import com.wds.ship.shared.lcl.export.CustomerServicePOJO;
 import com.wds.ship.shared.lcl.export.ExportDetailsPOJO;
+import com.wds.ship.shared.user.DetailsAction;
 import com.wds.ship.shared.user.ExportLCL;
-import com.wds.ship.shared.user.ExportOutofSla;
 import com.wds.ship.shared.user.UserDetails;
 
 public interface ExportDocumentationService {
@@ -17,9 +17,9 @@ public interface ExportDocumentationService {
 	
 	public List<ExportDetailsPOJO> getExportDocumentationDetailsCount(ExportLCL action);
 	
-	public List<ExportDetailsPOJO> getExportDocumentationDetailsWithinsla(String action, int withinsla);
-
-	public List<ExportDetailsPOJO> getExportDocumentationDetailsOutofsla(String action, int outofsla);
+	public List<ExportDetailsPOJO> getExportDocumentationDetailsWithinsla(DetailsAction sla);
+	
+	public List<ExportDetailsPOJO> getExportDocumentationDetailsOutofsla(DetailsAction  sla);
 	
 	
 // Air Export Documentation
@@ -27,9 +27,11 @@ public interface ExportDocumentationService {
 
 	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsCount(ExportLCL action);
 
-	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsWithinsla(String action, int withinsla);
+	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsWithinsla(DetailsAction sla);
 
-	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsOutofsla(String action, int outofsla);
+	public List<ExportDetailsPOJO> getExportDocumentationAirDetailsOutofsla(DetailsAction sla);
+
+	
 	
 
 
