@@ -14,7 +14,7 @@ public class ExportLCLDetails {
 	@Id
 	private int id;
 	private int sno;
-	private Long dept;
+	private String dept;
 	private String product;
 	private String action;
 	private String ref_no;
@@ -37,7 +37,7 @@ public class ExportLCLDetails {
 	@Column(name = "CMPY")
 	private Long company;
 
-	//@Column(name = "DEPTID")
+//	@Column(name = "DEPTID")
 //	private Long deptid;
 //	public Long getDeptid() {
 //		return deptid;
@@ -82,10 +82,10 @@ public class ExportLCLDetails {
 	public void setSno(int sno) {
 		this.sno = sno;
 	}
-	public Long getDept() {
+	public String getDept() {
 		return dept;
 	}
-	public void setDept(Long dept) {
+	public void setDept(String dept) {
 		this.dept = dept;
 	}
 	public String getProduct() {
