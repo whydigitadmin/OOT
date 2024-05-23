@@ -57,6 +57,7 @@ export class branchIds{
 export class DashboarDetails {
     action: string;
     withinsla?: number;
+    outofsla?: number;
     company : number;
     branch: number;
     deptid: number;
@@ -65,7 +66,8 @@ export class DashboarDetails {
         this.withinsla =0;
         this.company = 0;
         this.branch = 0;
-        this.deptid = 0
+        this.deptid = 0;
+        this.outofsla = 0;
     }
 }
 

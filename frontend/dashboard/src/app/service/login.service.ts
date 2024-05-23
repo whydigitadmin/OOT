@@ -246,9 +246,10 @@ export class LoginService {
     }
 
     getExportLclDetailsCount(action: string): Observable<any> {
+        console.log("getExportLclDetailsCount" + action)
         const exportLclDetails = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportLclDetails);
-        console.log('jsonData', jsonData);
+        console.log('jsonData getExportLclDetailsCount', jsonData);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const urlWithParams = `${BASE_URL}${this.exportLclCountDetails}`;
         // const variable = encodeURIComponent(`${action}`);
@@ -256,7 +257,7 @@ export class LoginService {
     }
 
     getExportLclDetailsWithinSla(action: any): Observable<any> {
-        console.log("action", action);
+        console.log("getExportLclDetailsWithinSla action", action);
         const exportLclDetailsWithinsla = this.getDetailsParams(action);
         const jsonData = JSON.stringify(exportLclDetailsWithinsla);
         console.log('jsonData', jsonData);
@@ -737,7 +738,19 @@ export class LoginService {
 
     getDetailsParams(action: string): DashboarDetails {
         const dashboardDetails = new DashboarDetails();
-        dashboardDetails.action = action;
+        if (typeof action === 'string') {
+            dashboardDetails.action = action;
+        } else if (typeof action === 'object') {
+            dashboardDetails.action = action["action"];
+            if (action["withinsla"] !== undefined) {
+                dashboardDetails.withinsla = action["withinsla"];
+            }
+            if (action["outofsla"] !== undefined) {
+                dashboardDetails.withinsla = action["outofsla"];
+            }
+           
+        }
+        
         dashboardDetails.company = this.globals.userDetails.selectedCompany;
         dashboardDetails.branch = this.globals.userDetails.selectedBranch;
         dashboardDetails.deptid = this.globals.userDetails.homeDeptId;
