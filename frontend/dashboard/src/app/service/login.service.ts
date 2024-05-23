@@ -746,7 +746,7 @@ export class LoginService {
                 dashboardDetails.withinsla = action["withinsla"];
             }
             if (action["outofsla"] !== undefined) {
-                dashboardDetails.withinsla = action["outofsla"];
+                dashboardDetails.outofsla = action["outofsla"];
             }
            
         }
