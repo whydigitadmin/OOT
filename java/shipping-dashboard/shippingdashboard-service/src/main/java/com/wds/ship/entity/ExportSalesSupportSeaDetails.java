@@ -27,8 +27,6 @@ public class ExportSalesSupportSeaDetails {
 
 	private Long brnid;
 
-	private Long deptid;
-
 	public Long getCompany() {
 		return company;
 	}

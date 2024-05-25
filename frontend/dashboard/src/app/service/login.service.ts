@@ -18,8 +18,8 @@ export class LoginService {
     private importSalesSupportCountDetails = '/api/v1/facade/import/getImportSalesSupportSeaDetailsInfo';
     private exportLclCountDetails = '/api/v1/facade/export/getExportLCLDetails';
     private exportLclWithinslaDetails = '/api/v1/facade/export/getExportLCLDetailsWithinsla';
-    //private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
-    private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofslav1';
+    private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofsla';
+    //private exportLclOutOfSlaDetails = '/api/v1/facade/export/getExportLCLDetailsOutofslav1';
     private exportFclCountDetails = '/api/v1/facade/export/getExportFCLDetails';
     private exportFclWithinslaDetails = '/api/v1/facade/export/getExportFCLDetailsWithinsla';
     private exportFclOutOfSlaDetails = '/api/v1/facade/export/getExportFCLDetailsOutofsla';
