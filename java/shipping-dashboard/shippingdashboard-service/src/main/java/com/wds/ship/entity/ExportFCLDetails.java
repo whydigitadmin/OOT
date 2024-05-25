@@ -22,8 +22,27 @@ public class ExportFCLDetails {
     private String ref_mode;
     private int withinsla;
     private int outofsla;
+
     private Long cmpy;
     private Long brnid;
+
+
+    public Long getCmpy() {
+        return cmpy;
+    }
+
+    public void setCmpy(Long cmpy) {
+        this.cmpy = cmpy;
+    }
+
+    public Long getBrnid() {
+        return brnid;
+    }
+
+    public void setBrnid(Long brnid) {
+        this.brnid = brnid;
+    }
+
 
 
 

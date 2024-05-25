@@ -14,10 +14,10 @@ public interface ExportFCLRepository extends JpaRepository<ExportFCLDetails, Int
 
     List<ExportFCLDetails> findByActionAndCmpyAndBrnid(String action, Long company, Long branch);
 
-    @Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_Export_Customer_Service_FCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla")
+    @Query(nativeQuery = true,value = "select a.* from PROC_Export_Customer_Service_FCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla")
     List<ExportFCLDetails> findByActionAndWithinsla(@Param("action") String action, @Param("withinsla")int withinsla);
 
-    @Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_Export_Customer_Service_FCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla")
+    @Query(nativeQuery = true,value = "select a.* from PROC_Export_Customer_Service_FCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla")
     List<ExportFCLDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla);
 
 
