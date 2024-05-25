@@ -21,10 +21,10 @@ public interface ExportLCLRepository extends JpaRepository<ExportLCLDetails, Int
 //	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy , a.brnid from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action  and  A.cmpy = :cmpy and A.brnid= :brnid")
 //	List<ExportLCLDetails> findByActionAndCompanyAndBranchv1(String action, Long company, Long Branch ,Long brnid);
 
-	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy , a.brnid , a.deptid from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla and  A.cmpy = :cmpy and A.brnid= :brnid" )
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy , a.brnid  from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.withinsla>:withinsla and  A.cmpy = :cmpy and A.brnid= :brnid" )
 	List<ExportLCLDetails> findByActionAndWithinsla(@Param("action") String action, @Param("withinsla")int withinsla , @Param("cmpy")Long cmpy , @Param("brnid")Long brnid);
 	
-	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy  , a.brnid , a.deptid from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla and A.cmpy = :cmpy and A.brnid= :brnid")
+	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla, a.cmpy  , a.brnid  from PROC_Export_Customer_Service_LCL_DETAILS a where A.ACTION=:action and  A.outofsla>:outofsla and A.cmpy = :cmpy and A.brnid= :brnid")
 	List<ExportLCLDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla, @Param("cmpy") Long cmpy , @Param("brnid")Long brnid);
 
 	List<ExportLCLDetails> findByActionAndCompany(String action, Long company);

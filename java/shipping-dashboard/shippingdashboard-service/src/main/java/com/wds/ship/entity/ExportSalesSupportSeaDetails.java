@@ -22,7 +22,7 @@ public class ExportSalesSupportSeaDetails {
 	private String ref_type;
 	private String ref_mode;
 
-	@Column(name = "CMPY")
+	@Column(name = "CPMY")
 	private Long company;
 
 	private Long brnid;

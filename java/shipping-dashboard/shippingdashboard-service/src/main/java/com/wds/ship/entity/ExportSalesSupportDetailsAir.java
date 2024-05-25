@@ -27,7 +27,7 @@ public class ExportSalesSupportDetailsAir {
 		return id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id;  
 	}
 	public Long getSno() {
 		return sno;
