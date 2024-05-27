@@ -12,10 +12,10 @@ public interface ExportPlannerDetailsRepo extends JpaRepository<ExportPlannerDet
 
 
 	
-	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_PLANNER_details a where A.ACTION=:action and  A.withinsla>:withinsla")
+	@Query(nativeQuery = true,value = "select a.* from PROC_EXPORT_PLANNER_details a where A.ACTION=:action and  A.withinsla>:withinsla")
 	List<ExportPlannerDetails> findByActionAndWithinsla(@Param("action") String action, @Param("withinsla")int withinsla);
 	
-	@Query(nativeQuery = true,value = "select a.id,a.sno,a.dept,a.product,a.action,a.ref_no,a.ref_date,a.ref_type,a.ref_mode,a.withinsla,a.outofsla from PROC_EXPORT_PLANNER_details a where A.ACTION=:action and  A.outofsla>:outofsla")
+	@Query(nativeQuery = true,value = "select a.* from PROC_EXPORT_PLANNER_details a where A.ACTION=:action and  A.outofsla>:outofsla")
 	List<ExportPlannerDetails> findByActionAndOutofsla(@Param("action") String action, @Param("outofsla")int outofsla);
 
 	List<ExportPlannerDetails> findAllByActionAndCompanyAndBranch(String action, Long company, Long branch);
