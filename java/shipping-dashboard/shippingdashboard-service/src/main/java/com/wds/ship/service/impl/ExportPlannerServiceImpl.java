@@ -59,14 +59,14 @@ public class ExportPlannerServiceImpl implements ExportPlannerService {
 	}
 	
 	
-//	@Override
-//	public List<ExportDetailsPOJO> getExportPlannerDetailsCount(DetailsAction action) {
-//		List<ExportPlannerDetails> planner=plannerDetailsRepo.findAllByActionAndCompanyAndBranch(action.getAction(),action.getCompany(),action.getBranch());
-//		Gson gson = new Gson();
-//        String json = gson.toJson(planner);
-//        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
-//        return destinationList;
-//	}
+	@Override
+	public List<ExportDetailsPOJO> getExportPlannerDetailsCount(DetailsAction action) {
+		List<ExportPlannerDetails> planner=plannerDetailsRepo.findAllByActionAndCompanyAndBranch(action.getAction(),action.getCompany(),action.getBranch());
+		Gson gson = new Gson();
+        String json = gson.toJson(planner);
+        List<ExportDetailsPOJO> destinationList = gson.fromJson(json, new TypeToken<List<ExportDetailsPOJO>>() {}.getType());
+        return destinationList;
+	}
 
 	@Override
 	public List<ExportDetailsPOJO> getExportPlannerDetailsWithinsla(DetailsAction sla) {

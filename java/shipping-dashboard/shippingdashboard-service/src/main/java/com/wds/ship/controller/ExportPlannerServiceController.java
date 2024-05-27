@@ -36,10 +36,10 @@ public class ExportPlannerServiceController {
         return exportPlannerService.getExportPlannerInfo(userDetails);
     }
 
-//    @PostMapping("/getExportPlannerServiceCount")
-//    public List<ExportDetailsPOJO>getExportDocumentationDetailsCount(@RequestBody DetailsAction action){
-//    	return exportPlannerService.getExportPlannerDetailsCount(action);
-//    }
+    @PostMapping("/getExportPlannerServiceCount")
+    public List<ExportDetailsPOJO>getExportDocumentationDetailsCount(@RequestBody DetailsAction action){
+    	return exportPlannerService.getExportPlannerDetailsCount(action);
+    }
     
     @PostMapping("/getExportPlannerServiceWithinsla")
     public List<ExportDetailsPOJO>getExportDocumentationDetailsWithinsla(@RequestBody DetailsAction sla){

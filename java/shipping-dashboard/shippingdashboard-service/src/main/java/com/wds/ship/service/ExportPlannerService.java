@@ -19,7 +19,7 @@ public interface ExportPlannerService {
 
 	List<ExportDetailsPOJO> getExportPlannerDetailsWithinsla(DetailsAction sla);
 
-	//List<ExportDetailsPOJO> getExportPlannerDetailsCount(DetailsAction action);
+	List<ExportDetailsPOJO> getExportPlannerDetailsCount(DetailsAction action);
 
 	List<ExportDetailsPOJO> getExportPlannerDetailsOutofsla(DetailsAction sla);
 	
@@ -32,6 +32,7 @@ public interface ExportPlannerService {
 	List<ExportDetailsPOJO> getExportPlannerAirDetailsCount(ExportLCL action);
 
 	List<ExportDetailsPOJO> getExportPlannerAirDetailsOutofsla(DetailsAction sla);
+
 
 
 }

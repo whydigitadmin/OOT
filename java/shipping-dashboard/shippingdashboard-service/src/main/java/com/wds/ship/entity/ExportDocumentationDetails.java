@@ -37,14 +37,14 @@ public class ExportDocumentationDetails {
 	@Column(name = "CMPY")
 	private Long company;
 
-	@Column(name = "DEPTID")
-	private Long deptid;
-	public Long getDeptid() {
-		return deptid;
-	}
-	public void setDeptid(Long deptid) {
-		this.deptid = deptid;
-	}
+//	@Column(name = "DEPTID")
+//	private Long deptid;
+//	public Long getDeptid() {
+//		return deptid;
+//	}
+//	public void setDeptid(Long deptid) {
+//		this.deptid = deptid;
+//	}
 	
 	
 	public int getWithinsla() {
